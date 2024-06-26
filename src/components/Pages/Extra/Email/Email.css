@@ -1,0 +1,82 @@
+.emailContainer,
+.emailFormSection {
+  max-width: 100%;
+  background-color: var(--background-button-darkviolet);
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  justify-content: space-evenly;
+}
+
+@media screen and (max-width: 1024px) {
+  .emailFormSection {
+    flex-wrap: wrap;
+  }
+}
+
+.emailDescriptions {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 0.5rem;
+}
+
+.emailIcons {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.emailImage {
+  object-fit: cover;
+  max-width: 100%;
+  aspect-ratio: 1/1;
+  width: 20rem;
+  border-radius: 50px;
+}
+
+.emailContainerInput {
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (max-width: 1024px) {
+
+  .emailIcons,
+  .emailContainerInput {
+    justify-content: center;
+  }
+}
+
+.inputWrapper {
+  position: relative;
+  width: 20rem;
+  /* Ensure the input and button are contained within the same width */
+}
+
+.emailInput {
+  padding: 1rem 5rem 1rem 1rem;
+  border-radius: 50px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.inputWrapper button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding: 1rem;
+  border-radius: 0 50px 50px 0;
+  color: var(--background-button-light);
+  background: var(--background-button);
+  border: none;
+  cursor: pointer;
+  height: 100%;
+}
+
+.inputWrapper button:hover {
+  background-color: var(--background-button-dark-pink);
+}

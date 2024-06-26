@@ -1,0 +1,247 @@
+.about {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Container for the about section */
+.aboutContainer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 2rem;
+  background-color: var(--background-button-dark);
+  color: var(--text-color);
+  font-family: 'Poppins', sans-serif;
+  margin: 3rem auto;
+}
+
+@media screen and (max-width: 1024px) {
+  .aboutContainer {
+    flex-wrap: wrap;
+    text-align: center;
+  }
+}
+
+.aboutInformation {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .5rem;
+}
+
+@media screen and (max-width: 1024px) {
+  .aboutInformation {
+    order: 1;
+  }
+}
+
+/* Styling for the main title */
+.aboutTitle {
+  color: var(--text-color);
+  font-size: 5rem;
+  font-weight: 900;
+  line-height: .8;
+}
+
+@media screen and (max-width: 1024px) {
+  .aboutTitle {
+    font-size: 5rem;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .aboutTitle {
+    font-size: 3rem;
+  }
+}
+
+/* Styling for the subtitle */
+.aboutSemiTitle {
+  color: var(--text-color);
+  font-size: 1rem;
+  font-weight: 500;
+  padding-block: 0.5rem;
+  border-radius: 10px;
+}
+
+.aboutSkillsOfMine,
+.aboutSkills,
+.aboutExperienceArticle,
+.aboutExperienceRebisco {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.aboutSkills {
+  gap: 5rem;
+  text-align: center;
+}
+
+.aboutSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.aboutSectionEducation {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.aboutExperienceArticle {
+  border: solid 2px var(--background-button-light);
+  padding: 1rem;
+  border-radius: 50px;
+}
+
+.aboutExperienceRebisco {
+  gap: 2rem;
+}
+
+@media screen and (max-width: 1024px) {
+
+  .aboutSkills,
+  .aboutExperienceArticle,
+  .aboutExperienceRebisco {
+    text-align: center;
+    flex-wrap: wrap;
+  }
+}
+
+/* Styling for paragraph text */
+.aboutParagraph {
+  font-size: 2rem;
+  color: var(--text-color);
+  font-weight: 900;
+}
+
+/* Styling for buttons */
+.aboutButton {
+  display: inline-block;
+  background-color: var(--background-button);
+  color: var(--text-background-color);
+  font-size: 1.25rem;
+  padding: .5rem 1rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Hover effect for buttons */
+.aboutButton:hover {
+  background: var(--background-button-darkviolet);
+  color: var(--background-button-light);
+}
+
+/* Styling for images */
+.aboutImages {
+  border-radius: 50%;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+  width: 80rem;
+  height: auto;
+  max-width: 100%;
+}
+
+.aboutTBody {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.aboutTBody td {
+  list-style: none;
+}
+
+@media (max-width: 768px) {
+  .aboutTBody {
+    align-items: center;
+  }
+}
+
+.aboutArticle,
+.aboutExperience {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.aboutExperience {
+  flex-direction: column;
+}
+
+@media screen and (max-width: 1024px) {
+  .aboutArticle {
+    flex-wrap: wrap;
+  }
+}
+
+.aboutArticleSection {
+  box-sizing: border-box;
+  padding: 1rem 2rem;
+  border: solid 1px var(--text-color);
+  border-radius: 20px;
+  max-width: 50rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.aboutFirstPersonBio,
+.aboutThirdPersonBio {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.aboutTitleArticle {
+  background-color: var(--background-button-darkviolet);
+  font-weight: 500;
+  font-family: var(--font-title);
+  font-size: 1.5rem;
+  border-radius: 50px;
+  color: var(--text-color);
+  padding: 0.5rem 1rem;
+  align-self: flex-start;
+}
+
+.aboutArticleList,
+.aboutExperienceRebiscoDescription,
+.aboutExperienceData {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.aboutExperienceData {
+  width: 30rem;
+  align-items: self-end;
+}
+
+.aboutExperienceRebiscoDescription {
+  line-height: 1.5rem;
+}
+
+.aboutRebisco {
+  max-width: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  width: 8rem;
+}
+
+@media screen and (max-width: 1024px) {
+  .aboutExperienceData {
+    align-items: center;
+    text-align: center;
+  }
+}

@@ -1,0 +1,81 @@
+.footerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Add styles for the container of footer content */
+}
+
+.footerTitle {
+  line-height: 20rem;
+  font-size: 20rem;
+  /* Adjust as needed */
+  font-family: var(--font-title);
+  /* Use your specific font variable */
+  font-weight: bolder;
+  /* Add styles for the footer title */
+  color: var(--background-button-violet);
+  letter-spacing: .5rem;
+  -webkit-text-stroke: 4px var(--background-button-pink);
+}
+
+@media screen and (max-width: 1024px) {
+  .footerTitle {
+    font-size: 12rem;
+  }
+}
+
+@media screen and (max-width: 781px) {
+  .footerTitle {
+    font-size: 6rem;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .footerTitle {
+    font-size: 3rem;
+  }
+}
+
+.footernavbarContainer {
+  display: flex;
+  text-align: center;
+  line-height: 1rem;
+  gap: 8rem;
+  /* Adjust spacing between links */
+}
+
+@media screen and (max-width: 1024px) {
+  .footernavbarContainer {
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .footernavbarContainer {
+    gap: .5rem;
+  }
+}
+
+.footerSection {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-items: center;
+  /* Add styles for the main footer section */
+}
+
+.socialIcons {
+  display: flex;
+  gap: 1rem;
+  /* Adjust spacing between social icons */
+  /* Add styles for the social icons container */
+}
+
+.socialIcons img {
+  transition: transform .2s ease-in-out;
+}
+
+.socialIcons img:hover {
+  transform: scale(1.2);
+}

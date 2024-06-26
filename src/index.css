@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Lalezar&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+  --background-button-light: #dacec8;
+  --background-button-pink: #FF66B2;
+  --background-button-violet: #cc00ff;
+  --background-button-darkviolet: #6f19b5;
+  --background-button-blue: #25007a;
+  --background-button-dark: #000000;
+  --background-button: #FF0080;
+  --background-button-dark-pink: #FF3399;
+  --text-color: #fefafa;
+  --font-title: "Lalezar", system-ui;
+  --font-semi-title: "Poppins", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 100%;
+  background-color: var(--background-button-dark);
+  color: var(--background-button-light);
+  font-family: var(--font-semi-title);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+}
+
+.container {
+  max-width: 1200px;
+  overflow: hidden;
+  margin-inline: 1.5rem;
+}
+
+@media screen and (max-width: 340px) {
+  .container {
+    margin-inline: 1rem;
+  }
+}
+
+@media screen and (min-width: 1064px) {
+  .container {
+    margin-inline: auto;
+  }
+}
+
+.section {
+  max-width: 100%;
+  padding-block: 2rem 1rem;
+}
+
+@media screen and (max-width: 340px) {
+  .section {
+    padding-block: 4rem 1rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .section {
+    padding-block: 2rem 1.5rem;
+  }
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-title);
+}
+
+@media screen and (max-width: 468px) {
+
+  h1,
+  h2,
+  h3 {
+    font-size: 1rem;
+  }
+
+  p {
+    font-size: .5rem;
+  }
+}
+
+ul,
+li,
+a {
+  text-decoration: none;
+  list-style: none;
+}
+
+p {
+  color: var(--text-color);
+  font-family: var(--font-semi-title);
+}
+
+.flamesBorder {
+  width: 100%;
+}

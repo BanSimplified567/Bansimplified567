@@ -1,0 +1,34 @@
+.blog {
+  border-top: solid 5px var(--background-button);
+  padding-top: 2rem;
+  width: 20rem;
+}
+
+.blogArticle {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  padding: 20px;
+}
+
+.blogCards {
+  border-radius: 30px;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border: solid 1px var(--background-button-light);
+  transition: all 10ms ease-in-out;
+}
+
+
+.blogCard {
+  color: var(--text-color);
+}
+
+.freeCodeCamp {
+  width: 100%;
+  aspect-ratio: 16/9;
+  height: auto;
+  object-fit: cover;
+}

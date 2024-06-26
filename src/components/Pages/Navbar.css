@@ -1,0 +1,111 @@
+/* Container for the navbar */
+.navbarContainer {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+  justify-content: space-evenly;
+}
+
+/* Styling for individual navbar links */
+.navbarLink {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 2rem;
+}
+
+/* Styling for nav link wrappers */
+.navLink {
+  display: flex;
+  gap: 2rem;
+  position: relative;
+}
+
+/* Title in the navbar */
+.navbarTitle {
+  border-right: 2px solid var(--text-color);
+  font-family: var(--font-title);
+  padding-right: 1rem;
+  font-size: 2rem;
+  text-decoration: none;
+  color: var(--background-button);
+}
+
+/* Basic styling for navbar links */
+.navbarLinks {
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.3s;
+  position: relative;
+  /* Needed for the hover effect */
+}
+
+/* Specific styling for the "About" link (example) */
+.navbarLinks[href="/about"] {
+  color: var(--background-button);
+}
+
+/* Hover effect for navbar links */
+.navbarLinks:hover {
+  border-bottom: solid 2px var(--background-button-darkviolet);
+}
+
+/* Styling for mentor link */
+.navMentor {
+  border: 1px solid var(--background-button);
+  color: var(--background-button);
+}
+
+/* Specific styling for Hire Me button */
+.navHireMe {
+  background-color: var(--background-button);
+  color: var(--text-color);
+  border-color: var(--background-button);
+}
+
+/* Hover effects for Hire Me and Mentor links */
+.navHireMe:hover,
+.navMentor:hover {
+  background-color: var(--background-button-darkviolet);
+  color: var(--background-button-light);
+}
+
+/* Common styling for Mentor and Hire Me buttons */
+.navMentor,
+.navHireMe {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 50px;
+  /* Creates an oval shape */
+  border: 1px solid;
+  /* Border for both elements */
+}
+
+/* CSS for hover text */
+.navbarLinks:hover::after,
+.navMentor:hover::after,
+.navHireMe:hover::after {
+  content: attr(title);
+  position: absolute;
+  top: -30px;
+  /* Adjust the value as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--background-button);
+  color: var(--text-color);
+  padding: 5px 10px;
+  border-radius: 5px;
+  white-space: nowrap;
+  z-index: 1;
+  font-size: 0.75rem;
+  font-weight: normal;
+}

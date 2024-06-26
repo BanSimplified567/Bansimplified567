@@ -1,0 +1,152 @@
+.contact {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+@media screen and (max-width: 1024px) {
+  .contact {
+    flex-wrap: wrap;
+  }
+
+  .contactContactIcon {
+    display: none;
+  }
+
+  .contactContactMe {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .contactSendMessage {
+    padding: 24px;
+  }
+
+  .contactFormGroup input,
+  .contactFormGroup textarea {
+    font-size: 12px;
+    padding: 8px;
+    width: calc(100% - 18px);
+  }
+
+  .contactTitle {
+    font-size: 1.5rem;
+  }
+
+  .contactSubmit {
+    font-size: 14px;
+  }
+}
+
+.contactContactMe {
+  display: flex;
+  flex-direction: column;
+  padding-top: 48px;
+}
+
+.contactTitle {
+  font-weight: 300;
+  font-size: 2rem;
+}
+
+.contactSendMessage {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  position: relative;
+  border-radius: 32px 0 0 32px;
+  color: var(--background-button-light);
+  margin-right: 10px;
+  background-color: var(--background-button-darkviolet);
+}
+
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 100%;
+  padding: 48px;
+}
+
+.contactFormGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.contactFormGroup label {
+  margin-bottom: 5px;
+  font-weight: bolder;
+}
+
+.contactFormGroup input,
+.contactFormGroup textarea {
+  font-size: 14px;
+  padding: 10px;
+  border: 1px solid var(--background-button-light);
+  border-radius: 5px;
+  width: calc(100% - 22px);
+  outline: none;
+}
+
+.contactFormGroup textarea {
+  resize: vertical;
+  height: 10rem;
+}
+
+.contactSubmit {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--background-button);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contactSubmit:hover {
+  background-color: var(--background-button-darkviolet);
+}
+
+.contactContactIcon {
+  width: 50%;
+  height: auto;
+  object-fit: contain;
+  position: absolute;
+  bottom: 10rem;
+  right: 0;
+  margin: 10px;
+}
+
+.contactInformation {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.contactHelpInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contactInfoLoc {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: space-evenly;
+}
+
+.contactSocialLink {
+  display: flex;
+  flex-wrap: wrap;
+}

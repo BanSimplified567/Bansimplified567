@@ -1,0 +1,56 @@
+.portfolio {
+  border-top: solid 5px var(--background-button);
+  width: 40rem;
+  position: relative;
+  margin-top: 3rem;
+}
+
+.portArticle {
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(3, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.portCard {
+  border: 1px solid #ccc;
+  color: var(--text-color);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--background-button-dark);
+  transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.portImage {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.portCardBody {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.portCardTitle {
+  margin: 10px 0;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.portCardDescription {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  font-weight: 300;
+  color: var(--background-button-light);
+}
+
+.portCardDate,
+.portCardType {
+  font-size: 0.9rem;
+  color: var(--background-button-light);
+}
