@@ -22,7 +22,7 @@ const About = () => {
                   <a
                      href="./Blacklion567.pdf"
                      className="aboutResume"
-                     download
+                     download="Blacklion567.pdf"
                      title="Welcome Back"
                   >
                      Download Resume
