@@ -1,11 +1,17 @@
 import { Link, useLocation } from 'react-router-dom';
+import { useState } from 'react';
 import './Navbar.css';
 
 const Navbar = () => {
    const location = useLocation();
+   const [isOpen, setIsOpen] = useState(false);
 
    const getLinkStyle = (path) => {
       return location.pathname === path ? { color: '#FF3399' } : { color: '#fefefe' };
+   };
+
+   const toggleMenu = () => {
+      setIsOpen(!isOpen);
    };
 
    return (
@@ -14,7 +20,7 @@ const Navbar = () => {
             <Link to="/" className="navbarTitle" title="Welcome Back">
                BanSimplified
             </Link>
-            <div className="navLink">
+            <div className={`navLink ${isOpen ? 'open' : ''}`}>
                <Link
                   className="navbarLinks"
                   to="/about"
@@ -65,6 +71,17 @@ const Navbar = () => {
                </Link>
             </div>
          </nav>
+         <button className="menuButton" onClick={toggleMenu}>
+            <svg
+               width="46"
+               height="46"
+               fill="currentColor"
+               viewBox="0 0 24 24"
+               xmlns="http://www.w3.org/2000/svg"
+            >
+               <path d="M3 4h18v2H3V4Zm0 7h18v2H3v-2Zm0 7h18v2H3v-2Z"></path>
+            </svg>
+         </button>
          <div className="navLink">
             <Link to="/activities" className="navMentor" title="Explore activities options">
                ACTIVITIES

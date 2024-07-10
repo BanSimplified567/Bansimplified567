@@ -1,11 +1,11 @@
-import flamesBorder from '../../img/assets/borderseparator.gif';
 import flames from '../../img/assets/animated-flame-01.gif';
+import flamesBorder from '../../img/assets/borderseparator.gif';
 
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import './Home.css';
 import Email from '../Extra/Email/Email';
 import Footer from '../Extra/Footer/Footer';
+import './Home.css';
 
 const sections = [
    {
@@ -33,13 +33,13 @@ const sections = [
       link: '/blog',
       buttonText: 'WATCH MY BLOG',
       content: `
-            As an aspiring frontend developer, I encourage others to pursue their
+            As an aspiring Software Engineer, I encourage others to pursue their
             dreams and never give up. I share my journey, provide support, and
             celebrate achievements to keep everyone motivated. By fostering a
             positive environment, I help others stay focused and confident in their
             path to success. 🐾
 
-            I lead by example as an aspiring frontend developer, emphasizing
+            I lead by example as an aspiring Software Engineer, emphasizing
             perseverance and a positive mindset. I offer guidance, share resources,
             and collaborate on projects to help peers develop their skills. My goal
             is to inspire others to believe in their potential and achieve their
@@ -74,13 +74,13 @@ const sections = [
       link: '/contact',
       buttonText: 'CONTACT ME',
       content: `
-            As an aspiring frontend developer, I encourage others to pursue their
+            As an aspiring Software Engineer, I encourage others to pursue their
             dreams and never give up. I share my journey, provide support, and
             celebrate achievements to keep everyone motivated. By fostering a
             positive environment, I help others stay focused and confident in their
             path to success. 🐾
 
-            I lead by example as an aspiring frontend developer, emphasizing
+            I lead by example as an aspiring Software Engineer, emphasizing
             perseverance and a positive mindset. I offer guidance, share resources,
             and collaborate on projects to help peers develop their skills. My goal
             is to inspire others to believe in their potential and achieve their
@@ -94,7 +94,7 @@ const sections = [
       link: '/activities',
       buttonText: 'LOOK AT MY ACTIVITIES',
       content: `
-            I am deeply focused on improving as a front-end developer, spending my days coding, designing user interfaces, and staying updated with the latest web technologies. Through disciplined practice and consistent learning, I strive to enhance my skills daily, trusting in God for guidance in this journey.🐾
+            I am deeply focused on improving as a front-end Engineer, spending my days coding, designing user interfaces, and staying updated with the latest web technologies. Through disciplined practice and consistent learning, I strive to enhance my skills daily, trusting in God for guidance in this journey.🐾
 
          Previously, I gained experience in backend development and graphic design, which equipped me with valuable technical and creative insights. With discipline and consistency, I dedicated myself to learning and growing, relying on faith to navigate challenges and seize opportunities for advancement. 👋
          `,
@@ -102,54 +102,65 @@ const sections = [
    },
 ];
 
+const calculateTimeLeft = (startDate) => {
+   const targetDate = new Date(startDate);
+   targetDate.setFullYear(targetDate.getFullYear() + 2);
+   targetDate.setMonth(targetDate.getMonth() + 8); // Adjusting the target month
+   targetDate.setDate(targetDate.getDate() + 5); // Adjusting the target day
+
+   const now = new Date();
+   const difference = targetDate - now;
+   let timeLeft = {};
+
+   if (difference > 0) {
+      timeLeft = {
+         years: Math.floor(difference / (1000 * 60 * 60 * 24 * 365)),
+         months: Math.floor(
+            (difference % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30)
+         ),
+         days: Math.floor((difference % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24)),
+      };
+   } else {
+      timeLeft = {
+         years: 0,
+         months: 0,
+         days: 0,
+      };
+   }
+
+   return timeLeft;
+};
+
+const HomeSlider = ({ repeatCount, text, timeLeft }) => {
+   return (
+      <section className="homeSlider">
+         <div className="homeSlideTrack">
+            {Array.from({ length: repeatCount }).map((_, index) => (
+               <div className="homeSlide" key={index}>
+                  <h1 className="aboutParagraph slides">
+                     {text} - {timeLeft.years} years, {timeLeft.months} months, {timeLeft.days} days
+                  </h1>
+               </div>
+            ))}
+         </div>
+      </section>
+   );
+};
+
 const Home = () => {
-   const getCurrentTime = () => {
-      const now = new Date();
-      return now.toLocaleTimeString(); // Format the time as needed
-   };
-   const calculateTimeLeft = () => {
-      const targetDate = new Date();
-      targetDate.setFullYear(targetDate.getFullYear() + 2);
-      targetDate.setMonth(targetDate.getMonth() + 7);
-
-      const now = new Date();
-      const difference = targetDate - now;
-
-      let timeLeft = {};
-
-      if (difference > 0) {
-         timeLeft = {
-            years: Math.floor(difference / (1000 * 60 * 60 * 24 * 365)),
-            months: Math.floor(
-               (difference % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30)
-            ),
-            days: Math.floor((difference % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24)),
-         };
-      } else {
-         timeLeft = {
-            years: 0,
-            months: 0,
-            days: 0,
-         };
-      }
-
-      return timeLeft;
-   };
-
-   const [currentTime, setCurrentTime] = useState(getCurrentTime());
-   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+   const startDate = new Date();
+   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(startDate));
 
    useEffect(() => {
       const timer = setInterval(() => {
-         setCurrentTime(getCurrentTime());
-         setTimeLeft(calculateTimeLeft());
+         setTimeLeft(calculateTimeLeft(startDate));
       }, 1000);
 
-      return () => clearInterval(timer); // Cleanup the interval on component unmount
-   }, []);
+      return () => clearInterval(timer);
+   }, [startDate]);
 
    const text =
-      'Jade Ivan Bringcola Known as BanBan @Aspiring Frontend-Developer | Frontend Enthusiast';
+      'Jade Ivan Bringcola Known as BanBan @Aspiring Software-Engineer | Frontend Enthusiast';
    const repeatCount = 10; // Adjust this count to control how many times the text repeats
 
    return (
@@ -161,7 +172,7 @@ const Home = () => {
                   <div className="homePerson">
                      <img src={flames} width="40px" alt="flames" />
                      <p className="homeParagraph">
-                        Jade Ivan V. Bringcola is an Aspiring Frontend Developer from the
+                        Jade Ivan V. Bringcola is an Aspiring Software Engineer from the
                         Philippines. 👋👨‍💻
                      </p>
                      <img src={flames} width="40px" alt="flames" />
@@ -207,7 +218,7 @@ const Home = () => {
                         to: '/blog',
                         title: 'BLOG',
                         subtitle: 'Look For My Blog',
-                        text: 'I will be sharing my daily blog in my journey as an aspiring Frontend Developer.',
+                        text: 'I will be sharing my daily blog in my journey as an aspiring Software Engineer.',
                         icon: (
                            <svg
                               width="24"
@@ -253,18 +264,9 @@ const Home = () => {
                </div>
             </section>
             <img src={flamesBorder} className="flamesBorder" alt="flamesBorder" />
-            <section className="homeSlider">
-               <div className="homeSlideTrack">
-                  {Array.from({ length: repeatCount }).map((_, index) => (
-                     <div className="homeSlide" key={index}>
-                        <h1 className="aboutParagraph slides">
-                           {text} - {timeLeft.years} years, {timeLeft.months} months,
-                           {timeLeft.days} days, {currentTime}
-                        </h1>
-                     </div>
-                  ))}
-               </div>
-            </section>
+            <div>
+               <HomeSlider repeatCount={repeatCount} text={text} timeLeft={timeLeft} />
+            </div>
             <img src={flamesBorder} className="flamesBorder" alt="flamesBorder" />
             <section className="homeInfomationToLink section">
                {sections.map((section, index) => (

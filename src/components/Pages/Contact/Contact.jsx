@@ -107,7 +107,7 @@ function Contact() {
                   <form className="contactForm">
                      <h1 className="contactTitle">Send me a message</h1>
                      <div className="contactFormGroup">
-                        <label htmlFor="name">Name: </label>
+                        <label>Name: </label>
                         <input
                            type="text"
                            className="contactName"
@@ -117,7 +117,7 @@ function Contact() {
                         />
                      </div>
                      <div className="contactFormGroup">
-                        <label htmlFor="email">Email: </label>
+                        <label>Email: </label>
                         <input
                            type="email"
                            className="contactEmail"
@@ -127,7 +127,7 @@ function Contact() {
                         />
                      </div>
                      <div className="contactFormGroup">
-                        <label htmlFor="message">Message: </label>
+                        <label>Message: </label>
                         <textarea
                            className="contactMessage"
                            name="message"
@@ -205,7 +205,7 @@ function Contact() {
 
 function SocialLink({ url, imgSrc, alt }) {
    return (
-      <div className='contactSocialLink'>
+      <div className="contactSocialLink">
          <NavLink to={url}>
             <img src={imgSrc} alt={alt} width="30px" />
          </NavLink>

@@ -1,13 +1,13 @@
-import { AboutSkills, AboutExperience } from './AboutSkills';
 import Email from '../Extra/Email/Email';
+import { AboutExperience, AboutSkills } from './AboutSkills';
 
 import { NavLink } from 'react-router-dom';
 
 import flames from '../../img/assets/animated-flame-01.gif';
 import flamesBorder from '../../img/assets/borderseparator.gif';
 
-import './About.css';
 import Footer from '../Extra/Footer/Footer';
+import './About.css';
 
 const About = () => {
    return (
@@ -19,7 +19,16 @@ const About = () => {
                   As an aspiring Front-end Developer , I&#39;m passionate about continuous learning
                   and growth. I eagerly explore new technologies and embrace challenges that expand
                   my skills.
+                  <a
+                     href="./Blacklion567.pdf"
+                     className="aboutResume"
+                     download
+                     title="Welcome Back"
+                  >
+                     Download Resume
+                  </a>
                </p>
+
                <p className="aboutParagraph">
                   <span className="navbarTitle">1+ year</span> learning Web development
                </p>

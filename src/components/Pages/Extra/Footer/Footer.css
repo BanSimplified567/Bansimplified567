@@ -7,8 +7,8 @@
 
 .footerTitle {
   line-height: 20rem;
-  font-size: 20rem;
   /* Adjust as needed */
+  font-size: 16rem;
   font-family: var(--font-title);
   /* Use your specific font variable */
   font-weight: bolder;
@@ -59,10 +59,10 @@
 
 .footerSection {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   flex-wrap: wrap;
   align-items: center;
-  /* Add styles for the main footer section */
+  gap: 5rem;
 }
 
 .socialIcons {

@@ -1,9 +1,9 @@
-import Rebisco from '../../img/logos/rebisco.svg.png';
-import Lunocan from '../../img/logos/Lunocan.jpg';
-import Manolo from '../../img/logos/Manolo.png';
-import Sibonga from '../../img/logos/Sibonga.jpg';
 import flames from '../../img/assets/animated-flame-01.gif';
 import flamesBorder from '../../img/assets/borderseparator.gif';
+import Lunocan from '../../img/logos/Lunocan.jpg';
+import Manolo from '../../img/logos/Manolo.png';
+import Rebisco from '../../img/logos/rebisco.svg.png';
+import Sibonga from '../../img/logos/Sibonga.jpg';
 
 import './About.css';
 
@@ -109,15 +109,15 @@ const badgeData = [
 const AboutSkills = () => {
    return (
       <>
-         <table>
-            <tbody className="aboutTBody">
+         <section>
+            <div className="aboutTBody">
                {badgeData.map((badge, index) => (
-                  <td align="center" key={index}>
+                  <div key={index}>
                      <img src={badge.src} alt={badge.alt} height="35" width="100" />
-                  </td>
+                  </div>
                ))}
-            </tbody>
-         </table>
+            </div>
+         </section>
          <p className="aboutSemiTitle">
             - While I continue to focus on front-end technologies, I am dedicated to expanding my
             backend skills to create more comprehensive and robust web applications. My goal is to
@@ -132,7 +132,7 @@ const experiences = [
    {
       image: Rebisco,
       alt: 'Rebisco',
-      role: 'Factory Worker',
+      role: 'Factory Worker \n (NOT-RELATED)',
       company: 'Republic Biscuit Corporation (REBISCO)',
       description:
          'The Republic Biscuit Corporation, doing business as Rebisco and also known as the Rebisco Group of Companies, is a Philippine privately held multinational snack food company headquartered in Ortigas Center, Pasig.',
@@ -162,7 +162,7 @@ const education = [
       description:
          'Manolo Fortich National High School is a school located in Manolo Fortich, Bukidnon. It is one of the top-performing schools in the Division of Bukidnon.',
       location: 'Bukidnon, Northern Mindanao, Philippines',
-      duration: 'Apr 2015-2016',
+      duration: 'Apr 2021-2022',
       type: 'Manolo Fortich Buk',
       mode: 'Working-Student',
    },
@@ -211,7 +211,7 @@ const AboutExperienceArticle = ({
 const AboutExperience = () => (
    <>
       <div>
-         <div className="aboutSection">
+         <div className="aboutSection section">
             <img src={flames} width="26px" alt="flames" />
             <h1 className="aboutTitle">Experience</h1>
             <img src={flames} width="26px" alt="flames" />
@@ -231,7 +231,7 @@ const AboutExperience = () => (
             <img src={flames} width="26px" alt="flames" />
          </div>
 
-         <div className="aboutSectionEducation">
+         <div className="aboutSectionEducation section">
             {education.map((edu, index) => (
                <AboutExperienceArticle key={index} {...edu} />
             ))}
@@ -240,4 +240,4 @@ const AboutExperience = () => (
    </>
 );
 
-export { AboutSkills, AboutExperience };
+export { AboutExperience, AboutSkills };

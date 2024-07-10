@@ -22,9 +22,7 @@ const router = createBrowserRouter([
    {
       element: (
          <header className="section">
-            <nav>
-               <Navbar />
-            </nav>
+            <Navbar />
             <main className="appMain">
                <Outlet />
             </main>
