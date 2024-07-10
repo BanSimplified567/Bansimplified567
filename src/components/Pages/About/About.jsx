@@ -16,7 +16,7 @@ const About = () => {
             <section className="aboutInformation">
                <h1 className="aboutTitle">NICE TO MEET YOU! I&#39;M BANBAN 👋👨‍💻</h1>
                <p className="aboutSemiTitle">
-                  As an aspiring Front-end Developer , I&#39;m passionate about continuous learning
+                  As an Aspiring Software Engineer , I&#39;m passionate about continuous learning
                   and growth. I eagerly explore new technologies and embrace challenges that expand
                   my skills.
                   <a
@@ -59,7 +59,7 @@ const About = () => {
                   <h1 className="aboutTitleArticle">First Person Bio</h1>
                   <figure className="aboutArticleList">
                      {[
-                        "Hello! I'm Jade Ivan V. Brincola, also known as BanBan, from Sibonga, Cebu, Philippines. 👋",
+                        "Hello! I'm Jade Ivan V. Bringcola, also known as BanBan, from Sibonga, Cebu, Philippines. 👋",
                         "I'm currently pursuing a Bachelor of Science in Information Technology (Programming) in the Philippines. 👨‍💻",
                         'I enjoy mastering the art of creating dynamic and intuitive websites. 🐾',
                         'Driven to make a positive impact through digital experiences in the tech industry. 🌊',
@@ -77,7 +77,7 @@ const About = () => {
                   <h1 className="aboutTitleArticle">Third Person Bio</h1>
                   <figure className="aboutArticleList">
                      {[
-                        'Jade Ivan V. Brincola, also known as BanBan, from Sibonga, Cebu, Philippines. 👋',
+                        'Jade Ivan V. Bringcola, also known as BanBan, from Sibonga, Cebu, Philippines. 👋',
                         'His curiosity about how websites work led him to explore and study the web development roadmap. 👨‍💻',
                         'Mastering the art of crafting dynamic and intuitive websites, Jade finds joy in creating seamless digital experiences. 🐾',
                         'Motivated by a passion for technology and driving positive change in the tech industry. 🌊',

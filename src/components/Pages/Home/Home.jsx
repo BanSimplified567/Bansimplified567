@@ -13,7 +13,7 @@ const sections = [
       link: '/about',
       buttonText: 'LEARN MORE',
       content: `
-            Hello! I'm Jade Ivan V. Brincola, or BanBan, hailing proudly from
+            Hello! I'm Jade Ivan V. Bringcola, or BanBan, hailing proudly from
             Sibonga, Cebu, Philippines. Currently, I'm pursuing a Bachelor of Science
             in Information Technology (Programming) in my home country. 👨‍💻 My passion
             lies in crafting dynamic and intuitive websites, constantly refining my
@@ -33,13 +33,13 @@ const sections = [
       link: '/blog',
       buttonText: 'WATCH MY BLOG',
       content: `
-            As an aspiring Software Engineer, I encourage others to pursue their
+            As an Aspiring Software Engineer, I encourage others to pursue their
             dreams and never give up. I share my journey, provide support, and
             celebrate achievements to keep everyone motivated. By fostering a
             positive environment, I help others stay focused and confident in their
             path to success. 🐾
 
-            I lead by example as an aspiring Software Engineer, emphasizing
+            I lead by example as an Aspiring Software Engineer, emphasizing
             perseverance and a positive mindset. I offer guidance, share resources,
             and collaborate on projects to help peers develop their skills. My goal
             is to inspire others to believe in their potential and achieve their
@@ -74,13 +74,13 @@ const sections = [
       link: '/contact',
       buttonText: 'CONTACT ME',
       content: `
-            As an aspiring Software Engineer, I encourage others to pursue their
+            As an Aspiring Software Engineer, I encourage others to pursue their
             dreams and never give up. I share my journey, provide support, and
             celebrate achievements to keep everyone motivated. By fostering a
             positive environment, I help others stay focused and confident in their
             path to success. 🐾
 
-            I lead by example as an aspiring Software Engineer, emphasizing
+            I lead by example as an Aspiring Software Engineer, emphasizing
             perseverance and a positive mindset. I offer guidance, share resources,
             and collaborate on projects to help peers develop their skills. My goal
             is to inspire others to believe in their potential and achieve their
@@ -94,7 +94,7 @@ const sections = [
       link: '/activities',
       buttonText: 'LOOK AT MY ACTIVITIES',
       content: `
-            I am deeply focused on improving as a front-end Engineer, spending my days coding, designing user interfaces, and staying updated with the latest web technologies. Through disciplined practice and consistent learning, I strive to enhance my skills daily, trusting in God for guidance in this journey.🐾
+            I am deeply focused on improving as a Software Engineer, spending my days coding, designing user interfaces, and staying updated with the latest web technologies. Through disciplined practice and consistent learning, I strive to enhance my skills daily, trusting in God for guidance in this journey.🐾
 
          Previously, I gained experience in backend development and graphic design, which equipped me with valuable technical and creative insights. With discipline and consistency, I dedicated myself to learning and growing, relying on faith to navigate challenges and seize opportunities for advancement. 👋
          `,
@@ -218,7 +218,7 @@ const Home = () => {
                         to: '/blog',
                         title: 'BLOG',
                         subtitle: 'Look For My Blog',
-                        text: 'I will be sharing my daily blog in my journey as an aspiring Software Engineer.',
+                        text: 'I will be sharing my daily blog in my journey as an Aspiring Software Engineer.',
                         icon: (
                            <svg
                               width="24"
