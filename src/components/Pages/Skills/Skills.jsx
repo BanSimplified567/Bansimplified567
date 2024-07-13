@@ -80,10 +80,9 @@ const resources = [
       alt: 'Sass',
       title: 'Sass',
       description:
-         'GitHub is a platform for version control and collaboration. Codecademy provides lessons on using GitHub to manage your projects and collaborate with other developers.',
+         'Sass is a powerful CSS preprocessor that allows you to write more maintainable and efficient CSS. It offers variables, nested rules, and mixins to enhance your CSS workflow.',
    },
 ];
-
 function Skills() {
    return (
       <main className="section">
