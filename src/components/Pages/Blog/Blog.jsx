@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 import flames from '../../img/assets/animated-flame-01.gif';
 import flamesBorder from '../../img/assets/borderseparator.gif';
@@ -8,7 +9,6 @@ import Email from '../Extra/Email/Email';
 import Footer from '../Extra/Footer/Footer';
 import './Blog.css';
 
-// Dynamically import all images from the specified folder
 const importImages = import.meta.glob('../../img/Activities/*');
 
 const resourcesData = [
@@ -19,6 +19,7 @@ const resourcesData = [
       description:
          'Codecademy offers free coding classes in various programming languages including Python, Java, Go, JavaScript, Ruby, SQL, C++, C#, and Swift, as well as markup languages HTML and CSS.',
    },
+
    {
       name: 'FreeCodeCamp',
       link: 'https://www.freecodecamp.org/',
@@ -26,6 +27,7 @@ const resourcesData = [
       description:
          'freeCodeCamp is a non-profit educational organization that offers an interactive learning web platform, an online community forum, chat rooms, online publications, and local organizations to make learning software development accessible to anyone.',
    },
+
    {
       name: 'W3Schools',
       link: 'https://www.w3schools.com/',
@@ -33,6 +35,7 @@ const resourcesData = [
       description:
          'W3Schools provides web development tutorials and references for various web technologies, serving as a comprehensive resource for learning HTML, CSS, JavaScript, and other related technologies.',
    },
+
    {
       name: 'GeeksforGeeks',
       link: 'https://www.geeksforgeeks.org/',
@@ -40,6 +43,7 @@ const resourcesData = [
       description:
          'GeeksforGeeks provides coding resources and challenges, empowering programmers with practical skills through tutorials and practice problems.',
    },
+
    {
       name: 'Dev',
       link: 'https://dev.to/',
@@ -47,6 +51,7 @@ const resourcesData = [
       description:
          'DEV is a community of software developers collaborating to help one another out.',
    },
+
    {
       name: 'Medium',
       link: 'https://medium.com/',
@@ -54,6 +59,7 @@ const resourcesData = [
       description:
          'Medium is a platform for sharing insightful perspectives, useful knowledge, and life wisdom with the world.',
    },
+
    {
       name: 'Youtube',
       link: 'https://www.youtube.com/',
@@ -71,6 +77,7 @@ const programmersData = [
       description:
          'Fireship provides concise tutorials and overviews of various software development topics, often with a humorous twist.',
    },
+
    {
       name: 'WebDevSimplified',
       link: 'https://www.youtube.com/@WebDevSimplified',
@@ -78,6 +85,7 @@ const programmersData = [
       description:
          'WebDevSimplified offers practical web development tutorials, focusing on modern technologies and best practices.',
    },
+
    {
       name: 'ConnerArdman',
       link: 'https://www.youtube.com/@ConnerArdman',
@@ -85,6 +93,7 @@ const programmersData = [
       description:
          'Conner Ardman provides web development tutorials and resources, with a focus on full-stack development.',
    },
+
    {
       name: 'NetNinja',
       link: 'https://www.youtube.com/@NetNinja',
@@ -92,6 +101,7 @@ const programmersData = [
       description:
          'NetNinja offers coding tutorials and resources, covering a wide range of programming languages and frameworks.',
    },
+
    {
       name: 'BroCode',
       link: 'https://www.youtube.com/@BroCodez',
@@ -99,6 +109,7 @@ const programmersData = [
       description:
          'BroCode offers coding tutorials and developer resources, specializing in Python and web development.',
    },
+
    {
       name: 'CodingWithLewis',
       link: 'https://www.youtube.com/@CodingWithLewis',
@@ -106,6 +117,7 @@ const programmersData = [
       description:
          'CodingWithLewis shares coding tutorials and insights, focusing on game development and web technologies.',
    },
+
    {
       name: 'TechWithTim',
       link: 'https://www.youtube.com/@TechWithTim',
@@ -113,6 +125,7 @@ const programmersData = [
       description:
          'TechWithTim offers coding tutorials and software development insights, with a focus on Python and AI.',
    },
+
    {
       name: 't3dotgg',
       link: 'https://www.youtube.com/@t3dotgg',
@@ -120,6 +133,7 @@ const programmersData = [
       description:
          't3dotgg offers coding tutorials and software development insights, focusing on web development and TypeScript.',
    },
+
    {
       name: 'FreeCodeCamp',
       link: 'https://www.youtube.com/@freecodecamp',
@@ -144,13 +158,35 @@ const importAllImages = async (importGlob, data) => {
    });
 };
 
+const slideVariants = {
+   initial: { opacity: 0, x: '-100%' },
+   animate: { opacity: 1, x: 0 },
+   exit: { opacity: 0, x: '100%' },
+};
+
 function Blog() {
    const [resources, setResources] = useState([]);
    const [programmers, setProgrammers] = useState([]);
+   const [scrollDirection, setScrollDirection] = useState('none');
 
    useEffect(() => {
       importAllImages(importImages, resourcesData).then(setResources);
       importAllImages(importImages, programmersData).then(setProgrammers);
+
+      let lastScrollY = window.pageYOffset;
+      const handleScroll = () => {
+         const currentScrollY = window.pageYOffset;
+         if (currentScrollY > lastScrollY) {
+            setScrollDirection('down');
+         } else {
+            setScrollDirection('up');
+         }
+         lastScrollY = currentScrollY;
+      };
+
+      window.addEventListener('scroll', handleScroll);
+
+      return () => window.removeEventListener('scroll', handleScroll);
    }, []);
 
    return (
@@ -165,7 +201,14 @@ function Blog() {
                   how code works.
                </h1>
             </div>
-            <article className="blogArticle">
+            <motion.article
+               className="blogArticle"
+               initial="initial"
+               animate="animate"
+               exit="exit"
+               variants={slideVariants}
+               transition={{ duration: 0.5 }}
+            >
                {resources.map((resource, index) => (
                   <div className="blogCards" key={index}>
                      <NavLink className="blogCard" to={resource.link} target="_blank">
@@ -177,16 +220,23 @@ function Blog() {
                      </NavLink>
                   </div>
                ))}
-            </article>
+            </motion.article>
             <div>
                <img src={flamesBorder} className="flamesBorder" alt="flamesBorder" />
                <h1 className="aboutParagraph">
-                  <img src={flames} width="26px" alt="flames" /> These are the programmers that
-                  helps me understand more about Web Development.
+                  <img src={flames} width="26px" alt="flames" /> These are the programmers that help
+                  me understand more about Web Development.
                </h1>
             </div>
 
-            <article className="blogArticle">
+            <motion.article
+               className="blogArticle"
+               initial="initial"
+               animate="animate"
+               exit="exit"
+               variants={slideVariants}
+               transition={{ duration: 0.5 }}
+            >
                {programmers.map((programmer, index) => (
                   <div className="blogCards" key={index}>
                      <NavLink className="blogCard" to={programmer.link} target="_blank">
@@ -198,7 +248,7 @@ function Blog() {
                      </NavLink>
                   </div>
                ))}
-            </article>
+            </motion.article>
          </section>
 
          <section className="homeEmail">

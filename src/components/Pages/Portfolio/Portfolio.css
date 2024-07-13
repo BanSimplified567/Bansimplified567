@@ -1,9 +1,11 @@
 .portfolio {
   border-top: solid 5px var(--background-button);
   width: 40rem;
+  max-width: 100%;
   position: relative;
   margin-top: 3rem;
 }
+
 
 .portArticle {
   display: grid;

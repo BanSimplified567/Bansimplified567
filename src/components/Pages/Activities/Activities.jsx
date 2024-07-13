@@ -1,14 +1,13 @@
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 import { NavLink } from 'react-router-dom';
-
-import BackGround from '../../img/assets/pixel-neon.gif';
 import Activity01 from '../../img/Activities/Activity01.png';
 import Activity02 from '../../img/Activities/Activity02.png';
 import Activity03 from '../../img/Activities/Activity03.png';
 import Activity04 from '../../img/Activities/Activity04.png';
-
+import BackGround from '../../img/assets/pixel-neon.gif';
 import Email from '../Extra/Email/Email';
 import Footer from '../Extra/Footer/Footer';
-
 import './Activities.css';
 
 const activities = [
@@ -46,35 +45,68 @@ const activities = [
    },
 ];
 
+const slideInVariants = {
+   hidden: { opacity: 0, x: -100 },
+   visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
+};
+
+const slideOutVariants = {
+   hidden: { opacity: 0, x: 100 },
+   visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
+};
+
 function Activities() {
+   const [aboutRef, aboutInView] = useInView({ threshold: 0.1, triggerOnce: true });
+   const [firstPersonBioRef, firstPersonBioInView] = useInView({
+      threshold: 0.1,
+      triggerOnce: true,
+   });
+   const [skillsRef, skillsInView] = useInView({ threshold: 0.1, triggerOnce: true });
+   const [experienceRef, experienceInView] = useInView({ threshold: 0.1, triggerOnce: true });
+
    return (
       <main className="container">
-         <div className="active">
-            <section className="activeWelcome">
-               <div>
-                  <h1 className="aboutTitle">Welcome to Activities👋</h1>
-                  <p>
-                     What are my recent online activities as I learn coding to become a frontend
-                     developer?
-                  </p>
-               </div>
-               <img src={BackGround} alt="BackGround" />
-            </section>
-            <article className="blogArticle">
-               {activities.map((activity, index) => (
-                  <div className="blogCards" key={index}>
-                     <NavLink className="blogCard" to={activity.link} target="_blank">
-                        <img src={activity.src} alt={activity.alt} className="freeCodeCamp" />
-                        <div className="portCardBody">
-                           <h2 className="portCardTitle">{activity.title}</h2>
-                           <p className="portCardDescription">{activity.description}</p>
-                        </div>
-                     </NavLink>
-                  </div>
-               ))}
-            </article>
-         </div>
-
+         <motion.section
+            className="activeWelcome"
+            initial="hidden"
+            animate={aboutInView ? 'visible' : 'hidden'}
+            variants={slideInVariants}
+            ref={aboutRef}
+         >
+            <div>
+               <h1 className="aboutTitle">Welcome to Activities👋</h1>
+               <p>
+                  What are my recent online activities as I learn coding to become a frontend
+                  developer?
+               </p>
+            </div>
+            <img src={BackGround} alt="BackGround" />
+         </motion.section>
+         <motion.article
+            className="blogArticle"
+            initial="hidden"
+            animate={firstPersonBioInView ? 'visible' : 'hidden'}
+            variants={slideOutVariants}
+            ref={firstPersonBioRef}
+         >
+            {activities.map((activity, index) => (
+               <motion.div
+                  key={index}
+                  className="blogCards"
+                  initial="hidden"
+                  animate={firstPersonBioInView ? 'visible' : 'hidden'}
+                  variants={slideInVariants}
+               >
+                  <NavLink className="blogCard" to={activity.link} target="_blank">
+                     <motion.img src={activity.src} alt={activity.alt} className="freeCodeCamp" />
+                     <motion.div className="portCardBody">
+                        <h2 className="portCardTitle">{activity.title}</h2>
+                        <p className="portCardDescription">{activity.description}</p>
+                     </motion.div>
+                  </NavLink>
+               </motion.div>
+            ))}
+         </motion.article>
          <h1 className="activeTitle">
             <svg
                width="30"
@@ -95,7 +127,13 @@ function Activities() {
             </svg>
             WakaTime Activity
          </h1>
-         <section className="activeExternal">
+         <motion.section
+            initial="hidden"
+            animate={skillsInView ? 'visible' : 'hidden'}
+            variants={slideInVariants}
+            ref={experienceRef}
+            className="activeExternal"
+         >
             <div>
                <img src="./ban.jpg" alt="banban" className="banbanImage" />
             </div>
@@ -136,8 +174,14 @@ function Activities() {
                   </a>
                </div>
             </div>
-         </section>
-         <div className="active">
+         </motion.section>
+         <motion.div
+            className="active"
+            initial="hidden"
+            animate={skillsInView ? 'visible' : 'hidden'}
+            variants={experienceInView}
+            ref={skillsRef}
+         >
             <h1 className="activeTitle">🏆 My Github Stats </h1>
             <section className="activeExternal">
                <div>
@@ -182,7 +226,7 @@ function Activities() {
                   <img src="./banban.jpg" alt="banban" className="banbanImage" />
                </div>
             </section>
-         </div>
+         </motion.div>
          <section>
             <Email />
          </section>

@@ -29,13 +29,13 @@
 
 - 🐾 I’m looking to network and make friends here! <br><br>
 
-- 🌊 2024 Goals: Learn MERN-Stack and Frontend and Contribute to Open Source Projects. <br><br>
+- 🌊 Decade Goals: Learn Become A Software Engineer and Web Developer. <br><br>
 
 - ☕ Interest: Coffee, Learning and Coding. <br><br>
 - <img src="https://github.githubassets.com/images/icons/emoji/octocat.png" height="16px"/> Hobbies: Drawing, Reading, Anime, Manga, Manhua, Manhwa, and Facebook. <br><br>
 - <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
   <path d="M20.62 5.25h-1.116l-.003.001-.001.003V19.5a1.5 1.5 0 1 0 3 0V7.13a1.88 1.88 0 0 0-1.88-1.88Z"></path>
-  <path d="M18 19.5V3.375A1.875 1.875 0 0 0 16.125 1.5H3.375A1.875 1.875 0 0 0 1.5 3.375v16.5A2.625 2.625 0 0 0 4.125 22.5h16.071a.053.053 0 0 0 .038-.016.054.054 0 0 0 .005-.07.053.053 0 0 0-.029-.02A3.004 3.004 0 0 1 18 19.5ZM4.5 6a.75.75 0 0 1 .75-.75h3A.75.75 0 0 1 9 6v3a.75.75 0 0 1-.75.75h-3A.75.75 0 0 1 4.5 9V6Zm9.75 12.75H5.271a.765.765 0 0 1-.77-.714.75.75 0 0 1 .749-.786h8.979c.404 0 .75.31.77.714a.752.752 0 0 1-.749.786Zm0-3H5.271a.765.765 0 0 1-.77-.714.75.75 0 0 1 .749-.786h8.979c.404 0 .75.31.77.714a.752.752 0 0 1-.749.786Zm0-3H5.271a.765.765 0 0 1-.77-.714.75.75 0 0 1 .749-.786h8.979c.404 0 .75.31.77.714a.752.752 0 0 1-.749.786Zm0-3h-2.979a.765.765 0 0 1-.77-.714.752.752 0 0 1 .749-.786h2.979c.404 0 .75.31.77.714a.752.752 0 0 1-.749.786Zm0-3h-2.979a.765.765 0 0 1-.77-.714.752.752 0 0 1 .749-.786h2.979c.404 0 .75.31.77.714a.752.752 0 0 1-.749.786Z"></path> </svg> My Resume: <a href="./src/components/Pages/Blacklion567.pdf" download>RESUME</a><br><br>
+  <path d="M18 19.5V3.375A1.875 1.875 0 0 0 16.125 1.5H3.375A1.875 1.875 0 0 0 1.5 3.375v16.5A2.625 2.625 0 0 0 4.125 22.5h16.071a.053.053 0 0 0 .038-.016.054.054 0 0 0 .005-.07.053.053 0 0 0-.029-.02A3.004 3.004 0 0 1 18 19.5ZM4.5 6a.75.75 0 0 1 .75-.75h3A.75.75 0 0 1 9 6v3a.75.75 0 0 1-.75.75h-3A.75.75 0 0 1 4.5 9V6Zm9.75 12.75H5.271a.765.765 0 0 1-.77-.714.75.75 0 0 1 .749-.786h8.979c.404 0 .75.31.77.714a.752.752 0 0 1-.749.786Zm0-3H5.271a.765.765 0 0 1-.77-.714.75.75 0 0 1 .749-.786h8.979c.404 0 .75.31.77.714a.752.752 0 0 1-.749.786Zm0-3H5.271a.765.765 0 0 1-.77-.714.75.75 0 0 1 .749-.786h8.979c.404 0 .75.31.77.714a.752.752 0 0 1-.749.786Zm0-3h-2.979a.765.765 0 0 1-.77-.714.752.752 0 0 1 .749-.786h2.979c.404 0 .75.31.77.714a.752.752 0 0 1-.749.786Zm0-3h-2.979a.765.765 0 0 1-.77-.714.752.752 0 0 1 .749-.786h2.979c.404 0 .75.31.77.714a.752.752 0 0 1-.749.786Z"></path> </svg> MY RESUME: <a href="./src/components/Pages/About/Blacklion567.pdf" download="Blacklion567.pdf"></a>
 
 <h2></h2>
 
@@ -65,7 +65,7 @@
   </a>
 
 <div align="center">
-  <img src="./assets/pixel-neon.gif" alt="pixel guy using computer" width="100%"/><br>
+  <img src="./src/components/img/assets/pixel-neon.gif" alt="pixel guy using computer" width="100%"/><br>
 </div>
 
 <div align="center">
@@ -220,6 +220,7 @@
 </div>
  <img src="./src/components/img/assets/borderseparator.gif"/> </h2>
 
+<!--END_SECTION:activity-->
 <!--
 ## Tech Stacks
 - FrontEnd Developer (Aspiring FrontEnd Developer).

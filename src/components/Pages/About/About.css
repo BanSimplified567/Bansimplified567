@@ -261,3 +261,20 @@
     text-align: center;
   }
 }
+
+
+.slide-in-left,
+.slide-in-right {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: all 0.5s ease;
+}
+
+.slide-in-right {
+  transform: translateX(100%);
+}
+
+.in-view {
+  opacity: 1;
+  transform: translateX(0);
+}

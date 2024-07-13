@@ -1,24 +1,47 @@
-import Email from '../Extra/Email/Email';
-import { AboutExperience, AboutSkills } from './AboutSkills';
-
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 import { NavLink } from 'react-router-dom';
-
 import flames from '../../img/assets/animated-flame-01.gif';
 import flamesBorder from '../../img/assets/borderseparator.gif';
-
+import Email from '../Extra/Email/Email';
 import Footer from '../Extra/Footer/Footer';
+import { AboutSkills, AboutExperience } from './AboutSkills';
 import './About.css';
 
 const About = () => {
+   const [aboutRef, aboutInView] = useInView({ threshold: 0.1, triggerOnce: true });
+   const [firstPersonBioRef, firstPersonBioInView] = useInView({
+      threshold: 0.1,
+      triggerOnce: true,
+   });
+   const [skillsRef, skillsInView] = useInView({ threshold: 0.1, triggerOnce: true });
+   const [experienceRef, experienceInView] = useInView({ threshold: 0.1, triggerOnce: true });
+
+   const slideInVariants = {
+      hidden: { opacity: 0, x: -100 },
+      visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
+   };
+
+   const slideOutVariants = {
+      hidden: { opacity: 0, x: 100 },
+      visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
+   };
+
    return (
       <div className="container about">
          <article className="aboutContainer">
-            <section className="aboutInformation">
-               <h1 className="aboutTitle">NICE TO MEET YOU! I&#39;M BANBAN 👋👨‍💻</h1>
+            <motion.section
+               ref={aboutRef}
+               initial="hidden"
+               animate={aboutInView ? 'visible' : 'hidden'}
+               variants={slideInVariants}
+               className="aboutInformation"
+            >
+               <h1 className="aboutTitle">NICE TO MEET YOU! I'M BANBAN 👋👨‍💻</h1>
                <p className="aboutSemiTitle">
-                  As an Aspiring Software Engineer , I&#39;m passionate about continuous learning
-                  and growth. I eagerly explore new technologies and embrace challenges that expand
-                  my skills.
+                  As an Aspiring Software Engineer, I'm passionate about continuous learning and
+                  growth. I eagerly explore new technologies and embrace challenges that expand my
+                  skills.
                   <a
                      href="./Blacklion567.pdf"
                      className="aboutResume"
@@ -28,7 +51,6 @@ const About = () => {
                      Download Resume
                   </a>
                </p>
-
                <p className="aboutParagraph">
                   <span className="navbarTitle">1+ year</span> learning Web development
                </p>
@@ -47,13 +69,19 @@ const About = () => {
                      <path d="M12 4L10.59 5.41 16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8-8-8Z"></path>
                   </svg>
                </NavLink>
-            </section>
+            </motion.section>
             <section>
                <img className="aboutImages" src="./banban.jpg" alt="banban" />
             </section>
          </article>
          <img src={flamesBorder} className="flamesBorder" alt="flamesBorder" />
-         <article className="aboutArticle section">
+         <motion.article
+            ref={firstPersonBioRef}
+            initial="hidden"
+            animate={firstPersonBioInView ? 'visible' : 'hidden'}
+            variants={slideOutVariants}
+            className="aboutArticle section"
+         >
             <div className="aboutArticleSection">
                <section className="aboutFirstPersonBio">
                   <h1 className="aboutTitleArticle">First Person Bio</h1>
@@ -90,17 +118,21 @@ const About = () => {
                   </figure>
                </section>
             </div>
-         </article>
-
+         </motion.article>
          <img src={flamesBorder} className="flamesBorder" alt="flamesBorder" />
-         <article className="section">
+         <motion.article
+            ref={skillsRef}
+            initial="hidden"
+            animate={skillsInView ? 'visible' : 'hidden'}
+            variants={slideInVariants}
+            className="section"
+         >
             <section>
                <div className="aboutSkillsOfMine">
                   <img src={flames} width="26px" alt="flames" />
                   <h1 className="aboutTitle border">Skills Of Mine 👨‍💻</h1>
                   <img src={flames} width="26px" alt="flames" />
                </div>
-
                <p className="aboutSemiTitle">
                   Hello!👋 I am an enthusiastic Front-end Developer passionate about creating
                   dynamic and engaging web experiences. With a solid foundation in front-end
@@ -110,16 +142,15 @@ const About = () => {
                   technologies to bring designs to life. Here are some of the skills I utilize:
                </p>
             </section>
-
             <section className="aboutSkills section">
                <AboutSkills />
             </section>
             <img src={flamesBorder} className="flamesBorder" alt="flamesBorder" />
-            <section className="aboutExperience section">
+            <section className="aboutExperience section" ref={experienceRef}>
                <AboutExperience />
             </section>
             <img src={flamesBorder} className="flamesBorder" alt="flamesBorder" />
-         </article>
+         </motion.article>
          <section>
             <Email />
          </section>
