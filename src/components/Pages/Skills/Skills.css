@@ -1,15 +1,16 @@
 .skillsContainer {
   text-align: center;
+  padding: 1rem;
 }
 
 .skillsArticle {
   display: flex;
-  margin-top: 2rem;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  color: var(--background-button-dark);
+  margin-top: 2rem;
   gap: 2rem;
+  color: var(--background-button-dark);
 }
 
 .skillsCard {
@@ -56,6 +57,7 @@
   transform: rotateY(360deg);
 }
 
+/* Desktop large screens */
 @media (min-width: 1024px) and (min-height: 900px) {
   .skillsCardsImages {
     width: 20rem;
@@ -75,5 +77,55 @@
   .skillsCards {
     width: 25rem;
     height: 35rem;
+  }
+}
+
+/* Tablets and small screens */
+@media (max-width: 1024px) {
+  .skillsTitle {
+    font-size: 2.5rem;
+  }
+
+  .skillsCards {
+    width: 18rem;
+    height: auto;
+    padding: 1.5rem;
+  }
+
+  .skillsCardsImages {
+    width: 8rem;
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 768px) {
+  .skillsTitle {
+    font-size: 2rem;
+  }
+
+  .skillsCards {
+    width: 16rem;
+    height: auto;
+    padding: 1rem;
+  }
+
+  .skillsCardsImages {
+    width: 6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .skillsTitle {
+    font-size: 1.5rem;
+  }
+
+  .skillsCards {
+    width: 14rem;
+    height: auto;
+    padding: 0.5rem;
+  }
+
+  .skillsCardsImages {
+    width: 5rem;
   }
 }
