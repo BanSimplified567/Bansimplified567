@@ -225,7 +225,12 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  color: var(--background-button-dark);
+  color: var(--background-button-light);
+  -webkit-text-stroke: 1px #000;
+}
+
+.homeWhoAmI h1 {
+  color: var(--text-color);
 }
 
 .homeWhoAmIParagraph {
