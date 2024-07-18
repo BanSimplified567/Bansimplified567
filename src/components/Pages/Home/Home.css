@@ -134,7 +134,7 @@
 .homeNavLink,
 .homeLearnMore {
   display: flex;
-  color: var(--background-button-dark);
+  color: var(--background-button-light);
 }
 
 .homeNavLink {
@@ -144,16 +144,6 @@
 .homeLearnMore {
   align-items: center;
   position: relative;
-}
-
-.homeLearnMore::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: black;
-  width: 100%;
-  height: 3px;
 }
 
 .homeLearnMore:hover svg {
@@ -230,7 +220,18 @@
 }
 
 .homeWhoAmI h1 {
+  position: relative;
   color: var(--text-color);
+}
+
+.homeWhoAmI h1::after {
+  content: '';
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  background-color: black;
+  width: 100%;
+  height: 3px;
 }
 
 .homeWhoAmIParagraph {
@@ -242,11 +243,12 @@
 }
 
 .homeWhoAmIParagraph p {
-  color: var(--background-button-dark);
+  font-size: .892rem;
+  color: var(--background-button-light);
 }
 
 .homeInfomationToLink {
-  background-color: var(--background-button-light);
+  background-color: var(--background-button-blue);
 }
 
 .homeInfomationSection {

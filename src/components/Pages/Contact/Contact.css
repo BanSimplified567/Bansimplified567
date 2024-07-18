@@ -14,9 +14,7 @@
   }
 
   .contactContactMe {
-    text-align: center;
-    justify-content: center;
-    align-items: center;
+    justify-content: start;
   }
 }
 

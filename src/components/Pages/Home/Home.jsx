@@ -18,6 +18,8 @@ const sections = [
             in Information Technology (Programming) in my home country. 👨‍💻 My passion
             lies in crafting dynamic and intuitive websites, constantly refining my
             skills in web development to create seamless digital experiences. 🐾
+            <br>
+            <br>
 
             Driven by a desire to make a positive impact in the tech industry, I'm
             dedicated to harnessing technology for meaningful digital innovations. 🌊
@@ -38,6 +40,8 @@ const sections = [
             celebrate achievements to keep everyone motivated. By fostering a
             positive environment, I help others stay focused and confident in their
             path to success. 🐾
+            <br>
+            <br>
 
             I lead by example as an Aspiring Software Engineer, emphasizing
             perseverance and a positive mindset. I offer guidance, share resources,
@@ -58,6 +62,8 @@ const sections = [
             Bukidnon, Northern Mindanao, Philippines, I worked full-time on-site for
             six months, contributing to various aspects of the biscuit production
             process.🐾
+            <br>
+            <br>
 
             My responsibilities included operating machinery, maintaining a clean and
             safe workspace, and adhering to strict quality control standards to
@@ -79,6 +85,8 @@ const sections = [
             celebrate achievements to keep everyone motivated. By fostering a
             positive environment, I help others stay focused and confident in their
             path to success. 🐾
+            <br>
+            <br>
 
             I lead by example as an Aspiring Software Engineer, emphasizing
             perseverance and a positive mindset. I offer guidance, share resources,
@@ -95,6 +103,8 @@ const sections = [
       buttonText: 'LOOK AT MY ACTIVITIES',
       content: `
             I am deeply focused on improving as a Software Engineer, spending my days coding, designing user interfaces, and staying updated with the latest web technologies. Through disciplined practice and consistent learning, I strive to enhance my skills daily, trusting in God for guidance in this journey.🐾
+            <br>
+            <br>
 
          Previously, I gained experience in backend development and graphic design, which equipped me with valuable technical and creative insights. With discipline and consistency, I dedicated myself to learning and growing, relying on faith to navigate challenges and seize opportunities for advancement. 👋
          `,
