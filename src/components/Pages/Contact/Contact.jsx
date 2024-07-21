@@ -1,10 +1,12 @@
-import Linkedin from '../../img/logos/neon-linkedin.png';
 import Facebook from '../../img/logos/neon-facebook.png';
 import Instagram from '../../img/logos/neon-instagram.png';
-import Messenger from '../../img/logos/neon-twitter.png';
+import Linkedin from '../../img/logos/neon-linkedin.png';
 import Tiktok from '../../img/logos/neon-tiktok.png';
+import Messenger from '../../img/logos/neon-twitter.png';
 import Youtube from '../../img/logos/neon-youtube.png';
 
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 import Email from '../../Pages/Extra/Email/Email';
 import Footer from '../../Pages/Extra/Footer/Footer';
 
@@ -12,11 +14,33 @@ import { NavLink } from 'react-router-dom';
 import './Contact.css';
 
 function Contact() {
+   const [aboutRef, aboutInView] = useInView({ threshold: 0.1, triggerOnce: true });
+   const [firstPersonBioRef, firstPersonBioInView] = useInView({
+      threshold: 0.1,
+      triggerOnce: true,
+   });
+
+   const slideInVariants = {
+      hidden: { opacity: 0, x: -100 },
+      visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
+   };
+
+   const slideOutVariants = {
+      hidden: { opacity: 0, x: 100 },
+      visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
+   };
+
    return (
       <>
          <main className="section">
             <div className="contact">
-               <section className="contactContactMe">
+               <motion.section
+                  className="contactContactMe"
+                  ref={aboutRef}
+                  initial="hidden"
+                  animate={aboutInView ? 'visible' : 'hidden'}
+                  variants={slideOutVariants}
+               >
                   <h1 className="aboutTitle">LET&#39;S WORK TOGETHER 📨</h1>
                   <div className="contactNavLink">
                      {[
@@ -102,8 +126,14 @@ function Contact() {
                         </div>
                      ))}
                   </div>
-               </section>
-               <section className="contactSendMessage">
+               </motion.section>
+               <motion.section
+                  className="contactSendMessage"
+                  ref={firstPersonBioRef}
+                  initial="hidden"
+                  animate={firstPersonBioInView ? 'visible' : 'hidden'}
+                  variants={slideInVariants}
+               >
                   <form className="contactForm">
                      <h1 className="contactTitle">Send me a message</h1>
                      <div className="contactFormGroup">
@@ -190,7 +220,7 @@ function Contact() {
                         </div>
                      </div>
                   </div>
-               </section>
+               </motion.section>
             </div>
             <section className="homeEmail">
                <Email />

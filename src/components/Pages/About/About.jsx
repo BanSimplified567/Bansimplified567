@@ -37,9 +37,9 @@ const About = () => {
                variants={slideInVariants}
                className="aboutInformation"
             >
-               <h1 className="aboutTitle">NICE TO MEET YOU! I'M BANBAN 👋👨‍💻</h1>
+               <h1 className="aboutTitle">NICE TO MEET YOU! I&#39;M BANBAN 👋👨‍💻</h1>
                <p className="aboutSemiTitle">
-                  As an Aspiring Software Engineer, I'm passionate about continuous learning and
+                  As an Aspiring Software Engineer, I&#39;m passionate about continuous learning and
                   growth. I eagerly explore new technologies and embrace challenges that expand my
                   skills.
                   <a
@@ -146,12 +146,18 @@ const About = () => {
                <AboutSkills />
             </section>
             <img src={flamesBorder} className="flamesBorder" alt="flamesBorder" />
-            <section className="aboutExperience section" ref={experienceRef}>
+            <motion.section
+               className="aboutExperience section"
+               animate={experienceInView ? 'visible' : 'hidden'}
+               variants={slideInVariants}
+               ref={experienceRef}
+            >
                <AboutExperience />
-            </section>
+            </motion.section>
             <img src={flamesBorder} className="flamesBorder" alt="flamesBorder" />
          </motion.article>
-         <section>
+
+         <section className="section">
             <Email />
          </section>
          <section className="section">

@@ -45,16 +45,6 @@ const activities = [
    },
 ];
 
-const slideInVariants = {
-   hidden: { opacity: 0, x: -100 },
-   visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
-};
-
-const slideOutVariants = {
-   hidden: { opacity: 0, x: 100 },
-   visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
-};
-
 function Activities() {
    const [aboutRef, aboutInView] = useInView({ threshold: 0.1, triggerOnce: true });
    const [firstPersonBioRef, firstPersonBioInView] = useInView({
@@ -63,6 +53,16 @@ function Activities() {
    });
    const [skillsRef, skillsInView] = useInView({ threshold: 0.1, triggerOnce: true });
    const [experienceRef, experienceInView] = useInView({ threshold: 0.1, triggerOnce: true });
+
+   const slideInVariants = {
+      hidden: { opacity: 0, x: -100 },
+      visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
+   };
+
+   const slideOutVariants = {
+      hidden: { opacity: 0, x: 100 },
+      visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
+   };
 
    return (
       <main className="container">
@@ -129,7 +129,7 @@ function Activities() {
          </h1>
          <motion.section
             initial="hidden"
-            animate={skillsInView ? 'visible' : 'hidden'}
+            animate={firstPersonBioInView ? 'visible' : 'hidden'}
             variants={slideInVariants}
             ref={experienceRef}
             className="activeExternal"

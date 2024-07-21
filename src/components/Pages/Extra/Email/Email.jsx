@@ -6,13 +6,28 @@ import Messenger from '../../../img/logos/neon-twitter.png';
 import Tiktok from '../../../img/logos/neon-tiktok.png';
 import Youtube from '../../../img/logos/neon-youtube.png';
 
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 import { Link } from 'react-router-dom';
 import './Email.css';
 
 function Email() {
+   const [experienceRef, experienceInView] = useInView({ threshold: 0.1, triggerOnce: true });
+
+   const slideOutVariants = {
+      hidden: { opacity: 0, x: 100 },
+      visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
+   };
+
    return (
       <>
-         <div className="emailContainer">
+         <motion.div
+            ref={experienceRef}
+            initial="hidden"
+            animate={experienceInView ? 'visible' : 'hidden'}
+            variants={slideOutVariants}
+            className="emailContainer"
+         >
             <form action="" className="emailFormSection">
                <img src={imagesMail} alt="imagesMail" className="emailImage" />
                <div className="emailDescriptions">
@@ -49,7 +64,7 @@ function Email() {
                   </div>
                </div>
             </form>
-         </div>
+         </motion.div>
       </>
    );
 }

@@ -1,7 +1,9 @@
 import flames from '../../img/assets/animated-flame-01.gif';
 import flamesBorder from '../../img/assets/borderseparator.gif';
 
+import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import { useInView } from 'react-intersection-observer';
 import { NavLink } from 'react-router-dom';
 import Email from '../Extra/Email/Email';
 import Footer from '../Extra/Footer/Footer';
@@ -158,6 +160,23 @@ const HomeSlider = ({ repeatCount, text, timeLeft }) => {
 };
 
 const Home = () => {
+   const [aboutRef, aboutInView] = useInView({ threshold: 0.1, triggerOnce: true });
+   const [firstPersonBioRef, firstPersonBioInView] = useInView({
+      threshold: 0.1,
+      triggerOnce: true,
+   });
+   const [skillsRef, skillsInView] = useInView({ threshold: 0.1, triggerOnce: true });
+
+   const slideInVariants = {
+      hidden: { opacity: 0, x: -100 },
+      visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
+   };
+
+   const slideOutVariants = {
+      hidden: { opacity: 0, x: 100 },
+      visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
+   };
+
    const startDate = new Date();
    const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(startDate));
 
@@ -176,7 +195,13 @@ const Home = () => {
    return (
       <>
          <main className="section">
-            <section className="homeSection">
+            <motion.section
+               ref={aboutRef}
+               initial="hidden"
+               animate={aboutInView ? 'visible' : 'hidden'}
+               variants={slideInVariants}
+               className="homeSection"
+            >
                <div className="homeSectionOne">
                   <img src="./ban.jpg" alt="banban" className="banbanImage" />
                   <div className="homePerson">
@@ -272,13 +297,24 @@ const Home = () => {
                      </div>
                   ))}
                </div>
-            </section>
+            </motion.section>
             <img src={flamesBorder} className="flamesBorder" alt="flamesBorder" />
-            <div>
+            <motion.section
+               ref={firstPersonBioRef}
+               initial="hidden"
+               animate={firstPersonBioInView ? 'visible' : 'hidden'}
+               variants={slideOutVariants}
+            >
                <HomeSlider repeatCount={repeatCount} text={text} timeLeft={timeLeft} />
-            </div>
+            </motion.section>
             <img src={flamesBorder} className="flamesBorder" alt="flamesBorder" />
-            <section className="homeInfomationToLink section">
+            <motion.section
+               ref={skillsRef}
+               initial="hidden"
+               animate={skillsInView ? 'visible' : 'hidden'}
+               variants={slideInVariants}
+               className="homeInfomationToLink section"
+            >
                {sections.map((section, index) => (
                   <div key={index} className="homeInfomationSection">
                      <div className="homeIntroduction">
@@ -305,7 +341,7 @@ const Home = () => {
                      </div>
                   </div>
                ))}
-            </section>
+            </motion.section>
             <section className="homeEmail">
                <Email />
             </section>

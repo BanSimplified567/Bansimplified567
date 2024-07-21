@@ -1,3 +1,5 @@
+import { useInView } from 'react-intersection-observer';
+import { motion } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
 import { AboutSkills } from '../About/AboutSkills';
 
@@ -83,36 +85,74 @@ const resources = [
          'Sass is a powerful CSS preprocessor that allows you to write more maintainable and efficient CSS. It offers variables, nested rules, and mixins to enhance your CSS workflow.',
    },
 ];
+
 function Skills() {
+   const [aboutRef, aboutInView] = useInView({ threshold: 0.1, triggerOnce: true });
+
+   const [skillsRef, skillsInView] = useInView({ threshold: 0.1, triggerOnce: true });
+
+   const slideInVariants = {
+      hidden: { opacity: 0, x: -100 },
+      visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
+   };
+
+   const slideOutVariants = {
+      hidden: { opacity: 0, x: 100 },
+      visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
+   };
+
    return (
       <main className="section">
          <div className="skillsContainer">
             <img src={flamesBorder} className="flamesBorder" alt="flamesBorder" />
             <article className="section">
-               <section>
-                  <div className="aboutSkillsOfMine">
+               <motion.section
+                  ref={aboutRef}
+                  initial="hidden"
+                  animate={aboutInView ? 'visible' : 'hidden'}
+                  variants={slideInVariants}
+               >
+                  <div className="aboutSkillsOfMine" ref={aboutRef}>
                      <img src={flames} width="26px" alt="flames" />
-                     <h1 className="aboutTitle border">Skills Of Mine 👨‍💻</h1>
+                     <h1 className={`aboutTitle border ${aboutInView ? 'visible' : 'hidden'}`}>
+                        Skills Of Mine 👨‍💻
+                     </h1>
                      <img src={flames} width="26px" alt="flames" />
                   </div>
-
-                  <p className="aboutSemiTitle">
+                  <motion.p
+                     className="aboutSemiTitle"
+                     initial="hidden"
+                     animate={aboutInView ? 'visible' : 'hidden'}
+                     variants={slideInVariants}
+                  >
                      Hello!👋 I am an enthusiastic Front-end Developer passionate about creating
                      dynamic and engaging web experiences. With a solid foundation in front-end
                      technologies, I strive to build websites and applications that are not only
                      visually appealing but also highly functional and user-friendly. My expertise
                      lies primarily in the front-end domain, where I employ a variety of tools and
                      technologies to bring designs to life. Here are some of the skills I utilize:
-                  </p>
-               </section>
+                  </motion.p>
+               </motion.section>
 
-               <section className="aboutSkills section">
+               <motion.section
+                  className="aboutSkills section"
+                  ref={skillsRef}
+                  initial="hidden"
+                  animate={aboutInView ? 'visible' : 'hidden'}
+                  variants={slideOutVariants}
+               >
                   <AboutSkills />
-               </section>
+               </motion.section>
             </article>
-            <article className="skillsArticle">
+            <article className="skillsArticle" ref={skillsRef}>
                {resources.map((resource, index) => (
-                  <div className="skillsCards" key={index}>
+                  <motion.div
+                     className="skillsCards"
+                     key={index}
+                     initial="hidden"
+                     animate={skillsInView ? 'visible' : 'hidden'}
+                     variants={slideOutVariants}
+                  >
                      <NavLink className="skillsCard" to={resource.link} target="_blank">
                         <img src={resource.src} alt={resource.alt} className="skillsCardsImages" />
                         <div className="portCardBody">
@@ -122,7 +162,7 @@ function Skills() {
                            </p>
                         </div>
                      </NavLink>
-                  </div>
+                  </motion.div>
                ))}
             </article>
          </div>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
 import flames from '../../img/assets/animated-flame-01.gif';
 import flamesBorder from '../../img/assets/borderseparator.gif';
@@ -9,7 +10,23 @@ import Email from '../Extra/Email/Email';
 import Footer from '../Extra/Footer/Footer';
 import './Blog.css';
 
-const importImages = import.meta.glob('../../img/Activities/*');
+import codeacademyImg from '../../img//Activities/Codeacademy.png';
+import freecodecampImg from '../../img//Activities/FreeCodeCamp.jpg';
+import w3schoolsImg from '../../img//Activities/W3Schools.png';
+import geeksforgeeksImg from '../../img//Activities/GeeksforGeeks.jpeg';
+import devImg from '../../img//Activities/Dev.png';
+import mediumImg from '../../img//Activities/Medium.png';
+import youtubeImg from '../../img//Activities/Youtube.png';
+
+import fireshipImg from '../../img//Activities/Fireship.jpg';
+import webdevsimplifiedImg from '../../img//Activities/webdevSimplified.jpg';
+import connerardmanImg from '../../img//Activities/ConnerArdman.jpg';
+import netninjaImg from '../../img//Activities/Netninja.jpg';
+import brocodeImg from '../../img//Activities/BroCode.jpg';
+import codingwithlewisImg from '../../img//Activities/CodingWithLewis.jpg';
+import techwithtimImg from '../../img//Activities/TechWithTim.jpg';
+import t3dotggImg from '../../img//Activities/t3dotgg.jpg';
+import freecodecampChannelImg from '../../img//Activities/FreeCodeCamp.jpg';
 
 const resourcesData = [
    {
@@ -18,54 +35,55 @@ const resourcesData = [
       title: 'Codeacademy',
       description:
          'Codecademy offers free coding classes in various programming languages including Python, Java, Go, JavaScript, Ruby, SQL, C++, C#, and Swift, as well as markup languages HTML and CSS.',
+      src: codeacademyImg,
    },
-
    {
       name: 'FreeCodeCamp',
       link: 'https://www.freecodecamp.org/',
       title: 'FreeCodeCamp',
       description:
          'freeCodeCamp is a non-profit educational organization that offers an interactive learning web platform, an online community forum, chat rooms, online publications, and local organizations to make learning software development accessible to anyone.',
+      src: freecodecampImg,
    },
-
    {
       name: 'W3Schools',
       link: 'https://www.w3schools.com/',
       title: 'W3Schools',
       description:
          'W3Schools provides web development tutorials and references for various web technologies, serving as a comprehensive resource for learning HTML, CSS, JavaScript, and other related technologies.',
+      src: w3schoolsImg,
    },
-
    {
       name: 'GeeksforGeeks',
       link: 'https://www.geeksforgeeks.org/',
       title: 'GeeksforGeeks',
       description:
          'GeeksforGeeks provides coding resources and challenges, empowering programmers with practical skills through tutorials and practice problems.',
+      src: geeksforgeeksImg,
    },
-
    {
       name: 'Dev',
       link: 'https://dev.to/',
       title: 'Dev',
       description:
          'DEV is a community of software developers collaborating to help one another out.',
+      src: devImg,
    },
-
    {
       name: 'Medium',
       link: 'https://medium.com/',
       title: 'Medium',
       description:
          'Medium is a platform for sharing insightful perspectives, useful knowledge, and life wisdom with the world.',
+      src: mediumImg,
    },
-
    {
       name: 'Youtube',
       link: 'https://www.youtube.com/',
       title: 'Youtube',
       description:
          'YouTube is a video sharing platform providing a platform for video content worldwide.',
+      src: youtubeImg,
    },
 ];
 
@@ -76,125 +94,97 @@ const programmersData = [
       title: 'Fireship',
       description:
          'Fireship provides concise tutorials and overviews of various software development topics, often with a humorous twist.',
+      src: fireshipImg,
    },
-
    {
       name: 'WebDevSimplified',
       link: 'https://www.youtube.com/@WebDevSimplified',
       title: 'WebDevSimplified',
       description:
          'WebDevSimplified offers practical web development tutorials, focusing on modern technologies and best practices.',
+      src: webdevsimplifiedImg,
    },
-
    {
       name: 'ConnerArdman',
       link: 'https://www.youtube.com/@ConnerArdman',
       title: 'ConnerArdman',
       description:
          'Conner Ardman provides web development tutorials and resources, with a focus on full-stack development.',
+      src: connerardmanImg,
    },
-
    {
       name: 'NetNinja',
       link: 'https://www.youtube.com/@NetNinja',
       title: 'NetNinja',
       description:
          'NetNinja offers coding tutorials and resources, covering a wide range of programming languages and frameworks.',
+      src: netninjaImg,
    },
-
    {
       name: 'BroCode',
       link: 'https://www.youtube.com/@BroCodez',
       title: 'BroCode',
       description:
          'BroCode offers coding tutorials and developer resources, specializing in Python and web development.',
+      src: brocodeImg,
    },
-
    {
       name: 'CodingWithLewis',
       link: 'https://www.youtube.com/@CodingWithLewis',
       title: 'CodingWithLewis',
       description:
          'CodingWithLewis shares coding tutorials and insights, focusing on game development and web technologies.',
+      src: codingwithlewisImg,
    },
-
    {
       name: 'TechWithTim',
       link: 'https://www.youtube.com/@TechWithTim',
       title: 'TechWithTim',
       description:
          'TechWithTim offers coding tutorials and software development insights, with a focus on Python and AI.',
+      src: techwithtimImg,
    },
-
    {
       name: 't3dotgg',
       link: 'https://www.youtube.com/@t3dotgg',
       title: 't3dotgg',
       description:
          't3dotgg offers coding tutorials and software development insights, focusing on web development and TypeScript.',
+      src: t3dotggImg,
    },
-
    {
       name: 'FreeCodeCamp',
       link: 'https://www.youtube.com/@freecodecamp',
       title: 'FreeCodeCamp',
       description:
          'FreeCodeCamp offers comprehensive coding tutorials and software development insights, covering a wide range of technologies.',
+      src: freecodecampChannelImg,
    },
 ];
 
-const importAllImages = async (importGlob, data) => {
-   const images = await Promise.all(
-      Object.keys(importGlob).map(async (path) => {
-         const name = path.split('/').pop().split('.')[0];
-         const image = await importGlob[path]();
-         return { name, src: image.default };
-      })
-   );
-
-   return data.map((item) => {
-      const image = images.find((img) => img.name.toLowerCase() === item.name.toLowerCase());
-      return { ...item, src: image ? image.src : '' };
-   });
-};
-
-const slideVariants = {
-   initial: { opacity: 0, x: '-100%' },
-   animate: { opacity: 1, x: 0 },
-   exit: { opacity: 0, x: '100%' },
-};
-
 function Blog() {
-   const [resources, setResources] = useState([]);
-   const [programmers, setProgrammers] = useState([]);
-   const [scrollDirection, setScrollDirection] = useState('none');
+   const [aboutRef, aboutInView] = useInView({ threshold: 0.1, triggerOnce: true });
+   const [firstPersonBioRef, firstPersonBioInView] = useInView({
+      threshold: 0.1,
+      triggerOnce: true,
+   });
 
-   useEffect(() => {
-      importAllImages(importImages, resourcesData).then(setResources);
-      importAllImages(importImages, programmersData).then(setProgrammers);
+   const slideInVariants = {
+      hidden: { opacity: 0, x: -100 },
+      visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
+   };
 
-      let lastScrollY = window.pageYOffset;
-      const handleScroll = () => {
-         const currentScrollY = window.pageYOffset;
-         if (currentScrollY > lastScrollY) {
-            setScrollDirection('down');
-         } else {
-            setScrollDirection('up');
-         }
-         lastScrollY = currentScrollY;
-      };
-
-      window.addEventListener('scroll', handleScroll);
-
-      return () => window.removeEventListener('scroll', handleScroll);
-   }, []);
+   const slideOutVariants = {
+      hidden: { opacity: 0, x: 100 },
+      visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
+   };
 
    return (
       <main className="section">
          <h1 className="aboutTitle blog">BLOG</h1>
 
          <section className="aboutMain">
-            <div>
+            <div ref={aboutRef}>
                <img src={flamesBorder} className="flamesBorder" alt="flamesBorder" />
                <h1 className="aboutParagraph">
                   <img src={flames} width="26px" alt="flames" /> These websites help me understand
@@ -203,13 +193,12 @@ function Blog() {
             </div>
             <motion.article
                className="blogArticle"
-               initial="initial"
-               animate="animate"
-               exit="exit"
-               variants={slideVariants}
-               transition={{ duration: 0.5 }}
+               ref={aboutRef}
+               initial="hidden"
+               animate={aboutInView ? 'visible' : 'hidden'}
+               variants={slideInVariants}
             >
-               {resources.map((resource, index) => (
+               {resourcesData.map((resource, index) => (
                   <div className="blogCards" key={index}>
                      <NavLink className="blogCard" to={resource.link} target="_blank">
                         <img src={resource.src} alt={resource.name} className="freeCodeCamp" />
@@ -221,7 +210,7 @@ function Blog() {
                   </div>
                ))}
             </motion.article>
-            <div>
+            <div ref={firstPersonBioRef}>
                <img src={flamesBorder} className="flamesBorder" alt="flamesBorder" />
                <h1 className="aboutParagraph">
                   <img src={flames} width="26px" alt="flames" /> These are the programmers that help
@@ -231,13 +220,12 @@ function Blog() {
 
             <motion.article
                className="blogArticle"
-               initial="initial"
-               animate="animate"
-               exit="exit"
-               variants={slideVariants}
-               transition={{ duration: 0.5 }}
+               ref={firstPersonBioRef}
+               initial="hidden"
+               animate={firstPersonBioInView ? 'visible' : 'hidden'}
+               variants={slideOutVariants}
             >
-               {programmers.map((programmer, index) => (
+               {programmersData.map((programmer, index) => (
                   <div className="blogCards" key={index}>
                      <NavLink className="blogCard" to={programmer.link} target="_blank">
                         <img src={programmer.src} alt={programmer.name} className="freeCodeCamp" />

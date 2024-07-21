@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 import { NavLink } from 'react-router-dom';
 import PizzaBan from '../../img/PortfolioImages/PizzaBan.png';
 import Email from '../Extra/Email/Email';
@@ -5,17 +7,40 @@ import Footer from '../Extra/Footer/Footer';
 import './Portfolio.css';
 
 function Portfolio() {
+   const [aboutRef, aboutInView] = useInView({ threshold: 0.1, triggerOnce: true });
+
+   const slideInVariants = {
+      hidden: { opacity: 0, x: -100 },
+      visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
+   };
+   const slideOutVariants = {
+      hidden: { opacity: 0, x: 100 },
+      visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
+   };
+
    return (
       <>
          <main className="container">
-            <section className="section">
+            <motion.section
+               className="section"
+               ref={aboutRef}
+               initial="hidden"
+               animate={aboutInView ? 'visible' : 'hidden'}
+               variants={slideInVariants}
+            >
                <h1 className="aboutTitle portfolio">PORTFOLIO 🛠️</h1>
                <p>
                   In my portfolio, I&#39;ll showcase projects and side projects I&#39;ve worked on
                   in my free time, highlighting my skills and creativity.
                </p>
-            </section>
-            <article className="portArticle">
+            </motion.section>
+            <motion.article
+               ref={aboutRef}
+               initial="hidden"
+               animate={aboutInView ? 'visible' : 'hidden'}
+               variants={slideOutVariants}
+               className="portArticle"
+            >
                <NavLink className="portCard" to="https://pizzabansibonga.netlify.app/">
                   <img src={PizzaBan} alt="PizzaBan" className="portImage" />
                   <div className="portCardBody">
@@ -32,7 +57,7 @@ function Portfolio() {
                      </p>
                   </div>
                </NavLink>
-            </article>
+            </motion.article>
 
             <section className="homeEmail">
                <Email />
