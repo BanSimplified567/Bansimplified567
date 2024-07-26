@@ -33,9 +33,7 @@
 
 - ☕ Interest: Coffee, Learning and Coding. <br><br>
 - <img src="https://github.githubassets.com/images/icons/emoji/octocat.png" height="16px"/> Hobbies: Drawing, Reading, Anime, Manga, Manhua, Manhwa, and Facebook. <br><br>
-- <svg width="12" height="12" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
-  <path d="M19.5 10.371V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5v-15a2.25 2.25 0 0 1 2.25-2.25h4.629a1.5 1.5 0 0 1 1.06.44l6.622 6.62a1.5 1.5 0 0 1 .439 1.061Z"></path>
-  <path d="M12 2.625V8.25a1.5 1.5 0 0 0 1.5 1.5h5.625"></path> </svg> MY RESUME: <a href="./src/components/Pages/About/Blacklion567.jpg" download="Blacklion567.jpg">Download</a>
+- 📄 MY RESUME: <a href="./src/components/Pages/About/Blacklion567.jpg" download="Blacklion567.jpg">Download</a>
 
 <h2></h2>
 

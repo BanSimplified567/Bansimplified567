@@ -34,9 +34,13 @@ function Footer() {
                <FooterLink to="/about" title="Learn more about us" text="About" />
                <FooterLink to="/blog" title="Read our latest posts" text="Blog" />
                <FooterLink to="/contact" title="Get in touch with us" text="Contact" />
-               <FooterLink to="/mentoring" title="Find mentoring opportunities" text="Mentoring" />
+               <FooterLink
+                  to="/activities"
+                  title="Find activities opportunities"
+                  text="Activities"
+               />
                <FooterLink to="/portfolio" title="See our portfolio" text="Portfolio" />
-               <FooterLink to="/speaking" title="Hire us to speak" text="Speaking" />
+               <FooterLink to="/skills" title="What skills I acquired " text="Skills" />
             </nav>
          </div>
          <img src={flamesBorder} className="flamesBorder" alt="flamesBorder" />

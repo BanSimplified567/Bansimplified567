@@ -10,6 +10,7 @@ import { useInView } from 'react-intersection-observer';
 import Email from '../../Pages/Extra/Email/Email';
 import Footer from '../../Pages/Extra/Footer/Footer';
 
+import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import './Contact.css';
 
@@ -28,6 +29,27 @@ function Contact() {
    const slideOutVariants = {
       hidden: { opacity: 0, x: 100 },
       visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
+   };
+
+   const [formData, setFormData] = useState({
+      name: '',
+      email: '',
+      message: '',
+   });
+
+   const [submitted, setSubmitted] = useState(false);
+
+   const handleInputChange = (e) => {
+      const { name, value } = e.target;
+      setFormData({
+         ...formData,
+         [name]: value,
+      });
+   };
+
+   const handleSubmit = (e) => {
+      e.preventDefault();
+      setSubmitted(true);
    };
 
    return (
@@ -134,7 +156,7 @@ function Contact() {
                   animate={firstPersonBioInView ? 'visible' : 'hidden'}
                   variants={slideInVariants}
                >
-                  <form className="contactForm">
+                  <form className="contactForm" onSubmit={handleSubmit}>
                      <h1 className="contactTitle">Send me a message</h1>
                      <div className="contactFormGroup">
                         <label>Name: </label>
@@ -142,6 +164,8 @@ function Contact() {
                            type="text"
                            className="contactName"
                            name="name"
+                           value={formData.name}
+                           onChange={handleInputChange}
                            required
                            placeholder="Enter your name..."
                         />
@@ -152,6 +176,8 @@ function Contact() {
                            type="email"
                            className="contactEmail"
                            name="email"
+                           value={formData.email}
+                           onChange={handleInputChange}
                            required
                            placeholder="Enter your email..."
                         />
@@ -161,6 +187,8 @@ function Contact() {
                         <textarea
                            className="contactMessage"
                            name="message"
+                           value={formData.message}
+                           onChange={handleInputChange}
                            required
                            placeholder="Enter your message..."
                         ></textarea>
@@ -169,58 +197,72 @@ function Contact() {
                         Send Message
                      </button>
                   </form>
-                  <div className="contactInformation">
-                     <div className="contactInfoLoc">
-                        <div className="contactInfo">
-                           <h1>Contact Information</h1>
-                           <p>Name: Jade Ivan V. Bringcola(Ban Ban)</p>
-                           <p>Location: Sibonga Cebu Philippines</p>
-                           <p>Number: +63 93 1028 2926</p>
-                           <p>Email: bansimplified567@gmail.com</p>
-                        </div>
-                        <div className="contactHelpInfo">
-                           <h1>What Can We Help You?</h1>
-                           <p>
-                              Please follow my social media to get in touch with me and learn more
-                              about me.
-                           </p>
-                        </div>
-                        <div className="socialIcons">
-                           <h4>Follow Me: </h4>
-                           <SocialLink
-                              url="https://www.linkedin.com/in/jade-ivan-bringcola-bb9466272/"
-                              imgSrc={Linkedin}
-                              alt="Linkedin"
-                           />
-                           <SocialLink
-                              url="https://www.instagram.com/nocodearea/"
-                              imgSrc={Instagram}
-                              alt="Instagram"
-                           />
-                           <SocialLink
-                              url="https://web.facebook.com/him.blacklion567/"
-                              imgSrc={Facebook}
-                              alt="Facebook"
-                           />
-                           <SocialLink
-                              url="https://x.com/JBringcola"
-                              imgSrc={Messenger}
-                              alt="Messenger"
-                           />
-                           <SocialLink
-                              url="https://www.tiktok.com/@bansimplified?is_from_webapp=1&sender_device=pc"
-                              imgSrc={Tiktok}
-                              alt="Tiktok"
-                           />
-                           <SocialLink
-                              url="https://www.youtube.com/channel/UCHuVTj0sCJA5YQ_BUTcSPaw"
-                              imgSrc={Youtube}
-                              alt="Youtube"
-                           />
-                        </div>
+                  {submitted && (
+                     <div className="submittedDataContainer">
+                        <h2>Submitted Information</h2>
+                        <p>
+                           <strong>Name:</strong> {formData.name}
+                        </p>
+                        <p>
+                           <strong>Email:</strong> {formData.email}
+                        </p>
+                        <p>
+                           <strong>Message:</strong> {formData.message}
+                        </p>
+                     </div>
+                  )}
+               </motion.section>
+               <div className="contactInformation">
+                  <div className="contactInfoLoc">
+                     <div className="contactInfo">
+                        <h1>Contact Information</h1>
+                        <p>Name: Jade Ivan V. Bringcola(Ban Ban)</p>
+                        <p>Location: Sibonga Cebu Philippines</p>
+                        <p>Number: +63 93 1028 2926</p>
+                        <p>Email: bansimplified567@gmail.com</p>
+                     </div>
+                     <div className="contactHelpInfo">
+                        <h1>What Can We Help You?</h1>
+                        <p>
+                           Please follow my social media to get in touch with me and learn more
+                           about me.
+                        </p>
+                     </div>
+                     <div className="socialIcons">
+                        <h4>Follow Me: </h4>
+                        <SocialLink
+                           url="https://www.linkedin.com/in/jade-ivan-bringcola-bb9466272/"
+                           imgSrc={Linkedin}
+                           alt="Linkedin"
+                        />
+                        <SocialLink
+                           url="https://www.instagram.com/nocodearea/"
+                           imgSrc={Instagram}
+                           alt="Instagram"
+                        />
+                        <SocialLink
+                           url="https://web.facebook.com/him.blacklion567/"
+                           imgSrc={Facebook}
+                           alt="Facebook"
+                        />
+                        <SocialLink
+                           url="https://x.com/JBringcola"
+                           imgSrc={Messenger}
+                           alt="Messenger"
+                        />
+                        <SocialLink
+                           url="https://www.tiktok.com/@bansimplified?is_from_webapp=1&sender_device=pc"
+                           imgSrc={Tiktok}
+                           alt="Tiktok"
+                        />
+                        <SocialLink
+                           url="https://www.youtube.com/channel/UCHuVTj0sCJA5YQ_BUTcSPaw"
+                           imgSrc={Youtube}
+                           alt="Youtube"
+                        />
                      </div>
                   </div>
-               </motion.section>
+               </div>
             </div>
             <section className="homeEmail">
                <Email />

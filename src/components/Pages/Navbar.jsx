@@ -65,7 +65,7 @@ const Navbar = () => {
                   className="navbarLinks"
                   to="/skills"
                   style={getLinkStyle('/skills')}
-                  title="Hire us to speak"
+                  title="What skills do I have"
                >
                   Skills
                </Link>

@@ -148,3 +148,73 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+/* Existing styles */
+
+.submittedDataContainer {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  /* Center horizontally */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--container-color);
+  border: 1px solid var(--primary-color);
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: var(--title-color);
+}
+
+.submittedDataContainer h2 {
+  font-size: var(--font-md);
+  margin-bottom: 10px;
+}
+
+/* Additional styles for the page */
+.contactForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.contactFormGroup {
+  margin-bottom: 15px;
+}
+
+.contactFormGroup label {
+  margin-bottom: 5px;
+}
+
+.contactFormGroup input,
+.contactFormGroup textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.contactSubmit {
+  padding: 10px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.contactSubmit:hover {
+  background-color: var(--primary-color-alt);
+}
+
+.contactInformation {
+  margin-top: 20px;
+}
+
+/* Social links */
+.contactSocialLink img {
+  width: 30px;
+  margin: 0 5px;
+}
