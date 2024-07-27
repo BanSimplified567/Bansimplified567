@@ -196,7 +196,7 @@
     <a href="https://wakatime.com/@BanBan" target="_blank">
   <img src="https://github-readme-stats.vercel.app/api?username=BanSimplified567&theme=radical&show_icons=true&count_private=true" width="49%" alt="stats graph" /></a>
     <a href="https://wakatime.com/@BanBan" target="_blank">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=BanSimplified567&theme=radical&langs_count=10&card_width=540&layout=compact" alt="Most used languages" width="49%"></a>  <a href="https://wakatime.com"><img src="https://wakatime.com/share/@BanBan/382532ff-5057-45a2-b975-14ab938e7e7c.png" align="left" width="49%"/></a>
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=BanSimplified567&theme=radical&langs_count=10&card_width=540&layout=compact" alt="Most used languages" width="48%"></a>  <a href="https://wakatime.com"><img src="https://wakatime.com/share/@BanBan/382532ff-5057-45a2-b975-14ab938e7e7c.png" align="left" width="48%"/></a>
 </div>
 
 <div align="center">
@@ -211,9 +211,12 @@
 
  <a href="https://github.com/BanSimplified567/pizzaban" target="_blank">
     <img src="https://github-readme-stats.vercel.app/api/pin/?username=BanSimplified567&theme=radical&repo=pizzaban" width="49%" alt="pizzaban-store"/>
-  </a>
- <a href="https://github.com/BanSimplified567/pizzaban-store" target="_blank">
+  </a> <a href="https://github.com/BanSimplified567/pizzaban-store" target="_blank">
     <img src="https://github-readme-stats.vercel.app/api/pin/?username=BanSimplified567&theme=radical&repo=pizzaban-store" width="49%" alt="pizzaban-store"/>
+  </a><a href="https://github.com/BanSimplified567/Confession" target="_blank">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=BanSimplified567&theme=radical&repo=Confession" width="49%" alt="Confession"/>
+  </a><a href="https://github.com/BanSimplified567/Bulb-Switch" target="_blank">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=BanSimplified567&theme=radical&repo=Bulb-Switch" width="49%" alt="Bulb-Switch"/>
   </a>
 </div>
  <img src="./src/components/img/assets/borderseparator.gif"/> </h2>
