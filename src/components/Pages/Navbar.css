@@ -6,6 +6,13 @@
   justify-content: space-evenly;
 }
 
+@media screen and (max-width: 1024px) {
+  .navbarContainer {
+    justify-content: flex-start;
+    margin-left: 2rem;
+  }
+}
+
 /* Styling for individual navbar links */
 .navbarLink {
   display: flex;

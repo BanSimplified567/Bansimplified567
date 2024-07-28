@@ -144,7 +144,7 @@ function Activities() {
                      <img
                         src="https://github-readme-stats.vercel.app/api/wakatime?username=BanBan&theme=radical&layout=compact"
                         alt="WakaTime Coding Time"
-                        width="100%"
+                        className="activeImage"
                      />
                   </a>
                </div>
@@ -170,6 +170,7 @@ function Activities() {
                      <img
                         src="https://wakatime.com/share/@BanBan/8f2a2577-a6d4-4a17-b839-30c5da0183d9.png"
                         alt="WakaTime Link"
+                        className="activeImage"
                      />
                   </a>
                </div>
@@ -195,6 +196,7 @@ function Activities() {
                            <img
                               src="https://github-readme-stats.vercel.app/api/top-langs/?username=BanSimplified567&theme=radical&langs_count=10&card_width=540&layout=compact"
                               alt="Most Used Languages"
+                              className="activeImage"
                            />
                         </a>
                      </div>
@@ -207,6 +209,7 @@ function Activities() {
                            <img
                               src="https://streak-stats.demolab.com?user=BanSimplified567&theme=radical"
                               alt="Streaks Graph"
+                              className="activeImage"
                            />
                         </a>
                         <a
@@ -217,6 +220,7 @@ function Activities() {
                            <img
                               src="https://github-readme-stats.vercel.app/api?username=BanSimplified567&theme=radical&show_icons=true&count_private=true"
                               alt="GitHub Stats Graph"
+                              className="activeImage"
                            />
                         </a>
                      </div>
