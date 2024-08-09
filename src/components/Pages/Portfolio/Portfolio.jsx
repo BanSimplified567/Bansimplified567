@@ -2,6 +2,11 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { NavLink } from 'react-router-dom';
 import PizzaBan from '../../img/PortfolioImages/PizzaBan.png';
+import BulbOnOff from '../../img/PortfolioImages/BulbOnOff.png';
+import Sukidesu from '../../img/PortfolioImages/Sukidesu.png';
+import Calculator from '../../img/PortfolioImages/Calculator.png';
+import BirthdayGift from '../../img/PortfolioImages/BirthdayGift.png';
+
 import Email from '../Extra/Email/Email';
 import Footer from '../Extra/Footer/Footer';
 import './Portfolio.css';
@@ -34,6 +39,7 @@ function Portfolio() {
                   in my free time, highlighting my skills and creativity.
                </p>
             </motion.section>
+
             <motion.article
                ref={aboutRef}
                initial="hidden"
@@ -45,12 +51,61 @@ function Portfolio() {
                   <img src={PizzaBan} alt="PizzaBan" className="portImage" />
                   <div className="portCardBody">
                      <h2 className="portCardTitle">PizzaBanSibonga</h2>
-                     <p className="portCardDescription">
-                        Welcome to PizzaBan! Enjoy the best pizza in town, crafted with fresh
-                        ingredients and served with a smile. Taste the difference at PizzaBan!
-                     </p>
+                     <p className="portCardDescription">My Project for 2nd-Year College Finals</p>
                      <p className="portCardDate">
                         <span className="aboutSemiTitle">Created:</span> June 12, 2024
+                     </p>
+                     <p className="portCardType">
+                        <span className="aboutSemiTitle">Type:</span> Side-Project
+                     </p>
+                  </div>
+               </NavLink>
+               <NavLink className="portCard" to="https://calculator-sigma-hazel.vercel.app/">
+                  <img src={Calculator} alt="Calculator" className="portImage" />
+                  <div className="portCardBody">
+                     <h2 className="portCardTitle">Basic-Calculator</h2>
+                     <p className="portCardDescription">Basic Calculator using React</p>
+                     <p className="portCardDate">
+                        <span className="aboutSemiTitle">Created:</span> Aug 1 2024
+                     </p>
+                     <p className="portCardType">
+                        <span className="aboutSemiTitle">Type:</span> Side-Project
+                     </p>
+                  </div>
+               </NavLink>
+               <NavLink className="portCard" to="https://bulb-switch-six.vercel.app/">
+                  <img src={BulbOnOff} alt="BulbOnOff" className="portImage" />
+                  <div className="portCardBody">
+                     <h2 className="portCardTitle">BulbOnOff</h2>
+                     <p className="portCardDescription">Our School Activity Bulb-Switch</p>
+                     <p className="portCardDate">
+                        <span className="aboutSemiTitle">Created:</span> 2nd Semester
+                     </p>
+                     <p className="portCardType">
+                        <span className="aboutSemiTitle">Type:</span> Side-Project
+                     </p>
+                  </div>
+               </NavLink>
+               <NavLink className="portCard" to="https://sukidesu.vercel.app/">
+                  <img src={Sukidesu} alt="sukidesu" className="portImage" />
+                  <div className="portCardBody">
+                     <h2 className="portCardTitle">Sukidesu</h2>
+                     <p className="portCardDescription">Confession To Your Crush</p>
+                     <p className="portCardDate">
+                        <span className="aboutSemiTitle">Created:</span> Aug 10 2024
+                     </p>
+                     <p className="portCardType">
+                        <span className="aboutSemiTitle">Type:</span> Side-Project
+                     </p>
+                  </div>
+               </NavLink>
+               <NavLink className="portCard" to="https://birthday-gift-eight.vercel.app/">
+                  <img src={BirthdayGift} alt="BirthdayGift" className="portImage" />
+                  <div className="portCardBody">
+                     <h2 className="portCardTitle">BirthdayGift</h2>
+                     <p className="portCardDescription">My Birthday Gift For You</p>
+                     <p className="portCardDate">
+                        <span className="aboutSemiTitle">Created:</span> Aug 18 2024
                      </p>
                      <p className="portCardType">
                         <span className="aboutSemiTitle">Type:</span> Side-Project

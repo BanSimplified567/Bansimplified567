@@ -23,6 +23,9 @@
   transition: transform 0.2s;
   display: flex;
   flex-direction: column;
+  aspect-ratio: 2/2;
+  object-fit: cover;
+  height: auto;
 }
 
 .portImage {
