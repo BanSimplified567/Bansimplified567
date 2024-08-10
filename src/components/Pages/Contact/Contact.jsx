@@ -211,58 +211,59 @@ function Contact() {
                         </p>
                      </div>
                   )}
-               </motion.section>
-               <div className="contactInformation">
-                  <div className="contactInfoLoc">
-                     <div className="contactInfo">
-                        <h1>Contact Information</h1>
-                        <p>Name: Jade Ivan V. Bringcola(Ban Ban)</p>
-                        <p>Location: Sibonga Cebu Philippines</p>
-                        <p>Number: +63 93 1028 2926</p>
-                        <p>Email: bansimplified567@gmail.com</p>
-                     </div>
-                     <div className="contactHelpInfo">
-                        <h1>What Can We Help You?</h1>
-                        <p>
-                           Please follow my social media to get in touch with me and learn more
-                           about me.
-                        </p>
-                     </div>
-                     <div className="socialIcons">
-                        <h4>Follow Me: </h4>
-                        <SocialLink
-                           url="https://www.linkedin.com/in/jade-ivan-bringcola-bb9466272/"
-                           imgSrc={Linkedin}
-                           alt="Linkedin"
-                        />
-                        <SocialLink
-                           url="https://www.instagram.com/nocodearea/"
-                           imgSrc={Instagram}
-                           alt="Instagram"
-                        />
-                        <SocialLink
-                           url="https://web.facebook.com/him.blacklion567/"
-                           imgSrc={Facebook}
-                           alt="Facebook"
-                        />
-                        <SocialLink
-                           url="https://x.com/JBringcola"
-                           imgSrc={Messenger}
-                           alt="Messenger"
-                        />
-                        <SocialLink
-                           url="https://www.tiktok.com/@bansimplified?is_from_webapp=1&sender_device=pc"
-                           imgSrc={Tiktok}
-                           alt="Tiktok"
-                        />
-                        <SocialLink
-                           url="https://www.youtube.com/channel/UCHuVTj0sCJA5YQ_BUTcSPaw"
-                           imgSrc={Youtube}
-                           alt="Youtube"
-                        />
+
+                  <div className="contactInformation">
+                     <div className="contactInfoLoc">
+                        <div className="contactInfo">
+                           <h1>Contact Information</h1>
+                           <p>Name: Jade Ivan V. Bringcola(Ban Ban)</p>
+                           <p>Location: Sibonga Cebu Philippines</p>
+                           <p>Number: +63 93 1028 2926</p>
+                           <p>Email: bansimplified567@gmail.com</p>
+                        </div>
+                        <div className="contactHelpInfo">
+                           <h1>What Can We Help You?</h1>
+                           <p>
+                              Please follow my social media to get in touch with me and learn more
+                              about me.
+                           </p>
+                        </div>
+                        <div className="socialIcons">
+                           <h4>Follow Me: </h4>
+                           <SocialLink
+                              url="https://www.linkedin.com/in/jade-ivan-bringcola-bb9466272/"
+                              imgSrc={Linkedin}
+                              alt="Linkedin"
+                           />
+                           <SocialLink
+                              url="https://www.instagram.com/nocodearea/"
+                              imgSrc={Instagram}
+                              alt="Instagram"
+                           />
+                           <SocialLink
+                              url="https://web.facebook.com/him.blacklion567/"
+                              imgSrc={Facebook}
+                              alt="Facebook"
+                           />
+                           <SocialLink
+                              url="https://x.com/JBringcola"
+                              imgSrc={Messenger}
+                              alt="Messenger"
+                           />
+                           <SocialLink
+                              url="https://www.tiktok.com/@bansimplified?is_from_webapp=1&sender_device=pc"
+                              imgSrc={Tiktok}
+                              alt="Tiktok"
+                           />
+                           <SocialLink
+                              url="https://www.youtube.com/channel/UCHuVTj0sCJA5YQ_BUTcSPaw"
+                              imgSrc={Youtube}
+                              alt="Youtube"
+                           />
+                        </div>
                      </div>
                   </div>
-               </div>
+               </motion.section>
             </div>
             <section className="homeEmail">
                <Email />

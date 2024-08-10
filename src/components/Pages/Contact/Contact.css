@@ -131,6 +131,14 @@
   gap: .5rem;
 }
 
+.contactInfo h1 {
+  font-size: 2rem;
+}
+
+.contactHelpInfo h1 {
+  font-size: 2rem;
+}
+
 .contactHelpInfo {
   display: flex;
   flex-direction: column;
