@@ -174,7 +174,7 @@ const education = [
          'Sibonga Community College is a private educational institution located in Cebu, Philippines. It is classified as a school and offers various programs and services to its students.',
       location: 'Sibonga, Poblacion, 6000, Cebu, Philippines',
       duration: 'August 2025-2026',
-      type: 'Manolo Fortich Buk',
+      type: 'Sibonga Cebu',
       mode: 'Working-Student',
    },
 ];
