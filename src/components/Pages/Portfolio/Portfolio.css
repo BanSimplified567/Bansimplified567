@@ -8,10 +8,11 @@
 
 
 .portArticle {
-  display: grid;
-  place-items: center;
-  grid-template-columns: repeat(3, minmax(300px, 1fr));
-  gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
 }
 
 .portCard {
@@ -23,8 +24,8 @@
   transition: transform 0.2s;
   display: flex;
   flex-direction: column;
-  aspect-ratio: 2/2;
   object-fit: cover;
+  width: 20rem;
   height: auto;
 }
 

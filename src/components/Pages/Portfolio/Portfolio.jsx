@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { NavLink } from 'react-router-dom';
-import PizzaBan from '../../img/PortfolioImages/PizzaBan.png';
-import BulbOnOff from '../../img/PortfolioImages/BulbOnOff.png';
-import Sukidesu from '../../img/PortfolioImages/Sukidesu.png';
-import Calculator from '../../img/PortfolioImages/Calculator.png';
 import BirthdayGift from '../../img/PortfolioImages/BirthdayGift.png';
+import BulbOnOff from '../../img/PortfolioImages/BulbOnOff.png';
+import Calculator from '../../img/PortfolioImages/Calculator.png';
+import PizzaBan from '../../img/PortfolioImages/PizzaBan.png';
+import Sukidesu from '../../img/PortfolioImages/Sukidesu.png';
 
 import Email from '../Extra/Email/Email';
 import Footer from '../Extra/Footer/Footer';
@@ -66,7 +66,7 @@ function Portfolio() {
                      <h2 className="portCardTitle">Basic-Calculator</h2>
                      <p className="portCardDescription">Basic Calculator using React</p>
                      <p className="portCardDate">
-                        <span className="aboutSemiTitle">Created:</span> Aug 1 2024
+                        <span className="aboutSemiTitle">Created:</span> Aug 1, 2024
                      </p>
                      <p className="portCardType">
                         <span className="aboutSemiTitle">Type:</span> Side-Project
@@ -92,7 +92,7 @@ function Portfolio() {
                      <h2 className="portCardTitle">Sukidesu</h2>
                      <p className="portCardDescription">Confession To Your Crush</p>
                      <p className="portCardDate">
-                        <span className="aboutSemiTitle">Created:</span> Aug 10 2024
+                        <span className="aboutSemiTitle">Created:</span> Aug 10, 2024
                      </p>
                      <p className="portCardType">
                         <span className="aboutSemiTitle">Type:</span> Side-Project
@@ -105,7 +105,7 @@ function Portfolio() {
                      <h2 className="portCardTitle">BirthdayGift</h2>
                      <p className="portCardDescription">My Birthday Gift For You</p>
                      <p className="portCardDate">
-                        <span className="aboutSemiTitle">Created:</span> Aug 18 2024
+                        <span className="aboutSemiTitle">Created:</span> Aug 18, 2024
                      </p>
                      <p className="portCardType">
                         <span className="aboutSemiTitle">Type:</span> Side-Project
