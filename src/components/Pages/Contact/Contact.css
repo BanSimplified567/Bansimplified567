@@ -1,6 +1,6 @@
 .contact {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
 }
 
@@ -13,9 +13,6 @@
     display: none;
   }
 
-  .contactContactMe {
-    justify-content: start;
-  }
 }
 
 @media screen and (max-width: 768px) {
@@ -30,6 +27,8 @@
     width: calc(100% - 18px);
   }
 
+
+
   .contactTitle {
     font-size: 1.5rem;
   }
@@ -37,12 +36,6 @@
   .contactSubmit {
     font-size: 14px;
   }
-}
-
-.contactContactMe {
-  display: flex;
-  flex-direction: column;
-  padding-top: 48px;
 }
 
 .contactTitle {

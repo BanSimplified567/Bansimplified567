@@ -2,7 +2,7 @@
 .navbarContainer {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
+  padding-bottom: 2rem;
   justify-content: space-evenly;
 }
 
@@ -118,6 +118,14 @@
 
 .menuButton {
   display: none;
+}
+
+@media screen and (max-width: 340px) {
+
+  /* Hide menu button for screens 300px or smaller */
+  .menuButton {
+    display: none;
+  }
 }
 
 /* Responsive styles */

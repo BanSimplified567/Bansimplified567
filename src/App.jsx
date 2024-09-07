@@ -7,6 +7,7 @@ import Home from './components/Pages/Home/Home';
 import Navbar from './components/Pages/Navbar';
 import Portfolio from './components/Pages/Portfolio/Portfolio';
 import Skills from './components/Pages/Skills/Skills';
+import Commission from './components/Pages/Commission/Commission';
 
 const routes = [
    { path: '/', element: <Home /> },
@@ -16,6 +17,7 @@ const routes = [
    { path: '/contact', element: <Contact /> },
    { path: '/activities', element: <Activities /> },
    { path: '/portfolio', element: <Portfolio /> },
+   { path: '/commission', element: <Commission /> },
 ];
 
 const router = createBrowserRouter([

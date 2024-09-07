@@ -52,13 +52,13 @@ const About = () => {
                   </a>
                </p>
                <p className="aboutParagraph">
-                  <span className="navbarTitle">1+ year</span> learning Web development
+                  <span className="navbarTitle">2+ years</span> learning Web development
                </p>
                <NavLink
                   className="aboutButton"
                   to="https://www.linkedin.com/in/jade-ivan-bringcola-bb9466272/"
                >
-                  CONNECT ON LINKEDIN
+                  <p className="aboutParagraph">CONNECT ON LINKEDIN</p>
                   <svg
                      width="25"
                      height="15"
@@ -94,7 +94,7 @@ const About = () => {
                         'Jade Ivan V. Bringcola, was born on September 10, 2002, in Manila, Quezon City. 🌳',
                      ].map((text, index) => (
                         <p key={index} className="aboutSemiTitle">
-                           <img src={flames} width="10px" alt="flames" /> {text}
+                           <img src={flames} className="flames" alt="flames" /> {text}
                         </p>
                      ))}
                   </figure>
@@ -112,7 +112,7 @@ const About = () => {
                         'Actively explores emerging web technologies and industry trends to stay innovative. 🌳',
                      ].map((text, index) => (
                         <p key={index} className="aboutSemiTitle">
-                           <img src={flames} width="10px" alt="flames" /> {text}
+                           <img src={flames} className="flames" alt="flames" /> {text}
                         </p>
                      ))}
                   </figure>
@@ -129,9 +129,9 @@ const About = () => {
          >
             <section>
                <div className="aboutSkillsOfMine">
-                  <img src={flames} width="26px" alt="flames" />
+                  <img src={flames} className="flames" alt="flames" />
                   <h1 className="aboutTitle border">Skills Of Mine 👨‍💻</h1>
-                  <img src={flames} width="26px" alt="flames" />
+                  <img src={flames} className="flames" alt="flames" />
                </div>
                <p className="aboutSemiTitle">
                   Hello!👋 I am an enthusiastic Front-end Developer passionate about creating

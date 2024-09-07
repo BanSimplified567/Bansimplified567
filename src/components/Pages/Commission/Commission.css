@@ -1,0 +1,481 @@
+.comSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.comSecOne {
+  display: flex;
+  /* Allow items to wrap */
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #000;
+  padding: 2rem 5rem;
+  border-radius: 1rem 4rem;
+  gap: 2rem;
+  box-sizing: border-box;
+  /* Ensure padding does not affect width calculation */
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 1200px) {
+  .comSecOne {
+    padding: 1.5rem 3rem;
+    border-radius: 0.75rem 3rem;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .comSecOne {
+    padding: 1rem 2rem;
+    border-radius: 0.5rem 2rem;
+    gap: 1rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .comSecOne {
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.25rem 1rem;
+    gap: 0.75rem;
+    flex-direction: column;
+    /* Stack items vertically on smaller screens */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .comSecOne {
+    padding: 0.5rem 1rem;
+    border-radius: 0.125rem 0.5rem;
+    gap: 0.5rem;
+  }
+}
+
+.comSecTwo {
+  display: flex;
+  width: 100%;
+  max-width: 70rem;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.comSecThree {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.comSecThree img {
+  width: 2rem;
+  transition: transform 0.2s ease-in-out;
+}
+
+.comSecThree img:hover {
+  transform: translateY(-0.625rem);
+}
+
+.banbanTwo {
+  width: 100%;
+  max-width: clamp(35rem, 1vw + 1rem, 40rem);
+  height: auto;
+  object-fit: cover;
+}
+
+.comSecFour {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 1.25rem;
+}
+
+.comSecFive {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.comImageWrapper {
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  border-radius: 0.5rem;
+}
+
+.comImageWrapper img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+
+.comImageWrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  transition: background-color 0.3s ease-in-out;
+}
+
+.comImageWrapper:hover::before {
+  background-color: transparent;
+}
+
+.comImageWrapper:hover img {
+  transform: scale(1.1);
+}
+
+.comOverlayText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.comImageWrapper:hover .comOverlayText {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(145deg, #0000004b, #cacaca);
+  box-shadow: 0.75rem 0.75rem 3.4375rem #b3b3b3, -0.5625rem -0.5625rem 1.125rem #ffffff;
+}
+
+.comOverlayText h1 {
+  font-family: var(--font-commission);
+  color: #fff;
+  text-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.6);
+}
+
+.comWindowBackground {
+  background-color: #000000;
+  padding: 5rem;
+  text-align: center;
+  border-radius: 0.625rem;
+}
+
+/* Media Queries for .comWindowBackground */
+@media screen and (max-width: 1200px) {
+  .comWindowBackground {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-radius: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .comWindowBackground {
+    padding: 3rem;
+    border-radius: 0.375rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .comWindowBackground {
+    text-align: center;
+    padding: 1rem;
+    border-radius: 0.25rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .comWindowBackground {
+    padding: 0.56rem;
+    border-radius: 0.125rem;
+  }
+}
+
+
+.comPanel {
+  display: flex;
+  background-color: #0000004d;
+  border-radius: 0.625rem;
+  gap: 1.25rem;
+  padding: 0.9375rem 1.5625rem;
+  position: relative;
+  width: 100%;
+  z-index: 10;
+}
+
+/* Responsive adjustments for .comPanel */
+@media screen and (max-width: 1200px) {
+  .comPanel {
+    gap: 1rem;
+    padding: 0.75rem 1.25rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .comPanel {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0.5rem 1rem;
+  }
+}
+
+.comPricingTable {
+  box-shadow: 0px 0.625rem 0.8125rem -0.375rem rgba(0, 0, 0, 0.08),
+    0px 1.25rem 1.9375rem 0.1875rem rgba(0, 0, 0, 0.09),
+    0px 0.5rem 1.25rem 0.4375rem rgba(0, 0, 0, 0.02);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 2rem;
+  padding: 5rem;
+}
+
+/* Responsive adjustments for .comPricingTable */
+@media screen and (max-width: 1200px) {
+  .comPricingTable {
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .comPricingTable {
+    gap: 1rem;
+    padding: 0 0.5rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .comPricingTable {
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    padding: 0;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .comPricingTable {
+    gap: 0.5rem;
+  }
+}
+
+.comPricingPlan {
+  border-left: 1px solid var(--background-button-light);
+  box-sizing: border-box;
+  padding: 3rem;
+  background-color: transparent;
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  width: 30rem;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Responsive adjustments for .comPricingPlan */
+@media screen and (max-width: 1200px) {
+  .comPricingPlan {
+    padding: 1rem;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .comPricingPlan {
+    padding: 0.75rem;
+    border-right: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .comPricingPlan {
+    border: none;
+    padding: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .comPricingPlan {
+    padding: 0.25rem;
+  }
+}
+
+.comPricingPlan:hover {
+  background-color: #ffffff;
+  color: #000000;
+  transform: scale(1.05);
+}
+
+.comPricingPlan:last-child {
+  border-bottom: none;
+}
+
+.comPricingFeatures {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.comPricingFeaturesItem {
+  margin: 0.5rem 0;
+  border-bottom: solid 2px var(--background-button-light);
+}
+
+.comPricingPrice {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-top: 1.5rem;
+}
+
+.comPricingButton {
+  width: 100%;
+  border-radius: 0.3125rem;
+  padding: 0.625rem 1.25rem;
+  color: #020202;
+  font-size: var(--aboutParagraph-size);
+  font-weight: 600;
+  background-color: #f5f5f5;
+  text-decoration: none;
+  display: inline-block;
+  transition: width 0.8s ease-in-out, background-color 0.8s ease, color 0.8s ease;
+  white-space: nowrap;
+}
+
+.comPricingButton:hover {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+
+/* Media Queries for .comPanel */
+@media screen and (max-width: 1200px) {
+  .comPanel {
+    gap: 1rem;
+    padding: 0.75rem 1.25rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .comPanel {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0.5rem 1rem;
+  }
+}
+
+/* Media Queries for .comPricingTable */
+@media screen and (max-width: 1200px) {
+  .comPricingTable {
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .comPricingTable {
+    gap: 1rem;
+    padding: 0 0.5rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .comPricingTable {
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    padding: 0;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .comPricingTable {
+    gap: 0.5rem;
+  }
+}
+
+.comSectionOne {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.comSectionTwo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 1024px) {
+  .comSectionTwo {
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+}
+
+
+.comSectionTwo img {
+  width: 30rem;
+  max-width: 30rem;
+  /* Makes sure the image doesn't exceed this width */
+  height: auto;
+  object-fit: contain;
+  aspect-ratio: 1 / 1;
+}
+
+.comSectionThree {
+  width: 100%;
+  max-width: 40rem;
+  /* Limits the width on larger screens */
+  height: auto;
+  object-fit: contain;
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 768px) {
+  .comSectionOne {
+    margin: 1rem;
+    /* Reduce margin for smaller screens */
+  }
+
+  .comSectionTwo img {
+    width: 80%;
+    /* Shrinks the image on smaller screens */
+  }
+
+  .comSectionThree {
+    width: 90%;
+    /* Adjusts width for better fit on smaller devices */
+  }
+}
+
+/* Media query for very small screens */
+@media screen and (max-width: 480px) {
+  .comSectionTwo img {
+    width: 100%;
+    /* Full width on very small screens */
+  }
+
+  .comSectionThree {
+    width: 100%;
+    /* Full width for smaller screens */
+  }
+}

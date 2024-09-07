@@ -70,21 +70,21 @@ const Navbar = () => {
                   Skills
                </Link>
             </div>
+            <button className="menuButton" onClick={toggleMenu}>
+               <svg
+                  width="46"
+                  height="46"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+               >
+                  <path d="M3 4h18v2H3V4Zm0 7h18v2H3v-2Zm0 7h18v2H3v-2Z"></path>
+               </svg>
+            </button>
          </nav>
-         <button className="menuButton" onClick={toggleMenu}>
-            <svg
-               width="46"
-               height="46"
-               fill="currentColor"
-               viewBox="0 0 24 24"
-               xmlns="http://www.w3.org/2000/svg"
-            >
-               <path d="M3 4h18v2H3V4Zm0 7h18v2H3v-2Zm0 7h18v2H3v-2Z"></path>
-            </svg>
-         </button>
          <div className="navLink">
-            <Link to="/activities" className="navMentor" title="Explore activities options">
-               ACTIVITIES
+            <Link to="/commission" className="navMentor" title="Open For Commission">
+               COMMISSION
                <svg
                   width="15"
                   height="15"

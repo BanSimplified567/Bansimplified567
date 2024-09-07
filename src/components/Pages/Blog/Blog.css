@@ -7,28 +7,77 @@
 .blogArticle {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
+  gap: 1rem;
   padding: 20px;
 }
 
 .blogCards {
-  border-radius: 30px;
+  border-radius: 15px;
   overflow: hidden;
   width: 100%;
-  height: auto;
-  object-fit: contain;
   border: solid 1px var(--background-button-light);
-  transition: all 10ms ease-in-out;
+  transition: transform 0.2s ease-in-out;
 }
 
+.blogCards:hover {
+  transform: scale(1.05);
+}
 
 .blogCard {
   color: var(--text-color);
+  text-align: center;
 }
 
 .freeCodeCamp {
   width: 100%;
   aspect-ratio: 16/9;
-  height: auto;
   object-fit: cover;
+}
+
+.portCardBody {
+  padding: 1rem;
+}
+
+.portCardTitle {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.portCardDescription {
+  font-size: 1rem;
+  color: var(--text-color-light);
+}
+
+@media (max-width: 1024px) {
+  .blog {
+    padding-top: 1rem;
+    width: 90%;
+  }
+
+  .blogArticle {
+    grid-template-columns: 1fr;
+    padding: 10px;
+  }
+
+  .portCardTitle {
+    font-size: 1.1rem;
+  }
+
+  .portCardDescription {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .blogArticle {
+    padding: 5px;
+  }
+
+  .portCardTitle {
+    font-size: 1rem;
+  }
+
+  .portCardDescription {
+    font-size: 0.8rem;
+  }
 }

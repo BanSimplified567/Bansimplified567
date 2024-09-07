@@ -6,10 +6,11 @@
 .skillsArticle {
   display: flex;
   flex-wrap: wrap;
+  /* Ensures the flex items wrap on smaller screens */
   justify-content: center;
-  align-items: center;
-  margin-top: 2rem;
-  gap: 2rem;
+  /* Centers the flex items */
+  gap: 1rem;
+  padding: 20px;
   color: var(--background-button-dark);
 }
 
@@ -38,7 +39,6 @@
   border: solid 1px var(--background-button);
   background: var(--background-button-light);
   transition: transform 0.3s ease;
-  /* Add transition for smooth scaling */
 }
 
 .skillsCards:hover {
@@ -50,7 +50,6 @@
   height: auto;
   object-fit: contain;
   transition: transform 0.6s ease;
-  /* Add transition for smooth rotation */
 }
 
 .skillsCards:hover .skillsCardsImages {
@@ -58,25 +57,26 @@
 }
 
 /* Desktop large screens */
-@media (min-width: 1024px) and (min-height: 900px) {
-  .skillsCardsImages {
-    width: 20rem;
-  }
-
+@media (min-width: 1200px) {
   .skillsCards {
     width: 30rem;
     height: 40rem;
   }
+
+  .skillsCardsImages {
+    width: 20rem;
+  }
 }
 
+/* Desktop small screens */
 @media (min-width: 1024px) and (max-height: 800px) {
-  .skillsCardsImages {
-    width: 10rem;
-  }
-
   .skillsCards {
     width: 25rem;
     height: 35rem;
+  }
+
+  .skillsCardsImages {
+    width: 10rem;
   }
 }
 
@@ -114,6 +114,7 @@
   }
 }
 
+/* Smaller mobile screens */
 @media (max-width: 480px) {
   .skillsTitle {
     font-size: 1.5rem;

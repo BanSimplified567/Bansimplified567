@@ -136,7 +136,7 @@ const experiences = [
       company: 'Republic Biscuit Corporation (REBISCO)',
       description:
          'The Republic Biscuit Corporation, doing business as Rebisco and also known as the Rebisco Group of Companies, is a Philippine privately held multinational snack food company headquartered in Ortigas Center, Pasig.',
-      location: 'Bukidnon, Northern Mindanao, Philippines',
+      location: 'Bukidnon, Northern Mindanao, ',
       duration: 'Nov 2021 - Apr 2022',
       type: 'Full-time',
       mode: 'On-site',
@@ -149,10 +149,10 @@ const education = [
       alt: 'Lunocan',
       role: 'Lunocan Elementary School',
       description:
-         'Lunocan Elementary School is one of the elementary schools within the Los Lunas Public School District in New Mexico.',
+         'Lunocan Elementary School, Cagayan de Oro - Bukidnon Hwy, Manolo Fortich, based on live traffic updates and road conditions',
       location: 'Bukidnon, Northern Mindanao, Philippines',
       duration: 'Apr 2015-2016',
-      type: 'Lunocan MF Buk',
+      type: 'Lunocan Manolo Fortich Bukidnon',
       mode: 'Fulltime-Student',
    },
    {
@@ -160,7 +160,7 @@ const education = [
       alt: 'Manolo',
       role: 'Manolo Fortich National Senior High School',
       description:
-         'Manolo Fortich National High School is a school located in Manolo Fortich, Bukidnon. It is one of the top-performing schools in the Division of Bukidnon.',
+         'Manolo Fortich, Bukidnon, this school is one of the top-performing mega schools in the Division of Bukidnon',
       location: 'Bukidnon, Northern Mindanao, Philippines',
       duration: 'Apr 2021-2022',
       type: 'Manolo Fortich Buk',
@@ -172,7 +172,7 @@ const education = [
       role: 'Sibonga Community College',
       description:
          'Sibonga Community College is a private educational institution located in Cebu, Philippines. It is classified as a school and offers various programs and services to its students.',
-      location: 'Sibonga, Poblacion, 6000, Cebu, Philippines',
+      location: 'Sibonga, Poblacion, Cebu, Philippines',
       duration: 'August 2025-2026',
       type: 'Sibonga Cebu',
       mode: 'Working-Student',

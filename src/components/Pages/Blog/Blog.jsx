@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { NavLink } from 'react-router-dom';
 
 import flames from '../../img/assets/animated-flame-01.gif';
 import flamesBorder from '../../img/assets/borderseparator.gif';
@@ -11,22 +10,22 @@ import Footer from '../Extra/Footer/Footer';
 import './Blog.css';
 
 import codeacademyImg from '../../img//Activities/Codeacademy.png';
-import freecodecampImg from '../../img//Activities/FreeCodeCamp.jpg';
-import w3schoolsImg from '../../img//Activities/W3Schools.png';
-import geeksforgeeksImg from '../../img//Activities/GeeksforGeeks.jpeg';
 import devImg from '../../img//Activities/Dev.png';
+import freecodecampImg from '../../img//Activities/FreeCodeCamp.jpg';
+import geeksforgeeksImg from '../../img//Activities/GeeksforGeeks.jpeg';
 import mediumImg from '../../img//Activities/Medium.png';
+import w3schoolsImg from '../../img//Activities/W3Schools.png';
 import youtubeImg from '../../img//Activities/Youtube.png';
 
-import fireshipImg from '../../img//Activities/Fireship.jpg';
-import webdevsimplifiedImg from '../../img//Activities/webdevSimplified.jpg';
-import connerardmanImg from '../../img//Activities/ConnerArdman.jpg';
-import netninjaImg from '../../img//Activities/Netninja.jpg';
 import brocodeImg from '../../img//Activities/BroCode.jpg';
 import codingwithlewisImg from '../../img//Activities/CodingWithLewis.jpg';
+import connerardmanImg from '../../img//Activities/ConnerArdman.jpg';
+import fireshipImg from '../../img//Activities/Fireship.jpg';
+import freecodecampChannelImg from '../../img//Activities/FreeCodeCamp.jpg';
+import netninjaImg from '../../img//Activities/Netninja.jpg';
 import techwithtimImg from '../../img//Activities/TechWithTim.jpg';
 import t3dotggImg from '../../img//Activities/t3dotgg.jpg';
-import freecodecampChannelImg from '../../img//Activities/FreeCodeCamp.jpg';
+import webdevsimplifiedImg from '../../img//Activities/webdevSimplified.jpg';
 
 const resourcesData = [
    {
@@ -181,14 +180,13 @@ function Blog() {
 
    return (
       <main className="section">
-         <h1 className="aboutTitle blog">BLOG</h1>
-
          <section className="aboutMain">
+            <h1 className="aboutTitle blog">BLOG</h1>
             <div ref={aboutRef}>
                <img src={flamesBorder} className="flamesBorder" alt="flamesBorder" />
                <h1 className="aboutParagraph">
-                  <img src={flames} width="26px" alt="flames" /> These websites help me understand
-                  how code works.
+                  <img src={flames} className="flames" alt="flames" />
+                  These websites help me understand how code works.
                </h1>
             </div>
             <motion.article
@@ -210,11 +208,12 @@ function Blog() {
                   </div>
                ))}
             </motion.article>
+
             <div ref={firstPersonBioRef}>
                <img src={flamesBorder} className="flamesBorder" alt="flamesBorder" />
                <h1 className="aboutParagraph">
-                  <img src={flames} width="26px" alt="flames" /> These are the programmers that help
-                  me understand more about Web Development.
+                  <img src={flames} className="flames" alt="flames" /> These programmers help me
+                  with Web Development.
                </h1>
             </div>
 

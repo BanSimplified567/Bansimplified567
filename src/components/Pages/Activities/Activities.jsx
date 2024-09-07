@@ -5,6 +5,7 @@ import Activity01 from '../../img/Activities/Activity01.png';
 import Activity02 from '../../img/Activities/Activity02.png';
 import Activity03 from '../../img/Activities/Activity03.png';
 import Activity04 from '../../img/Activities/Activity04.png';
+import JavascriptTutorial from '../../img/Activities/JSimage.jpg';
 import BackGround from '../../img/assets/pixel-neon.gif';
 import Email from '../Extra/Email/Email';
 import Footer from '../Extra/Footer/Footer';
@@ -42,6 +43,18 @@ const activities = [
       title: 'LightBulb ON/OFF',
       description:
          "In this video, I explain how the bulb on and off function works. When you click the button, the bulb image appears, and when you click the button again, the off bulb image appears. You'll understand the reasons behind this behavior. This video isn't about claiming expertise but about sharing knowledge and fostering discussion. Let's dive in.",
+   },
+   {
+      src: JavascriptTutorial,
+      alt: 'JavaScript Tutorial Beginner Guide',
+      link: 'https://www.youtube.com/watch?v=7LIyhZFDiX0&list=PLnqszaQYMLok3hQn_5-fs-EdotIFSBZwC&pp=gAQBiAQB',
+      title: 'LightBulb ON/OFF',
+      description: `Hello everyone!
+I created this JavaScript tutorial for beginners, especially for Cebuano or Bisaya speakers. Cebuano is my first language, and I made this to share my knowledge with those who understand it.
+
+Everything here is based on my own understanding. I hope you find it helpful and learn a lot.
+
+Thanks for your support, and good luck with your learning!`,
    },
 ];
 

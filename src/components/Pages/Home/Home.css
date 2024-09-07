@@ -12,10 +12,6 @@
     text-align: center;
   }
 
-  .homeLinkSectionContainer {
-    width: 50vw;
-    /* Adjusted for smaller screens */
-  }
 }
 
 @media screen and (max-width: 768px) {
@@ -62,10 +58,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 .homeParagraph,
-.homeTitle {
+.homeTitle,
+.homeSemiTitle {
   font-family: var(--font-title);
 }
 
@@ -74,17 +72,6 @@
   line-height: 2rem;
   font-size: 2rem;
   max-width: 25rem;
-}
-
-.homeSectionOne,
-.homeLinkSectionContainer,
-.homeLinkContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-  box-sizing: border-box;
-  padding: 1rem;
 }
 
 .contactContactMe {
@@ -98,27 +85,93 @@
 }
 
 .homeLinkSectionContainer {
-  width: 30vw;
-}
-
-
-.homeLinkContainer {
-  width: 25rem;
-  justify-content: center;
-  border-radius: 10px;
+  display: flex;
   overflow: hidden;
-  background-color: var(--background-button-blue);
-  transition: all .3s ease-in-out;
-  aspect-ratio: 2;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
   object-fit: contain;
 }
 
+.homeSectionOne,
+.homeLinkSectionContainer,
+.homeLinkContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  box-sizing: border-box;
+  height: auto;
+}
+
+.homeLinkContainer {
+  display: flex;
+  padding: 1rem;
+  width: 25rem;
+  height: 12.5rem;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: var(--background-button-blue);
+  transition: all 0.3s ease-in-out;
+  object-fit: cover;
+}
+
+/* Hover effect for the specific container being hovered */
 .homeLinkContainer:hover {
+  width: 30rem;
   box-shadow: 0 0 10px var(--background-button-violet);
-  background: linear-gradient(to right, var(--background-button-violet), var(--background-button-dark-pink), var(--background-button-pink), var(--background-button-violet));
-  background-size: 200% auto;
+  background: linear-gradient(to right,
+      var(--background-button-violet),
+      var(--background-button-dark-pink),
+      var(--background-button-pink),
+      var(--background-button-violet));
   animation: slide 5s linear infinite;
-  transform: scale3d(1.04, 1.04, 1.01);
+}
+
+/* Preventing hover effect from affecting other containers */
+.homeLinkContainer:not(:hover) {
+  width: 25rem;
+  box-shadow: none;
+  background-color: var(--background-button-blue);
+  transition: all 0.3s ease-in-out;
+}
+
+/* Adjust size for different screen sizes while keeping the rectangle shape */
+@media screen and (max-width: 1024px) {
+  .homeLinkContainer {
+    width: 20rem;
+    height: 10rem;
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+  .homeLinkContainer {
+    width: 18rem;
+    height: 9rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .homeLinkContainer {
+    width: 16rem;
+    height: 8rem;
+  }
+}
+
+@keyframes slide {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 100% 50%;
+  }
 }
 
 @keyframes slide {
@@ -152,12 +205,47 @@
 }
 
 .homeTitle {
+  font-size: 4rem;
   line-height: 8rem;
 }
 
 .homeSemiTitle {
   border-radius: 10px;
   font-size: 3rem;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 1024px) {
+  .homeTitle {
+    font-size: 3.5rem;
+    line-height: 6rem;
+  }
+
+  .homeSemiTitle {
+    font-size: 2.5rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .homeTitle {
+    font-size: 3rem;
+    line-height: 5rem;
+  }
+
+  .homeSemiTitle {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .homeTitle {
+    font-size: 2.5rem;
+    line-height: 4rem;
+  }
+
+  .homeSemiTitle {
+    font-size: 1.5rem;
+  }
 }
 
 .banbanImage {
@@ -197,7 +285,7 @@
 .homeIntroduction {
   display: grid;
   overflow: hidden;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
   gap: 1rem;
   padding: 1rem;
   border-top: 2px solid var(--background-button-dark);
@@ -227,7 +315,7 @@
 .homeWhoAmI h1::after {
   content: '';
   position: absolute;
-  bottom: 10px;
+  bottom: 0;
   left: 0;
   background-color: black;
   width: 100%;
@@ -236,9 +324,18 @@
 
 .homeWhoAmIParagraph {
   display: flex;
+  position: relative;
   flex-wrap: wrap;
   flex-direction: column;
-  grid-column: span 2;
+  width: 100%;
+  /* Takes full width of the container */
+  max-width: 50rem;
+  /* Sets a maximum width */
+  padding: 1rem;
+  /* Adds some padding */
+  height: auto;
+  object-fit: contain;
+  box-sizing: border-box;
   gap: 2rem;
 }
 

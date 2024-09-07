@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Lalezar&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=New+Amsterdam&display=swap');
 
 :root {
   --background-button-light: #eeeeee;
@@ -13,10 +14,15 @@
   --text-color: #fefafa;
   --font-title: "Lalezar", system-ui;
   --font-semi-title: "Poppins", sans-serif;
+  --font-commission: "New Amsterdam", sans-serif;
+  --color-primary: #6f19b5;
+
 
   --h1-size: clamp(2rem, 1.5rem + 3vw, 4rem);
   --h2-size: clamp(1.5rem, 1.2rem + 2vw, 3rem);
   --h3-size: clamp(1.2rem, 1rem + 1.5vw, 2.5rem);
+  --aboutTitle-size: clamp(7rem, 2.5vw + 1rem, 5rem);
+  --aboutParagraph-size: clamp(1.5rem, 1.5vw + 0.5rem, 0.25rem);
 }
 
 *,
@@ -116,11 +122,14 @@ a {
   list-style: none;
 }
 
-p {
-  color: var(--text-color);
-  font-family: var(--font-semi-title);
+img {
+  max-width: 100%;
 }
 
 .flamesBorder {
   width: 100%;
+}
+
+.flames {
+  width: 20px;
 }

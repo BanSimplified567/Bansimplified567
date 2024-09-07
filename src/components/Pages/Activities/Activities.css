@@ -1,5 +1,9 @@
 .active {
   margin: 5rem auto;
+  max-width: 1200px;
+  /* Ensure a maximum width to avoid too wide containers */
+  padding: 0 1rem;
+  /* Add padding for small screens */
 }
 
 .activeWelcome {
@@ -10,11 +14,19 @@
   padding-block: 2rem;
 }
 
-@media screen and (max-width: 768px) {
-
+@media screen and (max-width: 1024px) {
   .activeWelcome {
     text-align: center;
     flex-wrap: wrap;
+    padding-block: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .activeWelcome {
+    gap: 1rem;
+    padding-block: 1rem;
+    /* Adjust padding for mobile screens */
   }
 }
 
@@ -30,16 +42,34 @@
   width: auto;
 }
 
-@media screen and (max-width: 768px) {
-
+@media screen and (max-width: 1024px) {
   .activeExternal {
-    text-align: center;
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .activeExternal {
+    border-radius: 20px;
   }
 }
 
 .activeTitle {
-  font-size: 3rem;
+  font-size: var(--h1-size);
+}
+
+@media screen and (max-width: 1024px) {
+  .activeTitle {
+    font-size: clamp(1.5rem, 1.2rem + 2vw, 3rem);
+    /* Adjusting based on screen size */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .activeTitle {
+    font-size: clamp(1.2rem, 1rem + 1.5vw, 2.5rem);
+    /* Adjusting based on screen size */
+  }
 }
 
 .activeStatItem {
@@ -52,4 +82,16 @@
   max-width: 100%;
   height: auto;
   object-fit: contain;
+}
+
+@media screen and (max-width: 1024px) {
+  .activeImage {
+    width: 25rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .activeImage {
+    width: 20rem;
+  }
 }

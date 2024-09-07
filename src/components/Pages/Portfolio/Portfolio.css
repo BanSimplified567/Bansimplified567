@@ -49,10 +49,17 @@
 }
 
 .portCardDescription {
-  font-size: 1rem;
+  font-size: clamp(0.875rem, 0.75rem + 0.5vw, 1rem);
+  /* Responsive font size */
   margin-bottom: 10px;
   font-weight: 300;
   color: var(--background-button-light);
+}
+
+@media screen and (max-width: 300px) {
+  .portCardDescription {
+    font-size: 0.75rem;
+  }
 }
 
 .portCardDate,
