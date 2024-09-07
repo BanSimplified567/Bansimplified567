@@ -1,11 +1,11 @@
+import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { useState } from 'react';
 import './Navbar.css';
 
 const Navbar = () => {
    const location = useLocation();
    const [isOpen, setIsOpen] = useState(false);
-
+   const [isMobile, setIsMobile] = useState(false);
    const getLinkStyle = (path) => {
       return location.pathname === path ? { color: '#FF3399' } : { color: '#fefefe' };
    };
@@ -13,6 +13,18 @@ const Navbar = () => {
    const toggleMenu = () => {
       setIsOpen(!isOpen);
    };
+   const handleResize = () => {
+      setIsMobile(window.innerWidth <= 1024);
+   };
+   useEffect(() => {
+      // Initial check
+      handleResize();
+      // Add event listener to handle window resize
+      window.addEventListener('resize', handleResize);
+
+      // Cleanup event listener on component unmount
+      return () => window.removeEventListener('resize', handleResize);
+   }, []);
 
    return (
       <div className="navbarContainer">
@@ -69,6 +81,35 @@ const Navbar = () => {
                >
                   Skills
                </Link>
+               {isMobile && (
+                  <div className="mobileLinks">
+                     <Link to="/commission" className="navMentor" title="Open For Commission">
+                        COMMISSION
+                        <svg
+                           width="15"
+                           height="15"
+                           fill="currentColor"
+                           viewBox="0 0 24 24"
+                           xmlns="http://www.w3.org/2000/svg"
+                        >
+                           <path d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8-8-8Z"></path>
+                        </svg>
+                     </Link>
+                     <br />
+                     <Link to="/skills" className="navHireMe" title="What skills do I have">
+                        WHAT IS MY SKILLS
+                        <svg
+                           width="15"
+                           height="15"
+                           fill="currentColor"
+                           viewBox="0 0 24 24"
+                           xmlns="http://www.w3.org/2000/svg"
+                        >
+                           <path d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8-8-8Z"></path>
+                        </svg>
+                     </Link>
+                  </div>
+               )}
             </div>
             <button className="menuButton" onClick={toggleMenu}>
                <svg
