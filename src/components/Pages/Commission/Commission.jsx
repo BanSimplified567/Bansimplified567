@@ -11,11 +11,12 @@ import EcommerceWeb from '../../img/PortfolioImages/PizzaBan.png';
 
 import Facebook from '../../img/SocialMediaAccounts/Facebook.png';
 import Fiverr from '../../img/SocialMediaAccounts/Fiverr.png';
-import Linkendin from '../../img/SocialMediaAccounts/Linkendin.png';
 import Instagram from '../../img/SocialMediaAccounts/Instagram.png';
-import Twitter from '../../img/SocialMediaAccounts/Twitter.png';
+import Linkendin from '../../img/SocialMediaAccounts/Linkendin.png';
 import Tiktok from '../../img/SocialMediaAccounts/TikTok.png';
+import Twitter from '../../img/SocialMediaAccounts/Twitter.png';
 
+import { useNavigate } from 'react-router-dom';
 import Footer from '../../Pages/Extra/Footer/Footer';
 import { SocialMediaLink } from '../Extra/ContactCategory/ContactCategory';
 import Email from '../Extra/Email/Email';
@@ -63,6 +64,13 @@ function Commission() {
          colorClass: 'premium-plan',
       },
    ];
+
+   const navigate = useNavigate();
+
+   // Function to handle button click and navigate
+   const handleButtonClick = () => {
+      navigate('/contact');
+   };
 
    const socialMediaAccounts = [
       { name: 'Facebook', image: Facebook },
@@ -173,6 +181,7 @@ function Commission() {
                      <span className="comPricingPrice">{plan.price}</span>
                      <button
                         className={`comPricingButton ${plan.isFeatured ? 'comIsFeatured' : ''}`}
+                        onClick={handleButtonClick} // Attach click handler
                      >
                         {plan.buttonText}
                      </button>
