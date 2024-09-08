@@ -6,10 +6,10 @@ import { NavLink } from 'react-router-dom';
 import flames from '../../img/assets/animated-flame-01.gif';
 import flamesBorder from '../../img/assets/borderseparator.gif';
 
+import { ContactCategory } from '../Extra/ContactCategory/ContactCategory';
 import Email from '../Extra/Email/Email';
 import Footer from '../Extra/Footer/Footer';
 import './Home.css';
-import { ContactCategory } from '../Extra/ContactCategory/ContactCategory';
 
 const sections = [
    {
@@ -115,7 +115,6 @@ const sections = [
       additionalContent: '',
    },
 ];
-
 const calculateTimeLeft = (startDate) => {
    const targetDate = new Date(startDate);
    targetDate.setFullYear(targetDate.getFullYear() + 2);
@@ -178,16 +177,17 @@ const Home = () => {
       hidden: { opacity: 0, x: 100 },
       visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
    };
+   const startDate = '2026-01-01T00:00:00'; // The start date from which the target is calculated
 
-   const startDate = new Date();
    const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(startDate));
 
+   // Update time left every second
    useEffect(() => {
       const timer = setInterval(() => {
          setTimeLeft(calculateTimeLeft(startDate));
       }, 1000);
 
-      return () => clearInterval(timer);
+      return () => clearInterval(timer); // Cleanup on unmount
    }, [startDate]);
 
    const text =

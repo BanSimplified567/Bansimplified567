@@ -191,7 +191,7 @@ function Blog() {
             </div>
             <motion.article
                className="blogArticle"
-               ref={aboutRef}
+               ref={firstPersonBioRef}
                initial="hidden"
                animate={aboutInView ? 'visible' : 'hidden'}
                variants={slideInVariants}

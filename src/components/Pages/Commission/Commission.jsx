@@ -9,6 +9,13 @@ import SchoolActivityWeb from '../../img/Commission/schoolActivity.jpeg';
 import WebSiteFrontend from '../../img/Commission/WebsiteLaptop.svg';
 import EcommerceWeb from '../../img/PortfolioImages/PizzaBan.png';
 
+import Facebook from '../../img/SocialMediaAccounts/Facebook.png';
+import Fiverr from '../../img/SocialMediaAccounts/Fiverr.png';
+import Linkendin from '../../img/SocialMediaAccounts/Linkendin.png';
+import Instagram from '../../img/SocialMediaAccounts/Instagram.png';
+import Twitter from '../../img/SocialMediaAccounts/Twitter.png';
+import Tiktok from '../../img/SocialMediaAccounts/TikTok.png';
+
 import Footer from '../../Pages/Extra/Footer/Footer';
 import { SocialMediaLink } from '../Extra/ContactCategory/ContactCategory';
 import Email from '../Extra/Email/Email';
@@ -55,6 +62,15 @@ function Commission() {
          buttonText: 'CLICK NOW',
          colorClass: 'premium-plan',
       },
+   ];
+
+   const socialMediaAccounts = [
+      { name: 'Facebook', image: Facebook },
+      { name: 'LinkedIn', image: Linkendin },
+      { name: 'Fiverr', image: Fiverr },
+      { name: 'Instagram', image: Instagram },
+      { name: 'Twitter', image: Twitter },
+      { name: 'TikTok', image: Tiktok },
    ];
 
    return (
@@ -168,7 +184,7 @@ function Commission() {
             <section className="comSectionTwo">
                <img src={WebSiteFrontend} alt="WebSiteFrontend" />
                <article className="comSectionThree">
-                  <h1 className="aboutParagraph">What does a frontend developer do? </h1>
+                  <h2>What does a frontend developer do? </h2>
                   <p className="aboutSemiTitle">
                      A frontend developer is responsible for creating the visual and interactive
                      parts of a website or web application. They work on the user interface (UI),
@@ -176,6 +192,17 @@ function Commission() {
                   </p>
                </article>
             </section>
+         </div>
+         <div className="comSectionFour">
+            <h1 className="aboutTitle">You can find me on</h1>
+            <div className="comSectionFive">
+               {socialMediaAccounts.map((account, index) => (
+                  <section className="comSectionSix" key={index}>
+                     <h1 className="">{account.name}</h1>
+                     <img src={account.image} alt={account.name} />
+                  </section>
+               ))}
+            </div>
          </div>
 
          <section className="homeEmail">

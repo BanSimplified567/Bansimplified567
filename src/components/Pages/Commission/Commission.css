@@ -237,8 +237,9 @@
     0px 1.25rem 1.9375rem 0.1875rem rgba(0, 0, 0, 0.09),
     0px 0.5rem 1.25rem 0.4375rem rgba(0, 0, 0, 0.02);
   display: flex;
-  justify-content: stretch;
+  justify-content: center;
   align-items: center;
+  margin: 0 auto;
   gap: 2rem;
   padding: 5rem;
 }
@@ -426,7 +427,6 @@
 
 @media screen and (max-width: 1024px) {
   .comSectionTwo {
-    flex-wrap: wrap;
     flex-direction: column;
   }
 }
@@ -456,8 +456,12 @@
     /* Reduce margin for smaller screens */
   }
 
+  .comSectionTwo {
+    flex-wrap: wrap;
+  }
+
   .comSectionTwo img {
-    width: 80%;
+    width: 70%;
     /* Shrinks the image on smaller screens */
   }
 
@@ -477,5 +481,135 @@
   .comSectionThree {
     width: 100%;
     /* Full width for smaller screens */
+  }
+}
+
+/* Base styles (for larger screens like desktops) */
+.comSectionFour {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem;
+  gap: 2rem;
+}
+
+.comSectionFive {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.comSectionSix {
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+}
+
+.comSectionSix img {
+  width: 40rem;
+  height: 40rem;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.comSectionSix h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.comSectionSix::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.comSectionSix:hover img {
+  transform: scale(1.1);
+}
+
+.comSectionSix:hover h1 {
+  opacity: 1;
+}
+
+.comSectionSix:hover::after {
+  opacity: 1;
+}
+
+/* Responsive styles for tablets */
+@media screen and (max-width: 1024px) {
+  .comSectionSix img {
+    width: 30rem;
+    height: 30rem;
+  }
+
+  .comSectionFive {
+    gap: 1.5rem;
+  }
+
+  .comSectionFour {
+    margin: 1.5rem;
+    gap: 1.5rem;
+  }
+}
+
+/* Responsive styles for smartphones (Android) */
+@media screen and (max-width: 768px) {
+  .comSectionSix img {
+    width: 20rem;
+    height: 20rem;
+  }
+
+  .comSectionFive {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .comSectionFour {
+    margin: 1rem;
+    gap: 1rem;
+  }
+
+  .comSectionSix h1 {
+    font-size: 1.2rem;
+  }
+}
+
+/* Responsive styles for very small screens (up to 480px) */
+@media screen and (max-width: 480px) {
+  .comSectionSix img {
+    width: 15rem;
+    height: 15rem;
+  }
+
+  .comSectionSix h1 {
+    font-size: 1rem;
+  }
+
+  .comSectionFour {
+    margin: 0.5rem;
+    gap: 0.5rem;
+  }
+
+  .comSectionFive {
+    gap: 0.5rem;
   }
 }
