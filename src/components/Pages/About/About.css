@@ -10,7 +10,6 @@
   justify-content: space-evenly;
   align-items: center;
   gap: 2rem;
-  background-color: var(--background-button-dark);
   color: var(--text-color);
   font-family: 'Poppins', sans-serif;
   margin: 3rem auto;
@@ -244,11 +243,17 @@
   background-color: var(--background-button-darkviolet);
   font-weight: 500;
   font-family: var(--font-commission);
-  font-size: var(--aboutParagraph-size);
+  font-size: var(--h2-size);
   border-radius: 50px;
   color: var(--text-color);
   padding: 0.5rem 1rem;
   align-self: flex-start;
+}
+
+@media screen and (max-width: 769px) {
+  .aboutTitleArticle {
+    font-size: var(--h1-size);
+  }
 }
 
 .aboutArticleList,

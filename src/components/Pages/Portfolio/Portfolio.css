@@ -49,7 +49,7 @@
 }
 
 .portCardDescription {
-  font-size: clamp(0.875rem, 0.75rem + 0.5vw, 1rem);
+  font-size: 1rem;
   /* Responsive font size */
   margin-bottom: 10px;
   font-weight: 300;

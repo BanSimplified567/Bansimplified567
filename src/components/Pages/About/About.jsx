@@ -52,7 +52,7 @@ const About = () => {
                   </a>
                </p>
                <p className="aboutParagraph">
-                  <span className="navbarTitle">2+ years</span> learning Web development
+                  <span className="navbarTitle">2+ years</span> | learning Web development
                </p>
                <NavLink
                   className="aboutButton"
