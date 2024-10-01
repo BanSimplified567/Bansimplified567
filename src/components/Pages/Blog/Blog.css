@@ -8,11 +8,11 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 1rem;
-  padding: 20px;
+  padding: 2rem;
 }
 
 .blogCards {
-  border-radius: 15px;
+  border-radius: 1rem;
   overflow: hidden;
   width: 100%;
   border: solid 1px var(--background-button-light);

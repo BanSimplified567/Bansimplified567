@@ -48,7 +48,7 @@ const activities = [
       src: JavascriptTutorial,
       alt: 'JavaScript Tutorial Beginner Guide',
       link: 'https://www.youtube.com/watch?v=7LIyhZFDiX0&list=PLnqszaQYMLok3hQn_5-fs-EdotIFSBZwC&pp=gAQBiAQB',
-      title: 'LightBulb ON/OFF',
+      title: 'Tutorial Javascript Beginner Guide (Cebuano)',
       description: `Hello everyone!
 I created this JavaScript tutorial for beginners, especially for Cebuano or Bisaya speakers. Cebuano is my first language, and I made this to share my knowledge with those who understand it.
 
@@ -120,7 +120,7 @@ function Activities() {
                </motion.div>
             ))}
          </motion.article>
-         <h1 className="activeTitle">
+         <h1 className="aboutTitle">
             <svg
                width="30"
                height="25"
@@ -196,7 +196,7 @@ function Activities() {
             variants={experienceInView}
             ref={skillsRef}
          >
-            <h1 className="activeTitle">🏆 My Github Stats </h1>
+            <h1 className="aboutTitle">🏆 My Github Stats </h1>
             <section className="activeExternal">
                <div>
                   <div className="activeStatsContainer">
