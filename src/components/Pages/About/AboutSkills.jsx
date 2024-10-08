@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import flames from '../../img/assets/animated-flame-01.gif';
 import flamesBorder from '../../img/assets/borderseparator.gif';
 import Lunocan from '../../img/logos/Lunocan.jpg';
@@ -105,26 +106,28 @@ const badgeData = [
       alt: 'ubuntu',
    },
 ];
-
 const AboutSkills = () => {
    return (
-      <>
-         <section>
-            <div className="aboutTBody">
-               {badgeData.map((badge, index) => (
-                  <div key={index}>
-                     <img src={badge.src} alt={badge.alt} height="35" width="100" />
-                  </div>
-               ))}
-            </div>
-         </section>
+      <section>
+         <motion.div
+            className="aboutTBody"
+            initial={{ opacity: 0, x: -100 }} // Slide in from the left
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+         >
+            {badgeData.map((badge, index) => (
+               <div key={index}>
+                  <img src={badge.src} alt={badge.alt} height="35" width="100" />
+               </div>
+            ))}
+         </motion.div>
          <p className="aboutSemiTitle">
             - While I continue to focus on front-end technologies, I am dedicated to expanding my
             backend skills to create more comprehensive and robust web applications. My goal is to
             deliver exceptional user experiences by combining the best of both front-end and backend
             development.
          </p>
-      </>
+      </section>
    );
 };
 
@@ -216,11 +219,16 @@ const AboutExperience = () => (
             <h1 className="aboutTitle">Experience</h1>
             <img src={flames} width="26px" alt="flames" />
          </div>
-         <div className="aboutSectionEducation">
+         <motion.div
+            className="aboutSectionEducation"
+            initial={{ opacity: 0, x: 100 }} // Slide in from the right
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+         >
             {experiences.map((exp, index) => (
                <AboutExperienceArticle key={index} {...exp} />
             ))}
-         </div>
+         </motion.div>
       </div>
       <img src={flamesBorder} className="flamesBorder" alt="flamesBorder" />
 
@@ -231,11 +239,16 @@ const AboutExperience = () => (
             <img src={flames} width="26px" alt="flames" />
          </div>
 
-         <div className="aboutSectionEducation section">
+         <motion.div
+            className="aboutSectionEducation section"
+            initial={{ opacity: 0, x: 100 }} // Slide in from the right
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+         >
             {education.map((edu, index) => (
                <AboutExperienceArticle key={index} {...edu} />
             ))}
-         </div>
+         </motion.div>
       </div>
    </>
 );

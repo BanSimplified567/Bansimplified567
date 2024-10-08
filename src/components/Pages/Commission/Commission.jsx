@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-
+import { useNavigate } from 'react-router-dom';
 import BanBan from '../../img/BanBan/banban2.jpg';
 import BlogPersonalWeb from '../../img/Commission/blogPersonalWebsite.png';
 import BusinessWeb from '../../img/Commission/Business.png';
@@ -16,30 +15,24 @@ import Linkendin from '../../img/SocialMediaAccounts/Linkendin.png';
 import Tiktok from '../../img/SocialMediaAccounts/TikTok.png';
 import Twitter from '../../img/SocialMediaAccounts/Twitter.png';
 
-import { useNavigate } from 'react-router-dom';
 import Footer from '../../Pages/Extra/Footer/Footer';
 import { SocialMediaLink } from '../Extra/ContactCategory/ContactCategory';
 import Email from '../Extra/Email/Email';
 import './Commission.css';
 
-const slideInVariants = {
-   hidden: { opacity: 0, x: -100 },
-   visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
+const animationProps = {
+   initial: { opacity: 0, x: -100 },
+   whileInView: { opacity: 1, x: 0 },
+   transition: { duration: 0.5 },
 };
 
-const slideOutVariants = {
-   hidden: { opacity: 0, x: 100 },
-   visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
+const animationPropsUp = {
+   initial: { opacity: 0, y: -100 },
+   whileInView: { opacity: 1, y: 0 },
+   transition: { duration: 0.5 },
 };
 
 function Commission() {
-   const [aboutRef, aboutInView] = useInView({ threshold: 0.1, triggerOnce: true });
-   const [firstPersonBioRef, firstPersonBioInView] = useInView({
-      threshold: 0.1,
-      triggerOnce: true,
-   });
-   const [skillsRef, skillsInView] = useInView({ threshold: 0.1, triggerOnce: true });
-
    const pricingPlans = [
       {
          title: 'BASIC',
@@ -83,93 +76,78 @@ function Commission() {
 
    return (
       <div className="comContainer">
-         <div className="comSection">
-            <motion.div
-               className="comSecOne"
-               ref={aboutRef}
-               variants={slideInVariants}
-               initial="hidden"
-               animate={aboutInView ? 'visible' : 'hidden'}
-            >
-               <img src={BanBan} alt="ban" className="banbanTwo" />
-               <div className="comSecTwo">
-                  <h1 className="aboutTitle">
-                     I&#39;M OPEN <br /> FOR COMMISSION
-                  </h1>
-                  <p className="aboutParagraph">Please feel free to contact me #+6393-1028-2926</p>
-                  <div className="comSecThree">
-                     <SocialMediaLink />
-                  </div>
+         <motion.div className="comSecOne" {...animationProps}>
+            <img src={BanBan} alt="ban" className="banbanTwo" />
+            <motion.div className="comSecTwo" {...animationPropsUp}>
+               <h1 className="aboutTitle">
+                  I&#39;M OPEN <br /> FOR COMMISSION
+               </h1>
+               <p className="aboutParagraph">Please feel free to contact me #+6393-1028-2926</p>
+               <div className="comSecThree">
+                  <SocialMediaLink />
                </div>
             </motion.div>
+         </motion.div>
 
-            <motion.div
-               className="comWebsiteBuild"
-               ref={firstPersonBioRef}
-               variants={slideInVariants}
-               initial="hidden"
-               animate={firstPersonBioInView ? 'visible' : 'hidden'}
-            >
-               <h1 className="aboutTitle">What Website Do I Build?</h1>
-            </motion.div>
+         <motion.div className="comWebsiteBuild" {...animationPropsUp}>
+            <h1 className="aboutTitle">What Website Do I Build?</h1>
+         </motion.div>
 
-            <motion.div
-               className="comSecFour"
-               ref={skillsRef}
-               variants={slideOutVariants}
-               initial="hidden"
-               animate={skillsInView ? 'visible' : 'hidden'}
-            >
-               <section className="comSecFive">
-                  <div className="comImageWrapper">
-                     <img src={EcommerceWeb} alt="Ecommerce" />
-                     <div className="comOverlayText">
-                        <h1>E-commerce</h1>
-                     </div>
+         <motion.div className="comSecFour" {...animationProps}>
+            <section className="comSecFive">
+               <div className="comImageWrapper">
+                  <img src={EcommerceWeb} alt="Ecommerce" />
+                  <div className="comOverlayText">
+                     <h1>E-commerce</h1>
                   </div>
-               </section>
-               <section className="comSecFive">
-                  <div className="comImageWrapper">
-                     <img src={BlogPersonalWeb} alt="BlogPersonalWeb" />
-                     <div className="comOverlayText">
-                        <h1>Blog/Personal</h1>
-                     </div>
+               </div>
+            </section>
+            <section className="comSecFive">
+               <div className="comImageWrapper">
+                  <img src={BlogPersonalWeb} alt="BlogPersonalWeb" />
+                  <div className="comOverlayText">
+                     <h1>Blog/Personal</h1>
                   </div>
-               </section>
-               <section className="comSecFive">
-                  <div className="comImageWrapper">
-                     <img src={BusinessWeb} alt="BusinessWeb" />
-                     <div className="comOverlayText">
-                        <h1>Business</h1>
-                     </div>
+               </div>
+            </section>
+            <section className="comSecFive">
+               <div className="comImageWrapper">
+                  <img src={BusinessWeb} alt="BusinessWeb" />
+                  <div className="comOverlayText">
+                     <h1>Business</h1>
                   </div>
-               </section>
-               <section className="comSecFive">
-                  <div className="comImageWrapper">
-                     <img src={ELearningWeb} alt="ELearningWeb" />
-                     <div className="comOverlayText">
-                        <h1>E-Learning Platform</h1>
-                     </div>
+               </div>
+            </section>
+            <section className="comSecFive">
+               <div className="comImageWrapper">
+                  <img src={ELearningWeb} alt="ELearningWeb" />
+                  <div className="comOverlayText">
+                     <h1>E-Learning Platform</h1>
                   </div>
-               </section>
-               <section className="comSecFive">
-                  <div className="comImageWrapper">
-                     <img src={SchoolActivityWeb} alt="SchoolActivityWeb" />
-                     <div className="comOverlayText">
-                        <h1>School Activity</h1>
-                     </div>
+               </div>
+            </section>
+            <section className="comSecFive">
+               <div className="comImageWrapper">
+                  <img src={SchoolActivityWeb} alt="SchoolActivityWeb" />
+                  <div className="comOverlayText">
+                     <h1>School Activity</h1>
                   </div>
-               </section>
-            </motion.div>
-         </div>
-         <div className="comWindowBackground">
+               </div>
+            </section>
+         </motion.div>
+
+         <motion.div className="comWindowBackground" {...animationPropsUp}>
             <h1 className="aboutTitle">Choose the plan that fits you, and only you.</h1>
             <p className="aboutParagraph">
                Dreaming about your websites coming to life in seconds? Now they can be.
             </p>
             <div className="comPanel comPricingTable">
                {pricingPlans.map((plan, index) => (
-                  <div className={`comPricingPlan ${plan.colorClass}`} key={index}>
+                  <motion.div
+                     className={`comPricingPlan ${plan.colorClass}`}
+                     key={index}
+                     {...animationProps}
+                  >
                      <h2 className={`planTitle ${plan.colorClass}`}>{plan.title}</h2>
                      <ul className="comPricingFeatures">
                         {plan.features.map((feature, i) => (
@@ -185,41 +163,44 @@ function Commission() {
                      >
                         {plan.buttonText}
                      </button>
-                  </div>
+                  </motion.div>
                ))}
             </div>
-         </div>
-         <div className="comSectionOne">
+         </motion.div>
+
+         <motion.div className="comSectionOne" {...animationProps}>
             <section className="comSectionTwo">
                <img src={WebSiteFrontend} alt="WebSiteFrontend" />
-               <article className="comSectionThree">
+               <motion.article className="comSectionThree" {...animationPropsUp}>
                   <h2>What does a frontend developer do? </h2>
                   <p className="aboutSemiTitle">
                      A frontend developer is responsible for creating the visual and interactive
                      parts of a website or web application. They work on the user interface (UI),
                      ensuring that users can interact with the site smoothly.
                   </p>
-               </article>
+               </motion.article>
             </section>
-         </div>
-         <div className="comSectionFour">
+         </motion.div>
+
+         <motion.div className="comSectionFour" {...animationPropsUp}>
             <h1 className="aboutTitle">You can find me on</h1>
             <div className="comSectionFive">
                {socialMediaAccounts.map((account, index) => (
-                  <section className="comSectionSix" key={index}>
-                     <h1 className="">{account.name}</h1>
+                  <motion.section className="comSectionSix" key={index} {...animationProps}>
+                     <h1>{account.name}</h1>
                      <img src={account.image} alt={account.name} />
-                  </section>
+                  </motion.section>
                ))}
             </div>
-         </div>
+         </motion.div>
 
-         <section className="homeEmail">
+         <motion.section className="homeEmail" {...animationPropsUp}>
             <p className="aboutSemiTitle">
                Thanks for your interest in me. I&#39;m always open for new ideas.
             </p>
             <Email />
-         </section>
+         </motion.section>
+
          <Footer />
       </div>
    );

@@ -130,7 +130,7 @@ export function SocialMediaLink() {
 function SocialLink({ url, imgSrc, alt }) {
    return (
       <NavLink to={url}>
-         <img src={imgSrc} alt={alt} width="30px" />
+         <img src={imgSrc} alt={alt} width={30} />
       </NavLink>
    );
 }

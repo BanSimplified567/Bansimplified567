@@ -84,6 +84,11 @@
   gap: 1rem;
 }
 
+.contactSubmit:hover {
+  color: var(--background-button-light);
+  background-color: var(--background-button-blue);
+}
+
 .homeLinkSectionContainer {
   display: flex;
   overflow: hidden;
@@ -184,19 +189,18 @@
   }
 }
 
-.homeNavLink,
-.homeLearnMore {
+
+.homeNavLink {
   display: flex;
+  flex-direction: column;
   color: var(--background-button-light);
 }
 
-.homeNavLink {
-  flex-direction: column;
-}
-
 .homeLearnMore {
+  display: flex;
   align-items: center;
   position: relative;
+  color: var(--background-button-light);
 }
 
 .homeLearnMore:hover svg {

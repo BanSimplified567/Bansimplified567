@@ -79,6 +79,10 @@
   transform: translateY(-0.625rem);
 }
 
+.comWebsiteBuild {
+  text-align: center;
+}
+
 .banbanTwo {
   width: 100%;
   max-width: clamp(35rem, 1vw + 1rem, 40rem);

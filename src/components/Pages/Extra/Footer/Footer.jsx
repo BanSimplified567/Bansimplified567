@@ -13,21 +13,8 @@ import Youtube from '../../../img/logos/neon-youtube.png';
 import flamesBorder from '../../../img/assets/borderseparator.gif';
 
 function Footer() {
-   const [experienceRef, experienceInView] = useInView({ threshold: 0.1, triggerOnce: true });
-
-   const slideInVariants = {
-      hidden: { opacity: 0, x: -100 },
-      visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
-   };
-
    return (
-      <motion.section
-         ref={experienceRef}
-         initial="hidden"
-         animate={experienceInView ? 'visible' : 'hidden'}
-         variants={slideInVariants}
-         className="footer"
-      >
+      <motion.section className="footer">
          <div className="footerContainer">
             <h1 className="footerTitle">BANBAN</h1>
             <nav className="footernavbarContainer">

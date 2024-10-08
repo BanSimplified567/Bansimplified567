@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import { useInView } from 'react-intersection-observer';
 import { NavLink } from 'react-router-dom';
 
 import flames from '../../img/assets/animated-flame-01.gif';
@@ -115,23 +114,21 @@ const sections = [
       additionalContent: '',
    },
 ];
-const calculateTimeLeft = (startDate) => {
-   const targetDate = new Date(startDate);
-   targetDate.setFullYear(targetDate.getFullYear() + 2);
-   targetDate.setMonth(targetDate.getMonth() + 8); // Adjusting the target month
-   targetDate.setDate(targetDate.getDate() + 5); // Adjusting the target day
+const calculateTimeLeft = () => {
+   const targetDate = new Date('2022-09-10T00:00:00'); // Set target date to September 10, 2022
 
-   const now = new Date();
-   const difference = targetDate - now;
+   const now = new Date(); // Get the current date and time
+   const difference = now - targetDate; // Calculate the difference in milliseconds
+
    let timeLeft = {};
 
    if (difference > 0) {
       timeLeft = {
-         years: Math.floor(difference / (1000 * 60 * 60 * 24 * 365)),
+         years: Math.floor(difference / (1000 * 60 * 60 * 24 * 365)), // Convert to years
          months: Math.floor(
             (difference % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30)
-         ),
-         days: Math.floor((difference % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24)),
+         ), // Convert remainder to months
+         days: Math.floor((difference % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24)), // Convert remainder to days
       };
    } else {
       timeLeft = {
@@ -144,9 +141,21 @@ const calculateTimeLeft = (startDate) => {
    return timeLeft;
 };
 
+const animationProps = {
+   initial: { opacity: 0, x: -100 },
+   whileInView: { opacity: 1, x: 0 },
+   transition: { duration: 0.5 },
+};
+
+const animationPropsUp = {
+   initial: { opacity: 0, y: -100 },
+   whileInView: { opacity: 1, y: 0 },
+   transition: { duration: 0.5 },
+};
+
 const HomeSlider = ({ repeatCount, text, timeLeft }) => {
    return (
-      <section className="homeSlider">
+      <motion.section className="homeSlider" {...animationProps}>
          <div className="homeSlideTrack">
             {Array.from({ length: repeatCount }).map((_, index) => (
                <div className="homeSlide" key={index}>
@@ -156,27 +165,11 @@ const HomeSlider = ({ repeatCount, text, timeLeft }) => {
                </div>
             ))}
          </div>
-      </section>
+      </motion.section>
    );
 };
 
 const Home = () => {
-   const [aboutRef, aboutInView] = useInView({ threshold: 0.1, triggerOnce: true });
-   const [firstPersonBioRef, firstPersonBioInView] = useInView({
-      threshold: 0.1,
-      triggerOnce: true,
-   });
-   const [skillsRef, skillsInView] = useInView({ threshold: 0.1, triggerOnce: true });
-
-   const slideInVariants = {
-      hidden: { opacity: 0, x: -100 },
-      visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
-   };
-
-   const slideOutVariants = {
-      hidden: { opacity: 0, x: 100 },
-      visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
-   };
    const startDate = '2026-01-01T00:00:00'; // The start date from which the target is calculated
 
    const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(startDate));
@@ -197,45 +190,32 @@ const Home = () => {
    return (
       <>
          <main className="section">
-            <motion.section
-               ref={aboutRef}
-               initial="hidden"
-               animate={aboutInView ? 'visible' : 'hidden'}
-               variants={slideInVariants}
-               className="homeSection"
-            >
+            <motion.section className="homeSection" {...animationPropsUp}>
                <div className="homeSectionOne">
                   <img src="./ban.jpg" alt="banban" className="banbanImage" />
                   <div className="homePerson">
                      <img src={flames} className="flames" alt="flames" />
-                     <p className="homeParagraph">
+                     <motion.p {...animationProps} className="homeParagraph">
                         Jade Ivan V. Bringcola is an Aspiring Software Engineer from the
                         Philippines. 👋👨‍💻
-                     </p>
+                     </motion.p>
                      <img src={flames} className="flames" alt="flames" />
                   </div>
                </div>
                <ContactCategory />
             </motion.section>
+
             <img src={flamesBorder} className="flamesBorder" alt="flamesBorder" />
-            <motion.section
-               ref={firstPersonBioRef}
-               initial="hidden"
-               animate={firstPersonBioInView ? 'visible' : 'hidden'}
-               variants={slideOutVariants}
-            >
+
+            <motion.section>
                <HomeSlider repeatCount={repeatCount} text={text} timeLeft={timeLeft} />
             </motion.section>
+
             <img src={flamesBorder} className="flamesBorder" alt="flamesBorder" />
-            <motion.section
-               ref={skillsRef}
-               initial="hidden"
-               animate={skillsInView ? 'visible' : 'hidden'}
-               variants={slideInVariants}
-               className="homeInfomationToLink section"
-            >
+
+            <motion.section className="homeInfomationToLink section" {...animationPropsUp}>
                {sections.map((section, index) => (
-                  <div key={index} className="homeInfomationSection">
+                  <motion.div key={index} className="homeInfomationSection" {...animationProps}>
                      <div className="homeIntroduction">
                         <div className="homeWhoAmI">
                            <h1 className="homeSemiTitle">{section.title}</h1>
@@ -254,16 +234,23 @@ const Home = () => {
                         </div>
 
                         <div className="homeWhoAmIParagraph">
-                           <p dangerouslySetInnerHTML={{ __html: section.content }} />
-                           {section.additionalContent && <p>{section.additionalContent}</p>}
+                           <motion.p
+                              {...animationProps}
+                              dangerouslySetInnerHTML={{ __html: section.content }}
+                           />
+                           {section.additionalContent && (
+                              <motion.p {...animationProps}>{section.additionalContent}</motion.p>
+                           )}
                         </div>
                      </div>
-                  </div>
+                  </motion.div>
                ))}
             </motion.section>
+
             <section className="homeEmail">
                <Email />
             </section>
+
             <section className="section">
                <Footer />
             </section>

@@ -1,40 +1,20 @@
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 import { NavLink } from 'react-router-dom';
 import flames from '../../img/assets/animated-flame-01.gif';
 import flamesBorder from '../../img/assets/borderseparator.gif';
 import Email from '../Extra/Email/Email';
 import Footer from '../Extra/Footer/Footer';
-import { AboutSkills, AboutExperience } from './AboutSkills';
 import './About.css';
+import { AboutExperience, AboutSkills } from './AboutSkills';
 
 const About = () => {
-   const [aboutRef, aboutInView] = useInView({ threshold: 0.1, triggerOnce: true });
-   const [firstPersonBioRef, firstPersonBioInView] = useInView({
-      threshold: 0.1,
-      triggerOnce: true,
-   });
-   const [skillsRef, skillsInView] = useInView({ threshold: 0.1, triggerOnce: true });
-   const [experienceRef, experienceInView] = useInView({ threshold: 0.1, triggerOnce: true });
-
-   const slideInVariants = {
-      hidden: { opacity: 0, x: -100 },
-      visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
-   };
-
-   const slideOutVariants = {
-      hidden: { opacity: 0, x: 100 },
-      visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
-   };
-
    return (
       <div className="container about">
          <article className="aboutContainer">
             <motion.section
-               ref={aboutRef}
-               initial="hidden"
-               animate={aboutInView ? 'visible' : 'hidden'}
-               variants={slideInVariants}
+               initial={{ opacity: 0, x: -100 }} // Slide in from the left
+               whileInView={{ opacity: 1, x: 0 }}
+               transition={{ duration: 0.5 }}
                className="aboutInformation"
             >
                <h1 className="aboutTitle">NICE TO MEET YOU! I&#39;M BANBAN 👋👨‍💻</h1>
@@ -70,22 +50,26 @@ const About = () => {
                   </svg>
                </NavLink>
             </motion.section>
-            <section>
+            <motion.section>
                <img className="aboutImages" src="./banban.jpg" alt="banban" />
-            </section>
+            </motion.section>
          </article>
          <img src={flamesBorder} className="flamesBorder" alt="flamesBorder" />
          <motion.article
-            ref={firstPersonBioRef}
-            initial="hidden"
-            animate={firstPersonBioInView ? 'visible' : 'hidden'}
-            variants={slideOutVariants}
+            initial={{ opacity: 0, x: 100 }} // Slide in from the right
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
             className="aboutArticle section"
          >
             <div className="aboutArticleSection">
                <section className="aboutFirstPersonBio">
                   <h1 className="aboutTitleArticle">First Person Bio</h1>
-                  <figure className="aboutArticleList">
+                  <motion.figure
+                     className="aboutArticleList"
+                     initial={{ opacity: 0, y: -100 }} // Slide in from the right
+                     whileInView={{ opacity: 1, y: 0 }}
+                     transition={{ duration: 0.5 }}
+                  >
                      {[
                         "Hello! I'm Jade Ivan V. Bringcola, also known as BanBan, from Sibonga, Cebu, Philippines. 👋",
                         "I'm currently pursuing a Bachelor of Science in Information Technology (Programming) in the Philippines. 👨‍💻",
@@ -97,13 +81,18 @@ const About = () => {
                            <img src={flames} className="flames" alt="flames" /> {text}
                         </p>
                      ))}
-                  </figure>
+                  </motion.figure>
                </section>
             </div>
             <div className="aboutArticleSection">
                <section className="aboutThirdPersonBio">
                   <h1 className="aboutTitleArticle">Third Person Bio</h1>
-                  <figure className="aboutArticleList">
+                  <motion.figure
+                     className="aboutArticleList"
+                     initial={{ opacity: 0, y: -100 }} // Slide in from the right
+                     whileInView={{ opacity: 1, y: 0 }}
+                     transition={{ duration: 0.5 }}
+                  >
                      {[
                         'Jade Ivan V. Bringcola, also known as BanBan, from Sibonga, Cebu, Philippines. 👋',
                         'His curiosity about how websites work led him to explore and study the web development roadmap. 👨‍💻',
@@ -115,32 +104,41 @@ const About = () => {
                            <img src={flames} className="flames" alt="flames" /> {text}
                         </p>
                      ))}
-                  </figure>
+                  </motion.figure>
                </section>
             </div>
          </motion.article>
          <img src={flamesBorder} className="flamesBorder" alt="flamesBorder" />
          <motion.article
-            ref={skillsRef}
-            initial="hidden"
-            animate={skillsInView ? 'visible' : 'hidden'}
-            variants={slideInVariants}
+            initial={{ opacity: 0, x: -100 }} // Slide in from the left
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
             className="section"
          >
             <section>
-               <div className="aboutSkillsOfMine">
+               <motion.div
+                  className="aboutSkillsOfMine"
+                  initial={{ opacity: 0, y: -100 }} // Slide in from the right
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+               >
                   <img src={flames} className="flames" alt="flames" />
                   <h1 className="aboutTitle border">Skills Of Mine 👨‍💻</h1>
                   <img src={flames} className="flames" alt="flames" />
-               </div>
-               <p className="aboutSemiTitle">
+               </motion.div>
+               <motion.p
+                  className="aboutSemiTitle"
+                  initial={{ opacity: 0, x: 100 }} // Slide in from the right
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5 }}
+               >
                   Hello!👋 I am an enthusiastic Front-end Developer passionate about creating
                   dynamic and engaging web experiences. With a solid foundation in front-end
                   technologies, I strive to build websites and applications that are not only
                   visually appealing but also highly functional and user-friendly. My expertise lies
                   primarily in the front-end domain, where I employ a variety of tools and
                   technologies to bring designs to life. Here are some of the skills I utilize:
-               </p>
+               </motion.p>
             </section>
             <section className="aboutSkills section">
                <AboutSkills />
@@ -148,9 +146,9 @@ const About = () => {
             <img src={flamesBorder} className="flamesBorder" alt="flamesBorder" />
             <motion.section
                className="aboutExperience section"
-               animate={experienceInView ? 'visible' : 'hidden'}
-               variants={slideInVariants}
-               ref={experienceRef}
+               initial={{ opacity: 0, x: 100 }} // Slide in from the right
+               whileInView={{ opacity: 1, x: 0 }}
+               transition={{ duration: 0.5 }}
             >
                <AboutExperience />
             </motion.section>

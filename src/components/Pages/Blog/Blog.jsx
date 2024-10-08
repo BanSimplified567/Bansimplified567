@@ -162,88 +162,135 @@ const programmersData = [
 ];
 
 function Blog() {
-   const [aboutRef, aboutInView] = useInView({ threshold: 0.1, triggerOnce: true });
-   const [firstPersonBioRef, firstPersonBioInView] = useInView({
-      threshold: 0.1,
-      triggerOnce: true,
-   });
-
-   const slideInVariants = {
-      hidden: { opacity: 0, x: -100 },
-      visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
-   };
-
-   const slideOutVariants = {
-      hidden: { opacity: 0, x: 100 },
-      visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
-   };
-
    return (
       <main className="section">
-         <section className="aboutMain">
-            <h1 className="aboutTitle blog">BLOG</h1>
-            <div ref={aboutRef}>
-               <img src={flamesBorder} className="flamesBorder" alt="flamesBorder" />
-               <h1 className="aboutParagraph">
+         <motion.section className="aboutMain">
+            <motion.h1
+               className="aboutTitle blog"
+               initial={{ opacity: 0, x: 100 }}
+               whileInView={{ opacity: 1, x: 0 }}
+               transition={{ duration: 0.5 }}
+            >
+               BLOG
+            </motion.h1>
+
+            <motion.div>
+               <motion.img
+                  src={flamesBorder}
+                  className="flamesBorder"
+                  alt="flamesBorder"
+                  initial={{ opacity: 0, x: 100 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5 }}
+               />
+               <motion.h1
+                  className="aboutParagraph"
+                  initial={{ opacity: 0, x: 100 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5 }}
+               >
                   <img src={flames} className="flames" alt="flames" />
                   These websites help me understand how code works.
-               </h1>
-            </div>
-            <motion.article
-               className="blogArticle"
-               ref={firstPersonBioRef}
-               initial="hidden"
-               animate={aboutInView ? 'visible' : 'hidden'}
-               variants={slideInVariants}
-            >
+               </motion.h1>
+            </motion.div>
+
+            <motion.article className="blogArticle">
                {resourcesData.map((resource, index) => (
-                  <div className="blogCards" key={index}>
+                  <motion.div className="blogCards" key={index}>
                      <NavLink className="blogCard" to={resource.link} target="_blank">
-                        <img src={resource.src} alt={resource.name} className="freeCodeCamp" />
+                        <motion.img
+                           src={resource.src}
+                           alt={resource.name}
+                           className="freeCodeCamp"
+                           initial={{ opacity: 0, x: 100 }}
+                           whileInView={{ opacity: 1, x: 0 }}
+                           transition={{ duration: 0.5 }}
+                        />
                         <div className="portCardBody">
-                           <h2 className="portCardTitle">{resource.title}</h2>
-                           <p className="portCardDescription">{resource.description}</p>
+                           <motion.h2
+                              className="portCardTitle"
+                              initial={{ opacity: 0, x: 100 }}
+                              whileInView={{ opacity: 1, x: 0 }}
+                              transition={{ duration: 0.5 }}
+                           >
+                              {resource.title}
+                           </motion.h2>
+                           <motion.p
+                              className="portCardDescription"
+                              initial={{ opacity: 0, x: 100 }}
+                              whileInView={{ opacity: 1, x: 0 }}
+                              transition={{ duration: 0.5 }}
+                           >
+                              {resource.description}
+                           </motion.p>
                         </div>
                      </NavLink>
-                  </div>
+                  </motion.div>
                ))}
             </motion.article>
 
-            <div ref={firstPersonBioRef}>
-               <img src={flamesBorder} className="flamesBorder" alt="flamesBorder" />
-               <h1 className="aboutParagraph">
+            <motion.div>
+               <motion.img
+                  src={flamesBorder}
+                  className="flamesBorder"
+                  alt="flamesBorder"
+                  initial={{ opacity: 0, x: 100 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5 }}
+               />
+               <motion.h1
+                  className="aboutParagraph"
+                  initial={{ opacity: 0, y: -100 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+               >
                   <img src={flames} className="flames" alt="flames" /> These programmers help me
                   with Web Development.
-               </h1>
-            </div>
+               </motion.h1>
+            </motion.div>
 
-            <motion.article
-               className="blogArticle"
-               ref={firstPersonBioRef}
-               initial="hidden"
-               animate={firstPersonBioInView ? 'visible' : 'hidden'}
-               variants={slideOutVariants}
-            >
+            <motion.article className="blogArticle">
                {programmersData.map((programmer, index) => (
-                  <div className="blogCards" key={index}>
+                  <motion.div className="blogCards" key={index}>
                      <NavLink className="blogCard" to={programmer.link} target="_blank">
-                        <img src={programmer.src} alt={programmer.name} className="freeCodeCamp" />
+                        <motion.img
+                           src={programmer.src}
+                           alt={programmer.name}
+                           className="freeCodeCamp"
+                           initial={{ opacity: 0, y: 100 }}
+                           whileInView={{ opacity: 1, y: 0 }}
+                           transition={{ duration: 0.5 }}
+                        />
                         <div className="portCardBody">
-                           <h2 className="portCardTitle">{programmer.title}</h2>
-                           <p className="portCardDescription">{programmer.description}</p>
+                           <motion.h2
+                              className="portCardTitle"
+                              initial={{ opacity: 0, x: -100 }}
+                              whileInView={{ opacity: 1, x: 0 }}
+                              transition={{ duration: 0.5 }}
+                           >
+                              {programmer.title}
+                           </motion.h2>
+                           <motion.p
+                              className="portCardDescription"
+                              initial={{ opacity: 0, x: 100 }}
+                              whileInView={{ opacity: 1, x: 0 }}
+                              transition={{ duration: 0.5 }}
+                           >
+                              {programmer.description}
+                           </motion.p>
                         </div>
                      </NavLink>
-                  </div>
+                  </motion.div>
                ))}
             </motion.article>
-         </section>
+         </motion.section>
 
-         <section className="homeEmail">
+         <motion.section className="homeEmail">
             <Email />
-         </section>
-         <section className="section">
+         </motion.section>
+         <motion.section className="section">
             <Footer />
-         </section>
+         </motion.section>
       </main>
    );
 }

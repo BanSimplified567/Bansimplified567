@@ -85,20 +85,17 @@ const resources = [
          'Sass is a powerful CSS preprocessor that allows you to write more maintainable and efficient CSS. It offers variables, nested rules, and mixins to enhance your CSS workflow.',
    },
 ];
-
 function Skills() {
-   const [aboutRef, aboutInView] = useInView({ threshold: 0.1, triggerOnce: true });
-
-   const [skillsRef, skillsInView] = useInView({ threshold: 0.1, triggerOnce: true });
-
-   const slideInVariants = {
-      hidden: { opacity: 0, x: -100 },
-      visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
+   const animationProps = {
+      initial: { opacity: 0, x: -100 },
+      whileInView: { opacity: 1, x: 0 },
+      transition: { duration: 0.5 },
    };
 
-   const slideOutVariants = {
-      hidden: { opacity: 0, x: 100 },
-      visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
+   const animationPropsUp = {
+      initial: { opacity: 0, y: -100 },
+      whileInView: { opacity: 1, y: 0 },
+      transition: { duration: 0.5 },
    };
 
    return (
@@ -106,25 +103,13 @@ function Skills() {
          <div className="skillsContainer">
             <img src={flamesBorder} className="flamesBorder" alt="flamesBorder" />
             <article className="section">
-               <motion.section
-                  ref={aboutRef}
-                  initial="hidden"
-                  animate={aboutInView ? 'visible' : 'hidden'}
-                  variants={slideInVariants}
-               >
-                  <div className="aboutSkillsOfMine" ref={aboutRef}>
+               <motion.section {...animationProps}>
+                  <div className="aboutSkillsOfMine">
                      <img src={flames} width="26px" alt="flames" />
-                     <h1 className={`aboutTitle border ${aboutInView ? 'visible' : 'hidden'}`}>
-                        Skills Of Mine 👨‍💻
-                     </h1>
+                     <h1 className="aboutTitle border">Skills Of Mine 👨‍💻</h1>
                      <img src={flames} width="26px" alt="flames" />
                   </div>
-                  <motion.p
-                     className="aboutSemiTitle"
-                     initial="hidden"
-                     animate={aboutInView ? 'visible' : 'hidden'}
-                     variants={slideInVariants}
-                  >
+                  <motion.p className="aboutSemiTitle" {...animationPropsUp}>
                      Hello!👋 I am an enthusiastic Front-end Developer passionate about creating
                      dynamic and engaging web experiences. With a solid foundation in front-end
                      technologies, I strive to build websites and applications that are not only
@@ -134,32 +119,30 @@ function Skills() {
                   </motion.p>
                </motion.section>
 
-               <motion.section
-                  className="aboutSkills section"
-                  ref={skillsRef}
-                  initial="hidden"
-                  animate={aboutInView ? 'visible' : 'hidden'}
-                  variants={slideOutVariants}
-               >
+               <motion.section className="aboutSkills section" {...animationProps}>
                   <AboutSkills />
                </motion.section>
             </article>
-            <article className="skillsArticle" ref={skillsRef}>
+            <article className="skillsArticle">
                {resources.map((resource, index) => (
-                  <motion.div
-                     className="skillsCards"
-                     key={index}
-                     initial="hidden"
-                     animate={skillsInView ? 'visible' : 'hidden'}
-                     variants={slideOutVariants}
-                  >
+                  <motion.div className="skillsCards" key={index} {...animationProps}>
                      <NavLink className="skillsCard" to={resource.link} target="_blank">
-                        <img src={resource.src} alt={resource.alt} className="skillsCardsImages" />
+                        <motion.img
+                           {...animationPropsUp}
+                           src={resource.src}
+                           alt={resource.alt}
+                           className="skillsCardsImages"
+                        />
                         <div className="portCardBody">
-                           <h2 className="portCardTitle skillsTitle">{resource.title}</h2>
-                           <p className="portCardDescription skillsdescription">
+                           <motion.h2 {...animationProps} className="portCardTitle skillsTitle">
+                              {resource.title}
+                           </motion.h2>
+                           <motion.p
+                              {...animationPropsUp}
+                              className="portCardDescription skillsdescription"
+                           >
                               {resource.description}
-                           </p>
+                           </motion.p>
                         </div>
                      </NavLink>
                   </motion.div>

@@ -34,6 +34,11 @@
   object-fit: cover;
 }
 
+.portCard {
+  aspect-ratio: 2/2.1;
+  object-fit: cover;
+}
+
 .portCardBody {
   padding: 1rem;
 }
@@ -55,7 +60,7 @@
   }
 
   .blogArticle {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     padding: 10px;
   }
 
@@ -79,5 +84,10 @@
 
   .portCardDescription {
     font-size: 0.8rem;
+  }
+
+  .blogArticle {
+    grid-template-columns: repeat(1, 1fr);
+    padding: 10px;
   }
 }

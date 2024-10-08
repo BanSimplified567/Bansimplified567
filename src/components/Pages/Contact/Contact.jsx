@@ -1,30 +1,23 @@
 import Email from '../../Pages/Extra/Email/Email';
 import Footer from '../../Pages/Extra/Footer/Footer';
-
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-
 import { useState } from 'react';
 import './Contact.css';
 import { ContactCategory, SocialMediaLink } from '../Extra/ContactCategory/ContactCategory';
 
+const animationProps = {
+   initial: { opacity: 0, x: -100 },
+   whileInView: { opacity: 1, x: 0 },
+   transition: { duration: 0.5 },
+};
+
+const animationPropsUp = {
+   initial: { opacity: 0, y: -100 },
+   whileInView: { opacity: 1, y: 0 },
+   transition: { duration: 0.5 },
+};
+
 function Contact() {
-   const [aboutRef, aboutInView] = useInView({ threshold: 0.1, triggerOnce: true });
-   const [firstPersonBioRef, firstPersonBioInView] = useInView({
-      threshold: 0.1,
-      triggerOnce: true,
-   });
-
-   const slideInVariants = {
-      hidden: { opacity: 0, x: -100 },
-      visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
-   };
-
-   const slideOutVariants = {
-      hidden: { opacity: 0, x: 100 },
-      visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
-   };
-
    const [formData, setFormData] = useState({
       name: '',
       email: '',
@@ -50,30 +43,19 @@ function Contact() {
       <>
          <main className="section">
             <div className="contact">
-               <div>
-                  <motion.section
-                     className="contactContactMe"
-                     ref={aboutRef}
-                     initial="hidden"
-                     animate={aboutInView ? 'visible' : 'hidden'}
-                     variants={slideOutVariants}
-                  >
+               <motion.div {...animationProps} className="contactContactMe">
+                  <motion.section {...animationPropsUp}>
                      <h1 className="aboutTitle">LET&#39;S WORK TOGETHER 📨</h1>
-
-                     <ContactCategory />
                   </motion.section>
-               </div>
+                  <ContactCategory />
+               </motion.div>
 
-               <motion.section
-                  className="contactSendMessage"
-                  ref={firstPersonBioRef}
-                  initial="hidden"
-                  animate={firstPersonBioInView ? 'visible' : 'hidden'}
-                  variants={slideInVariants}
-               >
+               <motion.section {...animationProps} className="contactSendMessage">
                   <form className="contactForm" onSubmit={handleSubmit}>
-                     <h1 className="contactTitle">Send me a message</h1>
-                     <div className="contactFormGroup">
+                     <motion.h1 {...animationPropsUp} className="contactTitle">
+                        Send me a message
+                     </motion.h1>
+                     <motion.div {...animationProps} className="contactFormGroup">
                         <label>Name: </label>
                         <input
                            type="text"
@@ -84,8 +66,8 @@ function Contact() {
                            required
                            placeholder="Enter your name..."
                         />
-                     </div>
-                     <div className="contactFormGroup">
+                     </motion.div>
+                     <motion.div {...animationProps} className="contactFormGroup">
                         <label>Email: </label>
                         <input
                            type="email"
@@ -96,8 +78,8 @@ function Contact() {
                            required
                            placeholder="Enter your email..."
                         />
-                     </div>
-                     <div className="contactFormGroup">
+                     </motion.div>
+                     <motion.div {...animationProps} className="contactFormGroup">
                         <label>Message: </label>
                         <textarea
                            className="contactMessage"
@@ -107,13 +89,13 @@ function Contact() {
                            required
                            placeholder="Enter your message..."
                         ></textarea>
-                     </div>
-                     <button type="submit" className="contactSubmit">
+                     </motion.div>
+                     <motion.button type="submit" className="contactSubmit" {...animationPropsUp}>
                         Send Message
-                     </button>
+                     </motion.button>
                   </form>
                   {submitted && (
-                     <div className="submittedDataContainer">
+                     <motion.div {...animationProps} className="submittedDataContainer">
                         <h2>Submitted Information</h2>
                         <p>
                            <strong>Name:</strong> {formData.name}
@@ -124,10 +106,10 @@ function Contact() {
                         <p>
                            <strong>Message:</strong> {formData.message}
                         </p>
-                     </div>
+                     </motion.div>
                   )}
 
-                  <div className="contactInformation">
+                  <motion.div {...animationProps} className="contactInformation">
                      <div className="contactInfoLoc">
                         <div className="contactInfo">
                            <h1>Contact Information</h1>
@@ -143,22 +125,22 @@ function Contact() {
                               about me.
                            </p>
                         </div>
-                        <div className="socialIcons">
+                        <motion.div {...animationPropsUp} className="socialIcons">
                            <h4>Follow Me: </h4>
                            <div className="contactSocialLink">
                               <SocialMediaLink />
                            </div>
-                        </div>
+                        </motion.div>
                      </div>
-                  </div>
+                  </motion.div>
                </motion.section>
             </div>
-            <section className="homeEmail">
+            <motion.section {...animationProps} className="homeEmail">
                <Email />
-            </section>
-            <section className="section">
+            </motion.section>
+            <motion.section {...animationProps} className="section">
                <Footer />
-            </section>
+            </motion.section>
          </main>
       </>
    );
