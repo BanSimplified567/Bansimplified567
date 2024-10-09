@@ -213,10 +213,8 @@
     <img src="https://github-readme-stats.vercel.app/api/pin/?username=BanSimplified567&theme=radical&repo=pizzaban" width="49%" alt="pizzaban-store"/>
   </a> <a href="https://github.com/BanSimplified567/pizzaban-store" target="_blank">
     <img src="https://github-readme-stats.vercel.app/api/pin/?username=BanSimplified567&theme=radical&repo=pizzaban-store" width="49%" alt="pizzaban-store"/>
-  </a><a href="https://github.com/BanSimplified567/Confession" target="_blank">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=BanSimplified567&theme=radical&repo=Confession" width="49%" alt="Confession"/>
-  </a><a href="https://github.com/BanSimplified567/Bulb-Switch" target="_blank">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=BanSimplified567&theme=radical&repo=Bulb-Switch" width="49%" alt="Bulb-Switch"/>
+  </a> <a href="https://github.com/BanSimplified567/BanHotel" target="_blank">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=BanSimplified567&theme=radical&repo=BanHotel" width="49%" alt="BanHotele"/>
   </a>
 </div>
  <img src="./src/components/img/assets/borderseparator.gif"/> </h2>
