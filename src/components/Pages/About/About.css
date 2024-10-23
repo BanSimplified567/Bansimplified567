@@ -41,7 +41,7 @@
   font-size: var(--aboutTitle-size);
   font-family: var(--font-title);
   font-weight: 900;
-  line-height: .8;
+  line-height: 1;
 }
 
 

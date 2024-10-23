@@ -216,6 +216,9 @@
   </a> <a href="https://github.com/BanSimplified567/BanHotel" target="_blank">
     <img src="https://github-readme-stats.vercel.app/api/pin/?username=BanSimplified567&theme=radical&repo=BanHotel" width="49%" alt="BanHotele"/>
   </a>
+  <a href="https://github.com/BanSimplified567/LUXESTORE" target="_blank">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=BanSimplified567&theme=radical&repo=LUXESTORE" width="49%" alt="LUXESTORE"/>
+  </a>
 </div>
  <img src="./src/components/img/assets/borderseparator.gif"/> </h2>
 
