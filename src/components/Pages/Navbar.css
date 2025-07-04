@@ -6,10 +6,11 @@
   justify-content: space-evenly;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1200px) {
   .navbarContainer {
     justify-content: flex-start;
     margin-left: 2rem;
+    position: relative;
   }
 }
 
@@ -20,6 +21,7 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
   gap: 2rem;
+  width: 100%;
 }
 
 /* Styling for nav link wrappers */
@@ -27,6 +29,28 @@
   display: flex;
   gap: 2rem;
   position: relative;
+}
+
+.navLink.desktop {
+  display: flex;
+}
+
+.navLink.closed {
+  display: none;
+}
+
+.navLink.open {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #000;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
 }
 
 /* Title in the navbar */
@@ -47,7 +71,6 @@
   font-size: 1rem;
   transition: color 0.3s;
   position: relative;
-  /* Needed for the hover effect */
 }
 
 /* Specific styling for the "About" link (example) */
@@ -91,9 +114,17 @@
   font-weight: bold;
   text-decoration: none;
   border-radius: 50px;
-  /* Creates an oval shape */
   border: 1px solid;
-  /* Border for both elements */
+}
+
+/* Mobile links styling */
+.mobileLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--text-color);
 }
 
 /* CSS for hover text */
@@ -103,7 +134,6 @@
   content: attr(title);
   position: absolute;
   top: -30px;
-  /* Adjust the value as needed */
   left: 50%;
   transform: translateX(-50%);
   background-color: var(--background-button);
@@ -116,70 +146,60 @@
   font-weight: normal;
 }
 
+/* Menu button - hidden by default */
 .menuButton {
   display: none;
-}
-
-@media screen and (max-width: 340px) {
-
-  /* Hide menu button for screens 300px or smaller */
-  .menuButton {
-    display: none;
-  }
+  background-color: var(--background-button);
+  color: var(--text-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 0.5rem;
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
 }
 
 /* Responsive styles */
 @media screen and (max-width: 1200px) {
-  .menuButton {
-    display: block;
-    max-width: 100%;
-    position: absolute;
-    background-color: var(--background-button);
-    color: var(--text-color);
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    top: 1rem;
-    right: 2rem;
-  }
-
-  /* CSS for hover text */
-  .navbarLinks:hover::after,
-  .navMentor:hover::after,
-  .navHireMe:hover::after {
-    content: attr(title);
-    position: absolute;
-    /* Adjust the value as needed */
-    left: 12rem;
-    top: 0;
-    background-color: var(--background-button);
-    color: var(--text-color);
-    padding: 5px 10px;
-    border-radius: 5px;
-    white-space: nowrap;
-    z-index: 1;
-    font-size: 0.75rem;
-    font-weight: normal;
-  }
-
-  .navLink {
-    display: none;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .navLink.open {
-    display: flex;
-  }
-
   .navbarLink {
     flex-direction: column;
     align-items: flex-start;
+    position: relative;
   }
 
   .navbarTitle {
     border-right: none;
     padding-right: 0;
     margin-bottom: 1rem;
+  }
+
+  /* Show menu button on mobile */
+  .menuButton {
+    display: block;
+  }
+
+  /* Adjust hover tooltips for mobile */
+  .navbarLinks:hover::after,
+  .navMentor:hover::after,
+  .navHireMe:hover::after {
+    left: 12rem;
+    top: 0;
+    transform: none;
+  }
+
+  /* Hide desktop actions on mobile */
+  .desktopActions {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 340px) {
+  .menuButton {
+    right: 1rem;
+  }
+
+  .navbarContainer {
+    margin-left: 1rem;
   }
 }
