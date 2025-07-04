@@ -1,87 +1,175 @@
-
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: clamp(1rem, 2vw, 2rem);
+  box-sizing: border-box;
+}
 
 .activeWelcome {
   display: flex;
-  justify-content: space-around;
-  gap: 2rem;
+  justify-content: space-between;
   align-items: center;
-  padding-block: 2rem;
-}
-
-@media screen and (max-width: 1024px) {
-  .activeWelcome {
-    text-align: center;
-    flex-wrap: wrap;
-    padding-block: 1.5rem;
-  }
+  gap: clamp(1rem, 2vw, 2rem);
+  padding-block: clamp(1rem, 2vw, 2rem);
 }
 
 @media screen and (max-width: 768px) {
   .activeWelcome {
+    flex-direction: column;
+    text-align: center;
     gap: 1rem;
     padding-block: 1rem;
-    /* Adjust padding for mobile screens */
   }
+}
+
+.activeWelcome img {
+  width: clamp(10rem, 40%, 20rem);
+  height: auto;
+  object-fit: contain;
+}
+
+.aboutTitle {
+  font-size: var(--h1-size);
+  font-family: var(--font-title);
+  color: var(--text-color);
+  margin: clamp(1rem, 2vw, 1.5rem) 0;
+}
+
+@media screen and (max-width: 768px) {
+  .aboutTitle {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .aboutTitle {
+    font-size: clamp(1.2rem, 2.5vw, 2rem);
+  }
+}
+
+.activeWelcome p {
+  font-size: var(--p-size);
+  font-family: var(--font-semi-title);
+  color: var(--background-button-light);
+  max-width: clamp(20rem, 80%, 40rem);
+}
+
+.blogArticle {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(clamp(15rem, 30%, 20rem), 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+  padding: clamp(1rem, 2vw, 2rem) 0;
+}
+
+.blogCards {
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blogCards:hover {
+  transform: translateY(-0.5rem);
+  box-shadow: 0 0 10px var(--background-button-violet);
+}
+
+.blogCard {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: var(--background-button-light);
+}
+
+.freeCodeCamp {
+  width: 100%;
+  height: clamp(10rem, 30vw, 15rem);
+  object-fit: cover;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.portCardBody {
+  padding: clamp(0.5rem, 1vw, 1rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.portCardTitle {
+  font-size: var(--h2-size);
+  font-family: var(--font-semi-title);
+  color: var(--text-color);
+  margin: 0;
+}
+
+.portCardDescription {
+  font-size: var(--p-size);
+  font-family: var(--font-semi-title);
+  color: var(--background-button-light);
+  margin: 0;
 }
 
 .activeExternal {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  border: solid 1px var(--background-button-light);
-  overflow: hidden;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1rem, 2vw, 1.5rem);
+  border: 1px solid var(--background-button-light);
+  border-radius: 0.5rem;
+  padding: clamp(0.5rem, 1vw, 1rem);
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 768px) {
   .activeExternal {
     grid-template-columns: 1fr;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .activeExternal {
-    border-radius: 20px;
-  }
-}
-
-.activeTitle {
-  font-size: var(--h1-size);
-}
-
-@media screen and (max-width: 1024px) {
-  .activeTitle {
-    font-size: clamp(1.5rem, 1.2rem + 2vw, 3rem);
-    /* Adjusting based on screen size */
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .activeTitle {
-    font-size: clamp(1.2rem, 1rem + 1.5vw, 2.5rem);
-    /* Adjusting based on screen size */
+    border-radius: 1rem;
   }
 }
 
 .activeStatItem {
   display: flex;
   flex-direction: column;
+  gap: 0.5rem;
+}
+
+.activeStatsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.5rem, 1vw, 1rem);
 }
 
 .activeImage {
   width: 100%;
-  max-width: 100%;
-  min-width: 100%;
-  height: 100%;
+  max-width: clamp(20rem, 90%, 30rem);
+  height: auto;
   object-fit: contain;
-}
-
-@media screen and (max-width: 1024px) {
-  .activeImage {
-    width: 25rem;
-  }
 }
 
 @media screen and (max-width: 768px) {
   .activeImage {
-    width: 100%;
+    max-width: 100%;
   }
+}
+
+.banbanImage {
+  width: 100%;
+  max-width: clamp(15rem, 50%, 25rem);
+  height: auto;
+  object-fit: contain;
+  border-radius: 0.5rem;
+}
+
+.active h1 {
+  font-size: var(--h3-size);
+  font-family: var(--font-semi-title);
+  color: var(--text-color);
+  margin: clamp(0.5rem, 1vw, 1rem) 0;
+}
+
+@media screen and (max-width: 480px) {
+  .active h1 {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+  }
+}
+
+.active {
+  margin: clamp(1rem, 2vw, 2rem) 0;
 }

@@ -95,8 +95,8 @@ function Activities() {
                <motion.div
                   key={index}
                   className="blogCards"
-                  initial={{ opacity: 0, y: -100 }} // Slide in from left
-                  whileInView={{ opacity: 1, y: 0 }} // Slide to center
+                  initial={{ opacity: 0, y: -100 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
                >
                   <NavLink className="blogCard" to={activity.link} target="_blank">
@@ -149,7 +149,7 @@ function Activities() {
                <path d="M14.25 9.375h-4.5a.375.375 0 0 0-.375.375v4.5c0 .207.168.375.375.375h4.5a.375.375 0 0 0 .375-.375v-4.5a.375.375 0 0 0-.375-.375Z" />
                <path d="M21.375 9.375h-4.5a.375.375 0 0 0-.375.375v4.5c0 .207.168.375.375.375h4.5a.375.375 0 0 0 .375-.375v-4.5a.375.375 0 0 0-.375-.375Z" />
                <path d="M7.125 16.5h-4.5a.375.375 0 0 0-.375.375v4.5c0 .207.168.375.375.375h4.5a.375.375 0 0 0 .375-.375v-4.5a.375.375 0 0 0-.375-.375Z" />
-               <path d="M14.25 16.5h-4.5a.375.375 0 0 0-.375.375v4.5c0 .207.168.375.375.375h4.5a.375.375 0 0 0 .375-.375v-4.5a.375.375 0 0 0-.375-.375Z" />
+               <path d="M14.25 16.5h-4.5a.375.375 0 0 0-.375.375v4.5c0 .207.168.375.375.375h4.5a.375.375 0 0 0 .375-.375v-4.5a.375.375 0 0 0-. that375-.375Z" />
                <path d="M21.375 16.5h-4.5a.375.375 0 0 0-.375.375v4.5c0 .207.168.375.375.375h4.5a.375.375 0 0 0 .375-.375v-4.5a.375.375 0 0 0-.375-.375Z" />
             </svg>
             WakaTime Activity
@@ -194,12 +194,12 @@ function Activities() {
                      />
                   </a>
                </div>
-               <motion.div
-                  initial={{ opacity: 0, x: 100 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5 }}
-               >
-                  <h1>
+               <div className="activeStatItem">
+                  <motion.h1
+                     initial={{ opacity: 0, y: 100 }}
+                     whileInView={{ opacity: 1, y: 0 }}
+                     transition={{ duration: 0.5 }}
+                  >
                      <svg
                         width="20"
                         height="15"
@@ -215,7 +215,7 @@ function Activities() {
                         <path d="m16.5 8.25-6.3 7.5-2.7-3" />
                      </svg>
                      WakaTime Active
-                  </h1>
+                  </motion.h1>
                   <a href="https://wakatime.com" target="_blank" rel="noopener noreferrer">
                      <motion.img
                         src="https://wakatime.com/share/@BanBan/8f2a2577-a6d4-4a17-b839-30c5da0183d9.png"
@@ -226,7 +226,7 @@ function Activities() {
                         transition={{ duration: 0.5 }}
                      />
                   </a>
-               </motion.div>
+               </div>
             </motion.div>
          </motion.section>
 

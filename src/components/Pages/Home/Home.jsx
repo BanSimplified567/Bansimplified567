@@ -189,7 +189,7 @@ const Home = () => {
    const repeatCount = 10; // Adjust this count to control how many times the text repeats
 
 
-   
+
    return (
       <>
          <main className="section">

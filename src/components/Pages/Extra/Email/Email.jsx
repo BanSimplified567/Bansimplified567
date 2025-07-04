@@ -1,9 +1,8 @@
-import imagesMail from '../../../img/assets/vaporwave-aesthetic.gif';
-
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import './Email.css';
+import imagesMail from '../../../img/assets/vaporwave-aesthetic.gif';
 import { SocialMediaLink } from '../ContactCategory/ContactCategory';
+import './Email.css';
 
 function Email() {
    const [experienceRef, experienceInView] = useInView({ threshold: 0.1, triggerOnce: true });
