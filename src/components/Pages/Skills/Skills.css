@@ -73,26 +73,6 @@
   margin-bottom: 1.5rem;
 }
 
-.aboutTitle {
-  font-size: var(--h1-size);
-  font-weight: 700;
-  color: var(--text-primary);
-  position: relative;
-  padding-bottom: 0.5rem;
-}
-
-.aboutTitle::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  height: 3px;
-  background: var(--accent-color);
-  border-radius: 2px;
-}
-
 
 
 
@@ -113,9 +93,6 @@
     font-size: 2rem;
   }
 
-  .aboutTitle {
-    font-size: 3rem;
-  }
 }
 
 /* Desktop Small */
@@ -138,10 +115,6 @@
 
   .skillsTitle {
     font-size: 1.5rem;
-  }
-
-  .aboutTitle {
-    font-size: 2.25rem;
   }
 
   .skillsCardsImages {
@@ -168,9 +141,6 @@
     font-size: 1.25rem;
   }
 
-  .aboutTitle {
-    font-size: 2rem;
-  }
 
   .skillsCardsImages {
     width: 80px;
@@ -183,9 +153,6 @@
     font-size: 1.1rem;
   }
 
-  .aboutTitle {
-    font-size: 1.75rem;
-  }
 
   .skillsCardsImages {
     width: 60px;

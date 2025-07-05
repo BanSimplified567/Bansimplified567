@@ -27,12 +27,6 @@
   --transition: all 0.3s ease;
 
 
-
-
-
-
-
-
   --h1-size: clamp(2rem, 3vw + 1rem, 4rem);
   --h2-size: clamp(1.5rem, 2vw + 1.2rem, 3rem);
   --h3-size: clamp(1.2rem, 1rem + 1.5vw, 2.5rem);
@@ -67,29 +61,15 @@ html {
 }
 
 .container {
-  max-width: 1200px;
   overflow: hidden;
   margin-inline: 1.5rem;
+  padding: 1rem;
 }
 
-@media screen and (max-width: 340px) {
-  .container {
-    margin-inline: 1rem;
-  }
-}
-
-@media screen and (min-width: 1064px) {
-  .container {
-    margin-inline: auto;
-  }
-}
 
 .section {
   max-width: 100%;
 }
-
-
-
 
 h1,
 h2,

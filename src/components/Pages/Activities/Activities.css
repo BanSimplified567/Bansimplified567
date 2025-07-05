@@ -1,10 +1,3 @@
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: clamp(1rem, 2vw, 2rem);
-  box-sizing: border-box;
-}
 
 .activeWelcome {
   display: flex;
@@ -27,25 +20,6 @@
   width: clamp(10rem, 40%, 20rem);
   height: auto;
   object-fit: contain;
-}
-
-.aboutTitle {
-  font-size: var(--h1-size);
-  font-family: var(--font-title);
-  color: var(--text-color);
-  margin: clamp(1rem, 2vw, 1.5rem) 0;
-}
-
-@media screen and (max-width: 768px) {
-  .aboutTitle {
-    font-size: clamp(1.5rem, 3vw, 2.5rem);
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .aboutTitle {
-    font-size: clamp(1.2rem, 2.5vw, 2rem);
-  }
 }
 
 .activeWelcome p {
