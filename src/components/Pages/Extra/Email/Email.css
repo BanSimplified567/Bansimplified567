@@ -33,10 +33,6 @@
   margin: 0;
 }
 
-.aboutSemiTitle {
-  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-  margin: 0;
-}
 
 .emailIcons {
   display: flex;

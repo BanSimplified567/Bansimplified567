@@ -1,205 +1,243 @@
-/* Container for the navbar */
+
+/* Reset and base styles */
 .navbarContainer {
+  background-color: var(--background-dark);
+  padding: 1.5rem 2rem;
   display: flex;
+  justify-content: center;
   align-items: center;
-  padding-bottom: 2rem;
-  justify-content: space-evenly;
-}
-
-@media screen and (max-width: 1200px) {
-  .navbarContainer {
-    justify-content: flex-start;
-    margin-left: 2rem;
-    position: relative;
-  }
-}
-
-/* Styling for individual navbar links */
-.navbarLink {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  gap: 2rem;
-  width: 100%;
-}
-
-/* Styling for nav link wrappers */
-.navLink {
-  display: flex;
-  gap: 2rem;
-  position: relative;
-}
-
-.navLink.desktop {
-  display: flex;
-}
-
-.navLink.closed {
-  display: none;
-}
-
-.navLink.open {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background-color: #000;
-  padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  position: sticky;
+  top: 0;
   z-index: 1000;
 }
 
-/* Title in the navbar */
-.navbarTitle {
-  border-right: 2px solid var(--text-color);
-  font-family: var(--font-title);
-  padding-right: 1rem;
-  font-size: 2rem;
-  text-decoration: none;
-  color: var(--background-button);
-}
-
-/* Basic styling for navbar links */
-.navbarLinks {
-  color: var(--text-color);
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1rem;
-  transition: color 0.3s;
-  position: relative;
-}
-
-/* Specific styling for the "About" link (example) */
-.navbarLinks[href="/about"] {
-  color: var(--background-button);
-}
-
-/* Hover effect for navbar links */
-.navbarLinks:hover {
-  border-bottom: solid 2px var(--background-button-darkviolet);
-}
-
-/* Styling for mentor link */
-.navMentor {
-  border: 1px solid var(--background-button);
-  color: var(--background-button);
-}
-
-/* Specific styling for Hire Me button */
-.navHireMe {
-  background-color: var(--background-button);
-  color: var(--text-color);
-  border-color: var(--background-button);
-}
-
-/* Hover effects for Hire Me and Mentor links */
-.navHireMe:hover,
-.navMentor:hover {
-  background-color: var(--background-button-darkviolet);
-  color: var(--background-button-light);
-}
-
-/* Common styling for Mentor and Hire Me buttons */
-.navMentor,
-.navHireMe {
+.navbar {
   display: flex;
-  gap: 0.5rem;
   align-items: center;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  font-weight: bold;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1400px;
+}
+
+/* Navbar title */
+.navbarTitle {
+  font-family: var(--font-title);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--background-button-dark-pink);
   text-decoration: none;
-  border-radius: 50px;
-  border: 1px solid;
+  transition: color 0.3s ease;
 }
 
-/* Mobile links styling */
-.mobileLinks {
+.navbarTitle:hover {
+  color: var(--background-button-pink-hover);
+}
+
+/* Navigation links */
+.navLinks {
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-top: 1rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--text-color);
+  align-items: center;
+  gap: 2rem;
 }
 
-/* CSS for hover text */
-.navbarLinks:hover::after,
-.navMentor:hover::after,
-.navHireMe:hover::after {
+.navLink {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.navLink:hover,
+.navLink:focus {
+  color: var(--background-button-dark-pink);
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--background-button-dark-pink);
+  transition: width 0.3s ease;
+}
+
+.navLink:hover::after,
+.navLink:focus::after {
+  width: 100%;
+}
+.navLink[aria-current="page"] {
+  color: var(--background-button-dark-pink);
+}
+
+/* Action buttons */
+.navAction {
+  display: flex;
+  position: relative;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.25rem;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+}
+
+.navCommission {
+  border: 1px solid var(--button-border);
+  color: var(--text-color);
+}
+
+.navCommission:hover,
+.navCommission:focus {
+  background-color: var(--background-button-pink);
+  color: var(--button-text);
+  border-color: var(--background-button-pink);
+}
+
+.navSkills {
+  background-color: var(--background-button-pink);
+  color: var(--text-color);
+  border: 1px solid var(--background-button-pink);
+}
+
+.navSkills:hover,
+.navSkills:focus {
+  background-color: var(--background-button-pink-hover);
+  border-color: var(--background-button-pink-hover);
+}
+
+/* Tooltip */
+.navLink:hover::after,
+.navAction:hover::after {
   content: attr(title);
   position: absolute;
-  top: -30px;
-  left: 50%;
+  top: -2rem;
+  left: 2rem;
   transform: translateX(-50%);
-  background-color: var(--background-button);
+  background-color: var(--bg-secondary);
   color: var(--text-color);
-  padding: 5px 10px;
+  padding: 0.5rem 1rem;
   border-radius: 5px;
-  white-space: nowrap;
-  z-index: 1;
   font-size: 0.75rem;
-  font-weight: normal;
+  white-space: nowrap;
+  z-index: 10;
 }
 
-/* Menu button - hidden by default */
+/* Menu button */
 .menuButton {
   display: none;
-  background-color: var(--background-button);
-  color: var(--text-color);
+  background: none;
   border: none;
-  border-radius: 5px;
+  color: var(--text-color);
   cursor: pointer;
   padding: 0.5rem;
-  position: absolute;
-  top: 1rem;
-  right: 2rem;
 }
 
-/* Responsive styles */
+
+.menuButton:focus {
+  outline: 2px solid var(--background-button-dark-pink);
+  outline-offset: 2px;
+  color: var(--background-button-dark-pink);
+}
+
+/* Desktop actions */
+.desktopActions {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Mobile styles */
 @media screen and (max-width: 1200px) {
-  .navbarLink {
-    flex-direction: column;
+  .navbar {
+    flex-direction: row;
     align-items: flex-start;
-    position: relative;
+  }
+
+  .menuButton {
+    display: block;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .navLinks {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #000;
+    padding: 1.5rem;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .navLinks.open {
+    display: flex;
+    animation: slideDown 0.3s ease-in-out;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start; /* Changed from default centering to left alignment */
+    gap: 1rem;
+  }
+
+  .navLinks.closed {
+    display: none;
+  }
+
+.mobileActions {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start; /* Changed from default centering to left alignment */
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .navLink:hover::after,
+  .navAction:hover::after {
+    transform: translateX(-50%);
+    content: attr(title);
+    position: absolute;
+    top: 50%;
+    left: 100%; /* Places tooltip to the right of the navLink */
+    transform: translateY(-50%); /* Vertically centers tooltip relative to navLink */
+    background-color: var(--bg-secondary);
+    color: var(--text-color);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    z-index: 10;
+    margin-left: 0.5rem;
   }
 
   .navbarTitle {
     border-right: none;
-    padding-right: 0;
-    margin-bottom: 1rem;
+    margin-bottom: 0;
   }
-
-  /* Show menu button on mobile */
+}
+@media screen and (max-width: 340px) {
   .menuButton {
-    display: block;
-  }
-
-  /* Adjust hover tooltips for mobile */
-  .navbarLinks:hover::after,
-  .navMentor:hover::after,
-  .navHireMe:hover::after {
-    left: 12rem;
-    top: 0;
-    transform: none;
-  }
-
-  /* Hide desktop actions on mobile */
-  .desktopActions {
     display: none;
   }
 }
 
-@media screen and (max-width: 340px) {
-  .menuButton {
-    right: 1rem;
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
   }
-
-  .navbarContainer {
-    margin-left: 1rem;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

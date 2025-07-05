@@ -17,10 +17,26 @@
   --font-commission: "New Amsterdam", sans-serif;
   --color-primary: #6f19b5;
 
+    --background-dark: #1a1a1a;
+  --text-primary: #e0e0e0;
+  --text-secondary: #a0a0a0;
+  --accent-color: #00bcd4;
+  --card-bg: #2a2a2a;
+  --card-border: #3a3a3a;
+  --hover-scale: 1.05;
+  --transition: all 0.3s ease;
+
+
+
+
+
+
+
 
   --h1-size: clamp(2rem, 3vw + 1rem, 4rem);
   --h2-size: clamp(1.5rem, 2vw + 1.2rem, 3rem);
   --h3-size: clamp(1.2rem, 1rem + 1.5vw, 2.5rem);
+  --h4-size: clamp(1rem, 0.8rem + 1vw, 2rem);
   --p-size: clamp(0.5rem, 0.87rem + 0.5vw, 1rem);
 
 
@@ -70,20 +86,10 @@ html {
 
 .section {
   max-width: 100%;
-  padding-block: 2rem 1rem;
 }
 
-@media screen and (max-width: 340px) {
-  .section {
-    padding-block: 4rem 1rem;
-  }
-}
 
-@media screen and (min-width: 1024px) {
-  .section {
-    padding-block: 2rem 1.5rem;
-  }
-}
+
 
 h1,
 h2,
@@ -112,11 +118,11 @@ main {
   h1,
   h2,
   h3 {
-    font-size: 1rem;
+    font-size: var(--h4-size);
   }
 
   p {
-    font-size: .5rem;
+    font-size: var(--p-size);
   }
 }
 
@@ -133,6 +139,9 @@ img {
 
 .flamesBorder {
   width: 100%;
+  height: auto;
+  margin: 1rem 0;
+  opacity: 0.8;
 }
 
 .flames {
