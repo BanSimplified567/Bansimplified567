@@ -145,12 +145,12 @@ const experiences = [
     mode: 'On-site',
   },
   {
-    image: './banban.jpg', // Replace with actual image or import
+    image: './banban.jpg',
     alt: 'Freelance Web Developer',
     role: 'Web Developer (Freelance)',
     company: 'Self-Employed / Various Clients',
     description:
-      'Worked as a freelance web developer delivering responsive, user-friendly websites and systems for small businesses and individual clients. Handled full-stack development tasks including front-end design, back-end integration, and database management. \n\nSkills used: JavaScript, HTML, CSS, React, Tailwind CSS, Bootstrap, PHP, MySQL.',
+      'Worked as a freelance web developer delivering responsive, user-friendly websites and systems for CAPSTONE Projects. Handled full-stack development tasks including front-end design, back-end integration, and database management. \n\nSkills used: JavaScript, HTML, CSS, React, Tailwind CSS, Bootstrap, PHP, MySQL.',
     location: 'Remote / Cebu, Philippines',
     duration: 'May 2023 - Present',
     type: 'Freelance',
