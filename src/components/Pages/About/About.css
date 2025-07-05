@@ -94,11 +94,24 @@
   align-items: center;
 }
 
-.aboutSkills {
-  gap: 5rem;
-  text-align: center;
+.aboutSkillsOfMine {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
 }
 
+
+
+.aboutSkills {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem; /* Reduced gap for better fit on smaller screens */
+  text-align: center;
+  flex-wrap: wrap; /* Ensure wrapping for responsiveness */
+}
 .aboutSection {
   display: flex;
   align-items: center;
@@ -128,10 +141,42 @@
   .aboutExperienceArticle,
   .aboutExperienceRebisco {
     text-align: center;
+    justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
   }
 }
+@media screen and (max-width: 768px) {
+  .aboutSkills {
+    gap: 1.5rem; /* Further reduce gap for smaller screens */
+  }
 
+  .aboutTBody {
+    gap: 0.5rem; /* Tighter gap for mobile */
+    padding: 0.5rem; /* Reduce padding */
+  }
+
+  .aboutTBody img {
+    height: 25px; /* Smaller badges for mobile */
+    max-width: 80px; /* Adjust max-width for smaller screens */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .aboutSkills {
+    gap: 1rem; /* Minimal gap for very small screens */
+  }
+
+  .aboutTBody {
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  .aboutTBody img {
+    height: 20px; /* Even smaller badges for tiny screens */
+    max-width: 70px; /* Further reduce max-width */
+  }
+}
 /* Styling for paragraph text */
 .aboutParagraph {
   font-size: var(--aboutParagraph-size);
@@ -175,20 +220,45 @@
 .aboutImages {
   border-radius: 50%;
   object-fit: cover;
-  aspect-ratio: 1 / 1;
-  width: 80rem;
-  height: auto;
-  max-width: 100%;
+  aspect-ratio: 2/2;
+  width: 100%; /* Use percentage for fluid scaling */
+  min-width: 100%; /* Cap size for large screens */
+  height: auto; /* Maintain aspect ratio */
 }
 
+/* Responsive adjustments */
+@media screen and (max-width: 1024px) {
+  .aboutImages {
+    max-width: 15rem; /* Reduce size for tablets */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .aboutImages {
+    max-width: 12rem; /* Further reduce for smaller tablets */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .aboutImages {
+    max-width: 8rem; /* Smaller size for mobile phones */
+  }
+}
 
 
 .aboutTBody {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem;
+  align-items: center;
+  gap: 0.75rem; /* Slightly smaller gap for tighter layouts on mobile */
   padding: 1rem;
+}
+.aboutTBody img {
+  height: 30px; /* Slightly smaller height for badges */
+  width: auto; /* Maintain aspect ratio */
+  max-width: 100px; /* Cap width to prevent overflow */
+  object-fit: contain; /* Ensure badges scale properly */
 }
 
 .aboutTBody td {
@@ -277,6 +347,7 @@
 
 .aboutRebisco {
   max-width: 100%;
+  aspect-ratio: 2/2;
   object-fit: cover;
   border-radius: 50%;
   width: 8rem;
