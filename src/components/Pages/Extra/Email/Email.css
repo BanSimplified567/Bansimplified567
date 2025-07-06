@@ -28,10 +28,6 @@
   max-width: 40rem;
 }
 
-.aboutParagraph {
-  font-size: clamp(1.5rem, 4vw, 2rem);
-  margin: 0;
-}
 
 
 .emailIcons {

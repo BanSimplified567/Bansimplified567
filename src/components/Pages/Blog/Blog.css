@@ -5,63 +5,122 @@
 }
 
 .blogArticle {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 1rem;
   padding: 2rem;
+  margin: 0 auto;
+    display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1rem, 2vw, 1.5rem);
+  padding: clamp(1rem, 2vw, 2rem) 0;
 }
 
-.blogCards {
-  border-radius: 1rem;
+@media screen and (max-width: 768px) {
+  .blogArticle {
+    grid-template-columns: repeat(1, 1fr); /* 1 column for mobile */
+    padding: 1.5rem;
+    gap: 2.5rem;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .blogArticle {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns for tablets */
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .blogArticle {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns for desktops */
+  }
+}
+
+
+
+
+.blogSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.blogSectionTitle {
+  font-size: 1.8rem;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--background-button-light);
+}
+
+.blogGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.blogCardContainer {
+  border-radius: 0.8rem;
   overflow: hidden;
-  width: 100%;
-  border: solid 1px var(--background-button-light);
-  transition: transform 0.2s ease-in-out;
-}
-
-.blogCards:hover {
-  transform: scale(1.05);
+  transition: all 0.3s ease;
 }
 
 .blogCard {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   color: var(--text-color);
-  text-align: center;
+  text-decoration: none;
+  background: var(--background-card);
+  border-radius: 0.8rem;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
 }
 
-.freeCodeCamp {
+.blogCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.blogImage {
   width: 100%;
-  aspect-ratio: 16/9;
-  object-fit: cover;
-}
-
-.portCard {
-  aspect-ratio: 2/2.1;
+  height: 180px;
   object-fit: cover;
 }
 
 .portCardBody {
-  padding: 1rem;
+  padding: 1.2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .portCardTitle {
   font-size: 1.2rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.8rem;
+  color: var(--text-color);
 }
 
 .portCardDescription {
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: var(--text-color-light);
+  margin-bottom: 0;
+  flex: 1;
 }
 
+/* Responsive adjustments */
 @media (max-width: 1024px) {
-  .blog {
-    padding-top: 1rem;
-    width: 90%;
+  .blogGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .blogArticle {
+    padding: 1.5rem;
+    gap: 2.5rem;
   }
 
-  .blogArticle {
-    grid-template-columns: repeat(2, 1fr);
-    padding: 10px;
+  .blogSectionTitle {
+    font-size: 1.6rem;
   }
 
   .portCardTitle {
@@ -69,13 +128,27 @@
   }
 
   .portCardDescription {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
 }
 
-@media (max-width: 768px) {
-  .blogArticle {
-    padding: 5px;
+@media (max-width: 600px) {
+  .blogGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .blog {
+    width: 90%;
+  }
+
+  .blogImage {
+    height: 160px;
+  }
+}
+
+@media (max-width: 480px) {
+  .blogSectionTitle {
+    font-size: 1.4rem;
   }
 
   .portCardTitle {
@@ -84,10 +157,5 @@
 
   .portCardDescription {
     font-size: 0.8rem;
-  }
-
-  .blogArticle {
-    grid-template-columns: repeat(1, 1fr);
-    padding: 10px;
   }
 }

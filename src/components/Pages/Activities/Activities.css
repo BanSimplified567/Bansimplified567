@@ -29,30 +29,8 @@
   max-width: clamp(20rem, 80%, 40rem);
 }
 
-.blogArticle {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(clamp(15rem, 30%, 20rem), 1fr));
-  gap: clamp(1rem, 2vw, 1.5rem);
-  padding: clamp(1rem, 2vw, 2rem) 0;
-}
 
-.blogCards {
-  border-radius: 0.5rem;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
 
-.blogCards:hover {
-  transform: translateY(-0.5rem);
-  box-shadow: 0 0 10px var(--background-button-violet);
-}
-
-.blogCard {
-  display: flex;
-  flex-direction: column;
-  text-decoration: none;
-  color: var(--background-button-light);
-}
 
 .freeCodeCamp {
   width: 100%;

@@ -38,7 +38,7 @@
 /* Styling for the main title */
 .aboutTitle {
   color: var(--text-color);
-  font-size: var(--aboutTitle-size);
+  font-size: var(--font-xxl);
   font-family: var(--font-title);
   font-weight: 900;
   line-height: 1;
@@ -235,13 +235,13 @@
 
 @media screen and (max-width: 768px) {
   .aboutImages {
-    max-width: 12rem; /* Further reduce for smaller tablets */
+    max-width: 30rem; /* Further reduce for smaller tablets */
   }
 }
 
 @media screen and (max-width: 480px) {
   .aboutImages {
-    max-width: 8rem; /* Smaller size for mobile phones */
+    max-width: 20rem; /* Smaller size for mobile phones */
   }
 }
 
@@ -277,7 +277,6 @@
   display: flex;
   justify-content: center;
   gap: 2rem;
-  padding: 2rem;
   box-sizing: border-box;
 }
 

@@ -1,124 +1,98 @@
-.comSection {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
+/* Container */
+.comContainer {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  font-family: 'Inter', 'Roboto', sans-serif; /* Modern, elegant font stack */
 }
 
+/* Hero Section */
 .comSecOne {
   display: flex;
-  /* Allow items to wrap */
   justify-content: center;
   align-items: center;
-  border: 1px solid #000;
-  padding: 2rem 5rem;
-  border-radius: 1rem 4rem;
-  gap: 2rem;
-  box-sizing: border-box;
-  /* Ensure padding does not affect width calculation */
+  padding: 3rem;
+  margin: 3rem 0;
+  border-radius: 1.5rem;
+  gap: 3rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* Responsive adjustments */
-@media screen and (max-width: 1200px) {
-  .comSecOne {
-    padding: 1.5rem 3rem;
-    border-radius: 0.75rem 3rem;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-  }
+.comImageContainer {
+  flex: 1;
+  max-width: 550px;
 }
 
-@media screen and (max-width: 992px) {
-  .comSecOne {
-    padding: 1rem 2rem;
-    border-radius: 0.5rem 2rem;
-    gap: 1rem;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .comSecOne {
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.25rem 1rem;
-    gap: 0.75rem;
-    flex-direction: column;
-    /* Stack items vertically on smaller screens */
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .comSecOne {
-    padding: 0.5rem 1rem;
-    border-radius: 0.125rem 0.5rem;
-    gap: 0.5rem;
-  }
+.banbanTwo {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 }
 
 .comSecTwo {
+  flex: 1;
   display: flex;
-  width: 100%;
-  max-width: 70rem;
   flex-direction: column;
   gap: 2rem;
   justify-content: center;
+  min-width: 300px;
 }
 
 .comSecThree {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1.5rem;
+  align-items: center;
 }
 
 .comSecThree img {
-  width: 2rem;
-  transition: transform 0.2s ease-in-out;
+  width: 2.5rem;
+  height: 2.5rem;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .comSecThree img:hover {
-  transform: translateY(-0.625rem);
+  transform: translateY(-0.6rem) scale(1.1);
 }
 
+/* Website Build Section */
 .comWebsiteBuild {
   text-align: center;
+  margin: 4rem 0;
 }
 
-.banbanTwo {
-  width: 100%;
-  max-width: clamp(35rem, 1vw + 1rem, 40rem);
-  height: auto;
-  object-fit: cover;
-}
-
+/* Website Types Grid */
 .comSecFour {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.25rem;
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
+  margin: 4rem 0;
+  padding: 1.5rem;
 }
 
 .comSecFive {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  position: relative;
+  overflow: hidden;
 }
 
 .comImageWrapper {
   position: relative;
   width: 100%;
-  height: auto;
+  height: 280px;
+  border-radius: 1.2rem;
   overflow: hidden;
-  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .comImageWrapper img {
   width: 100%;
-  height: auto;
-  border-radius: 0.5rem;
+  height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .comImageWrapper::before {
@@ -128,461 +102,483 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-  transition: background-color 0.3s ease-in-out;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.2) 100%);
+  transition: opacity 0.4s ease;
+  z-index: 1;
 }
 
 .comImageWrapper:hover::before {
-  background-color: transparent;
+  opacity: 0.4;
 }
 
 .comImageWrapper:hover img {
-  transform: scale(1.1);
+  transform: scale(1.15);
 }
 
 .comOverlayText {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 100%);
   text-align: center;
+  z-index: 2;
   opacity: 0;
-  transition: opacity 0.3s ease-in-out;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .comImageWrapper:hover .comOverlayText {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  transform: translate(-50%, -50%);
   opacity: 1;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(145deg, #0000004b, #cacaca);
-  box-shadow: 0.75rem 0.75rem 3.4375rem #b3b3b3, -0.5625rem -0.5625rem 1.125rem #ffffff;
 }
 
 .comOverlayText h1 {
-  font-family: var(--font-commission);
+  font-family: 'Inter', sans-serif;
   color: #fff;
-  text-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.6);
+  font-size: clamp(1.5rem, 3vw, 1.8rem);
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  margin: 0;
+  padding: 0.5rem 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 0.5rem;
 }
 
+/* Pricing Section */
 .comWindowBackground {
-  background-color: #000000;
-  padding: 5rem;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+  padding: 5rem 2rem;
+  margin: 4rem 0;
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.comPricingHeader {
   text-align: center;
-  border-radius: 0.625rem;
+  margin-bottom: 4rem;
 }
 
-/* Media Queries for .comWindowBackground */
-@media screen and (max-width: 1200px) {
-  .comWindowBackground {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    border-radius: 0.5rem;
-  }
+.comPricingHeader h1 {
+  color: #fff;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
 }
 
-@media screen and (max-width: 1024px) {
-  .comWindowBackground {
-    padding: 3rem;
-    border-radius: 0.375rem;
-  }
+.comPricingHeader p {
+  color: #d1d1d1;
+  font-size: clamp(1rem, 2vw, 1.2rem);
 }
-
-@media screen and (max-width: 768px) {
-  .comWindowBackground {
-    text-align: center;
-    padding: 1rem;
-    border-radius: 0.25rem;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .comWindowBackground {
-    padding: 0.56rem;
-    border-radius: 0.125rem;
-  }
-}
-
 
 .comPanel {
   display: flex;
-  background-color: #0000004d;
-  border-radius: 0.625rem;
-  gap: 1.25rem;
-  padding: 0.9375rem 1.5625rem;
-  position: relative;
-  width: 100%;
-  z-index: 10;
-}
-
-/* Responsive adjustments for .comPanel */
-@media screen and (max-width: 1200px) {
-  .comPanel {
-    gap: 1rem;
-    padding: 0.75rem 1.25rem;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .comPanel {
-    flex-direction: column;
-    gap: 1rem;
-    padding: 0.5rem 1rem;
-  }
+  justify-content: center;
+  gap: 3rem;
+  max-width: 1280px;
+  margin: 0 auto;
 }
 
 .comPricingTable {
-  box-shadow: 0px 0.625rem 0.8125rem -0.375rem rgba(0, 0, 0, 0.08),
-    0px 1.25rem 1.9375rem 0.1875rem rgba(0, 0, 0, 0.09),
-    0px 0.5rem 1.25rem 0.4375rem rgba(0, 0, 0, 0.02);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 2rem auto;
-}
-
-/* Responsive adjustments for .comPricingTable */
-@media screen and (max-width: 1200px) {
-  .comPricingTable {
-    padding: 0 1rem;
-  }
-}
-
-@media screen and (max-width: 992px) {
-  .comPricingTable {
-    padding: 0 0.5rem;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .comPricingTable {
-    gap: 5rem;
-    flex-wrap: wrap;
-    padding: 0;
-    flex-direction: column;
-  }
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 1.2rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
 }
 
 .comPricingPlan {
-  border-left: 1px solid var(--background-button-light);
-  box-sizing: border-box;
-  padding: 3rem;
-  background-color: transparent;
-  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  flex: 1;
+  padding: 3rem 2rem;
+  background: transparent;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   text-align: center;
-  position: relative;
-  width: 30rem;
-  max-width: 100%;
-  height: auto;
-  object-fit: contain;
-}
-
-/* Responsive adjustments for .comPricingPlan */
-@media screen and (max-width: 1200px) {
-  .comPricingPlan {
-    padding: 1rem;
-  }
-}
-
-@media screen and (max-width: 992px) {
-  .comPricingPlan {
-    padding: 0.75rem;
-    border-right: none;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .comPricingPlan {
-    border: none;
-    padding: 0.5rem;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .comPricingPlan {
-    padding: 0.25rem;
-  }
-}
-
-.comPricingPlan:hover {
-  background-color: #ffffff;
-  color: #000000;
-  transform: scale(1.05);
+  min-height: 450px;
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .comPricingPlan:last-child {
-  border-bottom: none;
+  border-right: none;
+}
+
+.comPricingPlan.standard-plan {
+  background: linear-gradient(135deg, rgba(74, 144, 226, 0.15) 0%, rgba(74, 144, 226, 0.05) 100%);
+  transform: scale(1.05);
+  border: 2px solid rgba(74, 144, 226, 0.4);
+}
+
+.comPricingPlan:hover {
+  background: rgba(255, 255, 255, 0.98);
+  color: #1a1a1a;
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.comPricingPlan.standard-plan:hover {
+  transform: scale(1.12);
+}
+
+.planTitle {
+  font-size: clamp(1.5rem, 3vw, 1.8rem);
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #fff;
+}
+
+.comPricingPlan:hover .planTitle {
+  color: #1a1a1a;
 }
 
 .comPricingFeatures {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 2rem 0;
+  width: 100%;
 }
 
 .comPricingFeaturesItem {
-  margin: 0.5rem 0;
-  border-bottom: solid 2px var(--background-button-light);
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  color: #d1d1d1;
+  font-size: clamp(0.9rem, 2vw, 1rem);
+}
+
+.comPricingPlan:hover .comPricingFeaturesItem {
+  color: #4a4a4a;
+  border-bottom-color: #e0e0e0;
 }
 
 .comPricingPrice {
-  font-size: 2.5rem;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
   font-weight: 800;
-  margin-top: 1.5rem;
+  color: #fff;
+  margin: 2rem 0;
+}
+
+.comPricingPlan:hover .comPricingPrice {
+  color: #1a1a1a;
 }
 
 .comPricingButton {
   width: 100%;
-  border-radius: 0.3125rem;
-  padding: 0.625rem 1.25rem;
-  color: #020202;
-  font-size: var(--aboutParagraph-size);
+  padding: 1.2rem 2rem;
+  border: none;
+  border-radius: 0.6rem;
+  background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+  color: #fff;
+  font-size: clamp(0.9rem, 2vw, 1rem);
   font-weight: 600;
-  background-color: #f5f5f5;
-  text-decoration: none;
-  display: inline-block;
-  transition: width 0.8s ease-in-out, background-color 0.8s ease, color 0.8s ease;
-  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .comPricingButton:hover {
-  background-color: #000000;
-  color: #ffffff;
+  background: linear-gradient(135deg, #357abd 0%, #2868a3 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
-
-/* Media Queries for .comPanel */
-@media screen and (max-width: 1200px) {
-  .comPanel {
-    gap: 1rem;
-    padding: 0.75rem 1.25rem;
-  }
+.comPricingButton.comIsFeatured {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
 }
 
-@media screen and (max-width: 768px) {
-  .comPanel {
-    flex-direction: column;
-    gap: 1rem;
-    padding: 0.5rem 1rem;
-  }
+.comPricingButton.comIsFeatured:hover {
+  background: linear-gradient(135deg, #ee5a52 0%, #dc4343 100%);
 }
 
-
+/* Frontend Developer Section */
 .comSectionOne {
   display: flex;
   justify-content: center;
   align-items: center;
-
+  margin: 5rem 0;
+  padding: 3rem;
+  background: #f8f9fa;
+  border-radius: 1.5rem;
 }
 
 .comSectionTwo {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 4rem;
+  max-width: 1280px;
+  width: 100%;
 }
 
-@media screen and (max-width: 1024px) {
-  .comSectionTwo {
-    flex-direction: column;
-  }
+.comFrontendImage {
+  flex: 1;
+  max-width: 450px;
 }
 
-
-.comSectionTwo img {
-  width: 30rem;
-  max-width: 30rem;
-  /* Makes sure the image doesn't exceed this width */
+.comFrontendImage img {
+  width: 100%;
   height: auto;
   object-fit: contain;
-  aspect-ratio: 1 / 1;
 }
 
 .comSectionThree {
-  width: 100%;
-  max-width: 40rem;
-  /* Limits the width on larger screens */
-  height: auto;
-  object-fit: contain;
+  flex: 1;
+  max-width: 650px;
 }
 
-/* Media query for smaller screens */
-@media screen and (max-width: 768px) {
-  .comSectionOne {
-    margin: 1rem;
-    /* Reduce margin for smaller screens */
-  }
-
-  .comSectionTwo {
-    flex-wrap: wrap;
-  }
-
-  .comSectionTwo img {
-    width: 70%;
-    /* Shrinks the image on smaller screens */
-  }
-
-  .comSectionThree {
-    width: 90%;
-    /* Adjusts width for better fit on smaller devices */
-  }
+.comSectionThree h2 {
+  font-size: clamp(1.8rem, 4vw, 2.2rem);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #1a1a1a;
 }
 
-/* Media query for very small screens */
-@media screen and (max-width: 480px) {
-  .comSectionTwo img {
-    width: 100%;
-    /* Full width on very small screens */
-  }
-
-  .comSectionThree {
-    width: 100%;
-    /* Full width for smaller screens */
-  }
+.comSectionThree p {
+  font-size: clamp(1rem, 2vw, 1.1rem);
+  line-height: 1.7;
+  color: #4a4a4a;
 }
 
-/* Base styles (for larger screens like desktops) */
+/* Social Media Section */
 .comSectionFour {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  margin: 2rem;
-  gap: 2rem;
+  margin: 5rem 0;
+  padding: 3rem;
+}
+
+.comSectionFour h1 {
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  margin-bottom: 3rem;
+  font-weight: 800;
 }
 
 .comSectionFive {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 2rem;
-  margin: 2rem 0;
+  width: 100%;
+  max-width: 1200px;
 }
 
 .comSectionSix {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  width: 30rem;
-  height: 100%;
   position: relative;
-  text-align: center;
+  height: 220px;
+  border-radius: 1rem;
   overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .comSectionSix img {
-  width: 40rem;
-  height: auto;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  border-radius: 10px;
-  transition: transform 0.3s ease;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.comSectionSix h1 {
+.comSocialOverlay {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: 2;
-}
-
-.comSectionSix::after {
-  content: '';
-  position: absolute;
-  top: 0;
+  top: 100%;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(5px);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: 1;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.comSectionSix:hover .comSocialOverlay {
+  top: 0;
+  opacity: 1;
+}
+
+.comSocialOverlay h1 {
+  color: #fff;
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  margin: 0;
+  padding: 0.5rem 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 0.5rem;
+}
+
+.comSectionSix:hover {
+  transform: scale(1.05);
 }
 
 .comSectionSix:hover img {
   transform: scale(1.1);
 }
 
-.comSectionSix:hover h1 {
-  opacity: 1;
+/* Email Section */
+.homeEmail {
+  text-align: center;
+  margin: 5rem 0;
+  padding: 4rem 2rem;
+  background: #f8f9fa;
+  border-radius: 1.5rem;
 }
 
-.comSectionSix:hover::after {
-  opacity: 1;
+.homeEmail p {
+  margin-bottom: 2.5rem;
+  font-size: clamp(1.1rem, 2vw, 1.2rem);
+  color: #4a4a4a;
 }
 
-/* Responsive styles for tablets */
-@media screen and (max-width: 1024px) {
-  .comSectionSix img {
-    width: 30rem;
-    height: 30rem;
+/* Responsive Design */
+@media screen and (max-width: 1200px) {
+  .comContainer {
+    padding: 0 1rem;
   }
 
-  .comSectionFive {
-    gap: 1.5rem;
+  .comSecOne {
+    padding: 2rem;
   }
 
-  .comSectionFour {
-    margin: 1.5rem;
-    gap: 1.5rem;
+  .comWindowBackground {
+    padding: 4rem 1.5rem;
+  }
+
+  .comPanel {
+    gap: 2rem;
   }
 }
 
-/* Responsive styles for smartphones (Android) */
-@media screen and (max-width: 768px) {
-  .comSectionSix img {
-    width: 20rem;
-    height: 20rem;
+@media screen and (max-width: 992px) {
+  .comSecFour {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
   }
 
-  .comSectionFive {
+  .comSectionTwo {
     flex-direction: column;
-    gap: 1rem;
+    gap: 3rem;
   }
 
-  .comSectionFour {
-    margin: 1rem;
-    gap: 1rem;
-  }
-
-  .comSectionSix h1 {
-    font-size: 1.2rem;
+  .comFrontendImage {
+    max-width: 350px;
   }
 }
 
-/* Responsive styles for very small screens (up to 480px) */
-@media screen and (max-width: 480px) {
-  .comSectionSix img {
-    width: 15rem;
-    height: 100%;
-
+@media screen and (max-width: 768px) {
+  .comSecOne {
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 2rem;
+    text-align: center;
   }
 
-  .comSectionSix h1 {
-    font-size: 1rem;
+  .comImageContainer {
+    max-width: 350px;
   }
 
-  .comSectionFour {
-    margin: 0.5rem;
-    gap: 0.5rem;
+  .comSecFour {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .comImageWrapper {
+    height: 220px;
+  }
+
+  .comOverlayText h1 {
+    font-size: clamp(1.2rem, 3vw, 1.4rem);
+  }
+
+  .comWindowBackground {
+    padding: 3rem 1rem;
+  }
+
+  .comPanel {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .comPricingPlan {
+    padding: 2.5rem 1.5rem;
+    min-height: 400px;
+  }
+
+  .comPricingPlan.standard-plan {
+    transform: none;
   }
 
   .comSectionFive {
-    gap: 0.5rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .comSectionSix {
+    height: 180px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .comContainer {
+    padding: 0 0.75rem;
+  }
+
+  .comSecOne {
+    padding: 1rem;
+    margin: 2rem 0;
+    border-radius: 1rem;
+  }
+
+  .comImageContainer {
+    max-width: 280px;
+  }
+
+  .comSecFour {
+    padding: 0.75rem;
+  }
+
+  .comImageWrapper {
+    height: 200px;
+  }
+
+  .comOverlayText h1 {
+    font-size: clamp(1rem, 3vw, 1.2rem);
+  }
+
+  .comWindowBackground {
+    padding: 2rem 0.75rem;
+  }
+
+  .comPricingPlan {
+    padding: 2rem 1rem;
+    min-height: 350px;
+  }
+
+  .planTitle {
+    font-size: clamp(1.2rem, 3vw, 1.4rem);
+  }
+
+  .comPricingPrice {
+    font-size: clamp(2rem, 5vw, 2.8rem);
+  }
+
+  .comPricingButton {
+    padding: 1rem 1.5rem;
+    font-size: clamp(0.8rem, 2vw, 0.9rem);
+  }
+
+  .comSectionSix {
+    height: 160px;
+  }
+
+  .comSocialOverlay h1 {
+    font-size: clamp(1rem, 3vw, 1.2rem);
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
   }
 }
