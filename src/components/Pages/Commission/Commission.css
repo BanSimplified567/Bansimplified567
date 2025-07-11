@@ -414,20 +414,7 @@
   transform: scale(1.1);
 }
 
-/* Email Section */
-.homeEmail {
-  text-align: center;
-  margin: 5rem 0;
-  padding: 4rem 2rem;
-  background: #f8f9fa;
-  border-radius: 1.5rem;
-}
 
-.homeEmail p {
-  margin-bottom: 2.5rem;
-  font-size: clamp(1.1rem, 2vw, 1.2rem);
-  color: #4a4a4a;
-}
 
 /* Responsive Design */
 @media screen and (max-width: 1200px) {

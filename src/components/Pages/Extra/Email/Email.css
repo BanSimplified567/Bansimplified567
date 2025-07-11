@@ -1,3 +1,4 @@
+
 .emailContainer,
 .emailFormSection {
   max-width: 100%;
@@ -27,8 +28,6 @@
   width: 100%;
   max-width: 40rem;
 }
-
-
 
 .emailIcons {
   display: flex;
@@ -69,7 +68,7 @@
   border-radius: 2.5rem;
   width: 100%;
   box-sizing: border-box;
-  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  font-size: var(--font-x-small);
 }
 
 .inputWrapper button {
@@ -84,7 +83,7 @@
   border: none;
   cursor: pointer;
   height: 100%;
-  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  font-size: var(--font-x-small);
 }
 
 .inputWrapper button:hover {
