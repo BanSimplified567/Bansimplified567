@@ -1,38 +1,48 @@
 # Bansimplified
 
-<h2 align="center">Frontend-Enthusiast</h2>
+<h2 align="center">Full-stack Developer    ||     Frontend-Enthusiast</h2>
 
 <img src="./src/components/img/assets/pixel-night-banner.gif" align="middle" alt="Banner" width="100%"/>
 
 <img src="./src/components/img/assets/borderseparator.gif" width="100%"/>
 
 <div align="center">
-  <img src="./src/components/img/assets/animated-flame-01.gif" width="1.75%" align="left"/>
-<a href="https://git.io/typing-svg"  align ="center"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=25&duration=5000&pause=500&color=E40FAD&random=false&width=700&lines=Hello+Fellow+Developers!!+%3A))));Hi+I'm+BanSimplified+Aspiring+Developer" alt="Typing SVG"/></a>
-  <img src="./src/components/img/assets/animated-flame-01.gif" width="1.75%" align="right"/>
+  <img src="./src/components/img/assets/animated-flame-01.gif" width="1.75%" align="left" alt="Flame" />
+
+  <a href="https://git.io/typing-svg" align="center">
+    <img
+      src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=25&duration=5000&pause=500&color=E40FAD&width=700&lines=Hey+there,+fellow+developer!+🔥;I'm+BanSimplified,+a+Full-stack+Developer.;Let's+build+something+awesome+together!+💻✨"
+      alt="Typing SVG"
+    />
+  </a>
+  <img src="./src/components/img/assets/animated-flame-01.gif" width="1.75%" align="right" alt="Flame" />
 </div>
+
 
 <img src="./src/components/img/assets/borderseparator.gif" width="100%"/>
 
-<div align="center">
-  <p><b>Profile Views</b></p>
-  <img src="https://profile-counter.glitch.me/Blacklion567/count.svg" />
-</div>
 
 <img align="right" src="./src/components/img/assets/vaporwave-aesthetic.gif" height="500px" alt="pixel city image">
 
-<h2 align="center"> <img src="./src/components/img/assets/animated-flame-01.gif" width="14px"/>Aspiring Developer <img src="./src/components/img/assets/animated-flame-01.gif" width="14px"/> <br> Self-taught Programmer</h2><br>
+<h2 align="center"> <img src="./src/components/img/assets/animated-flame-01.gif" width="14px"/>Full-stack Developer <img src="./src/components/img/assets/animated-flame-01.gif" width="14px"/> <br> Self-taught Programmer</h2><br>
 
-- 👨‍💻 I'm Jade Ivan (Blacklion567)👋, a college student, I'm currently pursuing a Bachelor of Science in Information Technology (Programming) in the Philippines. <br><br>
+- 👨‍💻 Hi, I’m Jade Ivan (Bansimplified) — a college student currently pursuing a Bachelor of Science in Information Technology (Programming) in the Philippines.
+<br><br>
 
-- 🌳 I’m currently learning to be better at coding and using all my knowledge to get better! <br><br>
+- 🌱 I’m actively learning and sharpening my coding skills, using every opportunity to grow and improve as a developer.
+<br><br>
 
-- 🐾 I’m looking to network and make friends here! <br><br>
+- 🐾 I’m here to connect, learn, and build friendships with fellow tech enthusiasts and creatives.
+<br><br>
 
-- 🌊 Decade Goals: Learn Become A Software Engineer and Web Developer. <br><br>
+- 🌊 Decade Goal: To become a full-fledged Software Engineer and Web Developer.
+<br><br>
 
-- ☕ Interest: Coffee, Learning and Coding. <br><br>
-- <img src="https://github.githubassets.com/images/icons/emoji/octocat.png" height="16px"/> Hobbies: Drawing, Reading, Anime, Manga, Manhua, Manhwa, and Facebook. <br><br>
+- ☕ Interests: Coffee, continuous learning, and creative coding.
+<br><br>
+
+- <img src="https://github.githubassets.com/images/icons/emoji/octocat.png" height="16px"/> Hobbies: Drawing, reading, and diving into illustrated stories — including anime, manga, manhua, and manhwa. I also enjoy spending time on Facebook.
+<br><br>
 - 📄 MY RESUME: <a href="./src/components/Pages/About/Bringcolajadeivan,V.pdf" download="Bringcolajadeivan,V.pdf">Download</a>
 
 <h2></h2>
@@ -46,16 +56,16 @@
   <a href="https://mail.google.com/mail/u/0/#inbox" target="_blank">
     <img src="https://img.shields.io/static/v1?message=naviedaj567@gmail.com&logo=gmail&label=&color=D14836&logoColor=white&labelColor=&style=for-the-badge" height="35" alt="gmail logo"  />
   </a>
-  <a href="https://web.facebook.com/him.blacklion567" target="_blank">
+  <a href="https://www.facebook.com/his.bannie" target="_blank">
     <img src="https://img.shields.io/static/v1?message=Facebook&logo=facebook&label=&color=1877F2&logoColor=white&labelColor=&style=for-the-badge" height="35" alt="facebook logo"  />
   </a>
   <a href="https://www.linkedin.com/in/jade-ivan-bringcola-bb9466272/" target="_blank">
     <img src="https://img.shields.io/static/v1?message=LinkedIn&logo=linkedin&label=&color=0077B5&logoColor=white&labelColor=&style=for-the-badge" height="35" alt="linkedin logo"  />
   </a>
-  <a href="https://www.instagram.com/nocodearea/" target="_blank">
-    <img src="https://img.shields.io/static/v1?message=nocodearea&logo=instagram&label=&color=E4405F&logoColor=white&labelColor=&style=for-the-badge" height="35" alt="instagram logo"  />
+  <a href="https://www.instagram.com/his.bannie/" target="_blank">
+    <img src="https://img.shields.io/static/v1?message=his.bannie&logo=instagram&label=&color=E4405F&logoColor=white&labelColor=&style=for-the-badge" height="35" alt="instagram logo"  />
   </a>
-  <a href="https://www.youtube.com/channel/UCHuVTj0sCJA5YQ_BUTcSPaw" target="_blank">
+  <a href="https://www.youtube.com/@KnownAsBanBan" target="_blank">
     <img src="https://img.shields.io/static/v1?message=Youtube&logo=youtube&label=&color=FF0000&logoColor=white&labelColor=&style=for-the-badge" height="35" alt="youtube logo"  />
   </a>
   <a href="https://twitter.com/JBringcola" target="_blank">
@@ -204,24 +214,18 @@
    <a href="https://wakatime.com"><img src="https://wakatime.com/share/@BanBan/382532ff-5057-45a2-b975-14ab938e7e7c.png" align="left" width="100%"/></a>
 </div>
 
-<img src="./src/components/img/assets/animated-flame-01.gif" width="16px" align="left"/>
-<img src="./src/components/img/assets/animated-flame-01.gif" width="16px" align="right"/>
 
 <div align="center">
-  <h2 align="center">👨‍💻 Projects <img src="./src/components/img/assets/borderseparator.gif"/></h2><br>
-
- <a href="https://github.com/BanSimplified567/pizzaban" target="_blank">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=BanSimplified567&theme=radical&repo=pizzaban" width="49%" alt="pizzaban-store"/>
-  </a> <a href="https://github.com/BanSimplified567/pizzaban-store" target="_blank">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=BanSimplified567&theme=radical&repo=pizzaban-store" width="49%" alt="pizzaban-store"/>
-  </a> <a href="https://github.com/BanSimplified567/BanHotel" target="_blank">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=BanSimplified567&theme=radical&repo=BanHotel" width="49%" alt="BanHotele"/>
-  </a>
-  <a href="https://github.com/BanSimplified567/LUXESTORE" target="_blank">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=BanSimplified567&theme=radical&repo=LUXESTORE" width="49%" alt="LUXESTORE"/>
+<h2 align="center">
+<img src="./src/components/img/assets/borderseparator.gif"/>
+<img src="./src/components/img/assets/animated-flame-01.gif" width="16px" align="left"/>
+<img src="./src/components/img/assets/animated-flame-01.gif" width="16px" align="right"/>
+👨‍💻 Projects <img src="./src/components/img/assets/borderseparator.gif"/>
+</h2><a href="https://github.com/BanSimplified567/POS-Coffee-Shop-Management
+" target="_blank"><img src="https://github-readme-stats.vercel.app/api/pin/?username=BanSimplified567&theme=radical&repo=POS-Coffee-Shop-Management" width="49%" alt="POS-Coffee-Shop-Management"/>
   </a>
 </div>
- <img src="./src/components/img/assets/borderseparator.gif"/> </h2>
+
 
 <!--END_SECTION:activity-->
 <!--
