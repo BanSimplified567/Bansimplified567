@@ -9,9 +9,10 @@
 <div align="center">
   <img src="./src/components/img/assets/animated-flame-01.gif" width="1.75%" align="left"/>
 <div align="center">
-  <a href="https://git.io/typing-svg">
-    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=25&duration=5000&pause=500&color=E40FAD&random=false&width=700&lines=Hey+there,+fellow+developer!+🔥;I'm+BanSimplified,+a+Full-stack+Developer.;Let's+build+something+awesome+together!+💻✨" alt="Typing SVG"/>
-  </a>
+ <a href="https://git.io/typing-svg">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=25&duration=5000&pause=500&color=E40FAD&random=false&width=700&lines=Hey+there,+fellow+developer!+🔥;I'm+BanSimplified,+a+Full-stack+Developer.;Let's+build+something+awesome+together!+💻✨" alt="Typing SVG"/>
+</a>
+
 </div>
 
   <img src="./src/components/img/assets/animated-flame-01.gif" width="1.75%" align="right"/>
