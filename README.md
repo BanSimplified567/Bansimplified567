@@ -1,23 +1,16 @@
 # Bansimplified
 
-<h2 align="center">Full-stack Developer    ||     Frontend-Enthusiast</h2>
+<h2 align="center">Full-stack Developer ||  Frontend-Enthusiast</h2>
 
 <img src="./src/components/img/assets/pixel-night-banner.gif" align="middle" alt="Banner" width="100%"/>
 
 <img src="./src/components/img/assets/borderseparator.gif" width="100%"/>
 
 <div align="center">
-  <img src="./src/components/img/assets/animated-flame-01.gif" width="1.75%" align="left" alt="Flame" />
-
-  <a href="https://git.io/typing-svg" align="center">
-    <img
-      src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=25&duration=5000&pause=500&color=E40FAD&width=700&lines=Hey+there,+fellow+developer!+🔥;I'm+BanSimplified,+a+Full-stack+Developer.;Let's+build+something+awesome+together!+💻✨"
-      alt="Typing SVG"
-    />
-  </a>
-  <img src="./src/components/img/assets/animated-flame-01.gif" width="1.75%" align="right" alt="Flame" />
+  <img src="./src/components/img/assets/animated-flame-01.gif" width="1.75%" align="left"/>
+<a href="https://git.io/typing-svg"  align ="center"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=25&duration=5000&pause=500&color=E40FAD&random=false&width=700&lines=Hey+there,+fellow+developer!+🔥;I'm+BanSimplified,+a+Full-stack+Developer.;Let's+build+something+awesome+together!+💻✨" alt="Typing SVG"/></a>
+  <img src="./src/components/img/assets/animated-flame-01.gif" width="1.75%" align="right"/>
 </div>
-
 
 <img src="./src/components/img/assets/borderseparator.gif" width="100%"/>
 
