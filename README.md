@@ -1,19 +1,14 @@
 # Bansimplified
 
-<h2 align="center">Full-stack Developer ||  Frontend-Enthusiast</h2>
-
 <img src="./src/components/img/assets/pixel-night-banner.gif" align="middle" alt="Banner" width="100%"/>
 
 <img src="./src/components/img/assets/borderseparator.gif" width="100%"/>
 
-<div align="center">
-  <img src="./src/components/img/assets/animated-flame-01.gif" width="1.75%" align="left"/>
-<div align="center">
-<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&size=25&duration=5000&color=E40FAD&width=700&lines=Hey+there,+fellow+developer!+🔥;I'm+BanSimplified,+a+Full-stack+Developer.;Let's+build+something+awesome+together!+💻✨" alt="Typing SVG" /></a>
 
-</div>
-
-  <img src="./src/components/img/assets/animated-flame-01.gif" width="1.75%" align="right"/>
+<div align="center">
+<h2 align="center"> <img src="./src/components/img/assets/animated-flame-01.gif" width="14px"/>
+Full-stack Developer ||  Frontend-Enthusiast
+ <img src="./src/components/img/assets/animated-flame-01.gif" width="14px"/></h2>
 </div>
 
 <img src="./src/components/img/assets/borderseparator.gif" width="100%"/>
@@ -21,7 +16,7 @@
 
 <img align="right" src="./src/components/img/assets/vaporwave-aesthetic.gif" height="500px" alt="pixel city image">
 
-<h2 align="center"> <img src="./src/components/img/assets/animated-flame-01.gif" width="14px"/>Full-stack Developer <img src="./src/components/img/assets/animated-flame-01.gif" width="14px"/> <br> Self-taught Programmer</h2><br>
+<br>
 
 - 👨‍💻 Hi, I’m Jade Ivan (Bansimplified) — a college student currently pursuing a Bachelor of Science in Information Technology (Programming) in the Philippines.
 <br><br>
