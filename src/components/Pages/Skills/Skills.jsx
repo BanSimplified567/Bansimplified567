@@ -12,151 +12,359 @@ import HTML from '../../img/Skills/html.png';
 import JS from '../../img/Skills/js.png';
 import Mysql from '../../img/Skills/mysql.png';
 import PHP from '../../img/Skills/php.png';
-import React from '../../img/Skills/React.png';
+import ReactImg from '../../img/Skills/React.png';
 import Sass from '../../img/Skills/sass.png';
 
 import Email from '../Extra/Email/Email';
 import Footer from '../Extra/Footer/Footer';
 import './Skills.css';
 
-const resources = [
-   {
-      src: HTML,
-      alt: 'HTML',
-      title: 'HTML',
-      description:
-         'HTML (HyperText Markup Language) is the standard markup language for creating web pages. Codecademy offers interactive lessons to learn HTML and build foundational web development skills.',
-   },
-   {
-      src: CSS,
-      alt: 'CSS',
-      title: 'CSS',
-      description:
-         'CSS (Cascading Style Sheets) is used to style and layout web pages. freeCodeCamp provides tutorials and projects to help you master CSS and make your web pages visually appealing.',
-   },
-   {
-      src: JS,
-      alt: 'JS',
-      title: 'JS',
-      description:
-         'JavaScript (JS) is a versatile programming language used to create dynamic content on websites. W3Schools offers comprehensive tutorials and references to help you learn JavaScript effectively.',
-   },
-   {
-      src: React,
-      alt: 'React',
-      title: 'React',
-      description:
-         'React is a popular JavaScript library for building user interfaces. GeeksforGeeks provides resources and tutorials to help you understand and build applications using React.',
-   },
-   {
-      src: PHP,
-      alt: 'PHP',
-      title: 'PHP',
-      description:
-         'PHP (Hypertext Preprocessor) is a server-side scripting language used to create dynamic web pages. DEV offers a platform where developers can share knowledge and collaborate on PHP projects.',
-   },
-   {
-      src: Git,
-      alt: 'Git',
-      title: 'Git',
-      description:
-         'Git is a version control system for tracking changes in code during software development. Medium hosts a variety of articles and tutorials to help you learn and utilize Git efficiently.',
-   },
-   {
-      src: Mysql,
-      alt: 'Mysql',
-      title: 'Mysql',
-      description:
-         'MySQL is an open-source relational database management system. YouTube offers numerous tutorials and videos to help you understand and work with MySQL databases.',
-   },
-   {
-      src: Github,
-      alt: 'Github',
-      title: 'Github',
-      description:
-         'GitHub is a platform for version control and collaboration. Codecademy provides lessons on using GitHub to manage your projects and collaborate with other developers.',
-   },
-   {
-      src: Sass,
-      alt: 'Sass',
-      title: 'Sass',
-      description:
-         'Sass is a powerful CSS preprocessor that allows you to write more maintainable and efficient CSS. It offers variables, nested rules, and mixins to enhance your CSS workflow.',
-   },
+const skills = [
+  {
+    src: HTML,
+    alt: 'HTML',
+    title: 'HTML5',
+    category: 'Frontend',
+    proficiency: 95,
+    description:
+      'Semantic markup, accessibility standards, and modern HTML5 APIs. Building structured, SEO-friendly foundations for web applications.',
+  },
+  {
+    src: CSS,
+    alt: 'CSS',
+    title: 'CSS3',
+    category: 'Frontend',
+    proficiency: 90,
+    description:
+      'Advanced styling with Flexbox, Grid, animations, and responsive design. Creating visually compelling and adaptive user interfaces.',
+  },
+  {
+    src: JS,
+    alt: 'JavaScript',
+    title: 'JavaScript',
+    category: 'Frontend',
+    proficiency: 85,
+    description:
+      'ES6+ features, DOM manipulation, async programming, and modern frameworks. Building interactive and dynamic web experiences.',
+  },
+  {
+    src: ReactImg,
+    alt: 'React',
+    title: 'React',
+    category: 'Frontend',
+    proficiency: 80,
+    description:
+      'Component-based architecture, hooks, state management, and React ecosystem. Developing scalable single-page applications.',
+  },
+  {
+    src: PHP,
+    alt: 'PHP',
+    title: 'PHP',
+    category: 'Backend',
+    proficiency: 75,
+    description:
+      'Server-side scripting, Laravel framework, and RESTful API development. Building robust backend systems and content management.',
+  },
+  {
+    src: Git,
+    alt: 'Git',
+    title: 'Git',
+    category: 'Tools',
+    proficiency: 85,
+    description:
+      'Version control, branching strategies, and collaborative workflows. Managing code efficiently across team environments.',
+  },
+  {
+    src: Mysql,
+    alt: 'MySQL',
+    title: 'MySQL',
+    category: 'Database',
+    proficiency: 70,
+    description:
+      'Database design, query optimization, and relational data modeling. Creating efficient data storage and retrieval systems.',
+  },
+  {
+    src: Github,
+    alt: 'GitHub',
+    title: 'GitHub',
+    category: 'Tools',
+    proficiency: 90,
+    description:
+      'Repository management, pull requests, CI/CD pipelines, and open-source collaboration. Professional code hosting and deployment.',
+  },
+  {
+    src: Sass,
+    alt: 'Sass',
+    title: 'Sass',
+    category: 'Frontend',
+    proficiency: 85,
+    description:
+      'CSS preprocessing with variables, mixins, and functions. Writing maintainable, scalable, and organized stylesheets.',
+  },
 ];
+
+const skillCategories = [
+  {
+    name: 'Frontend',
+    icons: 'https://skillicons.dev/icons?i=html,css,js,react,vite,tailwind,bootstrap,jquery&theme=dark&perline=8'
+  },
+  {
+    name: 'Backend & Tools',
+    icons: 'https://skillicons.dev/icons?i=php,mysql,laravel,postgres,cpp,postman,jwt,axios&theme=dark&perline=8'
+  },
+  {
+    name: 'Dev Tools & Others',
+    icons: 'https://skillicons.dev/icons?i=git,github,vscode,npm,eslint,prettier,xampp,openai&theme=dark&perline=8'
+  },
+  {
+    name: 'Operating Systems',
+    icons: 'https://skillicons.dev/icons?i=windows,debian,linux,mint,ubuntu&theme=dark&perline=5'
+  }
+];
+
 function Skills() {
-   const animationProps = {
-      initial: { opacity: 0, x: -100 },
-      whileInView: { opacity: 1, x: 0 },
-      transition: { duration: 0.5 },
-   };
+  const categories = [...new Set(skills.map(skill => skill.category))];
 
-   const animationPropsUp = {
-      initial: { opacity: 0, y: -100 },
-      whileInView: { opacity: 1, y: 0 },
-      transition: { duration: 0.5 },
-   };
+  return (
+    <main className="skills-page">
+      {/* Hero Section */ }
+      <section className="skills-hero">
+        <div className="skills-hero-content">
+          <motion.div
+            className="skills-badge"
+            initial={ { scale: 0 } }
+            animate={ { scale: 1 } }
+            transition={ { type: "spring", delay: 0.2 } }
+          >
+            <img src={ flames } alt="Flame icon" className="flame-icon" />
+            <span>👨‍💻</span>
+            <img src={ flames } alt="Flame icon" className="flame-icon" />
+          </motion.div>
 
-   return (
-      <main className="section">
-         <div className="skillsContainer">
-            <img src={flamesBorder} className="flamesBorder" alt="flamesBorder" />
-            <article className="section">
-               <motion.section {...animationProps}>
-                  <div className="aboutSkillsOfMine">
-                     <img src={flames} width="26px" alt="flames" />
-                     <h1 className="aboutTitle border">Skills Of Mine 👨‍💻</h1>
-                     <img src={flames} width="26px" alt="flames" />
+          <motion.h1
+            className="skills-title"
+            initial={ { opacity: 0, y: 20 } }
+            animate={ { opacity: 1, y: 0 } }
+            transition={ { delay: 0.3 } }
+          >
+            My <span className="highlight">Technical</span> Arsenal
+          </motion.h1>
+
+          <motion.p
+            className="skills-subtitle"
+            initial={ { opacity: 0, y: 20 } }
+            animate={ { opacity: 1, y: 0 } }
+            transition={ { delay: 0.4 } }
+          >
+            A comprehensive collection of technologies and tools I've mastered to create
+            exceptional digital experiences. From frontend magic to backend logic.
+          </motion.p>
+        </div>
+      </section>
+
+      {/* Skills Stats */ }
+      <motion.section
+        className="skills-stats"
+        initial={ { opacity: 0 } }
+        animate={ { opacity: 1 } }
+        transition={ { delay: 0.5 } }
+      >
+        <div className="stats-container">
+          <div className="stat-card">
+            <span className="stat-number">{ skills.length }</span>
+            <span className="stat-label">Core Skills</span>
+          </div>
+          <div className="stat-card">
+            <span className="stat-number">{ categories.length }</span>
+            <span className="stat-label">Categories</span>
+          </div>
+          <div className="stat-card">
+            <span className="stat-number">25+</span>
+            <span className="stat-label">Technologies</span>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* AboutSkills Section */ }
+      <section className="about-skills-section">
+        <AboutSkills />
+      </section>
+
+      {/* Full Skill Icons Table */ }
+      <motion.section
+        className="skills-icons-section"
+        initial={ { opacity: 0 } }
+        whileInView={ { opacity: 1 } }
+        viewport={ { once: true } }
+      >
+        <div className="section-header">
+          <h2>Complete Tech Stack</h2>
+          <p>All technologies and tools in my development toolkit</p>
+        </div>
+
+        <div className="skills-table-container">
+          { skillCategories.map((category, index) => (
+            <motion.div
+              key={ category.name }
+              className="skill-category-card"
+              initial={ { opacity: 0, y: 30 } }
+              whileInView={ { opacity: 1, y: 0 } }
+              viewport={ { once: true } }
+              transition={ { delay: index * 0.1 } }
+            >
+              <div className="category-header">
+                <h3 className="category-name">{ category.name }</h3>
+                <span className="category-count">
+                  { category.name === 'Frontend' && '8 icons' }
+                  { category.name === 'Backend & Tools' && '8 icons' }
+                  { category.name === 'Dev Tools & Others' && '8 icons' }
+                  { category.name === 'Operating Systems' && '5 icons' }
+                </span>
+              </div>
+
+              <div className="skill-icons-grid">
+                <img
+                  src={ category.icons }
+                  alt={ `${category.name} technologies` }
+                  className="skill-icons-image"
+                  loading="lazy"
+                />
+              </div>
+
+              <div className="category-description">
+                { category.name === 'Frontend' && 'Modern web development technologies for creating responsive user interfaces' }
+                { category.name === 'Backend & Tools' && 'Server-side technologies and APIs for building robust applications' }
+                { category.name === 'Dev Tools & Others' && 'Essential development tools and utilities for productivity' }
+                { category.name === 'Operating Systems' && 'Platforms I work with for development and deployment' }
+              </div>
+            </motion.div>
+          )) }
+        </div>
+      </motion.section>
+
+      {/* Category Filter */ }
+      <motion.section
+        className="skills-categories"
+        initial={ { opacity: 0 } }
+        whileInView={ { opacity: 1 } }
+        viewport={ { once: true } }
+      >
+        <div className="categories-container">
+          <h2 className="categories-title">Explore Core Skills</h2>
+          <div className="category-tags">
+            { categories.map((category, index) => (
+              <motion.button
+                key={ category }
+                className="category-tag"
+                whileHover={ { scale: 1.05 } }
+                whileTap={ { scale: 0.95 } }
+                initial={ { opacity: 0, x: -20 } }
+                animate={ { opacity: 1, x: 0 } }
+                transition={ { delay: index * 0.1 } }
+              >
+                { category }
+              </motion.button>
+            )) }
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Detailed Skills Grid */ }
+      <section className="skills-grid-section">
+        <div className="section-header">
+          <h2>Featured Skills</h2>
+          <p>Detailed overview of my core development skills</p>
+        </div>
+
+        <motion.div
+          className="skills-grid"
+          initial="hidden"
+          whileInView="visible"
+          viewport={ { once: true, margin: "-50px" } }
+          variants={ {
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.1
+              }
+            }
+          } }
+        >
+          { skills.map((skill, index) => (
+            <motion.div
+              key={ index }
+              className="skill-card-wrapper"
+              variants={ {
+                hidden: { opacity: 0, y: 30 },
+                visible: { opacity: 1, y: 0 }
+              } }
+              whileHover={ { y: -10 } }
+              transition={ { duration: 0.3 } }
+            >
+              <NavLink
+                className="skill-card"
+                to={ skill.link || '#' }
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className="skill-card-header">
+                  <div className="skill-icon-container">
+                    <motion.img
+                      src={ skill.src }
+                      alt={ skill.alt }
+                      className="skill-icon"
+                      whileHover={ { rotate: 360 } }
+                      transition={ { duration: 0.6, ease: "easeInOut" } }
+                    />
                   </div>
-                  <motion.p className="aboutSemiTitle" {...animationPropsUp}>
-                     Hello!👋 I am an enthusiastic Front-end Developer passionate about creating
-                     dynamic and engaging web experiences. With a solid foundation in front-end
-                     technologies, I strive to build websites and applications that are not only
-                     visually appealing but also highly functional and user-friendly. My expertise
-                     lies primarily in the front-end domain, where I employ a variety of tools and
-                     technologies to bring designs to life. Here are some of the skills I utilize:
-                  </motion.p>
-               </motion.section>
+                  <div className="skill-title-container">
+                    <h3 className="skill-title">{ skill.title }</h3>
+                    <span className="skill-category">{ skill.category }</span>
+                  </div>
+                </div>
 
-               <motion.section className="aboutSkills section" {...animationProps}>
-                  <AboutSkills />
-               </motion.section>
-            </article>
-            <article className="skillsArticle">
-               {resources.map((resource, index) => (
-                  <motion.div className="skillsCards" key={index} {...animationProps}>
-                     <NavLink className="skillsCard" to={resource.link} target="_blank">
-                        <motion.img
-                           {...animationPropsUp}
-                           src={resource.src}
-                           alt={resource.alt}
-                           className="skillsCardsImages"
-                        />
-                        <div className="portCardBody">
-                           <motion.h2 {...animationProps} className="portCardTitle skillsTitle">
-                              {resource.title}
-                           </motion.h2>
-                           <motion.p
-                              {...animationPropsUp}
-                              className="portCardDescription skillsdescription"
-                           >
-                              {resource.description}
-                           </motion.p>
-                        </div>
-                     </NavLink>
-                  </motion.div>
-               ))}
-            </article>
-         </div>
+                <div className="skill-progress">
+                  <div className="progress-bar">
+                    <motion.div
+                      className="progress-fill"
+                      initial={ { width: 0 } }
+                      whileInView={ { width: `${skill.proficiency}%` } }
+                      viewport={ { once: true } }
+                      transition={ { duration: 1, delay: 0.2 } }
+                    />
+                  </div>
+                  <span className="proficiency-text">{ skill.proficiency }%</span>
+                </div>
 
-         <section className="homeEmail">
-            <Email />
-         </section>
-         <section className="section">
-            <Footer />
-         </section>
-      </main>
-   );
+                <p className="skill-description">{ skill.description }</p>
+
+                <div className="skill-footer">
+                  <motion.span
+                    className="view-more"
+                    whileHover={ { x: 5 } }
+                    transition={ { duration: 0.2 } }
+                  >
+                    Learn More →
+                  </motion.span>
+                </div>
+              </NavLink>
+            </motion.div>
+          )) }
+        </motion.div>
+      </section>
+
+      {/* Separator */ }
+      <div className="skills-separator">
+        <img src={ flamesBorder } alt="Decorative separator" className="separator-image" />
+      </div>
+
+
+        <Email />
+
+      <Footer />
+    </main>
+  );
 }
 
 export default Skills;

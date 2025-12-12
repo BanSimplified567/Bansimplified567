@@ -1,49 +1,50 @@
 # Bansimplified
 
+<!--## 💫 About Me:-->
+<img src="https://wakatime.com/badge/user/018c974d-1366-4d7f-9b95-0e80821d2165.svg" alt="wakatime" />
+<br>
+<br>
+
 <img src="./src/components/img/assets/pixel-night-banner.gif" align="middle" alt="Banner" width="100%"/>
 
 <img src="./src/components/img/assets/borderseparator.gif" width="100%"/>
 
 
 <div align="center">
-<h2 align="center"> <img src="./src/components/img/assets/animated-flame-01.gif" width="14px"/>
-Full-stack Developer ||  Frontend-Enthusiast
- <img src="./src/components/img/assets/animated-flame-01.gif" width="14px"/></h2>
+<h2 align="center">
+<img src="./src/components/img/assets/animated-flame-01.gif" width="14px"/>
+Full-Stack Developer • Frontend-Enthusiast
+<img src="./src/components/img/assets/animated-flame-01.gif" width="14px"/>
+</h2>
 </div>
 
 <img src="./src/components/img/assets/borderseparator.gif" width="100%"/>
 
 
-<img align="right" src="./src/components/img/assets/vaporwave-aesthetic.gif" height="500px" alt="pixel city image">
+<img align="right" src="./src/components/img/assets/vaporwave-aesthetic.gif" height="300px" alt="pixel city image">
 
 <br>
 
-- 👨‍💻 Hi, I’m Jade Ivan (Bansimplified) — a college student currently pursuing a Bachelor of Science in Information Technology (Programming) in the Philippines.
-<br><br>
+### 👨‍💻 About Me
+- I’m **Jade Ivan (Bansimplified)** — an IT (Programming) student from the Philippines.
+- Actively enhancing my software engineering foundation across **frontend, backend, and full-stack workflows**.
+- Passionate about building scalable web systems, UI engineering, and modern development tooling.
+- **Decade Goal:** Become a full-fledged Software Engineer.
+- Interests include: Coffee, learning new frameworks, and creative coding.
+- Hobbies: Reading manga/manhwa, drawing, and exploring digital storytelling.
 
-- 🌱 I’m actively learning and sharpening my coding skills, using every opportunity to grow and improve as a developer.
-<br><br>
-
-- 🐾 I’m here to connect, learn, and build friendships with fellow tech enthusiasts and creatives.
-<br><br>
-
-- 🌊 Decade Goal: To become a full-fledged Software Engineer and Web Developer.
-<br><br>
-
-- ☕ Interests: Coffee, continuous learning, and creative coding.
-<br><br>
-
-- <img src="https://github.githubassets.com/images/icons/emoji/octocat.png" height="16px"/> Hobbies: Drawing, reading, and diving into illustrated stories — including anime, manga, manhua, and manhwa. I also enjoy spending time on Facebook.
-<br><br>
-- 📄 MY RESUME: <a href="./src/components/Pages/About/Bringcolajadeivan,V.pdf" download="Bringcolajadeivan,V.pdf">Download</a>
+📄 **Resume:**
+[Download Resume](./src/components/Pages/About/Bringcolajadeivan,V.pdf)
 
 <h2></h2>
 
-<img src="./src/components/img/assets/animated-flame-01.gif" width="16px" align="left"/>
-<img src="./src/components/img/assets/animated-flame-01.gif" width="16px" align="right"/>
+
 
 <div align="center">
-  <h2> <strong> 📚 Education and Connection </strong> <img src="./src/components/img/assets/borderseparator.gif"/> </h2>
+<img src="./src/components/img/assets/borderseparator.gif"/>
+  <h2> <strong> 📚 Education and Connection </strong>
+    <img src="./src/components/img/assets/animated-flame-01.gif" width="16px" align="left"/>
+  <img src="./src/components/img/assets/animated-flame-01.gif" width="16px" align="right"/> </h2>
   <br>
   <a href="https://mail.google.com/mail/u/0/#inbox" target="_blank">
     <img src="https://img.shields.io/static/v1?message=naviedaj567@gmail.com&logo=gmail&label=&color=D14836&logoColor=white&labelColor=&style=for-the-badge" height="35" alt="gmail logo"  />
@@ -69,141 +70,49 @@ Full-stack Developer ||  Frontend-Enthusiast
 </div>
 
 <div align="center">
-  <img src="./src/components/img/assets/animated-flame-01.gif" width="16px" align="left"/>
-  <img src="./src/components/img/assets/animated-flame-01.gif" width="16px" align="right"/>
+
 
   <h2> <strong><img src="./src/components/img/assets/borderseparator.gif"/> ⚙️ Technologies and Skills </strong><img src="./src/components/img/assets/borderseparator.gif"/></h2>
 
-<div align="center">
-<table align="center">
-<!-- Frontend Technologies Badges -->
-  <tr>
-    <td align="center">
-      <img src="https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white" alt="html5" height="35" width="100"/>
-    </td>
-    <td align="center">
-      <img src="https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white" alt="css3" height="35" width="100"/>
-    </td>
-    <td align="center">
-      <img src="https://img.shields.io/badge/javascript-%2314354C.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E" alt="javascript" height="35" width="100"/>
-    </td>
-      <td align="center">
-      <img src="https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white" alt="Sass" height="35" width="100"/>
-    </td>
-  </tr>
-  <tr>
-      <td align="center">
-      <img src="https://img.shields.io/badge/json-5E5C5C?style=for-the-badge&logo=json&logoColor=white" alt="json" height="35" width="100"/>
-    </td>
-    <td align="center">
-      <img src="https://img.shields.io/badge/Bootstrap-593D88?style=for-the-badge&logo=bootstrap&logoColor=white" alt="bootstrap" height="35" width="100"/>
-    </td>
-    <td align="center">
-      <img src="https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E" alt="vite" height="35" width="100"/>
-    </td>
-    <td align="center">
-      <img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" alt="react" height="35" width="100"/>
-    </td>
-  </tr>
+<div align="left">
 
-  <tr>
-<!-- Backend Technologies Badges -->
-     <td align="center">
-      <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="nodejs" height="35" width="100"/>
-    </td>
-    <td align="center">
-      <img src="https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB" alt="expressjs" height="35" width="100"/>
-    </td>
-    <td align="center">
-      <img src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="tailwind" height="35" width="100"/>
-    </td>
-        <td align="center">
-      <img src="https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue" alt="tailwind" height="35" width="100"/>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" alt="mongodb" height="35" width="100"/>
-    </td>
-     <td align="center">
-      <img src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white" alt="typescript" height="35" width="100"/>
-    </td>
-    <td align="center" >
-      <img src="https://img.shields.io/badge/PHP-777BB4.svg?style=for-the-badge&logo=php&logoColor=white" alt="php" height="35" width="100"/>
-    </td>
-        <td align="center">
-      <img src="https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white" alt="html5" height="35" width="100"/>
-    </td>
-  </tr>
-  <!-- Tools Technologies Badges Table -->
-  <tr>
-    <td align="center">
-      <img src="https://img.shields.io/badge/prettier-1A2C34?style=for-the-badge&logo=prettier&logoColor=F7BA3E"  align="center" alt="github" height="35" width="100"/>
-    </td>
-    <td align="center">
-      <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"  align="center" alt="github" height="35" width="100"/>
-    </td>
-    <td align="center">
-      <img src = "https://img.shields.io/badge/NPM-CA4245?style=for-the-badge&logo=npm&logoColor=white" align="center" alt="npm" height="35" width="100"/>
-    </td>
-    <td align="center">
-      <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" align="center" alt="git" height="35" width="100"/>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <img src="https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white"  align="center" alt="vscode" height="35" width="100"/>
-    </td>
-    <td align="center">
-      <img src="https://img.shields.io/badge/Open%20AI-0f9e7b.svg?style=for-the-badge&logo=openAI&logoColor=white"  align="center" alt="open-AI" height="35" width="100"/>
-    </td>
-        <td align="center">
-      <img src="https://img.shields.io/badge/PowerShell-%235391FE.svg?style=for-the-badge&logo=powershell&logoColor=white" align="center" alt="powershell" height="35" width="100"/>
-    </td>
-    <td align="center">
-      <img src="https://img.shields.io/badge/Xampp-F37623?style=for-the-badge&logo=xampp&logoColor=white" align="center" alt="Xampp" height="35" width="100"/>
-    </td>
-  </tr>
+| Category              | Skills |
+|-----------------------|--------|
+| **Frontend**          | <img src="https://skillicons.dev/icons?i=html,css,js,react,vite,tailwind,bootstrap,jquery&theme=dark"/> |
+| **Backend & Tools**   | <img src="https://skillicons.dev/icons?i=php,mysql,laravel,postgres,cpp,postman,jwt,axios&theme=dark"/> |
+| **Dev Tools & Others**| <img src="https://skillicons.dev/icons?i=git,github,vscode,npm,eslint,prettier,xampp,openai&theme=dark"/> |
+| **Operating Systems** | <img src="https://skillicons.dev/icons?i=windows,debian,linux,mint,ubuntu&theme=dark"/> |
 
-  <tr>
-      <td align="center">
-      <img src="https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white" align="center" alt="Xampp" height="35" width="100"/>
-    </td>
-    <td align="center">
-      <img src="https://img.shields.io/badge/Debian-A81D33?style=for-the-badge&logo=debian&logoColor=white"  align="center" alt="vscode" height="35" width="100"/>
-    </td>
-    <td align="center">
-      <img src="https://img.shields.io/badge/Linux_Mint-87CF3E?style=for-the-badge&logo=linux-mint&logoColor=white"  align="center" alt="open-AI" height="35" width="100"/>
-    </td>
-        <td align="center">
-      <img src="https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white" align="center" alt="powershell" height="35" width="100"/>
-    </td>
-  </tr>
-
-</table>
+<br/>
 </div>
-<img src="./src/components/img/assets/animated-flame-01.gif" width="16px" align="left"/>
-<img src="./src/components/img/assets/animated-flame-01.gif" width="16px" align="right"/>
+<img src="./src/components/img/assets/borderseparator.gif"/>
+
 
 <div align="center">
   <h2> 🏆 My Github Stats <img src="./src/components/img/assets/borderseparator.gif"/></h2>
-
-  <img src="https://github-profile-trophy.vercel.app/?username=BanSimplified567&theme=radical&no-frame=true&no-bg=true&row=1&column=7" width="100%" alt="Trophy" align="middle" />
-   <a href="https://wakatime.com/@BanBan" target="_blank">
-      <img src="https://github-readme-stats.vercel.app/api/wakatime?username=BanBan&theme=radical&layout=compact" alt="Wakatime Coding Time" width="1024px">
-  </a><a href="https://wakatime.com/@BanBan" target="_blank">
-  <img src="https://streak-stats.demolab.com?user=BanSimplified567&theme=radical" width="50%" alt="streaks graph" />
-  </a>
-    <a href="https://wakatime.com/@BanBan" target="_blank">
-  <img src="https://github-readme-stats.vercel.app/api?username=BanSimplified567&theme=radical&show_icons=true&count_private=true" width="49%" alt="stats graph" /></a>
-     <img src="https://github-readme-activity-graph.vercel.app/graph?username=BanSimplified567&custom_title=BanSimplified567's%20GitHub%20Activity%20Graph&bg_color=141321&color=A9FEF7&line=626069&point=F8D847&area_color=FE428E&title_color=FE428E&area=true" alt="BanSimplified567's Github Activity Graph" width="48%">
-    <a href="https://wakatime.com/@BanBan" target="_blank">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=BanSimplified567&theme=radical&langs_count=10&card_width=540&layout=compact" alt="Most used languages" width="48%"></a>
-</div>
-
-<div align="center">
-
-   <a href="https://wakatime.com"><img src="https://wakatime.com/share/@BanBan/382532ff-5057-45a2-b975-14ab938e7e7c.png" align="left" width="100%"/></a>
+  <table>
+    <tr>
+      <td width="50%">
+        <a href="https://github.com/BanSimplified567&show_icons=true&count_private=true&theme=radical/github-readme-stats">
+          <img src="https://github-readme-stats.vercel.app/api?username=BanSimplified567&show_icons=true&count_private=true&theme=radical" width="100%" />
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <a href="https://wakatime.com/@BanBan" target="_blank">
+          <img src="https://github-readme-activity-graph.vercel.app/graph?username=BanSimplified567&custom_title=BanSimplified567's%20GitHub%20Activity%20Graph&bg_color=141321&color=A9FEF7&line=626069&point=F8D847&area_color=FE428E&title_color=FE428E&area=true" alt="BanSimplified567's Github Activity Graph" width="100%">
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <a href="https://wakatime.com">
+          <img src="https://wakatime.com/share/@BanBan/382532ff-5057-45a2-b975-14ab938e7e7c.png" width="100%"/>
+        </a>
+      </td>
+    </tr>
+  </table>
 </div>
 
 
@@ -212,10 +121,23 @@ Full-stack Developer ||  Frontend-Enthusiast
 <img src="./src/components/img/assets/borderseparator.gif"/>
 <img src="./src/components/img/assets/animated-flame-01.gif" width="16px" align="left"/>
 <img src="./src/components/img/assets/animated-flame-01.gif" width="16px" align="right"/>
-👨‍💻 Projects <img src="./src/components/img/assets/borderseparator.gif"/>
-</h2><a href="https://github.com/BanSimplified567/POS-Coffee-Shop-Management
-" target="_blank"><img src="https://github-readme-stats.vercel.app/api/pin/?username=BanSimplified567&theme=radical&repo=POS-Coffee-Shop-Management" width="49%" alt="POS-Coffee-Shop-Management"/>
-  </a>
+👨‍💻 Projects
+</h2>
+
+<div align="center">
+  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2%;">
+    <div style="width: 49%;">
+      <a href="https://github.com/BanSimplified567/bansimplified-boilerplete-using-react">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=BanSimplified567&repo=bansimplified-boilerplete-using-react" width="100%"/>
+      </a>
+    </div>
+
+  </div>
+  </div>
+</div>
+
+<img src="./src/components/img/assets/borderseparator.gif"/>
+
 </div>
 
 

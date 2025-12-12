@@ -1,265 +1,286 @@
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
-
-import flames from '../../img/assets/animated-flame-01.gif';
 import flamesBorder from '../../img/assets/borderseparator.gif';
-
 import { ContactCategory } from '../Extra/ContactCategory/ContactCategory';
 import Email from '../Extra/Email/Email';
 import Footer from '../Extra/Footer/Footer';
 import './Home.css';
 
-const sections = [
-   {
-      title: 'WHO AM I',
-      link: '/about',
-      buttonText: 'LEARN MORE',
-      content: `
-            Hello! I'm Jade Ivan V. Bringcola, or BanBan, hailing proudly from
-            Sibonga, Cebu, Philippines. Currently, I'm pursuing a Bachelor of Science
-            in Information Technology (Programming) in my home country. 👨‍💻 My passion
-            lies in crafting dynamic and intuitive websites, constantly refining my
-            skills in web development to create seamless digital experiences. 🐾
-            <br>
-            <br>
-
-            Driven by a desire to make a positive impact in the tech industry, I'm
-            dedicated to harnessing technology for meaningful digital innovations. 🌊
-            Born on September 10, 2002, in Manila, Quezon City, my journey in IT
-            began with a profound curiosity and a commitment to innovation. I'm eager
-            to contribute to the transformative power of technology and excited about
-            what lies ahead in this dynamic field. Nice to meet you! 👋
-         `,
-      additionalContent: '',
-   },
-   {
-      title: 'BLOG',
-      link: '/blog',
-      buttonText: 'WATCH MY BLOG',
-      content: `
-            As an Aspiring Software Engineer, I encourage others to pursue their
-            dreams and never give up. I share my journey, provide support, and
-            celebrate achievements to keep everyone motivated. By fostering a
-            positive environment, I help others stay focused and confident in their
-            path to success. 🐾
-            <br>
-            <br>
-
-            I lead by example as an Aspiring Software Engineer, emphasizing
-            perseverance and a positive mindset. I offer guidance, share resources,
-            and collaborate on projects to help peers develop their skills. My goal
-            is to inspire others to believe in their potential and achieve their
-            aspirations. 👋
-         `,
-      additionalContent: '',
-   },
-   {
-      title: 'EXPERIENCE',
-      link: '/about',
-      buttonText: 'VIEW MY EXPERIENCE',
-      content: `
-            During my tenure as a Factory Worker at Republic Biscuit Corporation
-            (REBISCO) from November 2021 to April 2022, I gained valuable hands-on
-            experience in a high-paced manufacturing environment. Located in
-            Bukidnon, Northern Mindanao, Philippines, I worked full-time on-site for
-            six months, contributing to various aspects of the biscuit production
-            process.🐾
-            <br>
-            <br>
-
-            My responsibilities included operating machinery, maintaining a clean and
-            safe workspace, and adhering to strict quality control standards to
-            ensure that all products met the company’s high standards. This role
-            demanded precision, attention to detail, and the ability to work
-            efficiently under pressure. Through this experience, I developed strong
-            teamwork skills, the ability to follow complex instructions, and a solid
-            understanding of manufacturing operations.👋
-         `,
-      additionalContent: '',
-   },
-   {
-      title: 'LEADERSHIP',
-      link: '/contact',
-      buttonText: 'CONTACT ME',
-      content: `
-            As an Aspiring Software Engineer, I encourage others to pursue their
-            dreams and never give up. I share my journey, provide support, and
-            celebrate achievements to keep everyone motivated. By fostering a
-            positive environment, I help others stay focused and confident in their
-            path to success. 🐾
-            <br>
-            <br>
-
-            I lead by example as an Aspiring Software Engineer, emphasizing
-            perseverance and a positive mindset. I offer guidance, share resources,
-            and collaborate on projects to help peers develop their skills. My goal
-            is to inspire others to believe in their potential and achieve their
-            aspirations. 👋
-         `,
-      additionalContent: '',
-   },
-
-   {
-      title: 'ACTIVITIES',
-      link: '/activities',
-      buttonText: 'LOOK AT MY ACTIVITIES',
-      content: `
-            I am deeply focused on improving as a Software Engineer, spending my days coding, designing user interfaces, and staying updated with the latest web technologies. Through disciplined practice and consistent learning, I strive to enhance my skills daily, trusting in God for guidance in this journey.🐾
-            <br>
-            <br>
-
-         Previously, I gained experience in backend development and graphic design, which equipped me with valuable technical and creative insights. With discipline and consistency, I dedicated myself to learning and growing, relying on faith to navigate challenges and seize opportunities for advancement. 👋
-         `,
-      additionalContent: '',
-   },
+const stats = [
+  { label: 'Projects Completed', value: '50+', icon: '🚀' },
+  { label: 'Technologies Mastered', value: '25+', icon: '💻' },
+  { label: 'Years Experience', value: '2+', icon: '📈' },
+  { label: 'Client Satisfaction', value: '100%', icon: '⭐' },
 ];
-const calculateTimeLeft = () => {
 
-   const targetDate = new Date('2022-09-10T00:00:00'); // Set target date to September 10, 2022
+const skills = [
+  'React', 'JavaScript', 'TypeScript', 'HTML/CSS', 'Responsive Design',
+  'UI/UX', 'Frontend Development', 'Web Performance', 'Modern Frameworks'
+];
 
-   const now = new Date(); // Get the current date and time
-   const difference = now - targetDate; // Calculate the difference in milliseconds
-
-   let timeLeft = {};
-
-   if (difference > 0) {
-      timeLeft = {
-         years: Math.floor(difference / (1000 * 60 * 60 * 24 * 365)), // Convert to years
-         months: Math.floor(
-            (difference % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30)
-         ), // Convert remainder to months
-         days: Math.floor((difference % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24)), // Convert remainder to days
-      };
-   } else {
-      timeLeft = {
-         years: 0,
-         months: 0,
-         days: 0,
-      };
-   }
-
-   return timeLeft;
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
 };
 
-const animationProps = {
-   initial: { opacity: 0, x: -100 },
-   whileInView: { opacity: 1, x: 0 },
-   transition: { duration: 0.5 },
+const itemAnimation = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut"
+    }
+  }
 };
 
-const animationPropsUp = {
-   initial: { opacity: 0, y: -100 },
-   whileInView: { opacity: 1, y: 0 },
-   transition: { duration: 0.5 },
-};
+function Home() {
+  const [timeLeft, setTimeLeft] = useState({
+    years: 0,
+    months: 0,
+    days: 0,
+  });
 
-const HomeSlider = ({ repeatCount, text, timeLeft }) => {
-   return (
-      <motion.section className="homeSlider" {...animationProps}>
-         <div className="homeSlideTrack">
-            {Array.from({ length: repeatCount }).map((_, index) => (
-               <div className="homeSlide" key={index}>
-                  <h1 className="aboutParagraph slides">
-                     {text} - {timeLeft.years} years, {timeLeft.months} months, {timeLeft.days} days
-                  </h1>
-               </div>
-            ))}
-         </div>
-      </motion.section>
-   );
-};
+  useEffect(() => {
+    const calculateTimeSince = () => {
+      const startDate = new Date('2022-09-10');
+      const now = new Date();
 
-const Home = () => {
-   const startDate = '2026-01-01T00:00:00'; // The start date from which the target is calculated
+      let years = now.getFullYear() - startDate.getFullYear();
+      let months = now.getMonth() - startDate.getMonth();
+      let days = now.getDate() - startDate.getDate();
 
-   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(startDate));
+      if (days < 0) {
+        months -= 1;
+        days += new Date(now.getFullYear(), now.getMonth(), 0).getDate();
+      }
 
-   // Update time left every second
-   useEffect(() => {
-      const timer = setInterval(() => {
-         setTimeLeft(calculateTimeLeft(startDate));
-      }, 1000);
+      if (months < 0) {
+        years -= 1;
+        months += 12;
+      }
 
-      return () => clearInterval(timer); // Cleanup on unmount
-   }, [startDate]);
+      return { years, months, days };
+    };
 
-   const text =
-      'Jade Ivan Bringcola Known as BanBan @Aspiring Software-Engineer | Frontend Enthusiast';
-   const repeatCount = 10; // Adjust this count to control how many times the text repeats
+    setTimeLeft(calculateTimeSince());
 
+    const timer = setInterval(() => {
+      setTimeLeft(calculateTimeSince());
+    }, 1000 * 60 * 60 * 24);
 
+    return () => clearInterval(timer);
+  }, []);
 
-   return (
-      <>
-         <main className="section">
-            <motion.section className="homeSection" {...animationPropsUp}>
-               <div className="homeSectionOne">
-                  <img src="./ban.jpg" alt="banban" className="banbanImage" />
-                  <div className="homePerson">
-                     <img src={flames} className="flames" alt="flames" />
-                     <motion.p {...animationProps} className="homeParagraph">
-                        Jade Ivan V. Bringcola is an Aspiring Software Engineer from the
-                        Philippines. 👋👨‍💻
-                     </motion.p>
-                     <img src={flames} className="flames" alt="flames" />
+  return (
+    <main className="home-page">
+      {/* Enhanced Hero Section */ }
+      <section className="home-hero">
+        <div className="hero-background">
+          <div className="hero-background-gradient"></div>
+          <div className="hero-background-pattern"></div>
+        </div>
+
+        <div className="home-hero-content">
+          <div className="hero-main-content">
+            {/* Left Column - Text Content */ }
+            <div className="hero-text-content">
+              <motion.div
+                className="hero-badge"
+                initial={ { scale: 0 } }
+                animate={ { scale: 1 } }
+                transition={ { type: "spring", delay: 0.2 } }
+              >
+                <span className="badge-icon">👨‍💻</span>
+                <span className="badge-text">Available for Opportunities</span>
+              </motion.div>
+
+              <motion.div
+                className="hero-heading"
+                initial={ { opacity: 0, y: 20 } }
+                animate={ { opacity: 1, y: 0 } }
+                transition={ { delay: 0.3 } }
+              >
+                <h1 className="hero-title">
+                  <span className="title-line">Jade Ivan V.</span>
+                  <span className="title-line highlight">Bringcola</span>
+                </h1>
+                <div className="hero-subtitle">
+                  <span className="subtitle-text">Aspiring Software Engineer</span>
+                  <div className="subtitle-divider"></div>
+                  <span className="subtitle-text">Frontend Specialist</span>
+                </div>
+              </motion.div>
+
+              <motion.p
+                className="hero-description"
+                initial={ { opacity: 0, y: 20 } }
+                animate={ { opacity: 1, y: 0 } }
+                transition={ { delay: 0.4 } }
+              >
+                I transform ideas into exceptional digital experiences through clean code
+                and thoughtful design. Passionate about building scalable, user-friendly
+                applications that make an impact.
+              </motion.p>
+
+              <motion.div
+                className="hero-cta"
+                initial={ { opacity: 0, y: 20 } }
+                animate={ { opacity: 1, y: 0 } }
+                transition={ { delay: 0.5 } }
+              >
+                <button className="cta-button primary">
+                  <span>View My Work</span>
+                  <svg className="arrow-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <path d="M5 12H19M12 5L19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </button>
+                <button className="cta-button secondary">
+                  <span>Contact Me</span>
+                  <svg className="message-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <path d="M21 11.5C21.0034 12.8199 20.6951 14.1219 20.1 15.3C19.3944 16.7118 18.3098 17.8992 16.9674 18.7293C15.6251 19.5594 14.0782 19.9994 12.5 20C11.1801 20.0034 9.87812 19.6951 8.7 19.1L3 21L4.9 15.3C4.30493 14.1219 3.99656 12.8199 4 11.5C4.00061 9.92179 4.44061 8.37488 5.27072 7.03258C6.10083 5.69028 7.28825 4.6056 8.7 3.90003C9.87812 3.30496 11.1801 2.99659 12.5 3.00003H13C15.0843 3.11502 17.053 3.99479 18.5291 5.47089C20.0052 6.94699 20.885 8.91568 21 11V11.5Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </button>
+              </motion.div>
+            </div>
+
+            {/* Right Column - Profile */ }
+            <motion.div
+              className="hero-profile"
+              initial={ { opacity: 0, x: 50 } }
+              animate={ { opacity: 1, x: 0 } }
+              transition={ { delay: 0.4, duration: 0.6 } }
+            >
+              <div className="profile-container">
+                <div className="profile-image-wrapper">
+                  <img src="./ban.jpg" alt="Jade Ivan Bringcola" className="profile-image" />
+                  <div className="profile-status">
+                    <div className="status-indicator"></div>
+                    <span className="status-text">Available</span>
                   </div>
-               </div>
-               <ContactCategory />
-            </motion.section>
+                </div>
 
-            <img src={flamesBorder} className="flamesBorder" alt="flamesBorder" />
+                <div className="profile-info">
+                  <div className="experience-card">
+                    <div className="experience-icon">⏳</div>
+                    <div className="experience-content">
+                      <div className="experience-title">Coding Journey</div>
+                      <div className="experience-time">
+                        <span className="time-number">{ timeLeft.years }</span>
+                        <span className="time-label">Years</span>
+                        <span className="time-number">{ timeLeft.months }</span>
+                        <span className="time-label">Months</span>
+                        <span className="time-number">{ timeLeft.days }</span>
+                        <span className="time-label">Days</span>
+                      </div>
+                    </div>
+                  </div>
 
-            <motion.section>
-               <HomeSlider repeatCount={repeatCount} text={text} timeLeft={timeLeft} />
-            </motion.section>
+                  <div className="profile-location">
+                    <svg className="location-icon" width="16" height="16" viewBox="0 0 24 24" fill="none">
+                      <path d="M21 10C21 17 12 23 12 23C12 23 3 17 3 10C3 7.61305 3.94821 5.32387 5.63604 3.63604C7.32387 1.94821 9.61305 1 12 1C14.3869 1 16.6761 1.94821 18.364 3.63604C20.0518 5.32387 21 7.61305 21 10Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      <path d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                    <span>Sibonga, Cebu, Philippines</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
 
-            <img src={flamesBorder} className="flamesBorder" alt="flamesBorder" />
+          {/* Skills Marquee */ }
+          <motion.div
+            className="skills-marquee"
+            initial={ { opacity: 0, y: 20 } }
+            animate={ { opacity: 1, y: 0 } }
+            transition={ { delay: 0.6 } }
+          >
+            <div className="marquee-label">Technologies I Work With</div>
+            <div className="marquee-container">
+              <div className="marquee-track">
+                { skills.map((skill, index) => (
+                  <div key={ index } className="marquee-item">
+                    <span className="marquee-skill">{ skill }</span>
+                    <span className="marquee-dot">•</span>
+                  </div>
+                )) }
+                { skills.map((skill, index) => (
+                  <div key={ `dup-${index}` } className="marquee-item">
+                    <span className="marquee-skill">{ skill }</span>
+                    <span className="marquee-dot">•</span>
+                  </div>
+                )) }
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
-            <motion.section className="homeInfomationToLink section" {...animationPropsUp}>
-               {sections.map((section, index) => (
-                  <motion.div key={index} className="homeInfomationSection" {...animationProps}>
-                     <div className="homeIntroduction">
-                        <div className="homeWhoAmI">
-                           <h1 className="homeSemiTitle">{section.title}</h1>
-                           <NavLink className="homeLearnMore" to={section.link}>
-                              {section.buttonText}
-                              <svg
-                                 width="25"
-                                 height="25"
-                                 fill="currentColor"
-                                 viewBox="0 0 24 24"
-                                 xmlns="http://www.w3.org/2000/svg"
-                              >
-                                 <path d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8-8-8Z"></path>
-                              </svg>
-                           </NavLink>
-                        </div>
+      {/* Enhanced Stats Section */ }
+      <section className="home-stats">
+        <div className="stats-background"></div>
+        <div className="stats-container">
+          <div className="stats-header">
+            <h2 className="stats-title">By The Numbers</h2>
+            <p className="stats-subtitle">A quick look at my development journey</p>
+          </div>
 
-                        <div className="homeWhoAmIParagraph">
-                           <motion.p
-                              {...animationProps}
-                              dangerouslySetInnerHTML={{ __html: section.content }}
-                           />
-                           {section.additionalContent && (
-                              <motion.p {...animationProps}>{section.additionalContent}</motion.p>
-                           )}
-                        </div>
-                     </div>
-                  </motion.div>
-               ))}
-            </motion.section>
+          <motion.div
+            className="stats-grid"
+            variants={ staggerContainer }
+            initial="hidden"
+            whileInView="visible"
+            viewport={ { once: true } }
+          >
+            { stats.map((stat, index) => (
+              <motion.div
+                key={ index }
+                className="stat-card"
+                variants={ itemAnimation }
+                whileHover={ { scale: 1.05, y: -5 } }
+                transition={ { duration: 0.3 } }
+              >
+                <div className="stat-icon">{ stat.icon }</div>
+                <div className="stat-content">
+                  <div className="stat-value">{ stat.value }</div>
+                  <div className="stat-label">{ stat.label }</div>
+                </div>
+                <div className="stat-decoration"></div>
+              </motion.div>
+            )) }
+          </motion.div>
+        </div>
+      </section>
 
-            <section className="homeEmail">
-               <Email />
-            </section>
+      {/* Contact Section */ }
+      <section className="home-contact">
+        <div className="contact-container">
+          <div className="contact-header">
+            <h2 className="contact-title">Let's Connect</h2>
+            <p className="contact-subtitle">Reach out for collaborations or just to say hello!</p>
+          </div>
+          <ContactCategory />
+        </div>
+      </section>
 
-            <section className="section">
-               <Footer />
-            </section>
-         </main>
-      </>
-   );
-};
+      {/* Decorative Separator */ }
+      <div className="home-separator">
+        <div className="separator-wrapper">
+          <div className="separator-line"></div>
+          <img src={ flamesBorder } alt="Decorative separator" className="separator-image" />
+          <div className="separator-line"></div>
+        </div>
+      </div>
+      <Email />
+      <Footer />
+    </main>
+  );
+}
 
 export default Home;
