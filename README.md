@@ -78,9 +78,9 @@ Full-Stack Developer • Frontend-Enthusiast
 
 | Category              | Skills |
 |-----------------------|--------|
-| **Frontend**          | <img src="https://skillicons.dev/icons?i=html,css,js,react,vite,tailwind,bootstrap,jquery&theme=dark"/> |
-| **Backend & Tools**   | <img src="https://skillicons.dev/icons?i=php,mysql,laravel,postgres,cpp,postman,jwt,axios&theme=dark"/> |
-| **Dev Tools & Others**| <img src="https://skillicons.dev/icons?i=git,github,vscode,npm,eslint,prettier,xampp,openai&theme=dark"/> |
+| **Frontend**          | <img src="https://skillicons.dev/icons?i=html,css,js,ts,react,vite,tailwind,bootstrap,jquery&theme=dark"/> |
+| **Backend & Tools**   | <img src="https://skillicons.dev/icons?i=php,mysql,laravel,postgres,supabase&theme=dark"/> |
+| **Dev Tools & Others**| <img src="https://skillicons.dev/icons?i=git,github,docker,vscode,npm,ai&theme=dark"/> |
 | **Operating Systems** | <img src="https://skillicons.dev/icons?i=windows,debian,linux,mint,ubuntu&theme=dark"/> |
 
 <br/>
@@ -92,23 +92,19 @@ Full-Stack Developer • Frontend-Enthusiast
   <h2> 🏆 My Github Stats <img src="./src/components/img/assets/borderseparator.gif"/></h2>
   <table>
     <tr>
-      <td width="50%">
+      <td width="49%" colspan="1">
         <a href="https://github.com/BanSimplified567&show_icons=true&count_private=true&theme=radical/github-readme-stats">
-          <img src="https://github-readme-stats.vercel.app/api?username=BanSimplified567&show_icons=true&count_private=true&theme=radical" width="100%" />
+          <img src="https://github-readme-stats.vercel.app/api?username=BanSimplified567&show_icons=true&count_private=true&theme=radical" width="49.50%" />
         </a>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="2">
-        <a href="https://wakatime.com/@BanBan" target="_blank">
-          <img src="https://github-readme-activity-graph.vercel.app/graph?username=BanSimplified567&custom_title=BanSimplified567's%20GitHub%20Activity%20Graph&bg_color=141321&color=A9FEF7&line=626069&point=F8D847&area_color=FE428E&title_color=FE428E&area=true" alt="BanSimplified567's Github Activity Graph" width="100%">
+         <a href="https://wakatime.com/@BanBan" target="_blank">
+          <img src="https://github-readme-activity-graph.vercel.app/graph?username=BanSimplified567&custom_title=BanSimplified567's%20GitHub%20Activity%20Graph&bg_color=141321&color=A9FEF7&line=626069&point=F8D847&area_color=FE428E&title_color=FE428E&area=true" alt="BanSimplified567's Github Activity Graph" width="49.5%">
         </a>
       </td>
     </tr>
     <tr>
       <td colspan="2">
         <a href="https://wakatime.com">
-          <img src="https://wakatime.com/share/@BanBan/382532ff-5057-45a2-b975-14ab938e7e7c.png" width="100%"/>
+          <img src="https://wakatime.com/share/@BanBan/382532ff-5057-45a2-b975-14ab938e7e7c.png" width="100%" alt="wakatime logo9%"/>
         </a>
       </td>
     </tr>
@@ -126,9 +122,12 @@ Full-Stack Developer • Frontend-Enthusiast
 
 <div align="center">
   <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2%;">
-    <div style="width: 49%;">
+    <div style="width: 49%;" align="left">
       <a href="https://github.com/BanSimplified567/bansimplified-boilerplete-using-react">
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=BanSimplified567&repo=bansimplified-boilerplete-using-react" width="100%"/>
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=BanSimplified567&repo=bansimplified-boilerplete-using-react" width="49%" alt="bansimplified-boilerplete-using-react" align="left"/>
+      </a>
+      <a href="https://github.com/BanSimplified567/bansimplified-boilerplete-using-react" align="right">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=BanSimplified567&repo=bansimplified-boilerplete-using-react" width="49%" alt="bansimplified-boilerplete-using-react" align="right"/>
       </a>
     </div>
 

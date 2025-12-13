@@ -106,11 +106,11 @@ const skills = [
 const skillCategories = [
   {
     name: 'Frontend',
-    icons: 'https://skillicons.dev/icons?i=html,css,js,react,vite,tailwind,bootstrap,jquery&theme=dark&perline=8'
+    icons: 'https://skillicons.dev/icons?i=html,css,js,ts,react,vite,tailwind,bootstrap,jquery&theme=dark&perline=8'
   },
   {
     name: 'Backend & Tools',
-    icons: 'https://skillicons.dev/icons?i=php,mysql,laravel,postgres,cpp,postman,jwt,axios&theme=dark&perline=8'
+    icons: 'https://skillicons.dev/icons?i=php,mysql,laravel,postgres,supabase,cpp,postman,jwt,axios&theme=dark&perline=8'
   },
   {
     name: 'Dev Tools & Others',
