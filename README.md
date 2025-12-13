@@ -122,12 +122,9 @@ Full-Stack Developer • Frontend-Enthusiast
 
 <div align="center">
   <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2%;">
-    <div style="width: 49%;" align="left">
+    <div style="width: 49%;">
       <a href="https://github.com/BanSimplified567/bansimplified-boilerplete-using-react">
         <img src="https://github-readme-stats.vercel.app/api/pin/?username=BanSimplified567&repo=bansimplified-boilerplete-using-react" width="49%" alt="bansimplified-boilerplete-using-react" align="left"/>
-      </a>
-      <a href="https://github.com/BanSimplified567/bansimplified-boilerplete-using-react" align="right">
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=BanSimplified567&repo=bansimplified-boilerplete-using-react" width="49%" alt="bansimplified-boilerplete-using-react" align="right"/>
       </a>
     </div>
 

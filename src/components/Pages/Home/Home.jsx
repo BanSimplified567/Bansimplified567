@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Banban6 from '../../img/BanBan/banban6.jpg';
 import flamesBorder from '../../img/assets/borderseparator.gif';
 import Email from '../Extra/Email/Email';
 import Footer from '../Extra/Footer/Footer';
@@ -272,14 +273,11 @@ function Home() {
               <div className="profile-card">
                 <div className="profile-image-container">
                   <img
-                    src="./ban.jpg"
+                    src={ Banban6 }
                     alt="Jade Ivan Bringcola - Professional Web Developer"
                     className="professional-profile-image"
                   />
-                  <div className="profile-availability">
-                    <div className="availability-indicator"></div>
-                    <span>Available for Projects</span>
-                  </div>
+                 
                 </div>
 
                 <div className="profile-contact-info">
