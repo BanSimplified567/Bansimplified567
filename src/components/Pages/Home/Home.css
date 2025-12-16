@@ -448,8 +448,8 @@
   font-weight: 800;
   margin-bottom: 1rem;
   background: var(--dark-gradient);
+  color: var(--text-color);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
