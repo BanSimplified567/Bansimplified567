@@ -25,7 +25,46 @@
   --card-border: #3a3a3a;
   --hover-scale: 1.05;
   --transition: all 0.3s ease;
+  --background-button-light: #eeeeee;
+  --background-button-pink: #FF66B2;
+  --background-button-violet: #cc00ff;
+  --background-button-darkviolet: #6f19b5;
+  --background-button-blue: #25007a;
+  --background-button-dark: #000000;
+  --background-button: #FF0080;
+  --background-button-dark-pink: #FF3399;
+  --text-color: #fefafa;
+  --font-title: "Lalezar", system-ui;
+  --font-semi-title: "Poppins", sans-serif;
+  --font-commission: "New Amsterdam", sans-serif;
+  --color-primary: #6f19b5;
+  --background-dark: #1a1a1a;
+  --text-primary: #e0e0e0;
+  --text-secondary: #a0a0a0;
+  --accent-color: #00bcd4;
+  --card-bg: #2a2a2a;
+  --card-border: #3a3a3a;
+  --hover-scale: 1.05;
+  --transition: all 0.3s ease;
+  --h1-size: clamp(2rem, 3vw + 1rem, 4rem);
+  --h2-size: clamp(1.5rem, 2vw + 1.2rem, 3rem);
+  --h3-size: clamp(1.2rem, 1rem + 1.5vw, 2.5rem);
+  --h4-size: clamp(1rem, 0.8rem + 1vw, 2rem);
+  --p-size: clamp(0.5rem, 0.87rem + 0.5vw, 1rem);
+  --font-xxl: clamp(6rem, 2.5vw + 1vw, 1rem);
+  --font-x-large: clamp(4rem, 2vw + 1vw, 4rem);
+  --font-large: clamp(2rem, 3vw + 1vw, 4rem);
+  --font-medium: clamp(1.5rem, 2vw + 1.2vw, 3rem);
+  --font-small: clamp(1.2rem, 1rem + 1.5vw, 2.5rem);
+  --font-x-small: clamp(0.5rem, 0.87rem + 0.5vw, 1rem);
+  --aboutParagraph-size: clamp(1.5rem, 1.5vw + 0.5rem, 0.25rem);
 
+  /* Additional variables for consistency */
+  --primary-gradient: linear-gradient(135deg, var(--background-button-violet) 0%, var(--background-button-darkviolet) 100%);
+  --secondary-gradient: linear-gradient(90deg, var(--background-button-violet) 0%, var(--background-button-darkviolet) 50%, var(--background-button-violet) 100%);
+  --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  --card-shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.2);
+  --border-radius: 16px;
 
   --h1-size: clamp(2rem, 3vw + 1rem, 4rem);
   --h2-size: clamp(1.5rem, 2vw + 1.2rem, 3rem);
@@ -39,9 +78,6 @@
   --font-medium: clamp(1.5rem, 2vw + 1.2vw, 3rem);
   --font-small: clamp(1.2rem, 1rem + 1.5vw, 2.5rem);
   --font-x-small: clamp(0.5rem, 0.87rem + 0.5vw, 1rem);
-
-
-
   --aboutParagraph-size: clamp(1.5rem, 1.5vw + 0.5rem, 0.25rem);
 }
 

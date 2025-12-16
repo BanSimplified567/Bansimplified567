@@ -1,17 +1,24 @@
-/* Professional Home.css */
-
+/* Root Variables */
 :root {
-  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --secondary-gradient: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-  --accent-gradient: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
-  --dark-gradient: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-  --light-gradient: linear-gradient(145deg, #ffffff, #f8fafc);
-  --card-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-  --card-shadow-hover: 0 30px 60px rgba(0, 0, 0, 0.12);
-  --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  --glass-effect: rgba(255, 255, 255, 0.95);
-  --glass-border: rgba(255, 255, 255, 0.2);
+  /* Colors & Gradients */
+  --primary-gradient: linear-gradient(90deg, #667eea, #43e97b);
+  --dark-gradient: linear-gradient(135deg, #1e293b, #0f172a);
+  --light-gradient: linear-gradient(135deg, #ffffff, #f8fafc);
+  --glass-border: rgba(255, 255, 255, 0.1);
+
+  /* Font Sizes */
+  --h3-size: 3rem;
+  --h4-size: 2rem;
+  --p-size: 1rem;
+
+  /* Shadows */
+  --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  --card-shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.15);
+
+  /* Transitions */
+  --transition-smooth: all 0.3s ease-in-out;
 }
+
 
 /* Reset and Base Styles */
 .professional-home-page {
@@ -26,7 +33,7 @@
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding: 4rem 1rem;
+  padding: 4rem 1rem 2rem;
   background: var(--dark-gradient);
   color: white;
   overflow: hidden;
@@ -85,6 +92,7 @@
   gap: 4rem;
   align-items: center;
   margin-bottom: 4rem;
+  place-items: center;
 }
 
 /* Left Column - Professional Intro */
@@ -131,7 +139,7 @@
 }
 
 .professional-title {
-  font-size: var(--h3-size);
+  font-size: clamp(2.5rem, 5vw, var(--h3-size));
   font-weight: 800;
   line-height: 1.1;
   margin-bottom: 1rem;
@@ -163,7 +171,7 @@
 }
 
 .professional-subtitle {
-  font-size:var(--h4-size);
+  font-size: clamp(1.3rem, 3vw, var(--h4-size));
   font-weight: 600;
   color: rgba(255, 255, 255, 0.9);
   margin-bottom: 1.5rem;
@@ -171,16 +179,13 @@
 }
 
 .professional-description {
-  font-size: var(--p-size);
+  font-size: clamp(1rem, 2vw, var(--p-size));
   color: rgba(255, 255, 255, 0.8);
   line-height: 1.8;
   margin-bottom: 2.5rem;
   max-width: 500px;
 }
 
-
-
-}
 
 .cta-primary,
 .cta-secondary {
@@ -273,6 +278,7 @@
   border: 1px solid var(--glass-border);
   max-width: 400px;
   width: 100%;
+  place-items: center;
 }
 
 .profile-image-container {
@@ -438,7 +444,7 @@
 }
 
 .stats-section-title {
-  font-size: 3.5rem;
+  font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 800;
   margin-bottom: 1rem;
   background: var(--dark-gradient);
@@ -556,7 +562,7 @@
 }
 
 .contact-section-title {
-  font-size: 3rem;
+  font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 800;
   color: #1e293b;
   margin-bottom: 1rem;
@@ -688,9 +694,9 @@
 /* Professional CTA Section */
 .professional-cta-section {
   position: relative;
-color: white;
+  color: white;
   overflow: hidden;
-    display: flex;
+   display: flex;
   gap: 1rem;
   margin-bottom: 3rem;
 }
@@ -730,14 +736,14 @@ color: white;
 }
 
 .cta-title {
-  font-size: 3rem;
+  font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 800;
   margin-bottom: 1.5rem;
   line-height: 1.2;
 }
 
 .cta-description {
-  font-size: var(--p-size);
+  font-size: clamp(1rem, 2vw, var(--p-size));
   color: rgba(255, 255, 255, 0.8);
   margin-bottom: 2.5rem;
   line-height: 1.6;
@@ -787,10 +793,6 @@ color: white;
 
 /* Responsive Design */
 @media (max-width: 1200px) {
-  .professional-title {
-    font-size: 3.8rem;
-  }
-
   .professional-stats-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -826,19 +828,6 @@ color: white;
 }
 
 @media (max-width: 768px) {
-  .professional-title {
-    font-size: 3rem;
-  }
-
-  .professional-subtitle {
-    font-size: 1.5rem;
-  }
-
-  .stats-section-title,
-  .contact-section-title {
-    font-size: 2.5rem;
-  }
-
   .professional-stats-grid,
   .professional-contact-grid {
     grid-template-columns: 1fr;
@@ -857,48 +846,23 @@ color: white;
     width: 100%;
     max-width: 300px;
   }
-
-  .cta-title {
-    font-size: 2.5rem;
-  }
 }
 
 @media (max-width: 640px) {
-  .professional-title {
-    font-size: 2.5rem;
-  }
-
-  .professional-subtitle {
-    font-size: 1.3rem;
-  }
-
-  .professional-description {
-    font-size: 1.1rem;
-  }
-
   .experience-display {
     flex-direction: column;
     gap: 1.5rem;
   }
-
-  .stats-section-title,
-  .contact-section-title {
-    font-size: 2rem;
-  }
-
-  .cta-title {
-    font-size: 2rem;
-  }
 }
 
 @media (max-width: 480px) {
+  .professional-hero {
+    padding: 2rem 1rem;
+  }
+
   .professional-badge {
     flex-direction: column;
     gap: 0.5rem;
-  }
-
-  .professional-cta-section {
-    flex-direction: column;
   }
 
   .separator-container {
@@ -909,6 +873,10 @@ color: white;
   .separator-line {
     width: 100%;
     height: 1px;
+  }
+
+  .separator-image {
+    height: 40px;
   }
 }
 
