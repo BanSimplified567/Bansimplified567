@@ -1,0 +1,42 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ],
+  "compilerOptions": {
+    "target": "ES2022",                        // Modern JS features
+    "module": "ESNext",                        // For Vite + ESM
+    "strict": true,                             // Enable all strict type checks
+    "esModuleInterop": true,                    // Default import compatibility
+    "skipLibCheck": true,                       // Faster builds
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "bundler",             // Recommended for TS 5+ with Vite
+    "resolveJsonModule": true,
+    "baseUrl": ".",                             // Root path for aliases
+    "paths": {
+      "@/*": ["src/*"],
+      "@utils/*": ["src/utils/*"],
+      "@services/*": ["src/services/*"],
+      "@types/*": ["src/types/*"],
+      "@app/*": ["src/app/*"],
+      "@components/*": ["src/components/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@pages/*": ["src/pages/*"],
+      "@controllers/*": ["src/controllers/*"],
+      "@models/*": ["src/models/*"],
+      "@routes/*": ["src/routes/*"],
+      "@customTypes/*": ["src/customTypes/*"],
+      "@databases/*": ["src/databases/*"],
+      "@functions/*": ["src/functions/*"],
+      "@middlewares/*": ["src/middlewares/*"]
+    },
+    "outDir": "dist",
+    "sourceMap": true
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"],
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
+  }
+}
