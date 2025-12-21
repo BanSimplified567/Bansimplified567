@@ -1,8 +1,8 @@
+import { routeTree } from '@/pages/routes/_root';
 import { RouterProvider, createRouter } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { routeTree } from './routes/_root';
 import TanstackProvider from './contexts/TanstackProvider';
 import "./index.css";
 

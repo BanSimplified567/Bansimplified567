@@ -70,8 +70,8 @@ const RootLayoutDashboard: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-white dark:bg-[#0d1117] text-[#24292f] dark:text-[#e6edf3] transition-colors duration-300">
-      <header className="w-full bg-white dark:bg-[#0d1117] border-b border-[#d8dee4] dark:border-[#30363d] shadow-sm sticky top-0 z-50 transition-colors duration-300">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-[#0d1119] text-[#24292f] dark:text-[#e6edf3] transition-colors duration-300">
+      <header className="w-full bg-white dark:bg-[#010409] border-b border-[#d8dee4] dark:border-[#30363d] shadow-sm sticky top-0 z-50 transition-colors duration-300">
         <div className="px-4 py-3 flex items-center justify-between">
           {/* Left section - Logo and Navigation */ }
           <div className="flex flex-col flex-1 items- gap-6">
@@ -150,20 +150,29 @@ const RootLayoutDashboard: React.FC = () => {
       </header>
 
       {/* Main Content */ }
-      <main className="flex lg:flex-row gap-6 p-4 md:p-6">
+      <main className="flex min-w-screen sm:flex-col lg:flex-row gap-6 p-4 md:p-6">
         {/* Left Sidebar - Profile Section */ }
         <div className="lg:w-1/3 xl:w-1/4">
           <div className="shadow-sm p-5 sticky top-24 transition-colors duration-300">
             {/* Profile Header */ }
             <div className="mb-6">
-
-
               <div className="flex flex-col items- gap-2">
-                <img
-                  src={ Bansimplified }
-                  alt="Bansimplified"
-                  className="w-64 h-64 object-cover m-auto rounded-full border border-[#d8dee4] dark:border-[#30363d]"
-                />
+              <img
+  src={Bansimplified}
+  alt="Bansimplified"
+  className="
+    w-32 h-32
+    sm:w-50 sm:h-50
+    md:w-68 md:h-68
+    lg:w-74 lg:h-74
+    object-cover
+    mx-auto
+    rounded-full
+    border border-[#d8dee4]
+    dark:border-[#30363d]
+  "
+/>
+
 
                 <p className="text-xl font-semibold text-[#24292f] dark:text-[#e6edf3]">HisBannie . <span className="text-sm text-[#fefefe] dark:text-[#fefefe] bg-[#f6f8fa] dark:bg-[#21262d] px-2 py-0.5 rounded"> he/him</span></p>
                 <div className="mt-2 text-[#57606a] dark:text-[#7d8590] text-start">
@@ -239,7 +248,7 @@ const RootLayoutDashboard: React.FC = () => {
         </div>
 
         {/* Outlet / Main Content */ }
-        <div className="flex-1 bg-white dark:bg-[#0d1117] rounded-xl border border-[#d8dee4] dark:border-[#30363d] ">
+        <div className="flex-auto overflow-y-auto bg-white dark:bg-[#0d1117] rounded-xl border border-[#d8dee4] dark:border-[#30363d] ">
           <Outlet />
         </div>
       </main>

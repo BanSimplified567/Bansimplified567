@@ -6,6 +6,8 @@ import { rootRoute } from "./_root";
 
 const Index = lazy(() => import('@/pages/(root)/Index'));
 const Repository = lazy(() => import('@/pages/(root)/Repository'));
+const Projects = lazy(() => import('@/pages/(root)/Projects'));
+const Packages = lazy(() => import('@/pages/(root)/Packages'));
 
 // Parent FIRST
 export const dashboardLayoutRoute = createRoute({
@@ -27,7 +29,23 @@ export const repositoryRoute = createRoute({
   component: Repository,
 });
 
+export const projectRoute = createRoute({
+  getParentRoute: () => dashboardLayoutRoute,
+  path: '/projects',
+  component: Projects,
+});
+
+export const packagesRoute = createRoute({
+  getParentRoute: () => dashboardLayoutRoute,
+  path: '/Packages',
+  component: Packages,
+});
+
+
+
 export const customerRoutes = [
   indexRoute,
   repositoryRoute,
+  projectRoute,
+  packagesRoute
 ];

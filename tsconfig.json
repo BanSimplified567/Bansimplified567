@@ -25,7 +25,7 @@
       "@pages/*": ["src/pages/*"],
       "@controllers/*": ["src/controllers/*"],
       "@models/*": ["src/models/*"],
-      "@routes/*": ["src/routes/*"],
+      "@routes/*": ["src/pages/routes/*"],
       "@customTypes/*": ["src/customTypes/*"],
       "@databases/*": ["src/databases/*"],
       "@functions/*": ["src/functions/*"],
