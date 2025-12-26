@@ -376,25 +376,32 @@ const Services = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="px-4 mb-20">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">
-            Frequently Asked <span className="text-[#FF6EC7]">Questions</span>
-          </h2>
+  {/* FAQ Section */}
+<section className="px-4 mb-20">
+  <div className="max-w-4xl mx-auto"> {/* Slightly wider for better 2-column look */}
+    <h2 className="text-3xl font-bold text-center mb-12">
+      Frequently Asked <span className="text-[#FF6EC7]">Questions</span>
+    </h2>
 
-          <div className="space-y-4">
-            {faqs.map((faq, index) => (
-              <div key={index} className="bg-[#21262d] rounded-xl p-6 border border-[#30363d] flex flex-col">
-                <h3 className="text-lg font-semibold mb-3 flex items-center gap-3">
-                  <Award className="w-5 h-5 text-[#FF6EC7] flex-shrink-0" />
-                  {faq.question}
-                </h3>
-                <p className="text-gray-300">{faq.answer}</p>
-              </div>
-            ))}
-          </div>
+    {/* 2-column grid on md+, 1-column on mobile */}
+    <div className="grid grid-cols-2 md:grid-cols-1 gap-6">
+      {faqs.map((faq, index) => (
+        <div
+          key={index}
+          className="bg-[#21262d] rounded-xl p-6 border border-[#30363d] flex flex-col"
+        >
+          <h3 className="text-sm font-semibold mb-3 flex items-center gap-3">
+            <Award className="w-5 h-5 text-[#FF6EC7] flex-shrink-0" />
+            {faq.question}
+          </h3>
+          <p className="text-gray-300 text-xs leading-relaxed">
+            {faq.answer}
+          </p>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* CTA Section */}
       <section className="px-4 mb-20">

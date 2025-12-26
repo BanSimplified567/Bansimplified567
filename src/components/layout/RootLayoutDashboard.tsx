@@ -150,7 +150,7 @@ const RootLayoutDashboard: React.FC = () => {
       </header>
 
       {/* Main Content */ }
-      <main className="flex min-w-screen sm:flex-col lg:flex-row gap-6 p-4 md:p-6">
+      <main className="flex sm:flex-col lg:flex-row gap-6 p-4 md:p-6">
         {/* Left Sidebar - Profile Section */ }
         <div className="lg:w-1/3 xl:w-1/4">
           <div className="shadow-sm p-5 sticky top-24 transition-colors duration-300">
@@ -162,9 +162,9 @@ const RootLayoutDashboard: React.FC = () => {
   alt="Bansimplified"
   className="
     w-32 h-32
-    sm:w-50 sm:h-50
-    md:w-68 md:h-68
-    lg:w-74 lg:h-74
+    sm:w-40 sm:h-40
+    md:w-58 md:h-58
+    lg:w-64 lg:h-64
     object-cover
     mx-auto
     rounded-full

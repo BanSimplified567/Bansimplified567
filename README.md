@@ -122,11 +122,22 @@ Full-Stack Developer • Frontend-Enthusiast
 
 <div align="center">
   <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2%;">
-    <div style="width: 49%;">
-      <a href="https://github.com/BanSimplified567/bansimplified-boilerplete-using-react">
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=BanSimplified567&repo=bansimplified-boilerplete-using-react" width="49%" alt="bansimplified-boilerplete-using-react" align="left"/>
-      </a>
-    </div>
+   <div style="display: flex; gap: 2%; width: 100%;">
+  <a href="https://github.com/BanSimplified567/bansimplified-boilerplete-using-react" style="flex: 1;">
+    <img
+      src="https://github-readme-stats.vercel.app/api/pin/?username=BanSimplified567&repo=bansimplified-boilerplete-using-react"
+      alt="bansimplified-boilerplete-using-react"
+      style="width: 100%;"
+    />
+  </a><a href="https://github.com/BanSimplified567/MotorStart-Website" style="flex: 1;">
+    <img
+      src="https://github-readme-stats.vercel.app/api/pin/?username=BanSimplified567&repo=MotorStart-Website"
+      alt="MotorStart-Website"
+      style="width: 100%;"
+    />
+  </a>
+</div>
+
 
   </div>
   </div>
