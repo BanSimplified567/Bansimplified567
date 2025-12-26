@@ -4,21 +4,21 @@
 
 <br><br>
 
-<img src="./src/components/img/assets/pixel-night-banner.gif" align="middle" alt="Banner" width="100%"/>
+<img src="./src/assets/assets/pixel-night-banner.gif" align="middle" alt="Banner" width="100%"/>
 
-<img src="./src/components/img/assets/borderseparator.gif" width="100%"/>
+<img src="./src/assets/assets/borderseparator.gif" width="100%"/>
 
 <div align="center">
 <h2 align="center">
-<img src="./src/components/img/assets/animated-flame-01.gif" width="14px"/>
+<img src="./src/assets/assets/animated-flame-01.gif" width="14px"/>
 Full-Stack Developer • Frontend-Enthusiast
-<img src="./src/components/img/assets/animated-flame-01.gif" width="14px"/>
+<img src="./src/assets/assets/animated-flame-01.gif" width="14px"/>
 </h2>
 </div>
 
-<img src="./src/components/img/assets/borderseparator.gif" width="100%"/>
+<img src="./src/assets/assets/borderseparator.gif" width="100%"/>
 
-<img align="right" src="./src/components/img/assets/vaporwave-aesthetic.gif" height="300px" alt="pixel city image">
+<img align="right" src="./src/assets/assets/vaporwave-aesthetic.gif" height="300px" alt="pixel city image">
 
 <br>
 
@@ -36,10 +36,10 @@ Full-Stack Developer • Frontend-Enthusiast
 
 
 <div align="center">
-<img src="./src/components/img/assets/borderseparator.gif"/>
+<img src="./src/assets/assets/borderseparator.gif"/>
   <h2> <strong> 📚 Education and Connection </strong>
-    <img src="./src/components/img/assets/animated-flame-01.gif" width="16px" align="left"/>
-  <img src="./src/components/img/assets/animated-flame-01.gif" width="16px" align="right"/> </h2>
+    <img src="./src/assets/assets/animated-flame-01.gif" width="16px" align="left"/>
+  <img src="./src/assets/assets/animated-flame-01.gif" width="16px" align="right"/> </h2>
   <br>
   <a href="https://mail.google.com/mail/u/0/#inbox" target="_blank">
     <img src="https://img.shields.io/static/v1?message=naviedaj567@gmail.com&logo=gmail&label=&color=D14836&logoColor=white&labelColor=&style=for-the-badge" height="35" alt="gmail logo"  />
@@ -61,13 +61,13 @@ Full-Stack Developer • Frontend-Enthusiast
   </a>
 
 <div align="center">
-  <img src="./src/components/img/assets/pixel-neon.gif" alt="pixel guy using computer" width="100%"/><br>
+  <img src="./src/assets/assets/pixel-neon.gif" alt="pixel guy using computer" width="100%"/><br>
 </div>
 
 <div align="center">
 
 
-  <h2> <strong><img src="./src/components/img/assets/borderseparator.gif"/> ⚙️ Technologies and Skills </strong><img src="./src/components/img/assets/borderseparator.gif"/></h2>
+  <h2> <strong><img src="./src/assets/assets/borderseparator.gif"/> ⚙️ Technologies and Skills </strong><img src="./src/assets/assets/borderseparator.gif"/></h2>
 
 <div align="left">
 
@@ -80,11 +80,11 @@ Full-Stack Developer • Frontend-Enthusiast
 
 <br/>
 </div>
-<img src="./src/components/img/assets/borderseparator.gif"/>
+<img src="./src/assets/assets/borderseparator.gif"/>
 
 
 <div align="center">
-  <h2> 🏆 My Github Stats <img src="./src/components/img/assets/borderseparator.gif"/></h2>
+  <h2> 🏆 My Github Stats <img src="./src/assets/assets/borderseparator.gif"/></h2>
   <table>
     <tr>
       <td width="49%" colspan="1">
@@ -109,9 +109,9 @@ Full-Stack Developer • Frontend-Enthusiast
 
 <div align="center">
 <h2 align="center">
-<img src="./src/components/img/assets/borderseparator.gif"/>
-<img src="./src/components/img/assets/animated-flame-01.gif" width="16px" align="left"/>
-<img src="./src/components/img/assets/animated-flame-01.gif" width="16px" align="right"/>
+<img src="./src/assets/assets/borderseparator.gif"/>
+<img src="./src/assets/assets/animated-flame-01.gif" width="16px" align="left"/>
+<img src="./src/assets/assets/animated-flame-01.gif" width="16px" align="right"/>
 👨‍💻 Projects
 </h2>
 
@@ -138,7 +138,7 @@ Full-Stack Developer • Frontend-Enthusiast
   </div>
 </div>
 
-<img src="./src/components/img/assets/borderseparator.gif"/>
+<img src="./src/assets/assets/borderseparator.gif"/>
 
 </div>
 
