@@ -1,14 +1,12 @@
 # Bansimplified
 
-<!--## 💫 About Me:-->
 <img src="https://wakatime.com/badge/user/018c974d-1366-4d7f-9b95-0e80821d2165.svg" alt="wakatime" />
-<br>
-<br>
+
+<br><br>
 
 <img src="./src/components/img/assets/pixel-night-banner.gif" align="middle" alt="Banner" width="100%"/>
 
 <img src="./src/components/img/assets/borderseparator.gif" width="100%"/>
-
 
 <div align="center">
 <h2 align="center">
@@ -20,24 +18,21 @@ Full-Stack Developer • Frontend-Enthusiast
 
 <img src="./src/components/img/assets/borderseparator.gif" width="100%"/>
 
-
 <img align="right" src="./src/components/img/assets/vaporwave-aesthetic.gif" height="300px" alt="pixel city image">
 
 <br>
 
 ### 👨‍💻 About Me
-- I’m **Jade Ivan (Bansimplified)** — an IT (Programming) student from the Philippines.
-- Actively enhancing my software engineering foundation across **frontend, backend, and full-stack workflows**.
-- Passionate about building scalable web systems, UI engineering, and modern development tooling.
-- **Decade Goal:** Become a full-fledged Software Engineer.
-- Interests include: Coffee, learning new frameworks, and creative coding.
-- Hobbies: Reading manga/manhwa, drawing, and exploring digital storytelling.
+- I'm **Jade Ivan (Bansimplified)** — an IT (Programming) student from the Philippines
+- Actively enhancing my software engineering foundation across **frontend, backend, and full-stack workflows**
+- Passionate about building scalable web systems, UI engineering, and modern development tooling
+- **Decade Goal:** Become a full-fledged Software Engineer
+- Interests include: Coffee, learning new frameworks, and creative coding
+- Hobbies: Reading manga/manhwa, drawing, and exploring digital storytelling
 
-📄 **Resume:**
-[Download Resume](./src/components/Pages/About/Bringcolajadeivan,V.pdf)
+📄 **Resume:** [Download Resume](./src/components/Pages/About/Bringcolajadeivan,V.pdf)
 
 <h2></h2>
-
 
 
 <div align="center">
@@ -127,13 +122,13 @@ Full-Stack Developer • Frontend-Enthusiast
     <img
       src="https://github-readme-stats.vercel.app/api/pin/?username=BanSimplified567&repo=bansimplified-boilerplete-using-react"
       alt="bansimplified-boilerplete-using-react"
-      style="width: 100%;"
+      style="width: 49%;"
     />
   </a><a href="https://github.com/BanSimplified567/MotorStart-Website" style="flex: 1;">
     <img
       src="https://github-readme-stats.vercel.app/api/pin/?username=BanSimplified567&repo=MotorStart-Website"
       alt="MotorStart-Website"
-      style="width: 100%;"
+      style="width: 49%;"
     />
   </a>
 </div>
