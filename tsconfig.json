@@ -31,8 +31,6 @@
       "@functions/*": ["src/functions/*"],
       "@middlewares/*": ["src/middlewares/*"]
     },
-    "outDir": "dist",
-    "sourceMap": true
   },
   "include": ["src"],
   "exclude": ["node_modules"],

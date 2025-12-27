@@ -574,28 +574,6 @@ const Index = () => {
         </div>
       </div>
 
-      {/* Projects Section */}
-      <div className="my-10">
-        <div className="text-center">
-          <img src={BorderSeparator} className="w-full" alt="separator" />
-          <h2 className="my-5 flex items-center justify-center gap-4">
-            <img src={AnimatedFlame} className="w-4" alt="flame" />
-            👨‍💻 Projects
-            <img src={AnimatedFlame} className="w-4" alt="flame" />
-          </h2>
-        </div>
-
-        <div className="flex justify-start">
-          <a href="https://github.com/BanSimplified567/bansimplified-boilerplete-using-react">
-            <img
-              src="https://github-readme-stats.vercel.app/api/pin/?username=BanSimplified567&repo=bansimplified-boilerplete-using-react"
-              alt="bansimplified-boilerplete-using-react"
-              className="w-full"
-            />
-          </a>
-        </div>
-      </div>
-
       {/* Pinned Repositories Section */}
       <div className="my-10">
         <div className="text-center">

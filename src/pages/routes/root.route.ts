@@ -7,7 +7,7 @@ import { rootRoute } from "./_root";
 const Index = lazy(() => import('@/pages/(root)/Index'));
 const Repository = lazy(() => import('@/pages/(root)/Repository'));
 const Projects = lazy(() => import('@/pages/(root)/Projects'));
-const Packages = lazy(() => import('@/pages/routes/Packages'));
+const Packages = lazy(() => import('@/pages/(root)/Packages'));
 
 // Parent FIRST
 export const dashboardLayoutRoute = createRoute({
