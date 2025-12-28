@@ -530,16 +530,12 @@ const Index = () => {
       </div>
 
       {/* About Me Section */ }
-      <div className="relative my-10 p-5 ">
-        <img
-          src={ VaporwaveAesthetic }
-          alt="pixel city image"
-          className="absolute right-0 top-0 h-full"
-        />
+      <div className="my-10 p-5 flex max-w-sm:flex-col md:flex-row gap-6 items-center">
 
-        <div className="max-w-[70%]">
-          <h3>👨‍💻 About Me</h3>
-          <ul className="list-disc list-outside ml-5 leading-[1.6] space-y-1">
+        {/* Text Container */ }
+        <div className="flex-1">
+          <h3 className="text-2xl font-semibold mb-4">👨‍💻 About Me</h3>
+          <ul className="list-disc list-outside ml-5 leading-relaxed space-y-2 text-sm md:text-base">
             <li>
               I'm <strong>Jade Ivan (Bansimplified)</strong> — an IT (Programming) student from the Philippines.
             </li>
@@ -558,14 +554,23 @@ const Index = () => {
             </li>
           </ul>
 
-          <p className="mt-5">
+          <p className="mt-5 text-sm md:text-base">
             <strong>📄 Resume:</strong>{ ' ' }
-            <a href="/resume.pdf" className="text-[#FE428E] no-underline hover:underline">
+            <a href="/resume.pdf" className="text-[#FE428E] hover:underline">
               Download Resume
             </a>
           </p>
         </div>
+        {/* Image Container */ }
+        <div className="flex-shrink-0 w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 relative">
+          <img
+            src={ VaporwaveAesthetic }
+            alt="pixel city image"
+            className="w-full h-full object-cover rounded-lg"
+          />
+        </div>
       </div>
+
 
       {/* Education and Connection Section */ }
       <div className="text-center my-10">

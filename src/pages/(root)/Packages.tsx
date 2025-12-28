@@ -171,158 +171,157 @@ const Services = () => {
   const getSelectedPlan = () => plans.find(p => p.id === selectedPlan)!;
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#0d1117] to-black text-white">
-      {/* Hero Section */}
-      <section className="py-20 px-4 text-center">
+    <div className="min-h-screen bg-gradient-to-b from-[#0d1117] to-black text-white overflow-x-hidden">
+      {/* Hero Section */ }
+      <section className="py-12 md:py-20 px-4 text-center">
         <div className="max-w-6xl mx-auto">
-          <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-[#FF6EC7]/30 rounded-full border border-[#FF6EC7]/30">
-            <Code className="w-5 h-5 text-[#FF6EC7]" />
-            <span className="text-[#FF6EC7]">Web Development Services</span>
+          <div className="inline-flex items-center gap-2 mb-4 md:mb-6 px-3 md:px-4 py-1.5 md:py-2 bg-[#FF6EC7]/30 rounded-full border border-[#FF6EC7]/30">
+            <Code className="w-4 h-4 md:w-5 md:h-5 text-[#FF6EC7]" />
+            <span className="text-xs md:text-sm text-[#FF6EC7]">Web Development Services</span>
           </div>
 
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold mb-4 md:mb-6 px-2">
             Professional <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6EC7] to-[#BC13FE]">Web Solutions</span>
           </h1>
 
-          <p className="text-xl text-gray-300 mb-12 max-w-3xl mx-auto">
+          <p className="text-sm sm:text-base md:text-xl text-gray-300 mb-8 md:mb-12 max-w-3xl mx-auto px-4">
             From simple static websites to complete capstone-level systems.
             Choose the perfect plan for your project needs and budget.
           </p>
         </div>
       </section>
 
-      {/* Plan Selection */}
-      <section className="px-4 mb-16">
+      {/* Plan Selection */ }
+      <section className="px-4 mb-12 md:mb-16">
         <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            {plans.map((plan) => {
+          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center mb-8 md:mb-12">
+            { plans.map((plan) => {
               const Icon = plan.icon;
               return (
                 <button
-                  key={plan.id}
-                  onClick={() => setSelectedPlan(plan.id)}
-                  className={`flex items-center gap-3 px-6 py-4 rounded-xl transition-all ${
-                    selectedPlan === plan.id
+                  key={ plan.id }
+                  onClick={ () => setSelectedPlan(plan.id) }
+                  className={ `flex items-center justify-center gap-2 md:gap-3 px-4 md:px-6 py-3 md:py-4 rounded-xl transition-all text-sm md:text-base ${selectedPlan === plan.id
                       ? 'bg-gradient-to-r from-[#FF6EC7] to-[#BC13FE] shadow-lg shadow-[#FF6EC7]/25'
                       : 'bg-[#21262d] hover:bg-[#30363d]'
-                  }`}
+                    }` }
                 >
-                  <Icon className="w-6 h-6" />
-                  <span className="text-lg font-semibold">{plan.name}</span>
+                  <Icon className="w-5 h-5 md:w-6 md:h-6" />
+                  <span className="font-semibold whitespace-nowrap">{ plan.name }</span>
                 </button>
               );
-            })}
+            }) }
           </div>
 
-          {/* Selected Plan Details */}
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-[#21262d] rounded-2xl p-8 border border-[#30363d]">
-              <div className="flex items-center justify-between mb-6">
-                <div>
-                  <h2 className="text-3xl font-bold">{getSelectedPlan().name}</h2>
-                  <p className="text-gray-300 mt-2">{getSelectedPlan().description}</p>
+          {/* Selected Plan Details */ }
+          <div className="grid lg:grid-cols-2 gap-6 md:gap-8">
+            <div className="bg-[#21262d] rounded-2xl p-6 md:p-8 border border-[#30363d]">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-4">
+                <div className="flex-1">
+                  <h2 className="text-xl md:text-2xl lg:text-3xl font-bold">{ getSelectedPlan().name }</h2>
+                  <p className="text-gray-300 mt-2 text-sm md:text-base">{ getSelectedPlan().description }</p>
                 </div>
                 <div className="text-right">
-                  <div className="text-4xl font-bold text-[#FF6EC7]">{getSelectedPlan().price}</div>
-                  <div className="text-sm text-gray-400">one-time payment</div>
+                  <div className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#FF6EC7]">{ getSelectedPlan().price }</div>
+                  <div className="text-xs md:text-sm text-gray-400">one-time payment</div>
                 </div>
               </div>
 
-              <div className="mb-8">
-                <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
-                  <Zap className="w-5 h-5 text-yellow-500" />
+              <div className="mb-6 md:mb-8">
+                <h3 className="text-lg md:text-xl font-semibold mb-3 md:mb-4 flex items-center gap-2">
+                  <Zap className="w-4 h-4 md:w-5 md:h-5 text-yellow-500" />
                   What's Included
                 </h3>
-                <div className="space-y-3">
-                  {getSelectedPlan().features.map((feature, index) => (
-                    <div key={index} className="flex items-center justify-between">
-                      <span className="text-gray-300">{feature.name}</span>
-                      {feature.included ? (
-                        <Check className="w-5 h-5 text-green-500" />
+                <div className="space-y-2 md:space-y-3">
+                  { getSelectedPlan().features.map((feature, index) => (
+                    <div key={ index } className="flex items-center justify-between text-sm md:text-base">
+                      <span className="text-gray-300 truncate mr-2">{ feature.name }</span>
+                      { feature.included ? (
+                        <Check className="w-4 h-4 md:w-5 md:h-5 text-green-500 flex-shrink-0" />
                       ) : (
-                        <X className="w-5 h-5 text-red-500" />
-                      )}
+                        <X className="w-4 h-4 md:w-5 md:h-5 text-red-500 flex-shrink-0" />
+                      ) }
                     </div>
-                  ))}
+                  )) }
                 </div>
               </div>
 
               <div>
-                <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
-                  <Briefcase className="w-5 h-5 text-[#FF6EC7]" />
+                <h3 className="text-lg md:text-xl font-semibold mb-3 md:mb-4 flex items-center gap-2">
+                  <Briefcase className="w-4 h-4 md:w-5 md:h-5 text-[#FF6EC7]" />
                   Technologies Used
                 </h3>
-                <div className="flex flex-wrap gap-3">
-                  {technologies[selectedPlan].map((tech, index) => (
+                <div className="flex flex-wrap gap-2 md:gap-3">
+                  { technologies[selectedPlan].map((tech, index) => (
                     <div
-                      key={index}
-                      className="flex items-center gap-2 px-4 py-2 bg-[#161b22] rounded-lg border border-[#30363d]"
+                      key={ index }
+                      className="flex items-center gap-1.5 md:gap-2 px-3 md:px-4 py-1.5 md:py-2 bg-[#161b22] rounded-lg border border-[#30363d] text-sm"
                     >
-                      <span className="text-lg">{tech.icon}</span>
-                      <span>{tech.name}</span>
+                      <span className="text-base md:text-lg">{ tech.icon }</span>
+                      <span className="truncate max-w-[80px] md:max-w-none">{ tech.name }</span>
                     </div>
-                  ))}
+                  )) }
                 </div>
               </div>
             </div>
 
-            <div className="space-y-8">
-              <div className="bg-[#21262d] rounded-2xl p-8 border border-[#30363d]">
-                <h3 className="text-xl font-semibold mb-6 flex items-center gap-2">
-                  <Globe className="w-5 h-5 text-green-500" />
+            <div className="space-y-6 md:space-y-8">
+              <div className="bg-[#21262d] rounded-2xl p-6 md:p-8 border border-[#30363d]">
+                <h3 className="text-lg md:text-xl font-semibold mb-4 md:mb-6 flex items-center gap-2">
+                  <Globe className="w-4 h-4 md:w-5 md:h-5 text-green-500" />
                   Sample Project Titles
                 </h3>
-                <ul className="space-y-3">
-                  {getSelectedPlan().projects.map((project, index) => (
-                    <li key={index} className="flex items-start gap-3">
-                      <div className="w-2 h-2 mt-2 rounded-full bg-[#FF6EC7] flex-shrink-0"></div>
-                      <span className="text-gray-300">{project}</span>
+                <ul className="space-y-2 md:space-y-3">
+                  { getSelectedPlan().projects.map((project, index) => (
+                    <li key={ index } className="flex items-start gap-2 md:gap-3 text-sm md:text-base">
+                      <div className="w-1.5 h-1.5 md:w-2 md:h-2 mt-2 rounded-full bg-[#FF6EC7] flex-shrink-0"></div>
+                      <span className="text-gray-300">{ project }</span>
                     </li>
-                  ))}
+                  )) }
                 </ul>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-[#21262d] rounded-xl p-6 border border-[#30363d]">
-                  <div className="text-2xl font-bold text-[#FF6EC7] mb-2">{getSelectedPlan().timeline}</div>
-                  <div className="text-sm text-gray-400">Development Timeline</div>
+              <div className="grid grid-cols-2 gap-3 md:gap-4">
+                <div className="bg-[#21262d] rounded-xl p-4 md:p-6 border border-[#30363d]">
+                  <div className="text-lg md:text-xl lg:text-2xl font-bold text-[#FF6EC7] mb-1 md:mb-2">{ getSelectedPlan().timeline }</div>
+                  <div className="text-xs md:text-sm text-gray-400">Development Timeline</div>
                 </div>
-                <div className="bg-[#21262d] rounded-xl p-6 border border-[#30363d]">
-                  <div className="text-2xl font-bold text-[#BC13FE] mb-2">{getSelectedPlan().support}</div>
-                  <div className="text-sm text-gray-400">Free Support</div>
+                <div className="bg-[#21262d] rounded-xl p-4 md:p-6 border border-[#30363d]">
+                  <div className="text-lg md:text-xl lg:text-2xl font-bold text-[#BC13FE] mb-1 md:mb-2">{ getSelectedPlan().support }</div>
+                  <div className="text-xs md:text-sm text-gray-400">Free Support</div>
                 </div>
               </div>
 
-              <button className="w-full bg-gradient-to-r from-[#FF6EC7] to-[#BC13FE] hover:from-[#FF1493] hover:to-[#9B30FF] text-white font-semibold py-4 px-6 rounded-xl transition-all transform hover:scale-[1.02] shadow-lg shadow-[#FF6EC7]/25">
-                Get Started with {getSelectedPlan().name}
+              <button className="w-full bg-gradient-to-r from-[#FF6EC7] to-[#BC13FE] hover:from-[#FF1493] hover:to-[#9B30FF] text-white font-semibold py-3 md:py-4 px-4 md:px-6 rounded-xl transition-all text-sm md:text-base hover:scale-[1.02] shadow-lg shadow-[#FF6EC7]/25">
+                Get Started with { getSelectedPlan().name }
               </button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Comparison Table */}
-      <section className="px-4 mb-16">
+      {/* Comparison Table */ }
+      <section className="px-4 mb-12 md:mb-16">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12 px-2">
             Plan <span className="text-[#FF6EC7]">Comparison</span>
           </h2>
 
-          <div className="overflow-x-auto rounded-2xl border border-[#30363d]">
-            <table className="w-full">
+          <div className="overflow-x-auto rounded-xl md:rounded-2xl border border-[#30363d]">
+            <table className="w-full min-w-[640px]">
               <thead>
                 <tr className="bg-[#161b22]">
-                  <th className="p-6 text-left">Feature</th>
-                  {plans.map((plan) => (
-                    <th key={plan.id} className="p-6 text-center">
-                      <div className="text-xl font-bold mb-2">{plan.name}</div>
-                      <div className="text-[#FF6EC7] font-bold">{plan.price}</div>
+                  <th className="p-4 md:p-6 text-left text-sm md:text-base">Feature</th>
+                  { plans.map((plan) => (
+                    <th key={ plan.id } className="p-4 md:p-6 text-center">
+                      <div className="text-base md:text-xl font-bold mb-1 md:mb-2">{ plan.name }</div>
+                      <div className="text-[#FF6EC7] font-bold text-sm md:text-base">{ plan.price }</div>
                     </th>
-                  ))}
+                  )) }
                 </tr>
               </thead>
               <tbody>
-                {[
+                { [
                   'Responsive Design',
                   'Pages Included',
                   'Frontend Development',
@@ -334,100 +333,98 @@ const Services = () => {
                   'Support Period',
                   'Source Code Delivery',
                 ].map((feature, idx) => (
-                  <tr key={idx} className="border-t border-[#30363d]">
-                    <td className="p-6 font-medium">{feature}</td>
-                    {plans.map((plan) => (
-                      <td key={plan.id} className="p-6 text-center">
-                        {(() => {
+                  <tr key={ idx } className="border-t border-[#30363d]">
+                    <td className="p-4 md:p-6 font-medium text-sm md:text-base">{ feature }</td>
+                    { plans.map((plan) => (
+                      <td key={ plan.id } className="p-4 md:p-6 text-center">
+                        { (() => {
                           switch (feature) {
                             case 'Pages Included':
-                              return plan.id === 'basic' ? '5-10' : plan.id === 'medium' ? '10-15' : '15+';
+                              return <span className="text-sm md:text-base">{ plan.id === 'basic' ? '5-10' : plan.id === 'medium' ? '10-15' : '15+' }</span>;
                             case 'Frontend Development':
-                              return plan.id === 'basic' ? 'HTML/CSS/JS' : plan.id === 'medium' ? 'HTML/CSS/JS' : 'React/Next.js';
+                              return <span className="text-sm md:text-base">{ plan.id === 'basic' ? 'HTML/CSS/JS' : plan.id === 'medium' ? 'HTML/CSS/JS' : 'React/Next.js' }</span>;
                             case 'Backend Development':
-                              return plan.id === 'basic' ? 'None' : plan.id === 'medium' ? 'PHP' : 'Laravel/Node.js';
+                              return <span className="text-sm md:text-base">{ plan.id === 'basic' ? 'None' : plan.id === 'medium' ? 'PHP' : 'Laravel/Node.js' }</span>;
                             case 'Support Period':
-                              return plan.support;
+                              return <span className="text-sm md:text-base">{ plan.support }</span>;
                             case 'Revision Rounds':
-                              return plan.id === 'basic' ? '1' : plan.id === 'medium' ? '2' : 'Unlimited';
+                              return <span className="text-sm md:text-base">{ plan.id === 'basic' ? '1' : plan.id === 'medium' ? '2' : 'Unlimited' }</span>;
                             case 'Source Code Delivery':
-                              return <Check className="w-6 h-6 text-green-500 mx-auto" />;
+                              return <Check className="w-5 h-5 md:w-6 md:h-6 text-green-500 mx-auto" />;
                             default:
                               const planFeature = plan.features.find(f =>
                                 f.name.toLowerCase().includes(feature.toLowerCase().split(' ')[0])
                               );
                               return planFeature ? (
                                 planFeature.included ? (
-                                  <Check className="w-6 h-6 text-green-500 mx-auto" />
+                                  <Check className="w-5 h-5 md:w-6 md:h-6 text-green-500 mx-auto" />
                                 ) : (
-                                  <X className="w-6 h-6 text-red-500 mx-auto" />
+                                  <X className="w-5 h-5 md:w-6 md:h-6 text-red-500 mx-auto" />
                                 )
                               ) : '-';
                           }
-                        })()}
+                        })() }
                       </td>
-                    ))}
+                    )) }
                   </tr>
-                ))}
+                )) }
               </tbody>
             </table>
           </div>
         </div>
       </section>
 
-      {/* FAQ Section */}
-  {/* FAQ Section */}
-<section className="px-4 mb-20">
-  <div className="max-w-4xl mx-auto"> {/* Slightly wider for better 2-column look */}
-    <h2 className="text-3xl font-bold text-center mb-12">
-      Frequently Asked <span className="text-[#FF6EC7]">Questions</span>
-    </h2>
+      {/* FAQ Section */ }
+      <section className="px-4 mb-16 md:mb-20">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12">
+            Frequently Asked <span className="text-[#FF6EC7]">Questions</span>
+          </h2>
 
-    {/* 2-column grid on md+, 1-column on mobile */}
-    <div className="grid grid-cols-2 md:grid-cols-1 gap-6">
-      {faqs.map((faq, index) => (
-        <div
-          key={index}
-          className="bg-[#21262d] rounded-xl p-6 border border-[#30363d] flex flex-col"
-        >
-          <h3 className="text-sm font-semibold mb-3 flex items-center gap-3">
-            <Award className="w-5 h-5 text-[#FF6EC7] flex-shrink-0" />
-            {faq.question}
-          </h3>
-          <p className="text-gray-300 text-xs leading-relaxed">
-            {faq.answer}
-          </p>
+          <div className="grid md:grid-cols-2 gap-4 md:gap-6">
+            { faqs.map((faq, index) => (
+              <div
+                key={ index }
+                className="bg-[#21262d] rounded-xl p-4 md:p-6 border border-[#30363d]"
+              >
+                <h3 className="text-sm md:text-base font-semibold mb-2 md:mb-3 flex items-start gap-2 md:gap-3">
+                  <Award className="w-4 h-4 md:w-5 md:h-5 text-[#FF6EC7] flex-shrink-0 mt-0.5" />
+                  <span>{ faq.question }</span>
+                </h3>
+                <p className="text-gray-300 text-xs md:text-sm leading-relaxed pl-6 md:pl-8">
+                  { faq.answer }
+                </p>
+              </div>
+            )) }
+          </div>
         </div>
-      ))}
-    </div>
-  </div>
-</section>
+      </section>
 
-      {/* CTA Section */}
-      <section className="px-4 mb-20">
-        <div className="max-w-4xl mx-auto bg-gradient-to-r from-[#FF6EC7]/30 to-[#BC13FE]/30 rounded-2xl p-12 text-center border border-[#FF6EC7]/30">
-          <Users className="w-16 h-16 text-[#FF6EC7] mx-auto mb-6" />
-          <h2 className="text-3xl font-bold mb-6">
+      {/* CTA Section */ }
+      <section className="px-4 mb-16 md:mb-20">
+        <div className="max-w-4xl mx-auto bg-gradient-to-r from-[#FF6EC7]/30 to-[#BC13FE]/30 rounded-2xl p-6 md:p-8 lg:p-12 text-center border border-[#FF6EC7]/30">
+          <Users className="w-12 h-12 md:w-16 md:h-16 text-[#FF6EC7] mx-auto mb-4 md:mb-6" />
+          <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-4 md:mb-6 px-2">
             Ready to Start Your Project?
           </h2>
-          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+          <p className="text-sm md:text-base lg:text-xl text-gray-300 mb-6 md:mb-8 max-w-2xl mx-auto px-2">
             Contact me for a free consultation and project quotation. Let's bring your ideas to life!
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-gradient-to-r from-[#FF6EC7] to-[#BC13FE] hover:from-[#FF1493] hover:to-[#9B30FF] text-white font-semibold py-4 px-8 rounded-xl transition-all shadow-lg shadow-[#FF6EC7]/25">
+          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center px-2">
+            <button className="bg-gradient-to-r from-[#FF6EC7] to-[#BC13FE] hover:from-[#FF1493] hover:to-[#9B30FF] text-white font-semibold py-3 md:py-4 px-6 md:px-8 rounded-xl transition-all text-sm md:text-base shadow-lg shadow-[#FF6EC7]/25">
               Send Message
             </button>
-            <button className="bg-[#21262d] hover:bg-[#30363d] text-white font-semibold py-4 px-8 rounded-xl transition-all border border-[#30363d]">
+            <button className="bg-[#21262d] hover:bg-[#30363d] text-white font-semibold py-3 md:py-4 px-6 md:px-8 rounded-xl transition-all text-sm md:text-base border border-[#30363d]">
               View Portfolio
             </button>
           </div>
         </div>
       </section>
 
-      {/* Decorative Elements */}
+      {/* Decorative Elements */ }
       <div className="fixed top-0 left-0 w-full h-full pointer-events-none -z-10">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#FF6EC7]/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#BC13FE]/20 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 md:w-96 md:h-96 bg-[#FF6EC7]/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 md:w-96 md:h-96 bg-[#BC13FE]/20 rounded-full blur-3xl"></div>
       </div>
     </div>
   );
