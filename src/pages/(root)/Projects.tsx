@@ -1,10 +1,12 @@
 import BanHotel from '@/assets/PortfolioImages/BanHotel.png';
+import BarangaySystem from '@/assets/PortfolioImages/BarangaySystem.png';
 import BirthdayGift from '@/assets/PortfolioImages/BirthdayGift.png';
 import BulbOnOff from '@/assets/PortfolioImages/BulbOnOff.png';
 import Calculator from '@/assets/PortfolioImages/Calculator.png';
 import MotorStart from '@/assets/PortfolioImages/MotorStart.png';
 import PizzaBan from '@/assets/PortfolioImages/PizzaBan.png';
 import Sukidesu from '@/assets/PortfolioImages/Sukidesu.png';
+
 import { useEffect, useState } from 'react';
 
 interface PortfolioItem {
@@ -87,13 +89,24 @@ const portfolioItems: PortfolioItem[] = [
     language: "JavaScript"
   },
   {
-    id: 6,
+    id: 7,
     title: "MotorStart",
     description: "MotorStart – Choose Your Ride Wisely MotorStart is a basic school e-commerce project that allows users to browse and view motorcycles through a simple, user-friendly website, demonstrating core online shopping concepts.",
     date: "December 27, 2025",
     type: "Project Static Website",
     link: "https://motorstar.infinityfree.me/?i=1",
     image: MotorStart,
+    stars: 1,
+    language: "Php"
+  },
+  {
+    id: 8,
+    title: "Barangay_Management",
+    description: "Barangay Management System A web-based system designed to streamline barangay operations, including resident records management, permit issuance, incident reporting, and document processing. This system enhances efficiency, transparency, and service delivery by automating tasks and centralizing data for easy access by barangay officials.",
+    date: "December 28, 2025",
+    type: "Barangay System Capstone",
+    link: "https://github.com/BanSimplified567/Barangay_Management",
+    image: BarangaySystem,
     stars: 1,
     language: "Php"
   }

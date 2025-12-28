@@ -62,13 +62,49 @@ const formatDate = (dateString: string): string => {
 const groupIntoWeeks = (flat: ContributionDay[]): Week[] => {
   const weeks: Week[] = [];
   let currentWeek: ContributionDay[] = [];
-  flat.forEach((day, index) => {
+
+  // Find the first Sunday
+  let firstDay = new Date(flat[0].date);
+  let firstWeekday = firstDay.getDay();
+
+  // Add empty days for the first week if it doesn't start on Sunday
+  if (firstWeekday !== 0) {
+    for (let i = 0; i < firstWeekday; i++) {
+      const emptyDate = new Date(firstDay);
+      emptyDate.setDate(emptyDate.getDate() - (firstWeekday - i));
+      currentWeek.push({
+        date: emptyDate.toISOString().split('T')[0],
+        count: 0,
+        formattedDate: formatDate(emptyDate.toISOString().split('T')[0]),
+        weekday: i
+      });
+    }
+  }
+
+  flat.forEach((day) => {
     currentWeek.push(day);
-    if (day.weekday === 0 || index === flat.length - 1) {
+    if (day.weekday === 6 || currentWeek.length === 7) {
       weeks.push({ contributionDays: [...currentWeek] });
       currentWeek = [];
     }
   });
+
+  // Fill the last week if incomplete
+  if (currentWeek.length > 0 && currentWeek.length < 7) {
+    while (currentWeek.length < 7) {
+      const lastDate = new Date(currentWeek[currentWeek.length - 1].date);
+      const nextDate = new Date(lastDate);
+      nextDate.setDate(nextDate.getDate() + 1);
+      currentWeek.push({
+        date: nextDate.toISOString().split('T')[0],
+        count: 0,
+        formattedDate: formatDate(nextDate.toISOString().split('T')[0]),
+        weekday: currentWeek.length
+      });
+    }
+    weeks.push({ contributionDays: [...currentWeek] });
+  }
+
   return weeks;
 };
 
@@ -176,16 +212,17 @@ const ContributionGraph = () => {
       const data = result.data.user.contributionsCollection.contributionCalendar;
       setTotalContributions(data.totalContributions);
 
-      setWeeks(
-        data.weeks.map(week => ({
-          contributionDays: week.contributionDays.map(day => ({
-            date: day.date,
-            count: day.contributionCount,
-            formattedDate: formatDate(day.date),
-            weekday: day.weekday
-          }))
+      // Transform and organize the data properly
+      const transformedWeeks: Week[] = data.weeks.map(week => ({
+        contributionDays: week.contributionDays.map(day => ({
+          date: day.date,
+          count: day.contributionCount,
+          formattedDate: formatDate(day.date),
+          weekday: day.weekday
         }))
-      );
+      }));
+
+      setWeeks(transformedWeeks);
 
     } catch (err) {
       console.error("Error fetching GitHub data:", err);
@@ -205,7 +242,8 @@ const ContributionGraph = () => {
     } else {
       ({ grid, total } = generateRealisticData(selectedYear));
     }
-    setWeeks(groupIntoWeeks(grid));
+    const groupedWeeks = groupIntoWeeks(grid);
+    setWeeks(groupedWeeks);
     setTotalContributions(total);
     setIsLoading(false);
   };
@@ -213,18 +251,31 @@ const ContributionGraph = () => {
   const generateRealisticData = (year: number): { grid: ContributionDay[], total: number } => {
     const grid: ContributionDay[] = [];
     let total = 0;
-    const isLeapYear = (y: number) => (y % 4 === 0 && y % 100 !== 0) || y % 400 === 0;
-    const numDays = isLeapYear(year) ? 366 : 365;
-    for (let d = 0; d < numDays; d++) {
-      const date = new Date(year, 0, 1 + d);
+    const startDate = new Date(year, 0, 1);
+    const endDate = new Date(year, 11, 31);
+
+    // Adjust start date to nearest Sunday
+    const startDay = startDate.getDay();
+    const adjustedStartDate = new Date(startDate);
+    adjustedStartDate.setDate(startDate.getDate() - startDay);
+
+    // Generate 371 days (53 weeks * 7 days) to cover the entire year
+    for (let d = 0; d < 371; d++) {
+      const date = new Date(adjustedStartDate);
+      date.setDate(date.getDate() + d);
       const dateStr = date.toISOString().split('T')[0];
       const weekday = date.getDay();
-      const rand = Math.random();
-      let count: number;
-      if (rand > 0.9) count = Math.floor(Math.random() * 5) + 5;
-      else if (rand > 0.7) count = Math.floor(Math.random() * 4) + 1;
-      else if (rand > 0.4) count = 1;
-      else count = 0;
+
+      // Only count contributions for the actual year
+      let count = 0;
+      if (date >= startDate && date <= endDate) {
+        const rand = Math.random();
+        if (rand > 0.9) count = Math.floor(Math.random() * 5) + 5;
+        else if (rand > 0.7) count = Math.floor(Math.random() * 4) + 1;
+        else if (rand > 0.4) count = 1;
+        else count = 0;
+      }
+
       grid.push({
         date: dateStr,
         count,
@@ -248,17 +299,18 @@ const ContributionGraph = () => {
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     const labels: MonthLabel[] = [];
     const seen = new Set<number>();
+
     weeks.forEach((week, weekIndex) => {
-      week.contributionDays.some(day => {
-        const month = new Date(day.date).getMonth();
-        if (!seen.has(month)) {
+      const firstDay = week.contributionDays[0];
+      if (firstDay) {
+        const month = new Date(firstDay.date).getMonth();
+        if (!seen.has(month) || (weekIndex % 4 === 0 && labels.length < months.length)) {
           seen.add(month);
           labels.push({ month: months[month], week: weekIndex });
-          return true;
         }
-        return false;
-      });
+      }
     });
+
     return labels;
   };
 
@@ -266,123 +318,179 @@ const ContributionGraph = () => {
   const numWeeks = weeks.length;
 
   return (
-    <div className="mt-8 p-4 border border-gray-700 rounded-lg bg-gray-900/50">
-      <div className="flex justify-between items-center mb-4">
-        <div>
-          <h3 className="text-lg font-semibold">
-            {isLoading ? "Loading..." : `${totalContributions} contributions in ${selectedYear}`}
+    <div className="mt-8 p-6 border border-gray-700 rounded-lg bg-gray-900/50 backdrop-blur-sm">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+        <div className="flex-1">
+          <h3 className="text-xl font-bold mb-2">
+            { isLoading ? (
+              <span className="inline-flex items-center gap-2">
+                <span className="w-4 h-4 border-2 border-gray-500 border-t-transparent rounded-full animate-spin"></span>
+                Loading contributions...
+              </span>
+            ) : (
+              <span>
+                { totalContributions.toLocaleString() } contributions in { selectedYear }
+              </span>
+            ) }
           </h3>
-          <div className="flex items-center gap-2 mt-1">
+
+          {/* Contribution Legend */ }
+          <div className="flex items-center gap-3 mt-2">
             <span className="text-sm text-gray-400">Less</span>
             <div className="flex gap-1">
-              {[0, 1, 3, 6, 10].map((count, idx) => (
+              { [0, 1, 3, 6, 10].map((count, idx) => (
                 <div
-                  key={idx}
-                  className={`w-3 h-3 rounded-sm ${getContributionColor(count)}`}
-                  title={`${count} ${count === 1 ? 'contribution' : 'contributions'}`}
+                  key={ idx }
+                  className={ `w-4 h-4 rounded-sm ${getContributionColor(count)} border border-gray-800` }
+                  title={ `${count} ${count === 1 ? 'contribution' : 'contributions'}` }
+                  aria-label={ `${count} contributions color` }
                 ></div>
-              ))}
+              )) }
             </div>
             <span className="text-sm text-gray-400">More</span>
           </div>
-          {usingFallback && (
-            <p className="text-xs text-yellow-500 mt-1">
-              Using fallback data {apiToken ? '(API error)' : '(no API token)'}
-            </p>
-          )}
-          {error && (
-            <p className="text-xs text-red-500 mt-1">{error}</p>
-          )}
+
+          {/* Status Messages */ }
+          <div className="mt-2 space-y-1">
+            { usingFallback && (
+              <div className="flex items-center gap-2 text-xs">
+                <span className="w-2 h-2 bg-yellow-500 rounded-full"></span>
+                <span className="text-yellow-400">
+                  Using fallback data { apiToken ? '(API error)' : '(no API token configured)' }
+                </span>
+              </div>
+            ) }
+            { error && (
+              <div className="flex items-center gap-2 text-xs">
+                <span className="w-2 h-2 bg-red-500 rounded-full"></span>
+                <span className="text-red-400">{ error }</span>
+              </div>
+            ) }
+            { !isLoading && !usingFallback && apiToken && (
+              <div className="flex items-center gap-2 text-xs">
+                <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                <span className="text-green-400">Live GitHub data</span>
+              </div>
+            ) }
+          </div>
         </div>
-        <div className="flex items-center gap-2">
-          <select
-            value={selectedYear}
-            onChange={(e) => setSelectedYear(parseInt(e.target.value))}
-            className="bg-gray-800 border border-gray-700 rounded px-2 py-1 text-sm"
-          >
-            {[2025, 2024, 2023].map(year => (
-              <option key={year} value={year}>{year}</option>
-            ))}
-          </select>
-          {apiToken && !usingFallback && (
-            <span className="text-xs text-green-500">✓ Live Data</span>
-          )}
+
+        {/* Year Selector */ }
+        <div className="flex items-center gap-3">
+          <div className="relative">
+            <select
+              value={ selectedYear }
+              onChange={ (e) => setSelectedYear(parseInt(e.target.value)) }
+              className="bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent appearance-none pr-8"
+              disabled={ isLoading }
+            >
+              { [2025, 2024, 2023, 2022].map(year => (
+                <option key={ year } value={ year }>{ year }</option>
+              )) }
+            </select>
+            <div className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
+              <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={ 2 } d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+          </div>
+
+          { apiToken && !usingFallback && !isLoading && (
+            <span className="text-xs bg-green-500/20 text-green-400 px-2 py-1 rounded-full flex items-center gap-1">
+              <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+              </svg>
+              Live
+            </span>
+          ) }
         </div>
       </div>
 
-      {isLoading ? (
-        <div className="bg-gray-800 p-4 rounded animate-pulse">
-          <div className="grid grid-cols-53 gap-1 mb-2">
-            {Array.from({ length: 53 }).map((_, i) => (
-              <div key={i} className="text-center text-xs text-gray-400">...</div>
-            ))}
-          </div>
-          <div className="grid grid-rows-7 grid-cols-53 gap-1">
-            {Array.from({ length: 371 }).map((_, i) => (
-              <div
-                key={i}
-                className="h-3 w-3 rounded-sm bg-gray-700"
-              ></div>
-            ))}
+      { isLoading ? (
+        <div className="bg-gray-800 p-6 rounded-lg animate-pulse">
+          <div className="flex gap-6 mb-4">
+            {/* Day labels skeleton */ }
+            <div className="flex flex-col gap-1 w-8">
+              { Array.from({ length: 7 }).map((_, i) => (
+                <div key={ i } className="h-4 bg-gray-700 rounded w-6"></div>
+              )) }
+            </div>
+            {/* Grid skeleton */ }
+            <div className="grid grid-flow-col grid-rows-7 gap-1 flex-1">
+              { Array.from({ length: 371 }).map((_, i) => (
+                <div key={ i } className="w-4 h-4 bg-gray-700 rounded-sm"></div>
+              )) }
+            </div>
           </div>
         </div>
       ) : (
-        <div className="bg-gray-800 p-4 rounded">
-          {/* Month Labels */}
-          <div className={`grid grid-cols-${numWeeks} gap-1 mb-2`}>
-            {Array.from({ length: numWeeks }).map((_, i) => (
-              <div key={i} className="text-center text-xs text-gray-400">
-                {monthLabels.find(l => l.week === i)?.month || ''}
-              </div>
-            ))}
+        <div className="bg-gray-800 p-6 rounded-lg">
+          {/* Month Labels */ }
+          <div className="flex gap-6 mb-2 ml-8">
+            { monthLabels.map((label, index) => {
+              // Calculate approximate column position
+              const colStart = label.week + 1;
+              return (
+                <div
+                  key={ index }
+                  className="text-xs text-gray-400 min-w-[16px]"
+                  style={ { gridColumn: colStart } }
+                >
+                  { label.month }
+                </div>
+              );
+            }) }
           </div>
 
-          {/* Contribution Grid */}
-          <div className="flex gap-1">
-            {/* Day of week labels */}
-            <div className="flex flex-col gap-1 text-xs text-gray-400 mr-2">
-              <div className="h-3"></div>
-              {['Mon', '', 'Wed', '', 'Fri', '', 'Sun'].map((day, i) => (
-                <div key={i} className="h-3 flex items-center">
-                  {day}
+          {/* Contribution Grid */ }
+          <div className="flex gap-6">
+            {/* Day of week labels */ }
+            <div className="flex flex-col gap-1 text-xs text-gray-400 w-8">
+              <div className="h-4"></div>
+              { ['Mon', '', 'Wed', '', 'Fri', '', 'Sun'].map((day, i) => (
+                <div key={ i } className="h-4 flex items-center justify-end pr-1">
+                  { day }
                 </div>
-              ))}
+              )) }
             </div>
 
-            {/* Contribution squares */}
-            <div className={`grid grid-rows-7 grid-cols-${numWeeks} gap-1 flex-1`}>
-              {weeks.flatMap((week, weekIndex) =>
-                week.contributionDays.map(day => {
-                  const row = day.weekday === 0 ? 7 : day.weekday;
-                  return (
-                    <div
-                      key={day.date}
-                      className={`row-start-${row} col-start-${weekIndex + 1} h-3 w-3 rounded-sm ${getContributionColor(day.count)} transition-colors duration-200 cursor-pointer`}
-                      title={`${day.count} ${day.count === 1 ? 'contribution' : 'contributions'} on ${day.formattedDate}`}
-                    ></div>
-                  );
-                })
-              )}
+            {/* Contribution squares */ }
+            <div className="flex-1 overflow-x-auto">
+              <div className="inline-flex gap-1">
+                { weeks.map((w, i) => (
+                  <div key={ i } className="flex flex-col gap-1">
+                    { w.contributionDays.map((d, j) => (
+                      <div key={ `${i}-${j}` } className={ `h-4 w-4 rounded-sm ${getContributionColor(d.count)} cursor-pointer transition-colors duration-200` } title={ `${d.count} ${d.count === 1 ? 'contribution' : 'contributions'} on ${d.formattedDate}` } />
+                    )) }
+                  </div>
+                )) }
+              </div>
             </div>
           </div>
         </div>
-      )}
+      ) }
 
-      {/* Activity Overview */}
-      <div className="mt-6">
-        <h4 className="font-semibold mb-2">Activity overview</h4>
-        <p className="text-sm text-gray-300">
+      {/* Activity Overview */ }
+      <div className="mt-6 p-4 bg-gray-800/50 rounded-lg">
+        <h4 className="font-semibold mb-3 text-lg">Activity overview</h4>
+        <p className="text-sm text-gray-300 mb-2">
           <strong>Contributed to</strong> BanSimplified567/bansimplified-boilerplate-using-react,
-          BanSimplified567/BanHotel, BanSimplified567/BarsSimplified567 and 23 other repositories
+          BanSimplified567/BanHotel, BanSimplified567/BanSimplified567 and 23 other repositories
         </p>
-        <div className="mt-2 text-xs text-gray-400">
-          {apiToken ? (
-            <span>Data source: GitHub API</span>
+        <div className="mt-3 text-xs text-gray-400 flex items-center gap-2">
+          { apiToken ? (
+            <>
+              <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+              <span>Data source: GitHub API</span>
+            </>
           ) : (
-            <span>
-              Data source: Fallback (Add NEXT_PUBLIC_GITHUB_API_TOKEN to .env.local for live data)
-            </span>
-          )}
+            <>
+              <span className="w-2 h-2 bg-yellow-500 rounded-full"></span>
+              <span>
+                Add VITE_GITHUB_API_TOKEN to .env.local for live data
+              </span>
+            </>
+          ) }
         </div>
       </div>
     </div>
@@ -393,17 +501,17 @@ const Index = () => {
   return (
     <div className="font-sans p-5 max-w-6xl mx-auto">
       <div className="">
-        {/* Separator */}
-        <img src={BorderSeparator} className="w-full" alt="separator" />
+        {/* Separator */ }
+        <img src={ BorderSeparator } className="w-full" alt="separator" />
 
-        {/* Title Section */}
+        {/* Title Section */ }
         <div className="text-center my-5">
           <h2 className="flex items-center justify-center gap-2.5">
-            <img src={AnimatedFlame} className="w-[14px]" alt="flame" />
+            <img src={ AnimatedFlame } className="w-[14px]" alt="flame" />
             Full-Stack Developer • Frontend-Enthusiast
-            <img src={AnimatedFlame} className="w-[14px]" alt="flame" />
+            <img src={ AnimatedFlame } className="w-[14px]" alt="flame" />
           </h2>
-          {/* Wakatime Badge */}
+          {/* Wakatime Badge */ }
           <div className="text-center mb-5">
             <img
               src="https://wakatime.com/badge/user/018c974d-1366-4d7f-9b95-0e80821d2165.svg"
@@ -413,18 +521,18 @@ const Index = () => {
           </div>
         </div>
 
-        <img src={BorderSeparator} className="w-full" alt="separator" />
+        <img src={ BorderSeparator } className="w-full" alt="separator" />
       </div>
 
-      {/* Banner */}
+      {/* Banner */ }
       <div className="mb-5">
-        <img src={PixelNightBanner} alt="Banner" className="w-full block" />
+        <img src={ PixelNightBanner } alt="Banner" className="w-full block" />
       </div>
 
-      {/* About Me Section */}
+      {/* About Me Section */ }
       <div className="relative my-10 p-5 ">
         <img
-          src={VaporwaveAesthetic}
+          src={ VaporwaveAesthetic }
           alt="pixel city image"
           className="absolute right-0 top-0 h-full"
         />
@@ -451,7 +559,7 @@ const Index = () => {
           </ul>
 
           <p className="mt-5">
-            <strong>📄 Resume:</strong>{' '}
+            <strong>📄 Resume:</strong>{ ' ' }
             <a href="/resume.pdf" className="text-[#FE428E] no-underline hover:underline">
               Download Resume
             </a>
@@ -459,13 +567,13 @@ const Index = () => {
         </div>
       </div>
 
-      {/* Education and Connection Section */}
+      {/* Education and Connection Section */ }
       <div className="text-center my-10">
-        <img src={BorderSeparator} className="w-full" alt="separator" />
+        <img src={ BorderSeparator } className="w-full" alt="separator" />
         <h2 className="my-5">
+          <img src={ AnimatedFlame } className="w-4 mx-2.5 inline" alt="flame" />
           <strong>📚 Education and Connection</strong>
-          <img src={AnimatedFlame} className="w-4 mx-2.5 inline" alt="flame" />
-          <img src={AnimatedFlame} className="w-4 mx-2.5 inline" alt="flame" />
+          <img src={ AnimatedFlame } className="w-4 mx-2.5 inline" alt="flame" />
         </h2>
 
         <div className="flex justify-center flex-wrap gap-2.5 my-5">
@@ -490,19 +598,22 @@ const Index = () => {
         </div>
       </div>
 
-      {/* Pixel Image */}
+      {/* Pixel Image */ }
       <div className="text-center my-5">
-        <img src={PixelNeon} alt="pixel guy using computer" className="w-full" />
+        <img src={ PixelNeon } alt="pixel guy using computer" className="w-full" />
       </div>
 
-      {/* Technologies and Skills Section */}
+      {/* Technologies and Skills Section */ }
       <div className="my-10">
         <div className="text-center">
-          <img src={BorderSeparator} className="w-full" alt="separator" />
+          <img src={ BorderSeparator } className="w-full" alt="separator" />
           <h2 className="my-5">
+            <img src={ AnimatedFlame } className="w-4 mx-2.5 inline" alt="flame" />
             <strong>⚙️ Technologies and Skills</strong>
+            <img src={ AnimatedFlame } className="w-4 mx-2.5 inline" alt="flame" />
+
           </h2>
-          <img src={BorderSeparator} className="w-full" alt="separator" />
+          <img src={ BorderSeparator } className="w-full" alt="separator" />
         </div>
 
         <div className="my-5">
@@ -537,57 +648,93 @@ const Index = () => {
         </div>
       </div>
 
-      <img src={BorderSeparator} className="w-full" alt="separator" />
+      <img src={ BorderSeparator } className="w-full" alt="separator" />
 
-      {/* Github Stats Section */}
-      <div className="my-10">
-        <div className="text-center">
-          <h2>🏆 My Github Stats</h2>
-          <img src={BorderSeparator} className="w-full" alt="separator" />
-        </div>
+      {/* Github Stats Section */ }
+      <div className="text-center">
+        <h2 className="my-6 flex items-center justify-center gap-2 text-xl font-bold">
+          <img src={ AnimatedFlame } className="w-5" alt="flame" />
+          <span>🏆 My GitHub Stats</span>
+          <img src={ AnimatedFlame } className="w-5" alt="flame" />
+        </h2>
 
-        <div className="flex flex-col md:flex-row gap-4 my-5">
-          <a href="https://github.com/BanSimplified567" className="flex-1">
+        <img
+          src={ BorderSeparator }
+          className="mx-auto my-4 w-full max-w-3xl"
+          alt="separator"
+        />
+
+        {/* 2-column layout: stacked on mobile, side-by-side on md+ */ }
+        <div className="grid grid-cols-2 md:grid-cols-2 gap-6 my-6 max-w-5xl mx-auto">
+          <a
+            href="https://wakatime.com/@BanBan"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block"
+          >
+            <embed
+              src="https://wakatime.com/share/@BanBan/b59981cd-bda4-4e6a-a565-42222452b114.svg"
+              className="w-full h-auto"
+              title="Wakatime Language Stats"
+            />
+          </a>
+
+          <a
+            href="https://wakatime.com/@BanBan"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block"
+          >
             <img
-              src="https://github-readme-stats.vercel.app/api?username=BanSimplified567&show_icons=true&count_private=true&theme=radical"
-              alt="GitHub stats"
+              src="https://wakatime.com/share/@BanBan/3fd3ecfd-d242-4382-b6bf-a8d9ec737103.png"
+              alt="Wakatime Weekly Coding Activity"
               className="w-full h-auto"
             />
           </a>
-          <a href="https://wakatime.com/@BanBan" target="_blank" rel="noopener noreferrer" className="flex-1">
+        </div>
+        <div className="mt-6">
+          <a
+            href="https://wakatime.com/@BanBan"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-1"
+          >
             <img
-              src="https://github-readme-activity-graph.vercel.app/graph?username=BanSimplified567&custom_title=BanSimplified567's%20GitHub%20Activity%Graph&bg_color=141321&color=A9FEF7&line=626069&point=F8D847&area_color=FE428E&title_color=FE428E&area=true"
-              alt="Github Activity Graph"
-              className="w-full h-auto"
+              src="https://github-readme-activity-graph.vercel.app/graph?username=BanSimplified567&custom_title=BanSimplified567's%20GitHub%20Activity%20Graph&bg_color=141321&color=A9FEF7&line=626069&point=F8D847&area_color=FE428E&title_color=FE428E&area=true"
+              alt="GitHub Activity Graph"
+              className="w-full h-full"
             />
           </a>
-        </div>
-
-        <div className="mt-5">
-          <a href="https://wakatime.com" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://wakatime.com/@BanBan"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <img
               src="https://wakatime.com/share/@BanBan/382532ff-5057-45a2-b975-14ab938e7e7c.png"
-              alt="wakatime stats"
-              className="w-full"
+              alt="Wakatime coding stats"
+              className="w-full h-auto"
             />
           </a>
         </div>
       </div>
 
-      {/* Pinned Repositories Section */}
+
+
+      {/* Pinned Repositories Section */ }
       <div className="my-10">
         <div className="text-center">
-          <img src={BorderSeparator} className="w-full" alt="separator" />
+          <img src={ BorderSeparator } className="w-full" alt="separator" />
           <h2 className="my-5 flex items-center justify-center gap-4">
-            <img src={AnimatedFlame} className="w-4" alt="flame" />
+            <img src={ AnimatedFlame } className="w-4" alt="flame" />
             📌 Pinned Repositories
-            <img src={AnimatedFlame} className="w-4" alt="flame" />
+            <img src={ AnimatedFlame } className="w-4" alt="flame" />
           </h2>
-          <img src={BorderSeparator} className="w-full" alt="separator" />
+          <img src={ BorderSeparator } className="w-full" alt="separator" />
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 my-5">
-          {/* Repository 1 */}
+          {/* Repository 1 */ }
           <div className="border border-gray-700 rounded-lg p-4 bg-gray-900/50 hover:bg-gray-800/50 transition-colors">
             <div className="flex justify-between items-start mb-2">
               <a
@@ -611,7 +758,7 @@ const Index = () => {
             </div>
           </div>
 
-          {/* Repository 2 */}
+          {/* Repository 2 */ }
           <div className="border border-gray-700 rounded-lg p-4 bg-gray-900/50 hover:bg-gray-800/50 transition-colors">
             <div className="flex justify-between items-start mb-2">
               <a
@@ -638,21 +785,22 @@ const Index = () => {
             </div>
           </div>
 
-          {/* Repository 3 */}
+          {/* Repository 3 */ }
           <div className="border border-gray-700 rounded-lg p-4 bg-gray-900/50 hover:bg-gray-800/50 transition-colors">
             <div className="flex justify-between items-start mb-2">
               <a
-                href="https://github.com/BanSimplified567/BarsSimplified567"
+                href="https://github.com/BanSimplified567/BanSimplified567"
                 className="text-blue-400 hover:text-blue-300 font-semibold text-lg"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                BarsSimplified567
+                BanSimplified567
               </a>
               <span className="text-xs border border-gray-600 px-2 py-1 rounded-full">Public</span>
             </div>
             <p className="text-gray-300 text-sm mb-3">
-              My Portfolio BarsSimplified
+
+              My Portfolio BanSimplified
             </p>
             <div className="flex items-center gap-4 text-sm text-gray-400">
               <div className="flex items-center gap-1">
@@ -665,7 +813,7 @@ const Index = () => {
             </div>
           </div>
 
-          {/* Repository 4 */}
+          {/* Repository 4 */ }
           <div className="border border-gray-700 rounded-lg p-4 bg-gray-900/50 hover:bg-gray-800/50 transition-colors">
             <div className="flex justify-between items-start mb-2">
               <a
@@ -692,7 +840,7 @@ const Index = () => {
             </div>
           </div>
 
-          {/* Repository 5 */}
+          {/* Repository 5 */ }
           <div className="border border-gray-700 rounded-lg p-4 bg-gray-900/50 hover:bg-gray-800/50 transition-colors">
             <div className="flex justify-between items-start mb-2">
               <a
@@ -719,7 +867,7 @@ const Index = () => {
             </div>
           </div>
 
-          {/* Repository 6 */}
+          {/* Repository 6 */ }
           <div className="border border-gray-700 rounded-lg p-4 bg-gray-900/50 hover:bg-gray-800/50 transition-colors">
             <div className="flex justify-between items-start mb-2">
               <a
@@ -750,23 +898,23 @@ const Index = () => {
           </div>
         </div>
 
-        {/* GitHub Contribution Graph */}
+        {/* GitHub Contribution Graph */ }
         <div className="mt-8">
           <div className="text-center">
-            <img src={BorderSeparator} className="w-full" alt="separator" />
+            <img src={ BorderSeparator } className="w-full" alt="separator" />
             <h2 className="my-5 flex items-center justify-center gap-4">
-              <img src={AnimatedFlame} className="w-4" alt="flame" />
+              <img src={ AnimatedFlame } className="w-4" alt="flame" />
               📊 GitHub Contribution Activity
-              <img src={AnimatedFlame} className="w-4" alt="flame" />
+              <img src={ AnimatedFlame } className="w-4" alt="flame" />
             </h2>
           </div>
 
-          {/* Updated Contribution Graph */}
+          {/* Updated Contribution Graph */ }
           <ContributionGraph />
         </div>
       </div>
 
-      <img src={BorderSeparator} className="w-full" alt="separator" />
+      <img src={ BorderSeparator } className="w-full" alt="separator" />
     </div>
   );
 };
