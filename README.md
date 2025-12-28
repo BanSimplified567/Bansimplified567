@@ -1,4 +1,4 @@
-# Bansimplified
+# BanSimplified
 
 <img src="https://wakatime.com/badge/user/018c974d-1366-4d7f-9b95-0e80821d2165.svg" alt="wakatime" />
 
@@ -20,16 +20,14 @@
 
 <img align="right" src="https://raw.githubusercontent.com/BanSimplified567/BanSimplified567/main/src/assets/assets/vaporwave-aesthetic.gif" height="300px" alt="vaporwave aesthetic">
 
-<br>
-
 ### 👨‍💻 About Me
 
-- I'm **Jade Ivan (Bansimplified)** — an IT (Programming) student from the Philippines
-- Actively enhancing my software engineering foundation across **frontend, backend, and full-stack workflows**
-- Passionate about building scalable web systems, UI engineering, and modern development tooling
-- **Decade Goal:** Become a full-fledged Software Engineer
-- Interests include: Coffee, learning new frameworks, and creative coding
-- Hobbies: Reading manga/manhwa, drawing, and exploring digital storytelling
+- I'm **Jade Ivan (BanSimplified)** — an IT (Programming) student from the Philippines.
+- Actively enhancing my software engineering foundation across **frontend, backend, and full-stack workflows**.
+- Passionate about building scalable web systems, UI engineering, and modern development tooling.
+- **Decade Goal:** Become a full-fledged Software Engineer.
+- Interests include: Coffee, learning new frameworks, and creative coding.
+- Hobbies: Reading manga/manhwa, drawing, and exploring digital storytelling.
 
 📄 **Resume:** [Download Resume](https://raw.githubusercontent.com/BanSimplified567/BanSimplified567/main/src/components/Pages/About/Bringcolajadeivan,V.pdf)
 
@@ -39,7 +37,8 @@
 
 <div align="center">
   <h2>
-    <strong>📚 Education and Connection</strong>
+   <img src="https://raw.githubusercontent.com/BanSimplified567/BanSimplified567/main/src/assets/assets/animated-flame-01.gif" width="16px" />
+    <strong>📚 Education and Connections</strong>
     <img src="https://raw.githubusercontent.com/BanSimplified567/BanSimplified567/main/src/assets/assets/animated-flame-01.gif" width="16px" />
   </h2>
   <br>
@@ -65,15 +64,15 @@
 
 <br>
 
-<div align="center">
-  <img src="https://raw.githubusercontent.com/BanSimplified567/BanSimplified567/main/src/assets/assets/pixel-neon.gif" alt="pixel guy using computer" width="100%"/>
-</div>
+<img src="https://raw.githubusercontent.com/BanSimplified567/BanSimplified567/main/src/assets/assets/pixel-neon.gif" alt="pixel guy using computer" width="100%"/>
 
 <br>
 
 <div align="center">
   <h2>
+   <img src="https://raw.githubusercontent.com/BanSimplified567/BanSimplified567/main/src/assets/assets/animated-flame-01.gif" width="16px" />
     <strong>⚙️ Technologies and Skills</strong>
+     <img src="https://raw.githubusercontent.com/BanSimplified567/BanSimplified567/main/src/assets/assets/animated-flame-01.gif" width="16px" />
   </h2>
 
   <br>
@@ -92,13 +91,15 @@
 
 <div align="center">
   <h2>🏆 My GitHub Stats</h2>
-<a href="https://wakatime.com"><img src="https://wakatime.com/share/@BanBan/adf420f1-99be-4b4c-9d84-b8c999dec66d.png" width="49%" /></a><a href="https://wakatime.com"><img src="https://wakatime.com/share/@BanBan/6e132497-448b-4470-a69f-2e05fcec41d2.png" width="49%.5" /></a><img src="https://github-readme-activity-graph.vercel.app/graph?username=BanSimplified567&custom_title=BanSimplified567's%20GitHub%20Activity%20Graph&bg_color=141321&color=A9FEF7&line=626069&point=F8D847&area_color=FE428E&title_color=FE428E&area=true" alt="GitHub Activity Graph" width="49.5%" />
-<img src="weekdays.gif" alt="GitHub Activity Graph" width="49.5%" />
+  <a href="https://wakatime.com"><img src="https://wakatime.com/share/@BanBan/adf420f1-99be-4b4c-9d84-b8c999dec66d.png" width="49%" /></a>
+  <a href="https://wakatime.com"><img src="https://wakatime.com/share/@BanBan/6e132497-448b-4470-a69f-2e05fcec41d2.png" width="49%" /></a>
   <br>
-
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=BanSimplified567&custom_title=BanSimplified567's%20GitHub%20Activity%20Graph&bg_color=141321&color=A9FEF7&line=626069&point=F8D847&area_color=FE428E&title_color=FE428E&area=true" alt="GitHub Activity Graph" width="49%" />
+  <img src="weekdays.gif" alt="Weekdays Graph" width="49%" />
+  <br>
   <img src="https://wakatime.com/share/@BanBan/382532ff-5057-45a2-b975-14ab938e7e7c.png" alt="Wakatime Stats" width="100%" />
 </div>
 
 <img src="https://raw.githubusercontent.com/BanSimplified567/BanSimplified567/main/src/assets/assets/borderseparator.gif" width="100%"/>
 
-<!-- Proudly created with GPRM[](https://gprm.itsvg.in) -->
+<!-- Proudly created with GPRM (https://gprm.itsvg.in) -->
