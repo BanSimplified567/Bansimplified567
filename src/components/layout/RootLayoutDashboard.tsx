@@ -43,8 +43,8 @@ const RootLayoutDashboard: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-white dark:bg-[#0d1119] text-[#24292f] dark:text-[#e6edf3] transition-colors duration-300">
-      <header className="w-full bg-white dark:bg-[#010409] border-b border-[#d8dee4] dark:border-[#30363d] shadow-sm sticky top-0 z-1 transition-colors duration-300 z-50">
-        <div className="px-4 py-3 flex items-center justify-between relative z-50">
+      <header className="w-full bg-white dark:bg-[#010409] border-b border-[#d8dee4] dark:border-[#30363d] shadow-sm sticky top-0 z-50 transition-colors duration-300">
+        <div className="px-4 py-3 flex items-center justify-between">
           {/* Mobile Menu Button - Only visible on mobile */ }
           { isMobile && (
             <button
@@ -158,35 +158,33 @@ const RootLayoutDashboard: React.FC = () => {
         {/* Mobile Sidebar Overlay */ }
         { sidebarOpen && isMobile && (
           <div
-            className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden transition-opacity duration-300"
+            className="fixed inset-0 bg-black bg-opacity-50 z-40 transition-opacity duration-300"
             onClick={ () => setSidebarOpen(false) }
           />
         ) }
 
         {/* Left Sidebar - Profile Section */ }
-        <div className={ `
-  ${isMobile ? 'fixed top-0' : 'sticky top-[4rem]'}
-  ${isMobile ? (sidebarOpen ? 'translate-x-0' : '-translate-x-full') : ''}
-  left-0 h-full
-  lg:w-80 xl:w-96
-  transition-transform duration-300 ease-in-out
-  ${isMobile ? 'w-11/12 max-w-sm' : 'h-[calc(100vh-4rem)]'}
-`}>
-
-          <div className="
-  bg-white dark:bg-[#0d1117]
-  rounded-xl border border-[#d8dee4] dark:border-[#30363d]
-  shadow-sm
-  p-4 md:p-5
-  h-full
-  overflow-y-auto
-  transition-colors duration-300
-  ${isMobile ? 'm-4 rounded-xl h-[calc(100%-2rem)]' : ''}
-">
-
+        <aside
+          className={ `
+            ${isMobile ? 'fixed top-0 left-0 h-full z-50' : 'sticky top-[4rem] h-[calc(100vh-4rem)]'}
+            ${isMobile ? (sidebarOpen ? 'translate-x-0' : '-translate-x-full') : ''}
+            transition-transform duration-300 ease-in-out
+            ${isMobile ? 'w-80 max-w-[calc(100vw-2rem)]' : 'lg:w-80 xl:w-96'}
+          `}
+        >
+          <div
+            className="
+              bg-white dark:bg-[#0d1117]
+              rounded-xl border border-[#d8dee4] dark:border-[#30363d]
+              shadow-lg
+              p-4 md:p-5
+              h-full
+              transition-colors duration-300
+            "
+          >
             {/* Close button for mobile - Only visible on mobile */ }
             { isMobile && (
-              <div className="flex justify-end mb-4 md:hidden">
+              <div className="flex justify-end mb-4">
                 <button
                   onClick={ () => setSidebarOpen(false) }
                   className="p-2 rounded-md hover:bg-[#f6f8fa] dark:hover:bg-[#21262d] transition-colors"
@@ -204,17 +202,17 @@ const RootLayoutDashboard: React.FC = () => {
                   src={ Bansimplified }
                   alt="Bansimplified"
                   className="
-    w-24 h-24
-    sm:w-28 sm:h-28
-    md:w-32 md:h-32
-    lg:w-40 lg:h-40
-    xl:w-48 xl:h-48
-    2xl:w-56 2xl:h-56
-    object-cover
-    mx-auto
-    rounded-full
-    border-4 border-[#f6f8fa] dark:border-[#21262d]
-  "
+                    w-24 h-24
+                    sm:w-28 sm:h-28
+                    md:w-32 md:h-32
+                    lg:w-40 lg:h-40
+                    xl:w-48 xl:h-48
+                    2xl:w-56 2xl:h-56
+                    object-cover
+                    mx-auto
+                    rounded-full
+                    border-4 border-[#f6f8fa] dark:border-[#21262d]
+                  "
                 />
 
                 <p className="text-lg md:text-xl font-semibold text-[#24292f] dark:text-[#e6edf3]">
@@ -297,19 +295,20 @@ const RootLayoutDashboard: React.FC = () => {
               </div>
             </div>
           </div>
-        </div>
+        </aside>
 
         {/* Outlet / Main Content */ }
-        <div className={ `
-          flex-1
-          overflow-y-auto
-          bg-white dark:bg-[#0d1117]
-          rounded-xl border border-[#d8dee4] dark:border-[#30363d]
-          shadow-sm
-          transition-all duration-300
-          ${isMobile ? 'min-h-[calc(100vh-12rem)]' : ''}
-          ${sidebarOpen && isMobile ? 'opacity-50 pointer-events-none' : 'opacity-100'}
-        `}>
+        <div
+          className={ `
+            flex-1
+            overflow-y-auto
+            bg-white dark:bg-[#0d1117]
+            rounded-xl border border-[#d8dee4] dark:border-[#30363d]
+            shadow-sm
+            transition-all duration-300
+            ${isMobile && sidebarOpen ? 'opacity-50 pointer-events-none' : 'opacity-100'}
+          `}
+        >
           <Outlet />
         </div>
       </main>
