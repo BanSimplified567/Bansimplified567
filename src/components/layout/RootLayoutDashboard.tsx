@@ -164,7 +164,7 @@ const RootLayoutDashboard: React.FC = () => {
         ) }
 
         {/* Left Sidebar - Profile Section */ }
-        <div className={`
+        <div className={ `
   ${isMobile ? 'fixed top-0' : 'sticky top-[4rem]'}
   ${isMobile ? (sidebarOpen ? 'translate-x-0' : '-translate-x-full') : ''}
   left-0 h-full
@@ -204,15 +204,19 @@ const RootLayoutDashboard: React.FC = () => {
                   src={ Bansimplified }
                   alt="Bansimplified"
                   className="
-                    w-24 h-24
-                    sm:w-28 sm:h-28
-                    md:w-32 md:h-32
-                    object-cover
-                    mx-auto
-                    rounded-full
-                    border-4 border-[#f6f8fa] dark:border-[#21262d]
-                  "
+    w-24 h-24
+    sm:w-28 sm:h-28
+    md:w-32 md:h-32
+    lg:w-40 lg:h-40
+    xl:w-48 xl:h-48
+    2xl:w-56 2xl:h-56
+    object-cover
+    mx-auto
+    rounded-full
+    border-4 border-[#f6f8fa] dark:border-[#21262d]
+  "
                 />
+
                 <p className="text-lg md:text-xl font-semibold text-[#24292f] dark:text-[#e6edf3]">
                   HisBannie . <span className="text-xs md:text-sm text-[#57606a] dark:text-[#7d8590] bg-[#f6f8fa] dark:bg-[#21262d] px-2 py-0.5 rounded">he/him</span>
                 </p>
