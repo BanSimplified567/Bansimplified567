@@ -84,7 +84,7 @@ const Repository = () => {
             className="border-b border-gray-700 pb-8 cursor-pointer hover:bg-gray-800/50 p-4 rounded-lg transition-colors"
             onClick={ () => handleRepositoryClick(1) }
           >
-            <div className="flex justify-between items-start">
+            <div className="flex flex-wrap justify-between items-start">
               <div>
                 <h2 className="text-xl font-semibold text-blue-400">
                   Bansimplified567 <span className="text-xs bg-gray-800 px-2 py-1 rounded">Public</span>
@@ -123,7 +123,7 @@ const Repository = () => {
             className="border-b border-gray-700 pb-8 cursor-pointer hover:bg-gray-800/50 p-4 rounded-lg transition-colors"
             onClick={ () => handleRepositoryClick(2) }
           >
-            <div className="flex justify-between items-start">
+            <div className="flex flex-wrap justify-between items-start">
               <div>
                 <h2 className="text-xl font-semibold text-blue-400">
                   bansimplified-boilerplete-using-react <span className="text-xs bg-gray-800 px-2 py-1 rounded">Public</span>
@@ -161,7 +161,7 @@ const Repository = () => {
             className="border-b border-gray-700 pb-8 cursor-pointer hover:bg-gray-800/50 p-4 rounded-lg transition-colors"
             onClick={ () => handleRepositoryClick(3) }
           >
-            <div className="flex justify-between items-start">
+            <div className="flex flex-wrap justify-between items-start">
               <div>
                 <h2 className="text-xl font-semibold text-blue-400">
                   Collected-Tips-And-Tricks-by-Known-as-BanBan <span className="text-xs bg-gray-800 px-2 py-1 rounded">Public</span>
@@ -196,7 +196,7 @@ const Repository = () => {
             className="border-b border-gray-700 pb-8 cursor-pointer hover:bg-gray-800/50 p-4 rounded-lg transition-colors"
             onClick={ () => handleRepositoryClick(4) }
           >
-            <div className="flex justify-between items-start">
+            <div className="flex flex-wrap justify-between items-start">
               <div>
                 <h2 className="text-xl font-semibold text-blue-400">
                   BanHotel <span className="text-xs bg-gray-800 px-2 py-1 rounded">Public</span>
@@ -235,7 +235,7 @@ const Repository = () => {
             className="border-b border-gray-700 pb-8 cursor-pointer hover:bg-gray-800/50 p-4 rounded-lg transition-colors"
             onClick={ () => handleRepositoryClick(5) }
           >
-            <div className="flex justify-between items-start">
+            <div className="flex flex-wrap justify-between items-start">
               <div>
                 <h2 className="text-xl font-semibold text-blue-400">
                   POS-Coffee-Shop-Management <span className="text-xs bg-gray-800 px-2 py-1 rounded">Public</span>
@@ -270,7 +270,7 @@ const Repository = () => {
             className="border-b border-gray-700 pb-8 cursor-pointer hover:bg-gray-800/50 p-4 rounded-lg transition-colors"
             onClick={ () => handleRepositoryClick(6) }
           >
-            <div className="flex justify-between items-start">
+            <div className="flex flex-wrap justify-between items-start">
               <div>
                 <h2 className="text-xl font-semibold text-blue-400">
                   Projects-For-Beginners <span className="text-xs bg-gray-800 px-2 py-1 rounded">Public</span>
@@ -296,7 +296,7 @@ const Repository = () => {
             className="border-b border-gray-700 pb-8 cursor-pointer hover:bg-gray-800/50 p-4 rounded-lg transition-colors"
             onClick={ () => handleRepositoryClick(7) }
           >
-            <div className="flex justify-between items-start">
+            <div className="flex flex-wrap justify-between items-start">
               <div>
                 <h2 className="text-xl font-semibold text-blue-400">
                   Leonard-Portfolio <span className="text-xs bg-gray-800 px-2 py-1 rounded">Public</span>
@@ -328,7 +328,7 @@ const Repository = () => {
             className="border-b border-gray-700 pb-8 cursor-pointer hover:bg-gray-800/50 p-4 rounded-lg transition-colors"
             onClick={ () => handleRepositoryClick(8) }
           >
-            <div className="flex justify-between items-start">
+            <div className="flex flex-wrap justify-between items-start">
               <div>
                 <h2 className="text-xl font-semibold text-blue-400">
                   Barangay_Management <span className="text-xs bg-gray-800 px-2 py-1 rounded">Public</span>
@@ -362,7 +362,7 @@ const Repository = () => {
             className="border-b border-gray-700 pb-8 cursor-pointer hover:bg-gray-800/50 p-4 rounded-lg transition-colors"
             onClick={ () => handleRepositoryClick(9) }
           >
-            <div className="flex justify-between items-start">
+            <div className="flex flex-wrap justify-between items-start">
               <div>
                 <h2 className="text-xl font-semibold text-blue-400">
                   Learn-Tracking <span className="text-xs bg-gray-800 px-2 py-1 rounded">Public</span>
@@ -397,7 +397,7 @@ const Repository = () => {
             className="border-b border-gray-700 pb-8 cursor-pointer hover:bg-gray-800/50 p-4 rounded-lg transition-colors"
             onClick={ () => handleRepositoryClick(10) }
           >
-            <div className="flex justify-between items-start">
+            <div className="flex flex-wrap justify-between items-start">
               <div>
                 <h2 className="text-xl font-semibold text-blue-400">
                   Practice-TanstackTSX <span className="text-xs bg-gray-800 px-2 py-1 rounded">Public</span>
@@ -436,7 +436,7 @@ const Repository = () => {
             className="border-b border-gray-700 pb-8 cursor-pointer hover:bg-gray-800/50 p-4 rounded-lg transition-colors"
             onClick={ () => handleRepositoryClick(11) }
           >
-            <div className="flex justify-between items-start">
+            <div className="flex flex-wrap justify-between items-start">
               <div>
                 <h2 className="text-xl font-semibold text-blue-400">
                   30Days_Javascript_For_Beginners <span className="text-xs bg-gray-800 px-2 py-1 rounded">Public</span>
@@ -471,7 +471,7 @@ const Repository = () => {
             className="border-b border-gray-700 pb-8 cursor-pointer hover:bg-gray-800/50 p-4 rounded-lg transition-colors"
             onClick={ () => handleRepositoryClick(12) }
           >
-            <div className="flex justify-between items-start">
+            <div className="flex flex-wrap justify-between items-start">
               <div>
                 <h2 className="text-xl font-semibold text-blue-400">
                   WatchWrist-E-Commerce <span className="text-xs bg-gray-800 px-2 py-1 rounded">Public</span>
@@ -510,7 +510,7 @@ const Repository = () => {
             className="border-b border-gray-700 pb-8 cursor-pointer hover:bg-gray-800/50 p-4 rounded-lg transition-colors"
             onClick={ () => handleRepositoryClick(13) }
           >
-            <div className="flex justify-between items-start">
+            <div className="flex flex-wrap justify-between items-start">
               <div>
                 <h2 className="text-xl font-semibold text-blue-400">
                   Learning-React <span className="text-xs bg-gray-800 px-2 py-1 rounded">Public</span>
@@ -549,7 +549,7 @@ const Repository = () => {
             className="border-b border-gray-700 pb-8 cursor-pointer hover:bg-gray-800/50 p-4 rounded-lg transition-colors"
             onClick={ () => handleRepositoryClick(14) }
           >
-            <div className="flex justify-between items-start">
+            <div className="flex flex-wrap justify-between items-start">
               <div>
                 <h2 className="text-xl font-semibold text-blue-400">
                   CosmicBeauty <span className="text-xs bg-gray-800 px-2 py-1 rounded">Public</span>
@@ -576,7 +576,7 @@ const Repository = () => {
             className="border-b border-gray-700 pb-8 cursor-pointer hover:bg-gray-800/50 p-4 rounded-lg transition-colors"
             onClick={ () => handleRepositoryClick(15) }
           >
-            <div className="flex justify-between items-start">
+            <div className="flex flex-wrap justify-between items-start">
               <div>
                 <h2 className="text-xl font-semibold text-blue-400">
                   LUXESTORE <span className="text-xs bg-gray-800 px-2 py-1 rounded">Public</span>
@@ -615,7 +615,7 @@ const Repository = () => {
             className="border-b border-gray-700 pb-8 cursor-pointer hover:bg-gray-800/50 p-4 rounded-lg transition-colors"
             onClick={ () => handleRepositoryClick(16) }
           >
-            <div className="flex justify-between items-start">
+            <div className="flex flex-wrap justify-between items-start">
               <div>
                 <h2 className="text-xl font-semibold text-blue-400">
                   GYM-Business <span className="text-xs bg-gray-800 px-2 py-1 rounded">Public</span>
@@ -652,7 +652,7 @@ const Repository = () => {
             className="border-b border-gray-700 pb-8 cursor-pointer hover:bg-gray-800/50 p-4 rounded-lg transition-colors"
             onClick={ () => handleRepositoryClick(17) }
           >
-            <div className="flex justify-between items-start">
+            <div className="flex flex-wrap justify-between items-start">
               <div>
                 <h2 className="text-xl font-semibold text-blue-400">
                   JavaScript-Tutorial-Filipino-Cebuano <span className="text-xs bg-gray-800 px-2 py-1 rounded">Public</span>
@@ -691,7 +691,7 @@ const Repository = () => {
             className="border-b border-gray-700 pb-8 cursor-pointer hover:bg-gray-800/50 p-4 rounded-lg transition-colors"
             onClick={ () => handleRepositoryClick(18) }
           >
-            <div className="flex justify-between items-start">
+            <div className="flex flex-wrap justify-between items-start">
               <div>
                 <h2 className="text-xl font-semibold text-blue-400">
                   Cpp-School-Activity <span className="text-xs bg-gray-800 px-2 py-1 rounded">Public</span>
@@ -730,7 +730,7 @@ const Repository = () => {
             className="border-b border-gray-700 pb-8 cursor-pointer hover:bg-gray-800/50 p-4 rounded-lg transition-colors"
             onClick={ () => handleRepositoryClick(19) }
           >
-            <div className="flex justify-between items-start">
+            <div className="flex flex-wrap justify-between items-start">
               <div>
                 <h2 className="text-xl font-semibold text-blue-400">
                   Confession <span className="text-xs bg-gray-800 px-2 py-1 rounded">Public</span>
@@ -769,7 +769,7 @@ const Repository = () => {
             className="border-b border-gray-700 pb-8 cursor-pointer hover:bg-gray-800/50 p-4 rounded-lg transition-colors"
             onClick={ () => handleRepositoryClick(20) }
           >
-            <div className="flex justify-between items-start">
+            <div className="flex flex-wrap justify-between items-start">
               <div>
                 <h2 className="text-xl font-semibold text-blue-400">
                   Birthday-Gift <span className="text-xs bg-gray-800 px-2 py-1 rounded">Public</span>
@@ -808,7 +808,7 @@ const Repository = () => {
             className="border-b border-gray-700 pb-8 cursor-pointer hover:bg-gray-800/50 p-4 rounded-lg transition-colors"
             onClick={ () => handleRepositoryClick(21) }
           >
-            <div className="flex justify-between items-start">
+            <div className="flex flex-wrap justify-between items-start">
               <div>
                 <h2 className="text-xl font-semibold text-blue-400">
                   Weather-API <span className="text-xs bg-gray-800 px-2 py-1 rounded">Public</span>
@@ -840,7 +840,7 @@ const Repository = () => {
             className="border-b border-gray-700 pb-8 cursor-pointer hover:bg-gray-800/50 p-4 rounded-lg transition-colors"
             onClick={ () => handleRepositoryClick(22) }
           >
-            <div className="flex justify-between items-start">
+            <div className="flex flex-wrap justify-between items-start">
               <div>
                 <h2 className="text-xl font-semibold text-blue-400">
                   10-JavaScript-Array-Functions-You-Should-Master-as-a-Senior-Dev <span className="text-xs bg-gray-800 px-2 py-1 rounded">Public</span>
@@ -867,7 +867,7 @@ const Repository = () => {
             className="border-b border-gray-700 pb-8 cursor-pointer hover:bg-gray-800/50 p-4 rounded-lg transition-colors"
             onClick={ () => handleRepositoryClick(23) }
           >
-            <div className="flex justify-between items-start">
+            <div className="flex flex-wrap justify-between items-start">
               <div>
                 <h2 className="text-xl font-semibold text-blue-400">
                   pizzaban <span className="text-xs bg-gray-800 px-2 py-1 rounded">Public</span>
@@ -906,7 +906,7 @@ const Repository = () => {
             className="border-b border-gray-700 pb-8 cursor-pointer hover:bg-gray-800/50 p-4 rounded-lg transition-colors"
             onClick={ () => handleRepositoryClick(24) }
           >
-            <div className="flex justify-between items-start">
+            <div className="flex flex-wrap justify-between items-start">
               <div>
                 <h2 className="text-xl font-semibold text-blue-400">
                   Calculator <span className="text-xs bg-gray-800 px-2 py-1 rounded">Public</span>
@@ -945,7 +945,7 @@ const Repository = () => {
             className="border-b border-gray-700 pb-8 cursor-pointer hover:bg-gray-800/50 p-4 rounded-lg transition-colors"
             onClick={ () => handleRepositoryClick(25) }
           >
-            <div className="flex justify-between items-start">
+            <div className="flex flex-wrap justify-between items-start">
               <div>
                 <h2 className="text-xl font-semibold text-blue-400">
                   Bulb-Switch <span className="text-xs bg-gray-800 px-2 py-1 rounded">Public</span>
@@ -984,7 +984,7 @@ const Repository = () => {
             className="border-b border-gray-700 pb-8 cursor-pointer hover:bg-gray-800/50 p-4 rounded-lg transition-colors"
             onClick={ () => handleRepositoryClick(26) }
           >
-            <div className="flex justify-between items-start">
+            <div className="flex flex-wrap justify-between items-start">
               <div>
                 <h2 className="text-xl font-semibold text-blue-400">
                   pizzaban-store <span className="text-xs bg-gray-800 px-2 py-1 rounded">Public</span>

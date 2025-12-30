@@ -741,7 +741,7 @@ const Index = () => {
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 my-5">
           {/* Repository 1 */ }
           <div className="border border-gray-700 rounded-lg p-4 bg-gray-900/50 hover:bg-gray-800/50 transition-colors">
-            <div className="flex justify-between items-start mb-2">
+            <div className="flex flex-wrap justify-between items-start mb-2">
               <a
                 href="https://github.com/BanSimplified567/bansimplified-boilerplate-using-react"
                 className="text-blue-400 hover:text-blue-300 font-semibold text-lg"
@@ -765,7 +765,7 @@ const Index = () => {
 
           {/* Repository 2 */ }
           <div className="border border-gray-700 rounded-lg p-4 bg-gray-900/50 hover:bg-gray-800/50 transition-colors">
-            <div className="flex justify-between items-start mb-2">
+            <div className="flex flex-wrap justify-between items-start mb-2">
               <a
                 href="https://github.com/BanSimplified567/BanHotel"
                 className="text-blue-400 hover:text-blue-300 font-semibold text-lg"
@@ -792,7 +792,7 @@ const Index = () => {
 
           {/* Repository 3 */ }
           <div className="border border-gray-700 rounded-lg p-4 bg-gray-900/50 hover:bg-gray-800/50 transition-colors">
-            <div className="flex justify-between items-start mb-2">
+            <div className="flex flex-wrap justify-between items-start mb-2">
               <a
                 href="https://github.com/BanSimplified567/BanSimplified567"
                 className="text-blue-400 hover:text-blue-300 font-semibold text-lg"
@@ -820,7 +820,7 @@ const Index = () => {
 
           {/* Repository 4 */ }
           <div className="border border-gray-700 rounded-lg p-4 bg-gray-900/50 hover:bg-gray-800/50 transition-colors">
-            <div className="flex justify-between items-start mb-2">
+            <div className="flex flex-wrap justify-between items-start mb-2">
               <a
                 href="https://github.com/BanSimplified567/pizzaban"
                 className="text-blue-400 hover:text-blue-300 font-semibold text-lg"
@@ -847,7 +847,7 @@ const Index = () => {
 
           {/* Repository 5 */ }
           <div className="border border-gray-700 rounded-lg p-4 bg-gray-900/50 hover:bg-gray-800/50 transition-colors">
-            <div className="flex justify-between items-start mb-2">
+            <div className="flex flex-wrap justify-between items-start mb-2">
               <a
                 href="https://github.com/BanSimplified567/Bulb-Switch"
                 className="text-blue-400 hover:text-blue-300 font-semibold text-lg"
@@ -874,7 +874,7 @@ const Index = () => {
 
           {/* Repository 6 */ }
           <div className="border border-gray-700 rounded-lg p-4 bg-gray-900/50 hover:bg-gray-800/50 transition-colors">
-            <div className="flex justify-between items-start mb-2">
+            <div className="flex flex-wrap justify-between items-start mb-2">
               <a
                 href="https://github.com/BanSimplified567/Birthday-Gift"
                 className="text-blue-400 hover:text-blue-300 font-semibold text-lg"
