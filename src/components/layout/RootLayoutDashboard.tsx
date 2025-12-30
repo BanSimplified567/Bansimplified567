@@ -245,12 +245,12 @@ const RootLayoutDashboard: React.FC = () => {
               <div className="flex items-center gap-2">
                 <Globe className="h-4 w-4 flex-shrink-0" />
                 <a
-                  href="https://bansimplified567.vercel.app/"
+                  href="https://bansimplified.vercel.app/"
                   className="text-[#0969da] dark:text-[#58a6ff] hover:underline truncate block"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  https://bansimplified567.vercel.app/
+                  https://bansimplified.vercel.app/
                 </a>
               </div>
             </div>

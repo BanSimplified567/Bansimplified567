@@ -92,7 +92,7 @@
   <a href="https://wakatime.com"><img src="https://wakatime.com/share/@BanBan/adf420f1-99be-4b4c-9d84-b8c999dec66d.png" width="49%" /></a>
   <a href="https://wakatime.com"><img src="https://wakatime.com/share/@BanBan/6e132497-448b-4470-a69f-2e05fcec41d2.png" width="49%" /></a>
   <br>
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=BanSimplified567&custom_title=BanSimplified567's%20GitHub%20Activity%20Graph&bg_color=141321&color=A9FEF7&line=626069&point=F8D847&area_color=FE428E&title_color=FE428E&area=true" alt="GitHub Activity Graph" width="49%" />  <img src="weekdays.gif" alt="GitHub Activity Graph" width="49%" />
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=BanSimplified567&custom_title=BanSimplified567's%20GitHub%20Activity%20Graph&bg_color=141321&color=A9FEF7&line=626069&point=F8D847&area_color=FE428E&title_color=FE428E&area=true" alt="GitHub Activity Graph" width="49%" /><img src="weekdays.gif" alt="GitHub Activity Graph" width="49%" />
   <img src="https://wakatime.com/share/@BanBan/382532ff-5057-45a2-b975-14ab938e7e7c.png" alt="Wakatime Stats" width="100%" />
 
 </div>

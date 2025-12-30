@@ -530,7 +530,7 @@ const Index = () => {
       </div>
 
       {/* About Me Section */ }
-      <div className="my-10 p-5 flex max-w-sm:flex-col md:flex-row gap-6 items-center">
+      <div className="my-10 p-5 flex flex-wrap justify-center max-w-sm:flex-col md:flex-row gap-6 items-center">
 
         {/* Text Container */ }
         <div className="flex-1">

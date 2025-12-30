@@ -6,6 +6,7 @@ import Calculator from '@/assets/PortfolioImages/Calculator.png';
 import MotorStart from '@/assets/PortfolioImages/MotorStart.png';
 import PizzaBan from '@/assets/PortfolioImages/PizzaBan.png';
 import Sukidesu from '@/assets/PortfolioImages/Sukidesu.png';
+import StudentSystemManagement from '@/assets/PortfolioImages/StudentSystemManagement.png';
 
 import { useEffect, useState } from 'react';
 
@@ -30,7 +31,7 @@ const portfolioItems: PortfolioItem[] = [
     type: "School Activity",
     link: "https://bulb-switch-six.vercel.app/",
     image: BulbOnOff,
-    stars: 1,
+    stars: 5,
     language: "HTML"
   },
   {
@@ -41,7 +42,7 @@ const portfolioItems: PortfolioItem[] = [
     type: "College Final Project",
     link: "https://pizzabansibonga.netlify.app/",
     image: PizzaBan,
-    stars: 1,
+    stars: 5,
     language: "JavaScript"
   },
   {
@@ -52,7 +53,7 @@ const portfolioItems: PortfolioItem[] = [
     type: "React Practice",
     link: "https://calculator-sigma-hazel.vercel.app/",
     image: Calculator,
-    stars: 1,
+    stars: 5,
     language: "CSS"
   },
   {
@@ -63,7 +64,7 @@ const portfolioItems: PortfolioItem[] = [
     type: "Side Project",
     link: "https://sukidesu.vercel.app/",
     image: Sukidesu,
-    stars: 1,
+    stars: 5,
     language: "JavaScript"
   },
   {
@@ -85,7 +86,7 @@ const portfolioItems: PortfolioItem[] = [
     type: "UI/UX Design",
     link: "https://banhotel.netlify.app/",
     image: BanHotel,
-    stars: 1,
+    stars: 5,
     language: "JavaScript"
   },
   {
@@ -96,7 +97,7 @@ const portfolioItems: PortfolioItem[] = [
     type: "Project Static Website",
     link: "https://motorstar.infinityfree.me/?i=1",
     image: MotorStart,
-    stars: 1,
+    stars: 5,
     language: "Php"
   },
   {
@@ -107,7 +108,18 @@ const portfolioItems: PortfolioItem[] = [
     type: "Barangay System Capstone",
     link: "https://github.com/BanSimplified567/Barangay_Management",
     image: BarangaySystem,
-    stars: 1,
+    stars: 5,
+    language: "Php"
+  },
+  {
+    id: 9,
+    title: "Student-System-Management",
+    description: "The Student Management System is a comprehensive web-based platform designed to streamline the management of student information, academic records, attendance, and institutional communication. This system provides separate interfaces for administrators and students, ensuring efficient data handling and user-friendly interactions.",
+    date: "December 30, 2025",
+    type: "Student-System-Management",
+    link: "https://github.com/BanSimplified567/Student-System-Management",
+    image: StudentSystemManagement,
+    stars: 5,
     language: "Php"
   }
 
