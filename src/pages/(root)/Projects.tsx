@@ -5,8 +5,12 @@ import BulbOnOff from '@/assets/PortfolioImages/BulbOnOff.png';
 import Calculator from '@/assets/PortfolioImages/Calculator.png';
 import MotorStart from '@/assets/PortfolioImages/MotorStart.png';
 import PizzaBan from '@/assets/PortfolioImages/PizzaBan.png';
-import Sukidesu from '@/assets/PortfolioImages/Sukidesu.png';
 import StudentSystemManagement from '@/assets/PortfolioImages/StudentSystemManagement.png';
+import Sukidesu from '@/assets/PortfolioImages/Sukidesu.png';
+
+import AgrivetStoreSystem from '@assets/PortfolioImages/AgrivetStoreSystem.png';
+import Buenamente from '@assets/PortfolioImages/Buenamente.png';
+import SccMultiFactor from '@assets/PortfolioImages/SccMultiFactorBAS.png';
 
 import { useEffect, useState } from 'react';
 
@@ -121,8 +125,40 @@ const portfolioItems: PortfolioItem[] = [
     image: StudentSystemManagement,
     stars: 5,
     language: "Php"
+  },
+  {
+    id: 10,
+    title: "Multi-Factor-Biometric-Attendance-System",
+    description: "Multi-Factor Biometric Attendance System A robust authentication and attendance management system built with PHP. This project features role-based access control, secure authentication flows, and is designed to support multi-factor biometric verification.",
+    date: "February 28, 2026",
+    type: "Student Attendance Management System",
+    link: "https://sccmultifactorbas.42web.io",
+    image: SccMultiFactor,
+    stars: 5,
+    language: "Php"
+  },
+    {
+    id: 11,
+    title: "BUENAMENTE LMS",
+    description: "BUENAMENTE streamlines loan processing, client management, payment collection, and financial reporting with role-based dashboards for Administrators, Staff, and Cashiers. It is built on a layered PHP architecture (controllers, middleware, views) backed by MySQL, with a normalized schema that tracks the full loan lifecycle, audit logs, and installment schedules.",
+    date: "March 03, 2026",
+    type: "Loan Management System",
+    link: "https://beunamentelms.42web.io",
+    image: Buenamente,
+    stars: 5,
+    language: "Php"
+  },
+    {
+    id: 12,
+    title: "Agrivet Store SMS",
+    description: "A PHP-based web application for managing an agricultural veterinary supply store with role-based access control for Admin, Staff, and Cashier users.",
+    date: "March 8, 2026",
+    type: "Agrivet Store Management System",
+    link: "https://zadagrivetsis.wuaze.com",
+    image: AgrivetStoreSystem,
+    stars: 5,
+    language: "Php"
   }
-
 ];
 
 const Projects = () => {
