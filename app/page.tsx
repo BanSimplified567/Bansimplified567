@@ -47,11 +47,12 @@ const skills = [
   },
 ];
 
+
 const timeline = [
   {
-    status: "IN PROGRESS",
-    title: "MS in Information Technology",
-    subtitle: "University of the People (UoPeople)",
+    status: "CURRENTLY WORKING",
+    title: "MADAC Staff (Data Encoder) | IT Support | HR Staff",
+    subtitle: "Local Government Unit of Sibonga, Cebu",
     icon: (
       <svg className="w-5 h-5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 14l9-5-9-5-9 5 9 5z" />
@@ -61,9 +62,9 @@ const timeline = [
     iconBg: "bg-emerald-400/10",
   },
   {
-    status: "GRADUATED 2025",
-    title: "BS in Information Technology",
-    subtitle: "Bestlink College of the Philippines",
+    status: "GRADUATED 2026",
+    title: "Bachelor of Science in Information Technology (BSIT)",
+    subtitle: "Sibonga Community College, Sibonga, Cebu",
     icon: (
       <svg className="w-5 h-5 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 14l9-5-9-5-9 5 9 5z" />
@@ -73,9 +74,9 @@ const timeline = [
     iconBg: "bg-sky-400/10",
   },
   {
-    status: "RECOGNITION (MAY 2026)",
-    title: "Top Case Analysis & Presenter",
-    subtitle: "Ascendens Asia",
+    status: "SOLO CAPSTONE PROJECT",
+    title: "Full-Stack Web Developer",
+    subtitle: "Isla del Cafe Carcar | Web-Based Ordering and Sales Management System (2026)",
     icon: (
       <svg className="w-5 h-5 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
@@ -206,6 +207,21 @@ export default function Home() {
   const [loadingRepos, setLoadingRepos] = useState(true);
   const [carouselIndex, setCarouselIndex] = useState(0);
   const [itemsPerView, setItemsPerView] = useState(3);
+  const [repoFilter, setRepoFilter] = useState("All");
+  const [repoSearch, setRepoSearch] = useState("");
+
+  // Filter repos for GitHub section
+  const filteredRepos = useMemo(
+    () =>
+      githubRepos.filter((repo) => {
+        const matchesFilter = repoFilter === "All" || repo.language === repoFilter;
+        const matchesSearch =
+          repo.name.toLowerCase().includes(repoSearch.toLowerCase()) ||
+          (repo.description || "").toLowerCase().includes(repoSearch.toLowerCase());
+        return matchesFilter && matchesSearch;
+      }),
+    [githubRepos, repoFilter, repoSearch]
+  );
 
   useEffect(() => {
     setMounted(true);
@@ -531,74 +547,99 @@ export default function Home() {
             A bit about me
           </h2>
           <p className={`text-lg ${isDarkMode ? "text-slate-400" : "text-gray-600"}`}>
-            Developer from Quezon City. I work best on systems people rely on every day at work.
+            Developer from Sibonga Cebu City. I work best on systems people rely on every day at work.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] gap-6 items-start">
           {/* Left Column: Bio + Timeline */}
-          <div className="flex flex-col gap-6">
-            {/* Bio Card */}
-            <div
-              className={`rounded-2xl border p-8 shadow-sm ${
-                isDarkMode
-                  ? "bg-slate-900/60 border-slate-800"
-                  : "bg-white border-gray-200"
-              }`}
-            >
-              <p className={`text-lg leading-relaxed mb-5 ${isDarkMode ? "text-slate-300" : "text-gray-700"}`}>
-                I started out building PHP systems for my IT degree at
-                <strong className={isDarkMode ? "text-white" : "text-gray-900"}>
-                  Bestlink College of the Philippines
-                </strong>
-                , then interned at two Quezon City software shops before joining
-                <strong className={isDarkMode ? "text-white" : "text-gray-900"}>
-                  Ascendens Asia
-                </strong>
-                in 2025. These days I own an HRIS end to end, from the Angular screens to the Laravel GraphQL API to the Docker deployment on AWS.
-              </p>
-              <p className={`text-lg leading-relaxed ${isDarkMode ? "text-slate-300" : "text-gray-700"}`}>
-                I&#39;m also taking a
-                <strong className={isDarkMode ? "text-white" : "text-gray-900"}>
-                  Master of Science in Information Technology
-                </strong>
-                at the
-                <strong className={isDarkMode ? "text-white" : "text-gray-900"}>
-                  University of the People
-                </strong>
-                , and outside of work I train in Filipino martial arts. On the side I build small things I actually use, like a CODM loadout site and a Tongits game.
-              </p>
-            </div>
 
-            {/* Timeline / Education Row */}
-            <div className="flex flex-col gap-4">
-              {timeline.map((item, index) => (
-                <div
-                  key={index}
-                  className={`flex items-start gap-4 rounded-2xl border p-5 shadow-sm transition-colors ${
-                    isDarkMode
-                      ? "bg-slate-900/60 border-slate-800"
-                      : "bg-white border-gray-200"
-                  }`}
-                >
-                  <div className={`flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center ${item.iconBg}`}>
-                    {item.icon}
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-[11px] font-semibold tracking-wider text-emerald-500 uppercase mb-1">
-                      {item.status}
-                    </span>
-                    <span className={`font-bold ${isDarkMode ? "text-white" : "text-gray-900"}`}>
-                      {item.title}
-                    </span>
-                    <span className={`text-sm ${isDarkMode ? "text-slate-400" : "text-gray-500"}`}>
-                      {item.subtitle}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+<div className="flex flex-col gap-6">
+  {/* Bio Card */}
+  <div
+    className={`rounded-2xl border p-8 shadow-sm ${
+      isDarkMode
+        ? "bg-slate-900/60 border-slate-800"
+        : "bg-white border-gray-200"
+    }`}
+  >
+    <p
+      className={`text-lg leading-relaxed mb-5 ${
+        isDarkMode ? "text-slate-300" : "text-gray-700"
+      }`}
+    >
+      My journey started with building PHP-based systems
+      during my IT studies at{" "}
+      <strong className={isDarkMode ? "text-white" : "text-gray-900"}>
+        Sibonga Community College of the Philippines
+      </strong>
+      . Along the way, I developed a passion for web development
+      and continued expanding my skills through hands-on projects
+      and continuous learning. In 2025, I earned my first income
+      from software development by building and delivering a
+      capstone-level system for a student client, completing the
+      project on time with a focus on quality and accuracy.
+      I'm continuously improving my skills and looking forward
+      to new opportunities where I can contribute, gain experience,
+      and grow as a developer.
+    </p>
+
+    <p
+      className={`text-lg leading-relaxed ${
+        isDarkMode ? "text-slate-300" : "text-gray-700"
+      }`}
+    >
+      Beyond technology, I enjoy training in Filipino martial arts
+      and staying active through fitness. I'm also a fan of comics,
+      anime, manga, manhwa, and manhua. I believe in continuous
+      self-improvement, staying curious, and learning something
+      new every day.
+    </p>
+  </div>
+
+  {/* Timeline / Education Row */}
+  <div className="flex flex-col gap-4">
+    {timeline.map((item, index) => (
+      <div
+        key={index}
+        className={`flex items-start gap-4 rounded-2xl border p-5 shadow-sm transition-colors ${
+          isDarkMode
+            ? "bg-slate-900/60 border-slate-800"
+            : "bg-white border-gray-200"
+        }`}
+      >
+        <div
+          className={`flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center ${item.iconBg}`}
+        >
+          {item.icon}
+        </div>
+
+        <div className="flex flex-col">
+          <span className="text-[11px] font-semibold tracking-wider text-emerald-500 uppercase mb-1">
+            {item.status}
+          </span>
+
+          <span
+            className={`font-bold ${
+              isDarkMode ? "text-white" : "text-gray-900"
+            }`}
+          >
+            {item.title}
+          </span>
+
+          <span
+            className={`text-sm ${
+              isDarkMode ? "text-slate-400" : "text-gray-500"
+            }`}
+          >
+            {item.subtitle}
+          </span>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
 
           {/* Right Column: How I work */}
           <div
@@ -925,7 +966,7 @@ export default function Home() {
           </>
         )}
       </section>
-            {/* 04 / GITHUB SECTION */}
+{/* 04 / GITHUB SECTION */}
       <section id="repositories" className="relative z-10 max-w-[1200px] mx-auto px-6 pb-24 pt-8">
         <div className="mb-10">
           <p className="text-sm font-medium text-[#4ea0e6] tracking-wide mb-2">
@@ -992,15 +1033,16 @@ export default function Home() {
         {/* Filter Pills & Search */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
           <div className="flex flex-wrap gap-2">
-            {["All", "PHP", "Blade", "Markdown"].map((tag) => (
+            {["All", ...new Set(githubRepos.map((r) => r.language).filter(Boolean) as string[])].map((tag) => (
               <button
                 key={tag}
-                className={`px-4 py-1.5 text-sm font-medium rounded-lg transition-colors ${
-                  tag === "All"
-                    ? "bg-[#5a8ff5] text-white"
+                onClick={() => setRepoFilter(tag)}
+                className={`px-4 py-1.5 text-sm font-medium rounded-lg transition-colors border ${
+                  repoFilter === tag
+                    ? "bg-[#5a8ff5] text-white border-[#5a8ff5]"
                     : isDarkMode
-                    ? "bg-slate-900 border border-slate-800 text-slate-300 hover:bg-slate-800"
-                    : "bg-white border border-gray-200 text-gray-600 hover:bg-gray-50"
+                    ? "bg-slate-900 border-slate-800 text-slate-300 hover:bg-slate-800"
+                    : "bg-white border-gray-200 text-gray-600 hover:bg-gray-50"
                 }`}
               >
                 {tag}
@@ -1013,6 +1055,8 @@ export default function Home() {
             </svg>
             <input
               type="text"
+              value={repoSearch}
+              onChange={(e) => setRepoSearch(e.target.value)}
               placeholder="Search repositories..."
               className={`w-full md:w-64 pl-10 pr-4 py-2 text-sm rounded-lg border focus:outline-none focus:ring-2 focus:ring-[#5a8ff5] ${
                 isDarkMode
@@ -1024,120 +1068,75 @@ export default function Home() {
         </div>
 
         {/* Repo Grid */}
-     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-  {[
-    {
-      name: "bansimplified-boilerplate-using-react",
-      desc: "ReactJS and Supabase, Tanstack react-router and query a boilerplate template gives beginners a ready-made project setup so they can start coding immediately. It saves time, reduces errors, and hel...",
-      lang: "TypeScript",
-      color: "bg-blue-500",
-      stars: 0,
-      forks: 0
-    },
-    {
-      name: "bansimplified-boilerplate-using-php-native",
-      desc: "PHP_Framecore is a simple PHP framework designed for small to medium-sized web applications. It features a straightforward, action-based routing system and a role-based access control mechanism. Th...",
-      lang: "PHP",
-      color: "bg-purple-500",
-      stars: 0,
-      forks: 0
-    },
-    {
-      name: "Bansimplified567",
-      desc: "My Portfolio BanSimplified PortFolio(2022-2024): https://bansimplified.vercel.app/ (2025-2026): https://bansimplified567.vercel.app/",
-      lang: "TypeScript",
-      color: "bg-blue-500",
-      stars: 1,
-      forks: 0
-    },
-    {
-      name: "Barangay_Management",
-      desc: "Barangay Management System A web-based system designed to streamline barangay operations, including resident records management, permit issuance, incident reporting, and document processing. This s...",
-      lang: "PHP",
-      color: "bg-purple-500",
-      stars: 0,
-      forks: 1
-    },
-    {
-      name: "Hotel-Reservation-Management--HRM-",
-      desc: "This project is a web-based application for a hotel management system, developed in PHP. It features a complete user authentication system, including user registration, login, logout, and password ...",
-      lang: "PHP",
-      color: "bg-purple-500",
-      stars: 0,
-      forks: 0
-    },
-    {
-      name: "BanHotel",
-      desc: "BanHotel: Discover comfort and elegance, where exceptional service meets unforgettable experiences.",
-      lang: "JavaScript",
-      color: "bg-yellow-400",
-      stars: 1,
-      forks: 0
-    },
-  ].map((repo, i) => (
-    <div
-      key={i}
-      className={`rounded-xl border p-4 flex flex-col justify-between transition-colors ${
-        isDarkMode ? "bg-[#0d1117] border-[#30363d] hover:border-[#8b949e]" : "bg-white border-gray-300 hover:border-gray-400"
-      }`}
-    >
-      <div>
-        <div className="flex justify-between items-start mb-2">
-          <div className="flex items-center gap-2">
-            {/* Repo Icon */}
-            <svg className={`w-4 h-4 ${isDarkMode ? "text-[#8b949e]" : "text-gray-500"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
-            </svg>
-            {/* Repo Name */}
-            <h4 className={`text-sm font-bold truncate ${isDarkMode ? "text-[#58a6ff]" : "text-blue-600"}`}>
-              {repo.name}
-            </h4>
-            {/* Public Badge */}
-            <span className={`text-xs px-2 py-0.5 rounded-full border ${isDarkMode ? "border-[#30363d] text-[#8b949e]" : "border-gray-300 text-gray-500"}`}>
-              Public
-            </span>
-          </div>
-          {/* Options Icon (3 dots) */}
-          <svg className={`w-4 h-4 cursor-pointer ${isDarkMode ? "text-[#8b949e]" : "text-gray-400"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-          </svg>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {filteredRepos.map((repo) => (
+            <a
+              key={repo.id}
+              href={repo.html_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`rounded-xl border p-4 flex flex-col justify-between transition-colors hover:shadow-lg ${
+                isDarkMode ? "bg-[#0d1117] border-[#30363d] hover:border-[#8b949e]" : "bg-white border-gray-300 hover:border-gray-400"
+              }`}
+            >
+              <div>
+                <div className="flex justify-between items-start mb-2">
+                  <div className="flex items-center gap-2">
+                    {/* Repo Icon */}
+                    <svg className={`w-4 h-4 ${isDarkMode ? "text-[#8b949e]" : "text-gray-500"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+                    </svg>
+                    {/* Repo Name */}
+                    <h4 className={`text-sm font-bold truncate ${isDarkMode ? "text-[#58a6ff]" : "text-blue-600"}`}>
+                      {repo.name}
+                    </h4>
+                    {/* Public Badge */}
+                    <span className={`text-xs px-2 py-0.5 rounded-full border ${isDarkMode ? "border-[#30363d] text-[#8b949e]" : "border-gray-300 text-gray-500"}`}>
+                      Public
+                    </span>
+                  </div>
+                </div>
+                <p className={`text-xs leading-relaxed mb-4 line-clamp-3 ${isDarkMode ? "text-[#8b949e]" : "text-gray-600"}`}>
+                  {repo.description || "No description"}
+                </p>
+              </div>
+
+              <div className={`flex items-center gap-4 text-xs ${isDarkMode ? "text-[#8b949e]" : "text-gray-500"}`}>
+                {/* Language */}
+                {repo.language && (
+                  <div className="flex items-center gap-1.5">
+                    <span className={`w-3 h-3 rounded-full ${getGradientClass(repo.language).replace("from-", "bg-").replace(" to-", " ")}`}></span>
+                    <span>{repo.language}</span>
+                  </div>
+                )}
+                {/* Stars */}
+                {repo.stargazers_count > 0 && (
+                  <div className="flex items-center gap-1">
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                    </svg>
+                    <span>{repo.stargazers_count}</span>
+                  </div>
+                )}
+                {/* Forks */}
+                {repo.forks_count > 0 && (
+                  <div className="flex items-center gap-1">
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" />
+                    </svg>
+                    <span>{repo.forks_count}</span>
+                  </div>
+                )}
+              </div>
+            </a>
+          ))}
+          {filteredRepos.length === 0 && (
+            <div className="col-span-full text-center py-12 text-slate-500 dark:text-slate-400">
+              <p className="font-medium">No repositories found</p>
+              <p className="text-sm mt-1">Try adjusting your search or filter</p>
+            </div>
+          )}
         </div>
-        <p className={`text-xs leading-relaxed mb-4 line-clamp-3 ${isDarkMode ? "text-[#8b949e]" : "text-gray-600"}`}>
-          {repo.desc}
-        </p>
-      </div>
-
-      <div className={`flex items-center gap-4 text-xs ${isDarkMode ? "text-[#8b949e]" : "text-gray-500"}`}>
-        {/* Language */}
-        <div className="flex items-center gap-1.5">
-          <span className={`w-3 h-3 rounded-full ${repo.color}`}></span>
-          <span>{repo.lang}</span>
-        </div>
-
-        {/* Stars */}
-        {repo.stars > 0 && (
-          <div className="flex items-center gap-1 hover:text-[#58a6ff] cursor-pointer">
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-            </svg>
-            <span>{repo.stars}</span>
-          </div>
-        )}
-
-        {/* Forks */}
-        {repo.forks > 0 && (
-          <div className="flex items-center g
-          p-1 hover:text-[#58a6ff] cursor-pointer">
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" />
-            </svg>
-            <span>{repo.forks}</span>
-          </div>
-        )}
-      </div>
-    </div>
-  ))}
-</div>
       </section>
 
       {/* 05 / EXPERIENCE SECTION */}
