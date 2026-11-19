@@ -1,15 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const navLinks = [
-  { name: "About", href: "/about" },
-  { name: "Skills", href: "/skills" },
-  { name: "Projects", href: "/projects" },
-  { name: "Repositories", href: "/repositories" },
-  { name: "Experience", href: "/experience" },
-  { name: "Contact", href: "/contact" },
+  { name: "About", href: "#about" },
+  { name: "Skills", href: "#skills" },
+  { name: "Projects", href: "#projects" },
+  { name: "Repositories", href: "#repositories" },
+  { name: "Experience", href: "#experience" },
+  { name: "Contact", href: "#contact" },
 ];
 
 interface NavbarProps {
@@ -18,25 +18,74 @@ interface NavbarProps {
 }
 
 export default function Navbar({ isDarkMode, toggleTheme }: NavbarProps) {
-  const [activeLink, setActiveLink] = useState("About");
+  const [activeLink, setActiveLink] = useState("Home");
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      setIsScrolled(scrollY > 20);
+
+      const sections = document.querySelectorAll("section[id]");
+      let currentSection = "Home";
+
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop - 100;
+        const sectionHeight = section.offsetHeight;
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+          currentSection = section.id.charAt(0).toUpperCase() + section.id.slice(1);
+        }
+      });
+
+      setActiveLink(currentSection);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const targetId = href.replace("#", "");
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      const navbarHeight = 80;
+      const targetPosition = targetElement.offsetTop - navbarHeight;
+      window.scrollTo({
+        top: targetPosition,
+        behavior: "smooth",
+      });
+      setActiveLink(targetId.charAt(0).toUpperCase() + targetId.slice(1));
+    }
+  };
 
   return (
     <nav
-      className={`relative z-50 w-full border-b py-3 px-4 sm:px-6 lg:px-8 transition-colors duration-300 ${
-        isDarkMode
+      className={`relative z-50 w-full border-b py-3 px-4 sm:px-6 lg:px-8 transition-all duration-300 sticky top-0 ${
+        isScrolled
+          ? isDarkMode
+            ? "border-slate-800 bg-slate-950/95 backdrop-blur-md shadow-lg"
+            : "border-gray-100 bg-white/95 backdrop-blur-md shadow-lg"
+          : isDarkMode
           ? "border-slate-800 bg-slate-950/80 backdrop-blur-md"
           : "border-gray-100 bg-white/80 backdrop-blur-md"
       }`}
     >
       <div className="max-w-[1400px] mx-auto flex items-center justify-between">
         {/* Logo Section */}
-        <Link href="/" className="flex items-baseline gap-1 group">
+        <Link
+          href="#home"
+          onClick={(e) => handleNavClick(e, "#home")}
+          className="flex items-baseline gap-1 group"
+        >
           <span
             className={`text-2xl font-bold tracking-tight ${
               isDarkMode ? "text-white" : "text-gray-900"
             }`}
           >
-            I'm
+            I&#39;m
           </span>
           <span className="text-4xl font-serif italic text-[#4ea0e6] pr-2 transition-transform group-hover:scale-105">
             Kaizen
@@ -51,8 +100,8 @@ export default function Navbar({ isDarkMode, toggleTheme }: NavbarProps) {
               <li key={link.name}>
                 <Link
                   href={link.href}
-                  onClick={() => setActiveLink(link.name)}
-                  className={`relative flex flex-col items-center py-2 text-[15px] transition-colors ${
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className={`relative flex flex-col items-center py-2 text-[15px] transition-all duration-300 ${
                     isActive
                       ? "text-[#4ea0e6] font-medium"
                       : isDarkMode
@@ -61,10 +110,12 @@ export default function Navbar({ isDarkMode, toggleTheme }: NavbarProps) {
                   }`}
                 >
                   {link.name}
-                  {/* Active Underline */}
-                  {isActive && (
-                    <span className="absolute bottom-0 h-[2px] w-full bg-[#4ea0e6] rounded-full" />
-                  )}
+                  {/* Active Underline Animation */}
+                  <span
+                    className={`absolute bottom-0 left-0 h-[2px] w-full bg-[#4ea0e6] rounded-full transform transition-all duration-300 ease-out ${
+                      isActive ? "scale-x-100" : "scale-x-0 origin-center"
+                    }`}
+                  />
                 </Link>
               </li>
             );
@@ -153,9 +204,10 @@ export default function Navbar({ isDarkMode, toggleTheme }: NavbarProps) {
           {/* Let's Talk Button */}
           <Link
             href="#contact"
+            onClick={(e) => handleNavClick(e, "#contact")}
             className="flex items-center gap-1.5 px-5 py-2 text-sm font-medium text-white bg-gradient-to-r from-[#4ea0e6] to-[#4f46e5] rounded-xl hover:opacity-90 transition-opacity"
           >
-            Let&#39;s Talk
+            Let's Talk
             <svg
               className="w-4 h-4"
               fill="none"

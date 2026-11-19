@@ -2,7 +2,7 @@
 
 import Navbar from "@components/Navbar";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 const skills = [
   {
@@ -94,7 +94,7 @@ const stackCategories = [
       </svg>
     ),
     iconBg: "bg-sky-500/10",
-    tech: ["Angular", "TypeScript", "Laravel", "PHP", "GraphQL", "MySQL", "PostgreSQL", "Docker"],
+    tech: [ "TypeScript", "Laravel", "PHP", "MySQL", "PostgreSQL", "Docker"],
   },
   {
     title: "Side projects",
@@ -114,7 +114,7 @@ const stackCategories = [
       </svg>
     ),
     iconBg: "bg-emerald-500/10",
-    tech: ["AWS", "Linux", "Nginx", "Git", "Playwright", "PHPUnit", "Vitest"],
+    tech: [ "Linux", "Nginx", "Git", "Playwright", "PHPUnit", "Vitest"],
   },
   {
     title: "AI & automation",
@@ -128,9 +128,84 @@ const stackCategories = [
   },
 ];
 
+// ✅ FIX: Typed GitHub repo shape
+type GitHubRepo = {
+  name: string;
+  description: string | null;
+  language: string | null;
+  stargazers_count: number;
+  forks_count: number;
+  html_url: string;
+  fork: boolean;
+};
+
+// ✅ FIX: Static, literal Tailwind gradient classes (JIT needs full strings)
+const LANGUAGE_GRADIENTS: Record<string, string> = {
+  TypeScript: "from-blue-500 to-blue-700",
+  JavaScript: "from-yellow-400 to-yellow-600",
+  Python: "from-blue-500 to-indigo-600",
+  PHP: "from-purple-500 to-purple-700",
+  Go: "from-cyan-400 to-cyan-600",
+  Rust: "from-orange-500 to-orange-700",
+  Java: "from-red-500 to-red-700",
+  C: "from-blue-600 to-blue-800",
+  "C++": "from-blue-600 to-blue-800",
+  "C#": "from-purple-500 to-purple-700",
+  Ruby: "from-red-500 to-red-700",
+  Swift: "from-orange-400 to-orange-600",
+  Kotlin: "from-purple-400 to-purple-600",
+  Dart: "from-blue-400 to-blue-600",
+  HTML: "from-orange-400 to-orange-600",
+  CSS: "from-blue-400 to-blue-600",
+  SCSS: "from-pink-500 to-pink-700",
+  Vue: "from-green-400 to-green-600",
+  Svelte: "from-orange-400 to-orange-600",
+  Shell: "from-green-500 to-green-700",
+  PowerShell: "from-blue-500 to-blue-700",
+  Dockerfile: "from-blue-400 to-blue-600",
+  SQL: "from-orange-500 to-orange-700",
+};
+
+// ✅ FIX: Replaced getColorFromLanguage with a static class resolver
+function getGradientClass(lang: string | null): string {
+  return LANGUAGE_GRADIENTS[lang || ""] || "from-slate-500 to-slate-700";
+}
+
+function getIconFromLanguage(lang: string | null): string {
+  const icons: Record<string, string> = {
+    TypeScript: "<TS/>",
+    JavaScript: "<JS/>",
+    Python: "<PY/>",
+    PHP: "<PHP/>",
+    Go: "<GO/>",
+    Rust: "<RS/>",
+    Java: "<JV/>",
+    C: "<C/>",
+    "C++": "<CPP/>",
+    "C#": "<CS/>",
+    Ruby: "<RB/>",
+    Swift: "<SW/>",
+    Kotlin: "<KT/>",
+    Dart: "<DT/>",
+    HTML: "<HTML/>",
+    CSS: "<CSS/>",
+    Vue: "<VU/>",
+    Svelte: "<SV/>",
+    Dockerfile: "<DK/>",
+    SQL: "<SQL/>",
+  };
+  return icons[lang || ""] || "<> </>";
+}
+
 export default function Home() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [activeCategory, setActiveCategory] = useState("All");
+  // ✅ FIX: typed state
+  const [githubRepos, setGithubRepos] = useState<GitHubRepo[]>([]);
+  const [loadingRepos, setLoadingRepos] = useState(true);
+  const [carouselIndex, setCarouselIndex] = useState(0);
+  const [itemsPerView, setItemsPerView] = useState(3);
 
   useEffect(() => {
     setMounted(true);
@@ -144,6 +219,60 @@ export default function Home() {
       setIsDarkMode(false);
       document.documentElement.classList.remove("dark");
     }
+  }, []);
+
+  // Handle responsive items per view
+  useEffect(() => {
+    const updateItemsPerView = () => {
+      if (window.innerWidth >= 1024) setItemsPerView(3);
+      else if (window.innerWidth >= 768) setItemsPerView(2);
+      else setItemsPerView(1);
+    };
+    updateItemsPerView();
+    window.addEventListener("resize", updateItemsPerView);
+    return () => window.removeEventListener("resize", updateItemsPerView);
+  }, []);
+
+  // Fetch GitHub repos
+  useEffect(() => {
+    const fetchRepos = async () => {
+      try {
+        const response = await fetch(
+          "https://api.github.com/users/bansimplified567/repos?sort=updated&direction=desc&per_page=100"
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch repositories");
+        }
+
+        // ✅ FIX: typed response
+        const data: GitHubRepo[] = await response.json();
+        // Exclude forked repositories
+        const nonForked = data.filter((repo) => !repo.fork);
+
+        // Filter to only show main portfolio projects (exclude small learning/exercise repos)
+        const portfolioRepos = [
+          "bansimplified-boilerplete-using-react",
+          "bansimplified-boilerplete-using-php-native",
+          "Birthday-Gift",
+          "SibongaBuilderHouse",
+          "Bansimplified567",
+          "Hotel-Reservation-Management--HRM-",
+          "MotorStart-Website",
+          "Barangay_Management",
+          "Student-System-Management",
+          "Practice-TanstackTSX",
+        ];
+
+        setGithubRepos(nonForked.filter((repo) => portfolioRepos.includes(repo.name)));
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoadingRepos(false);
+      }
+    };
+
+    fetchRepos();
   }, []);
 
   const toggleTheme = () => {
@@ -160,13 +289,66 @@ export default function Home() {
     });
   };
 
+  // ✅ FIX: derive projects/categories/filteredProjects BEFORE effects that reference them
+  const projects = useMemo(
+    () =>
+      githubRepos.map((repo) => ({
+        title: repo.name,
+        category: repo.language || "Project",
+        description: repo.description || "No description available.",
+        // ✅ FIX: static gradient class string (Tailwind can see these)
+        gradient: `bg-gradient-to-br ${getGradientClass(repo.language)}`,
+        icon: getIconFromLanguage(repo.language),
+        highlights: [
+          `${repo.stargazers_count} stars`,
+          `${repo.forks_count} forks`,
+          repo.language && `${repo.language}`,
+        ].filter(Boolean) as string[],
+        tech: repo.language ? [repo.language] : ([] as string[]),
+        html_url: repo.html_url,
+      })),
+    [githubRepos]
+  );
+
+  const categories = useMemo(
+    () => ["All", ...new Set(githubRepos.map((r) => r.language).filter(Boolean) as string[])],
+    [githubRepos]
+  );
+
+  const filteredProjects = useMemo(
+    () =>
+      activeCategory === "All"
+        ? projects
+        : projects.filter((p) => p.category === activeCategory),
+    [projects, activeCategory]
+  );
+
+  // ✅ FIX: this effect now runs after filteredProjects is defined
+  useEffect(() => {
+    setCarouselIndex(0);
+  }, [activeCategory, filteredProjects.length]);
+
+  // ✅ FIX: clamp index when data/viewport shrinks
+  const maxIndex = Math.max(0, filteredProjects.length - itemsPerView);
+  useEffect(() => {
+    setCarouselIndex((prev) => Math.min(prev, maxIndex));
+  }, [maxIndex]);
+
+  const visibleProjects = filteredProjects.slice(
+    carouselIndex,
+    carouselIndex + itemsPerView
+  );
+
+  const nextSlide = () => setCarouselIndex((prev) => Math.min(prev + 1, maxIndex));
+  const prevSlide = () => setCarouselIndex((prev) => Math.max(prev - 1, 0));
+
   if (!mounted) {
     return <div className="min-h-screen bg-slate-50 dark:bg-slate-950" />;
   }
 
   return (
     <main
-      className={`relative min-h-screen w-full overflow-hidden transition-colors duration-300 ${
+      className={`relative min-h-screen w-full transition-colors duration-300 ${
         isDarkMode ? "bg-slate-950 text-slate-200" : "bg-[#f8f9fa] text-gray-900"
       }`}
     >
@@ -187,7 +369,7 @@ export default function Home() {
       <Navbar isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
 
       {/* HERO SECTION */}
-      <section className="relative z-10 max-w-[1200px] mx-auto px-6 pt-24 pb-12 lg:pt-32 lg:pb-24">
+      <section id="home" className="relative z-10 max-w-[1200px] mx-auto px-6 pt-24 pb-12 lg:pt-32 lg:pb-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="flex flex-col gap-6">
@@ -216,7 +398,7 @@ export default function Home() {
                 <svg className="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                kier.salise.dev@gmail.com
+                bansimplified567@gmail.com
               </div>
             </div>
 
@@ -226,24 +408,26 @@ export default function Home() {
                 isDarkMode ? "text-white" : "text-[#0f172a]"
               }`}
             >
-              Hello, I&#39;m{" "}
+              Hello, I&#39;m
               <span className="font-serif italic text-[#4ea0e6] font-normal tracking-normal pr-2">
                 Kaizen
               </span>
             </h1>
 
             {/* Description */}
-            <p
-              className={`text-lg md:text-xl leading-relaxed max-w-xl ${
-                isDarkMode ? "text-slate-400" : "text-gray-600"
-              }`}
-            >
-              <strong className={isDarkMode ? "text-slate-200" : "text-gray-900"}>
-                Full-Stack Software Engineer, MSIT Student at UoPeople & Filipino Martial Artist.
-              </strong>{" "}
-              I build internal business systems with Angular, Laravel, and GraphQL.
-              Right now I&#39;m the only developer on an HR platform at Ascendens Asia.
-            </p>
+          <p
+  className={`text-lg md:text-xl leading-relaxed max-w-xl ${
+    isDarkMode ? "text-slate-400" : "text-gray-600"
+  }`}
+>
+  <strong className={isDarkMode ? "text-slate-200" : "text-gray-900"}>
+    Full-Stack Software Engineer, Former SCC Student &amp; Filipino Martial Artist.
+  </strong>{" "}
+  I build capstone-level systems with ReactJS (JSX, TSX), Next.js, Laravel, and
+  GraphQL. Currently, I&#39;m a freelance developer and an LGU worker assigned to
+  the Municipal Health Office of Sibonga, Cebu. I&#39;m also a MADAC Staff
+  (Encoder), IT Support, and HR Staff. I find joy in learning technology.
+</p>
 
             {/* Buttons */}
             <div className="flex flex-wrap items-center gap-4 mt-2">
@@ -257,7 +441,9 @@ export default function Home() {
                 </svg>
               </Link>
               <Link
-                href="/cv"
+                href="/bansimplified.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className={`flex items-center gap-2 px-6 py-3 text-base font-medium rounded-xl border shadow-sm transition-colors ${
                   isDarkMode
                     ? "bg-slate-900 border-slate-800 text-slate-200 hover:bg-slate-800"
@@ -278,16 +464,16 @@ export default function Home() {
               }`}
             >
               <div>
-                <p className="text-3xl font-bold">9</p>
-                <p className={`text-sm mt-1 ${isDarkMode ? "text-slate-400" : "text-gray-500"}`}>Projects</p>
+                <p className="text-3xl font-bold">5</p>
+                <p className={`text-sm mt-1 ${isDarkMode ? "text-slate-400" : "text-gray-500"}`}> Capstone Projects</p>
               </div>
               <div>
-                <p className="text-3xl font-bold">3</p>
+                <p className="text-3xl font-bold">3+</p>
                 <p className={`text-sm mt-1 ${isDarkMode ? "text-slate-400" : "text-gray-500"}`}>Live apps</p>
               </div>
               <div>
-                <p className="text-3xl font-bold">1+</p>
-                <p className={`text-sm mt-1 ${isDarkMode ? "text-slate-400" : "text-gray-500"}`}>Year professional exp.</p>
+                <p className="text-3xl font-bold">3+</p>
+                <p className={`text-sm mt-1 ${isDarkMode ? "text-slate-400" : "text-gray-500"}`}>Freelance Web Developer exp.</p>
               </div>
             </div>
           </div>
@@ -304,10 +490,11 @@ export default function Home() {
             <video
               key={isDarkMode ? "dark" : "light"}
               src={isDarkMode ? "/components/kaizenremovereverse.mp4" : "/components/kaizenwear.mp4"}
+              poster={isDarkMode ? "/components/kaizenremovereverse.webp" : "/components/kaizenwear.webp"}
               autoPlay
               muted
               playsInline
-              className="relative z-10 object-cover object-top w-full max-w-md h-auto rounded-t-full transition-all duration-500 ease-in-out"
+              className="relative z-10 object-cover object-top w-full max-w-md h-auto rounded-t-full"
               style={{
                 maskImage: "linear-gradient(to bottom, black 75%, transparent 100%)",
                 WebkitMaskImage: "linear-gradient(to bottom, black 75%, transparent 100%)",
@@ -330,7 +517,7 @@ export default function Home() {
       </section>
 
       {/* ABOUT SECTION */}
-      <section className="relative z-10 max-w-[1200px] mx-auto px-6 pb-24 pt-8">
+      <section id="about" className="relative z-10 max-w-[1200px] mx-auto px-6 pb-24 pt-8">
         {/* Section Header */}
         <div className="mb-10">
           <p className="text-sm font-medium text-[#4ea0e6] tracking-wide mb-2">
@@ -360,22 +547,22 @@ export default function Home() {
               }`}
             >
               <p className={`text-lg leading-relaxed mb-5 ${isDarkMode ? "text-slate-300" : "text-gray-700"}`}>
-                I started out building PHP systems for my IT degree at{" "}
+                I started out building PHP systems for my IT degree at
                 <strong className={isDarkMode ? "text-white" : "text-gray-900"}>
                   Bestlink College of the Philippines
                 </strong>
-                , then interned at two Quezon City software shops before joining{" "}
+                , then interned at two Quezon City software shops before joining
                 <strong className={isDarkMode ? "text-white" : "text-gray-900"}>
                   Ascendens Asia
-                </strong>{" "}
+                </strong>
                 in 2025. These days I own an HRIS end to end, from the Angular screens to the Laravel GraphQL API to the Docker deployment on AWS.
               </p>
               <p className={`text-lg leading-relaxed ${isDarkMode ? "text-slate-300" : "text-gray-700"}`}>
-                I&#39;m also taking a{" "}
+                I&#39;m also taking a
                 <strong className={isDarkMode ? "text-white" : "text-gray-900"}>
                   Master of Science in Information Technology
-                </strong>{" "}
-                at the{" "}
+                </strong>
+                at the
                 <strong className={isDarkMode ? "text-white" : "text-gray-900"}>
                   University of the People
                 </strong>
@@ -448,7 +635,7 @@ export default function Home() {
       </section>
 
       {/* STACK SECTION */}
-      <section className="relative z-10 max-w-[1200px] mx-auto px-6 pb-24 pt-8">
+      <section id="skills" className="relative z-10 max-w-[1200px] mx-auto px-6 pb-24 pt-8">
         {/* Section Header */}
         <div className="mb-10">
           <p className="text-sm font-medium text-[#4ea0e6] tracking-wide mb-2">
@@ -506,6 +693,684 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      {/* PROJECTS SECTION */}
+      <section id="projects" className="relative z-10 max-w-[1200px] mx-auto px-6 pb-24 pt-8">
+        {/* Section Header */}
+        <div className="mb-10">
+          <p className="text-sm font-medium text-[#4ea0e6] tracking-wide mb-2">
+            03 / WORK
+          </p>
+          <h2
+            className={`text-4xl md:text-5xl font-bold tracking-tight font-serif mb-3 ${
+              isDarkMode ? "text-white" : "text-[#0f172a]"
+            }`}
+          >
+            Projects
+          </h2>
+          <p className={`text-lg ${isDarkMode ? "text-slate-400" : "text-gray-600"}`}>
+            Capstone systems from college and side projects that are live today.
+          </p>
+        </div>
+
+        {loadingRepos ? (
+          <>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[1, 2, 3, 4, 5, 6].map((i) => (
+                <div key={i} className="rounded-2xl border overflow-hidden shadow-sm">
+                  <div className={`h-48 w-full animate-pulse ${isDarkMode ? "bg-slate-800" : "bg-gray-200"}`} />
+                  <div className="p-6 space-y-4">
+                    <div className={`h-6 w-3/4 animate-pulse ${isDarkMode ? "bg-slate-700" : "bg-gray-200"}`} />
+                    <div className={`h-4 w-full animate-pulse ${isDarkMode ? "bg-slate-700" : "bg-gray-200"}`} />
+                    <div className={`h-4 w-2/3 animate-pulse ${isDarkMode ? "bg-slate-700" : "bg-gray-200"}`} />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </>
+        ) : (
+          <>
+            {/* Filter Pills */}
+            <div className="flex flex-wrap gap-2 mb-8">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setActiveCategory(cat)}
+                  className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors border ${
+                    activeCategory === cat
+                      ? "bg-[#5a8ff5] text-white border-[#5a8ff5]"
+                      : isDarkMode
+                      ? "bg-slate-900 border-slate-800 text-slate-300 hover:bg-slate-800"
+                      : "bg-white border-gray-200 text-gray-600 hover:bg-gray-50"
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+
+            {/* Results Info */}
+            <div className={`flex justify-between items-center text-sm mb-6 ${isDarkMode ? "text-slate-400" : "text-gray-500"}`}>
+              <span>
+                Showing
+                <strong className={isDarkMode ? "text-white" : "text-gray-900"}>
+                  {visibleProjects.length}
+                </strong>
+                of
+                <strong className={isDarkMode ? "text-white" : "text-gray-900"}>
+                  {filteredProjects.length}
+                </strong>
+                projects
+              </span>
+              <span>
+                {filteredProjects.length === 0
+                  ? "0 of 0"
+                  : `${carouselIndex + 1}–${Math.min(
+                      carouselIndex + itemsPerView,
+                      filteredProjects.length
+                    )} of ${filteredProjects.length}`}
+              </span>
+            </div>
+
+            {/* Projects Carousel */}
+            <div className="relative">
+              {/* Carousel Viewport */}
+              <div className="overflow-hidden">
+                <div
+                  className="flex gap-6 transition-transform duration-500 ease-out"
+                  style={{
+                    transform: `translateX(calc(-${carouselIndex} * (100% + 24px) / ${itemsPerView}))`,
+                  }}
+                >
+                  {filteredProjects.map((project) => (
+                    <div
+                      key={project.html_url}
+                      className={`rounded-2xl border overflow-hidden shadow-sm flex flex-col transition-transform hover:-translate-y-1 flex-shrink-0 ${
+                        isDarkMode
+                          ? "bg-slate-900/60 border-slate-800"
+                          : "bg-white border-gray-200"
+                      }`}
+                      style={{
+                        width: `calc((100% - ${(itemsPerView - 1) * 24}px) / ${itemsPerView})`,
+                      }}
+                    >
+                      {/* Card Image Area */}
+                      {/* ✅ FIX: use project.gradient (static Tailwind classes) */}
+                      <div className={`relative h-48 w-full flex items-center justify-center ${project.gradient}`}>
+                        {/* Category Badge */}
+                        <div className="absolute top-4 right-4 px-3 py-1 text-xs font-bold uppercase tracking-wider text-white bg-black/40 backdrop-blur-sm rounded-full">
+                          {project.category}
+                        </div>
+
+                        {/* Visual Content */}
+                        <span className="text-5xl font-mono text-white/90 font-bold tracking-tighter">
+                          {project.icon}
+                        </span>
+                      </div>
+
+                      {/* Card Content */}
+                      <div className="p-6 flex flex-col flex-grow">
+                        <h3 className={`text-xl font-bold font-serif mb-3 ${isDarkMode ? "text-white" : "text-[#0f172a]"}`}>
+                          {project.title}
+                        </h3>
+                        <p className={`text-sm leading-relaxed mb-6 ${isDarkMode ? "text-slate-400" : "text-gray-600"}`}>
+                          {project.description}
+                        </p>
+
+                        {/* Highlights */}
+                        <div className="flex flex-col gap-2 mb-6">
+                          {project.highlights.map((highlight, i) => (
+                            <div key={i} className="flex items-start gap-2">
+                              <svg className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                              </svg>
+                              <span className="text-xs font-medium px-2 py-1 rounded-md bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+                                {highlight}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+
+                        {/* Tech Stack */}
+                        <div className="flex flex-wrap gap-2 mb-6">
+                          {project.tech.map((t, i) => (
+                            <span
+                              key={i}
+                              className={`px-2 py-1 text-xs font-medium rounded border ${
+                                isDarkMode
+                                  ? "bg-slate-800 border-slate-700 text-slate-300"
+                                  : "bg-gray-50 border-gray-200 text-gray-600"
+                              }`}
+                            >
+                              {t}
+                            </span>
+                          ))}
+                        </div>
+
+                        {/* Footer Link */}
+                        <div className="mt-auto pt-4 border-t border-gray-100 dark:border-slate-800">
+                          <a
+                            href={project.html_url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 text-sm font-medium text-[#5a8ff5] hover:text-[#4a7fe5] transition-colors"
+                          >
+                            View on GitHub
+                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+{/* Navigation Controls - Prev, 1, 2, 3, Next */}
+              {filteredProjects.length > itemsPerView && (
+                <div className="flex justify-center items-center gap-2 mt-6">
+                  {/* Previous Button */}
+                  <button
+                    onClick={prevSlide}
+                    disabled={carouselIndex === 0}
+                    className={`p-2 rounded-lg border transition-all ${
+                      isDarkMode
+                        ? "bg-slate-900 border-slate-800 text-slate-300 hover:bg-slate-800"
+                        : "bg-white border-gray-200 text-gray-600 hover:bg-gray-50"
+                    } disabled:opacity-30 disabled:cursor-not-allowed`}
+                    aria-label="Previous project"
+                  >
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                    </svg>
+                  </button>
+
+                  {/* Page Number Buttons (max 3) */}
+                  {Array.from({ length: Math.min(maxIndex + 1, 3) }, (_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setCarouselIndex(i)}
+                      className={`w-10 h-10 rounded-lg border font-medium flex items-center justify-center transition-all ${
+                        i === carouselIndex
+                          ? "bg-[#5a8ff5] text-white border-[#5a8ff5] shadow-sm"
+                          : isDarkMode
+                          ? "border-slate-800 text-slate-300 hover:bg-slate-800"
+                          : "border-gray-200 text-gray-600 hover:bg-gray-50"
+                      }`}
+                      aria-label={`Go to page ${i + 1}`}
+                    >
+                      {i + 1}
+                    </button>
+                  ))}
+
+                  {/* Next Button */}
+                  <button
+                    onClick={nextSlide}
+                    disabled={carouselIndex >= maxIndex}
+                    className={`p-2 rounded-lg border transition-all ${
+                      isDarkMode
+                        ? "bg-slate-900 border-slate-800 text-slate-300 hover:bg-slate-800"
+                        : "bg-white border-gray-200 text-gray-600 hover:bg-gray-50"
+                    } disabled:opacity-30 disabled:cursor-not-allowed`}
+                    aria-label="Next project"
+                  >
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
+                </div>
+              )}
+            </div>
+          </>
+        )}
+      </section>
+            {/* 04 / GITHUB SECTION */}
+      <section id="repositories" className="relative z-10 max-w-[1200px] mx-auto px-6 pb-24 pt-8">
+        <div className="mb-10">
+          <p className="text-sm font-medium text-[#4ea0e6] tracking-wide mb-2">
+            04 / GITHUB
+          </p>
+          <h2
+            className={`text-4xl md:text-5xl font-bold tracking-tight font-serif mb-3 ${
+              isDarkMode ? "text-white" : "text-[#0f172a]"
+            }`}
+          >
+            Public repositories
+          </h2>
+          <p className={`text-lg ${isDarkMode ? "text-slate-400" : "text-gray-600"}`}>
+            Starter kits and learning notes. Most of my work code lives in private company repos.
+          </p>
+        </div>
+
+        {/* Profile Card */}
+        <div
+          className={`rounded-2xl border p-6 md:p-8 shadow-sm mb-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 ${
+            isDarkMode ? "bg-slate-900/60 border-slate-800" : "bg-white border-gray-200"
+          }`}
+        >
+          <div className="flex items-center gap-4">
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white shadow-inner">
+              <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
+              </svg>
+            </div>
+            <div>
+              <div className="flex items-center gap-3">
+                <h3 className={`text-2xl font-bold font-serif ${isDarkMode ? "text-white" : "text-[#0f172a]"}`}>
+                  @Bansimplified567
+                </h3>
+                <span className="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-400">
+                  Active
+                </span>
+              </div>
+              <p className={`text-sm mt-1 ${isDarkMode ? "text-slate-400" : "text-gray-500"}`}>
+                Full-Stack Software Engineer • Cebu City, Philippines
+              </p>
+            </div>
+          </div>
+          <a
+            href="https://github.com/BanSimplified567"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`flex items-center gap-2 px-5 py-2.5 text-sm font-medium rounded-xl border shadow-sm transition-colors ${
+              isDarkMode
+                ? "bg-slate-800 border-slate-700 text-white hover:bg-slate-700"
+                : "bg-[#0f172a] border-gray-900 text-white hover:bg-gray-800"
+            }`}
+          >
+            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
+            </svg>
+            Follow on GitHub
+            <svg className="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </a>
+        </div>
+
+        {/* Filter Pills & Search */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
+          <div className="flex flex-wrap gap-2">
+            {["All", "PHP", "Blade", "Markdown"].map((tag) => (
+              <button
+                key={tag}
+                className={`px-4 py-1.5 text-sm font-medium rounded-lg transition-colors ${
+                  tag === "All"
+                    ? "bg-[#5a8ff5] text-white"
+                    : isDarkMode
+                    ? "bg-slate-900 border border-slate-800 text-slate-300 hover:bg-slate-800"
+                    : "bg-white border border-gray-200 text-gray-600 hover:bg-gray-50"
+                }`}
+              >
+                {tag}
+              </button>
+            ))}
+          </div>
+          <div className="relative w-full md:w-auto">
+            <svg className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            <input
+              type="text"
+              placeholder="Search repositories..."
+              className={`w-full md:w-64 pl-10 pr-4 py-2 text-sm rounded-lg border focus:outline-none focus:ring-2 focus:ring-[#5a8ff5] ${
+                isDarkMode
+                  ? "bg-slate-900 border-slate-800 text-white placeholder-slate-500"
+                  : "bg-white border-gray-200 text-gray-900 placeholder-gray-400"
+              }`}
+            />
+          </div>
+        </div>
+
+        {/* Repo Grid */}
+     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+  {[
+    {
+      name: "bansimplified-boilerplate-using-react",
+      desc: "ReactJS and Supabase, Tanstack react-router and query a boilerplate template gives beginners a ready-made project setup so they can start coding immediately. It saves time, reduces errors, and hel...",
+      lang: "TypeScript",
+      color: "bg-blue-500",
+      stars: 0,
+      forks: 0
+    },
+    {
+      name: "bansimplified-boilerplate-using-php-native",
+      desc: "PHP_Framecore is a simple PHP framework designed for small to medium-sized web applications. It features a straightforward, action-based routing system and a role-based access control mechanism. Th...",
+      lang: "PHP",
+      color: "bg-purple-500",
+      stars: 0,
+      forks: 0
+    },
+    {
+      name: "Bansimplified567",
+      desc: "My Portfolio BanSimplified PortFolio(2022-2024): https://bansimplified.vercel.app/ (2025-2026): https://bansimplified567.vercel.app/",
+      lang: "TypeScript",
+      color: "bg-blue-500",
+      stars: 1,
+      forks: 0
+    },
+    {
+      name: "Barangay_Management",
+      desc: "Barangay Management System A web-based system designed to streamline barangay operations, including resident records management, permit issuance, incident reporting, and document processing. This s...",
+      lang: "PHP",
+      color: "bg-purple-500",
+      stars: 0,
+      forks: 1
+    },
+    {
+      name: "Hotel-Reservation-Management--HRM-",
+      desc: "This project is a web-based application for a hotel management system, developed in PHP. It features a complete user authentication system, including user registration, login, logout, and password ...",
+      lang: "PHP",
+      color: "bg-purple-500",
+      stars: 0,
+      forks: 0
+    },
+    {
+      name: "BanHotel",
+      desc: "BanHotel: Discover comfort and elegance, where exceptional service meets unforgettable experiences.",
+      lang: "JavaScript",
+      color: "bg-yellow-400",
+      stars: 1,
+      forks: 0
+    },
+  ].map((repo, i) => (
+    <div
+      key={i}
+      className={`rounded-xl border p-4 flex flex-col justify-between transition-colors ${
+        isDarkMode ? "bg-[#0d1117] border-[#30363d] hover:border-[#8b949e]" : "bg-white border-gray-300 hover:border-gray-400"
+      }`}
+    >
+      <div>
+        <div className="flex justify-between items-start mb-2">
+          <div className="flex items-center gap-2">
+            {/* Repo Icon */}
+            <svg className={`w-4 h-4 ${isDarkMode ? "text-[#8b949e]" : "text-gray-500"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+            </svg>
+            {/* Repo Name */}
+            <h4 className={`text-sm font-bold truncate ${isDarkMode ? "text-[#58a6ff]" : "text-blue-600"}`}>
+              {repo.name}
+            </h4>
+            {/* Public Badge */}
+            <span className={`text-xs px-2 py-0.5 rounded-full border ${isDarkMode ? "border-[#30363d] text-[#8b949e]" : "border-gray-300 text-gray-500"}`}>
+              Public
+            </span>
+          </div>
+          {/* Options Icon (3 dots) */}
+          <svg className={`w-4 h-4 cursor-pointer ${isDarkMode ? "text-[#8b949e]" : "text-gray-400"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+          </svg>
+        </div>
+        <p className={`text-xs leading-relaxed mb-4 line-clamp-3 ${isDarkMode ? "text-[#8b949e]" : "text-gray-600"}`}>
+          {repo.desc}
+        </p>
+      </div>
+
+      <div className={`flex items-center gap-4 text-xs ${isDarkMode ? "text-[#8b949e]" : "text-gray-500"}`}>
+        {/* Language */}
+        <div className="flex items-center gap-1.5">
+          <span className={`w-3 h-3 rounded-full ${repo.color}`}></span>
+          <span>{repo.lang}</span>
+        </div>
+
+        {/* Stars */}
+        {repo.stars > 0 && (
+          <div className="flex items-center gap-1 hover:text-[#58a6ff] cursor-pointer">
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+            </svg>
+            <span>{repo.stars}</span>
+          </div>
+        )}
+
+        {/* Forks */}
+        {repo.forks > 0 && (
+          <div className="flex items-center g
+          p-1 hover:text-[#58a6ff] cursor-pointer">
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" />
+            </svg>
+            <span>{repo.forks}</span>
+          </div>
+        )}
+      </div>
+    </div>
+  ))}
+</div>
+      </section>
+
+      {/* 05 / EXPERIENCE SECTION */}
+      <section id="experience" className="relative z-10 max-w-[1200px] mx-auto px-6 pb-24 pt-8">
+        <div className="mb-10">
+          <p className="text-sm font-medium text-[#4ea0e6] tracking-wide mb-2">
+            05 / EXPERIENCE
+          </p>
+          <h2
+            className={`text-4xl md:text-5xl font-bold tracking-tight font-serif mb-3 ${
+              isDarkMode ? "text-white" : "text-[#0f172a]"
+            }`}
+          >
+            Where I&#39;ve worked
+          </h2>
+        </div>
+
+  <div className="relative border-l-2 border-gray-200 dark:border-slate-800 ml-4 md:ml-6 space-y-12 pb-4">
+
+  {/* Job 1 */}
+  <div className="relative pl-8 md:pl-12">
+    <div className="absolute -left-[11px] top-1.5 w-5 h-5 rounded-full border-4 border-white dark:border-slate-950 bg-[#5a8ff5]"></div>
+    <div className={`rounded-2xl border p-6 md:p-8 shadow-sm ${isDarkMode ? "bg-slate-900/60 border-slate-800" : "bg-white border-gray-200"}`}>
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+        <div className="flex items-center gap-4">
+          <div className="w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-500/10 flex items-center justify-center text-blue-600 dark:text-blue-400 font-bold text-xl">
+            AA
+          </div>
+          <div>
+            <h3 className={`text-xl font-bold font-serif ${isDarkMode ? "text-white" : "text-[#0f172a]"}`}>
+              Freelance — Full-Stack Developer
+            </h3>
+            <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm mt-1">
+              <span className="text-[#4ea0e6] font-medium">Ascendens Asia</span>
+              <span className="text-gray-400">•</span>
+              <span className={isDarkMode ? "text-slate-400" : "text-gray-500"}>Cebu City, PH</span>
+            </div>
+          </div>
+        </div>
+        <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium ${isDarkMode ? "bg-slate-800 text-slate-300" : "bg-gray-100 text-gray-600"}`}>
+          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+          2026 – Present
+        </div>
+      </div>
+      <p className={`text-sm leading-relaxed mb-4 ${isDarkMode ? "text-slate-300" : "text-gray-600"}`}>
+        Engaged as the sole full-stack developer on a freelance basis to build the company&#39;s enterprise HRIS platform, owning it from architecture through deployment.
+      </p>
+      <ul className="space-y-2 mb-6">
+        {[
+          "Architected and deployed the HRIS portal end to end, automating onboarding workflows and requirement tracking",
+          "Built modular UI features and type-safe schemas with Angular, Laravel, and GraphQL to improve query latency",
+          "Engineered a biometric attendance module with Docker, Python face verification, and device camera integration",
+          "Managing containerized deployments on AWS"
+        ].map((item, i) => (
+          <li key={i} className="flex items-start gap-2 text-sm">
+            <svg className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            <span className={isDarkMode ? "text-slate-400" : "text-gray-600"}>{item}</span>
+          </li>
+        ))}
+      </ul>
+      <div className="flex flex-wrap gap-2">
+        {[ "TypeScript", "Laravel", "PostgreSQL", "Python", "Docker",  "Supabase", "TanStack Query"].map((tech) => (
+          <span key={tech} className={`px-2.5 py-1 text-xs font-medium rounded-md border ${isDarkMode ? "bg-slate-800 border-slate-700 text-slate-300" : "bg-gray-50 border-gray-200 text-gray-600"}`}>
+            {tech}
+          </span>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  {/* Job 2 */}
+  <div className="relative pl-8 md:pl-12">
+    <div className="absolute -left-[11px] top-1.5 w-5 h-5 rounded-full border-4 border-white dark:border-slate-950 bg-[#5a8ff5]"></div>
+    <div className={`rounded-2xl border p-6 md:p-8 shadow-sm ${isDarkMode ? "bg-slate-900/60 border-slate-800" : "bg-white border-gray-200"}`}>
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+        <div className="flex items-center gap-4">
+          <div className="w-12 h-12 rounded-xl bg-cyan-50 dark:bg-cyan-500/10 flex items-center justify-center text-cyan-600 dark:text-cyan-400 font-bold text-xl">
+            SI
+          </div>
+          <div>
+            <h3 className={`text-xl font-bold font-serif ${isDarkMode ? "text-white" : "text-[#0f172a]"}`}>
+              Intern — Fullstack Developer / IT Support
+            </h3>
+            <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm mt-1">
+              <span className="text-[#4ea0e6] font-medium">Socia I.T Solutions</span>
+              <span className="text-gray-400">•</span>
+              <span className={isDarkMode ? "text-slate-400" : "text-gray-500"}>Carcar Cebu City, PH</span>
+            </div>
+          </div>
+        </div>
+        <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium ${isDarkMode ? "bg-slate-800 text-slate-300" : "bg-gray-100 text-gray-600"}`}>
+          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+          May 2026 – June 2026
+        </div>
+      </div>
+      <p className={`text-sm leading-relaxed mb-4 ${isDarkMode ? "text-slate-300" : "text-gray-600"}`}>
+        Backend development, QA, and IT support during internship. Built internal tools and maintained PHP-based systems.
+      </p>
+      <ul className="space-y-2 mb-6">
+        {[
+          "Developed backend APIs using native PHP and MySQL following modular component standards (PHP_Framecore pattern)",
+          "Built and maintained internal management systems (Barangay Management, Hotel Reservation HRM)",
+          "Streamlined deployment, debugging, and Git/GitHub version control workflows",
+          "Reviewed commits from a QA perspective, catching functional bugs before integration"
+        ].map((item, i) => (
+          <li key={i} className="flex items-start gap-2 text-sm">
+            <svg className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            <span className={isDarkMode ? "text-slate-400" : "text-gray-600"}>{item}</span>
+          </li>
+        ))}
+      </ul>
+      <div className="flex flex-wrap gap-2">
+        {["PHP", "MySQL", "Git", "QA", "Laravel Patterns", "REST APIs"].map((tech) => (
+          <span key={tech} className={`px-2.5 py-1 text-xs font-medium rounded-md border ${isDarkMode ? "bg-slate-800 border-slate-700 text-slate-300" : "bg-gray-50 border-gray-200 text-gray-600"}`}>
+            {tech}
+          </span>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  {/* Job 3 */}
+  <div className="relative pl-8 md:pl-12">
+    <div className="absolute -left-[11px] top-1.5 w-5 h-5 rounded-full border-4 border-white dark:border-slate-950 bg-[#5a8ff5]"></div>
+    <div className={`rounded-2xl border p-6 md:p-8 shadow-sm ${isDarkMode ? "bg-slate-900/60 border-slate-800" : "bg-white border-gray-200"}`}>
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+        <div className="flex items-center gap-4">
+          <div className="w-12 h-12 rounded-xl bg-sky-50 dark:bg-sky-500/10 flex items-center justify-center text-sky-600 dark:text-sky-400 font-bold text-xl">
+            TC
+          </div>
+          <div>
+            <h3 className={`text-xl font-bold font-serif ${isDarkMode ? "text-white" : "text-[#0f172a]"}`}>
+              Intern — Fullstack Developer
+            </h3>
+            <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm mt-1">
+              <span className="text-[#4ea0e6] font-medium">Trend Company</span>
+              <span className="text-gray-400">•</span>
+              <span className={isDarkMode ? "text-slate-400" : "text-gray-500"}>Carcar Cebu City, PH</span>
+            </div>
+          </div>
+        </div>
+        <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium ${isDarkMode ? "bg-slate-800 text-slate-300" : "bg-gray-100 text-gray-600"}`}>
+          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+          March 2026 – April 2026
+        </div>
+      </div>
+      <p className={`text-sm leading-relaxed mb-4 ${isDarkMode ? "text-slate-300" : "text-gray-600"}`}>
+        Full-stack development for customer-facing web applications, with a backend focus during internship. Worked on e-commerce and booking platforms.
+      </p>
+      <ul className="space-y-2 mb-6">
+        {[
+          "Designed database tables and built backend endpoints in PHP for MotorStart and BanHotel projects",
+          "Developed frontend components with vanilla JavaScript and CSS for responsive UIs",
+          "Took part in peer code reviews following SDLC best practices"
+        ].map((item, i) => (
+          <li key={i} className="flex items-start gap-2 text-sm">
+            <svg className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            <span className={isDarkMode ? "text-slate-400" : "text-gray-600"}>{item}</span>
+          </li>
+        ))}
+      </ul>
+      <div className="flex flex-wrap gap-2">
+        {["PHP", "MySQL", "JavaScript", "CSS", "Code Review", "E-commerce"].map((tech) => (
+          <span key={tech} className={`px-2.5 py-1 text-xs font-medium rounded-md border ${isDarkMode ? "bg-slate-800 border-slate-700 text-slate-300" : "bg-gray-50 border-gray-200 text-gray-600"}`}>
+            {tech}
+          </span>
+        ))}
+      </div>
+    </div>
+  </div>
+
+</div>
+      </section>
+
+      {/* 06 / CONTACT SECTION */}
+      <section id="contact" className="relative z-10 max-w-[1200px] mx-auto px-6 pb-24 pt-8">
+        <div className="mb-10 text-center">
+          <p className="text-sm font-medium text-[#4ea0e6] tracking-wide mb-2">
+            06 / CONTACT
+          </p>
+          <h2
+            className={`text-4xl md:text-5xl font-bold tracking-tight font-serif mb-3 ${
+              isDarkMode ? "text-white" : "text-[#0f172a]"
+            }`}
+          >
+            Let&#39;s work together
+          </h2>
+          <p className={`text-lg ${isDarkMode ? "text-slate-400" : "text-gray-600"} max-w-2xl mx-auto`}>
+            I&#39;m currently available for full-stack and web engineering roles. If you have a project in mind or just want to say hi, feel free to reach out.
+          </p>
+        </div>
+
+        <div className="max-w-2xl mx-auto">
+          <div className={`rounded-2xl border p-8 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6 ${isDarkMode ? "bg-slate-900/60 border-slate-800" : "bg-white border-gray-200"}`}>
+            <div className="flex flex-col items-center md:items-start gap-1">
+              <span className={`text-sm font-medium ${isDarkMode ? "text-slate-400" : "text-gray-500"}`}>Email me at</span>
+              <a href="mailto:bansimplified567@gmail.com" className="text-xl font-bold text-[#4ea0e6] hover:underline">
+                bansimplified567@gmail.com
+              </a>
+            </div>
+            <div className="flex gap-3">
+              <a
+                href="https://github.com/BanSimplified567"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`w-12 h-12 rounded-xl flex items-center justify-center border transition-colors ${isDarkMode ? "bg-slate-800 border-slate-700 text-slate-300 hover:bg-slate-700 hover:text-white" : "bg-gray-50 border-gray-200 text-gray-600 hover:bg-gray-100 hover:text-black"}`}
+                aria-label="GitHub"
+              >
+                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" /></svg>
+              </a>
+              <a
+                href="mailto:bansimplified567@gmail.com"
+                className={`w-12 h-12 rounded-xl flex items-center justify-center border transition-colors ${isDarkMode ? "bg-slate-800 border-slate-700 text-slate-300 hover:bg-slate-700 hover:text-white" : "bg-gray-50 border-gray-200 text-gray-600 hover:bg-gray-100 hover:text-black"}`}
+                aria-label="Email"
+              >
+                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className={`relative z-10 border-t py-10 mt-8 ${isDarkMode ? "border-slate-800 bg-slate-950/50" : "border-gray-200 bg-white/50"}`}>
+        <div className="max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className={`text-sm ${isDarkMode ? "text-slate-500" : "text-gray-500"}`}>
+            © {new Date().getFullYear()} Jade Ivan V. Bringcola. All rights reserved.
+          </p>
+          <p className={`text-sm flex items-center gap-1.5 ${isDarkMode ? "text-slate-500" : "text-gray-500"}`}>
+            Built with <span className="font-serif italic font-bold text-[#4ea0e6]">Next.js</span> & <span className="font-serif italic font-bold text-[#4ea0e6]">Tailwind CSS</span>
+          </p>
+        </div>
+      </footer>
     </main>
   );
 }
