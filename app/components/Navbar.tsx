@@ -44,8 +44,9 @@ export default function Navbar({ isDarkMode, toggleTheme }: NavbarProps) {
       let currentSection = "Home";
 
       sections.forEach((section) => {
-        const sectionTop = section.offsetTop - 100;
-        const sectionHeight = section.offsetHeight;
+        const el = section as HTMLElement;
+        const sectionTop = el.offsetTop - 100;
+        const sectionHeight = el.offsetHeight;
         if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
           currentSection = section.id.charAt(0).toUpperCase() + section.id.slice(1);
         }
