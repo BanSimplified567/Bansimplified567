@@ -506,7 +506,7 @@ export default function Home() {
 
             <video
               key={isDarkMode ? "dark" : "light"}
-              src={isDarkMode ? "/components/kaizenremovereverse.mp4" : "/components/kaizenwear.mp4"}
+              src={isDarkMode ? "/components/removeglass.webm" : "/components/wearglass.webm"}
               poster={isDarkMode ? "/components/kaizenremovereverse.webp" : "/components/kaizenwear.webp"}
               autoPlay
               muted
