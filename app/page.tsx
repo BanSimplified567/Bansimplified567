@@ -125,7 +125,7 @@ const stackCategories = [
       </svg>
     ),
     iconBg: "bg-amber-500/10",
-    tech: ["Claude & Antigravity", "Agent tooling", "Python scripting", "n8n"],
+    tech: ["Claude", "Agent tooling", "Python"],
   },
 ];
 
