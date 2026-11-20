@@ -1171,7 +1171,7 @@ export default function Home() {
               Freelance — Full-Stack Developer
             </h3>
             <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm mt-1">
-              <span className="text-[#4ea0e6] font-medium">Ascendens Asia</span>
+              <span className="text-[#4ea0e6] font-medium"> Sibonga </span>
               <span className="text-gray-400">•</span>
               <span className={isDarkMode ? "text-slate-400" : "text-gray-500"}>Cebu City, PH</span>
             </div>
@@ -1183,14 +1183,14 @@ export default function Home() {
         </div>
       </div>
       <p className={`text-sm leading-relaxed mb-4 ${isDarkMode ? "text-slate-300" : "text-gray-600"}`}>
-        Engaged as the sole full-stack developer on a freelance basis to build the company&#39;s enterprise HRIS platform, owning it from architecture through deployment.
+        A Freelance Full-Stack Developer for a Local Projects in Cebu City, Philippines. I have been working on various projects, including web applications, mobile applications, and desktop applications.
       </p>
       <ul className="space-y-2 mb-6">
         {[
-          "Architected and deployed the HRIS portal end to end, automating onboarding workflows and requirement tracking",
-          "Built modular UI features and type-safe schemas with Angular, Laravel, and GraphQL to improve query latency",
+          "Implemented Online Coffee Ordering System with Native PHP, MySQL, and TailwindCSS for a local coffee shop",
+          "Developed a responsive web application for Barangay Management System",
           "Engineered a biometric attendance module with Docker, Python face verification, and device camera integration",
-          "Managing containerized deployments on AWS"
+          "Local deployment and Free hosting of Web Applocations using Vercel, InffiniteFree for client testing and demos",
         ].map((item, i) => (
           <li key={i} className="flex items-start gap-2 text-sm">
             <svg className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
