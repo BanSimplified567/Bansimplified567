@@ -23,10 +23,9 @@ name: "Jade Ivan V. Bringcola (Kaizen)"
 location: "Cebu City, Philippines"
 role: "Full-Stack Software Engineer"
 education:
-  - "MS in Information Technology @ University of the People (In Progress)"
-  - "BS in Information Technology @ Bestlink College of the Philippines (2025)"
+  - "BS in Information Technology @ Sibonga Community College of the Philippines (2025)"
 current:
-  - "Freelance Full-Stack Developer @ Ascendens Asia"
+  - "Freelance Full-Stack Developer @ Sibonga Cebu"
   - "LGU Worker @ Municipal Health Office, Sibonga, Cebu"
   - "MADAC Staff (Encoder), IT Support, HR Staff"
 interests: ["Filipino Martial Arts (FMA)", "Capstone Systems", "Open Source", "AI & Automation"]
@@ -64,7 +63,6 @@ interests: ["Filipino Martial Arts (FMA)", "Capstone Systems", "Open Source", "A
 **AI & Automation**
 ![Claude](https://img.shields.io/badge/Claude-CC785C?style=flat-square&logo=anthropic&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
-![n8n](https://img.shields.io/badge/n8n-FF6D00?style=flat-square&logo=n8n&logoColor=white)
 
 ---
 
@@ -106,7 +104,7 @@ interests: ["Filipino Martial Arts (FMA)", "Capstone Systems", "Open Source", "A
 
 | | |
 |---|---|
-| <a href="https://github.com/BanSimplified567/Hotel-Reservation-Management--HRM-"><img src="public/img/phpAuthentication.png" alt="Hotel Reservation System" width="100%" style="border-radius: 8px;"/></a> | **Description:** A hotel operations platform for managing reservations, room information, guest access, and payment records.<br/><br/>**Key Features:**<br/>• User authentication and access management<br/>• Room and booking management<br/>• Payment tracking and reporting<br/><br/>**Stack:** `PHP` · `MySQL` · `Bootstrap`<br/><br/>[**View Repository ↗**](https://github.com/BanSimplified567/Hotel-Reservation-Management--HRM-) |
+| <a href="https://github.com/BanSimplified567/Hotel-Reservation-Management--HRM-"><img src="public/img/HotelMagement.png" alt="Hotel Reservation System" width="100%" style="border-radius: 8px;"/></a> | **Description:** A hotel operations platform for managing reservations, room information, guest access, and payment records.<br/><br/>**Key Features:**<br/>• User authentication and access management<br/>• Room and booking management<br/>• Payment tracking and reporting<br/><br/>**Stack:** `PHP` · `MySQL` · `Bootstrap`<br/><br/>[**View Repository ↗**](https://github.com/BanSimplified567/Hotel-Reservation-Management--HRM-) |
 
 ---
 
@@ -124,7 +122,7 @@ interests: ["Filipino Martial Arts (FMA)", "Capstone Systems", "Open Source", "A
 
 | | |
 |---|---|
-| <a href="https://github.com/BanSimplified567/BanHotel"><img src="public/img/BarangayDashboard.png" alt="BanHotel Platform" width="100%" style="border-radius: 8px;"/></a> | **Description:** A hotel booking and discovery platform built to present accommodation options and support the reservation journey.<br/><br/>**Key Features:**<br/>• Hotel and accommodation discovery<br/>• Booking-focused user experience<br/>• Web-based interface for browsing stays<br/><br/>**Stack:** `JavaScript` · `CSS` · `HTML`<br/><br/>[**View Repository ↗**](https://github.com/BanSimplified567/BanHotel) |
+| <a href="https://github.com/BanSimplified567/BanHotel"><img src="public/img/MotorStart.png" alt="BanHotel Platform" width="100%" style="border-radius: 8px;"/></a> | **Description:** A hotel booking and discovery platform built to present accommodation options and support the reservation journey.<br/><br/>**Key Features:**<br/>• Hotel and accommodation discovery<br/>• Booking-focused user experience<br/>• Web-based interface for browsing stays<br/><br/>**Stack:** `JavaScript` · `CSS` · `HTML`<br/><br/>[**View Repository ↗**](https://github.com/BanSimplified567/BanHotel) |
 
 ---
 
@@ -148,8 +146,7 @@ interests: ["Filipino Martial Arts (FMA)", "Capstone Systems", "Open Source", "A
 
 ## 🏆 Achievements
 
-- **Top Case Analysis & Presenter** — Ascendens Asia (May 2026)
-- **BS IT Graduate** — Bestlink College of the Philippines (2025)
+- **BS IT Graduate** — Sibonga Community College of the Philippines (2026)
 - **5 Capstone Projects** delivered during college
 - **3+ Live Applications** in production
 - **3+ Years** freelance web development experience
