@@ -23,7 +23,7 @@ name: "Jade Ivan V. Bringcola (Kaizen)"
 location: "Cebu City, Philippines"
 role: "Full-Stack Software Engineer"
 education:
-  - "BS in Information Technology @ Sibonga Community College of the Philippines (2025)"
+  - "BS in Information Technology @ Sibonga Community College of the Philippines (2026)"
 current:
   - "Freelance Full-Stack Developer @ Sibonga Cebu"
   - "LGU Worker @ Municipal Health Office, Sibonga, Cebu"
