@@ -9,7 +9,7 @@
   <a href="mailto:bansimplified567@gmail.com">
     <img src="https://img.shields.io/badge/Email-bansimplified567%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" />
   </a>
-  <a href="https://bansimplified567.vercel.app/">
+  <a href="https://bansimplified.vercel.app/">
     <img src="https://img.shields.io/badge/Portfolio-bansimplified567.vercel.app-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio" />
   </a>
 </p>
@@ -173,7 +173,7 @@ interests: ["Filipino Martial Arts (FMA)", "Capstone Systems", "Open Source", "A
   <a href="mailto:bansimplified567@gmail.com">
     <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
   </a>
-  <a href="https://bansimplified567.vercel.app/" target="_blank">
+  <a href="https://bansimplified.vercel.app/" target="_blank">
     <img src="https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=vercel&logoColor=white" />
   </a>
 </p>
