@@ -82,8 +82,9 @@ interests: ["Filipino Martial Arts (FMA)", "Capstone Systems", "Open Source", "A
 ## ⏱ WakaTime Stats
 
 <p align="center">
+  <img src="https://wakatime.com/share/@BanBan/98e17f09-cd12-48d4-a271-61f79ebdfff5.svg" alt="WakaTime Coding Activity" width="100%" />
   <img src="https://wakatime.com/share/@BanBan/e1ebae1a-9e98-4f8e-aab3-a0a273af802a.svg" alt="WakaTime Stats" width="48%" />
-  <img src="https://wakatime.com/share/@BanBan/98e17f09-cd12-48d4-a271-61f79ebdfff5.svg" alt="WakaTime Coding Activity" width="48%" />
+
 </p>
 
 ---
@@ -184,9 +185,6 @@ interests: ["Filipino Martial Arts (FMA)", "Capstone Systems", "Open Source", "A
   <img src="https://visitor-badge.laobi.icu/badge?page_id=BanSimplified567.BanSimplified567&left_text=Visitors&right_text=Total&style=flat-square&color=4EA0E6" alt="Visitors Badge" />
 </p>
 
-<p align="center">
-  <img src="https://profile-counter.glitch.me/BanSimplified567/count.svg" alt="Profile Counter" />
-</p>
 
 ---
 
