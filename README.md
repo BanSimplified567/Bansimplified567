@@ -30,7 +30,6 @@ current:
   - "MADAC Staff (Encoder), IT Support, HR Staff"
 interests: ["Filipino Martial Arts (FMA)", "Capstone Systems", "Open Source", "AI & Automation"]
 ```
-
 ---
 
 ## 🛠 Tech Stack
@@ -68,27 +67,41 @@ interests: ["Filipino Martial Arts (FMA)", "Capstone Systems", "Open Source", "A
 
 ## 📊 GitHub Stats
 
-<p align="center">
-  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=BanSimplified567&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true&hide_border=true" alt="GitHub Stats" />
-  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=BanSimplified567&layout=compact&theme=tokyonight&hide_border=true&langs_count=8" alt="Top Languages" />
-</p>
+<div align="center">
 
-<p align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=BanSimplified567&theme=tokyonight&hide_border=true" alt="GitHub Streak" />
-</p>
+  <table>
+    <tr>
+      <td align="center" width="50%" height="200">
+        <img height="180" src="https://github-readme-stats.vercel.app/api?username=BanSimplified567&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true&hide_border=true" alt="GitHub Stats" />
+      </td>
+      <td align="center" width="50%" height="200">
+        <img height="180" src="https://github-readme-stats.vercel.app/api/top-langs/?username=BanSimplified567&layout=compact&theme=tokyonight&hide_border=true&langs_count=8" alt="Top Languages" />
+      </td>
+    </tr>
+    <tr>
+      <td align="center" colspan="2" height="200">
+        <img height="180" src="https://github-readme-streak-stats.herokuapp.com/?user=BanSimplified567&theme=tokyonight&hide_border=true" alt="GitHub Streak" />
+      </td>
+    </tr>
+  </table>
 
----
-
+</div>
 ## ⏱ WakaTime Stats
 
-<p align="center">
-  <img src="https://wakatime.com/share/@BanBan/98e17f09-cd12-48d4-a271-61f79ebdfff5.svg" alt="WakaTime Coding Activity" width="100%" />
-  <img src="https://wakatime.com/share/@BanBan/e1ebae1a-9e98-4f8e-aab3-a0a273af802a.svg" alt="WakaTime Stats" width="48%" />
+<div align="center">
 
-</p>
+  <table>
+    <tr>
+      <td align="center" width="50%">
+        <img src="https://wakatime.com/share/@BanBan/98e17f09-cd12-48d4-a271-61f79ebdfff5.svg" alt="WakaTime Coding Activity" width="100%" />
+      </td>
+      <td align="center" width="50%">
+        <img src="https://wakatime.com/share/@BanBan/e1ebae1a-9e98-4f8e-aab3-a0a273af802a.svg" alt="WakaTime Stats" width="100%" />
+      </td>
+    </tr>
+  </table>
 
----
-
+</div>
 ## 🚀 Featured Projects
 
 ### 01. Barangay Management System
@@ -114,7 +127,7 @@ interests: ["Filipino Martial Arts (FMA)", "Capstone Systems", "Open Source", "A
 
 | | |
 |---|---|
-| <a href="https://github.com/BanSimplified567/MotorStart-Website"><img src="public/img/reactAuthentication.png" alt="MotorStart Website" width="100%" style="border-radius: 8px;"/></a> | **Description:** An automotive e-commerce website for showcasing and selling motorcycle parts and accessories.<br/><br/>**Key Features:**<br/>• Product browsing and catalog presentation<br/>• Automotive parts and accessories listings<br/>• Responsive website interface<br/><br/>**Stack:** `PHP` · `MySQL` · `JavaScript`<br/><br/>[**View Repository ↗**](https://github.com/BanSimplified567/MotorStart-Website) |
+| <a href="https://github.com/BanSimplified567/MotorStart-Website"><img src="public/img/MotorStart.png" alt="MotorStart Website" width="100%" style="border-radius: 8px;"/></a> | **Description:** An automotive e-commerce website for showcasing and selling motorcycle parts and accessories.<br/><br/>**Key Features:**<br/>• Product browsing and catalog presentation<br/>• Automotive parts and accessories listings<br/>• Responsive website interface<br/><br/>**Stack:** `PHP` · `MySQL` · `JavaScript`<br/><br/>[**View Repository ↗**](https://github.com/BanSimplified567/MotorStart-Website) |
 
 ---
 
@@ -123,7 +136,7 @@ interests: ["Filipino Martial Arts (FMA)", "Capstone Systems", "Open Source", "A
 
 | | |
 |---|---|
-| <a href="https://github.com/BanSimplified567/BanHotel"><img src="public/img/MotorStart.png" alt="BanHotel Platform" width="100%" style="border-radius: 8px;"/></a> | **Description:** A hotel booking and discovery platform built to present accommodation options and support the reservation journey.<br/><br/>**Key Features:**<br/>• Hotel and accommodation discovery<br/>• Booking-focused user experience<br/>• Web-based interface for browsing stays<br/><br/>**Stack:** `JavaScript` · `CSS` · `HTML`<br/><br/>[**View Repository ↗**](https://github.com/BanSimplified567/BanHotel) |
+| <a href="https://github.com/BanSimplified567/BanHotel"><img src="public/img/HotelMagement.png" alt="BanHotel Platform" width="100%" style="border-radius: 8px;"/></a> | **Description:** A hotel booking and discovery platform built to present accommodation options and support the reservation journey.<br/><br/>**Key Features:**<br/>• Hotel and accommodation discovery<br/>• Booking-focused user experience<br/>• Web-based interface for browsing stays<br/><br/>**Stack:** `JavaScript` · `CSS` · `HTML`<br/><br/>[**View Repository ↗**](https://github.com/BanSimplified567/BanHotel) |
 
 ---
 
